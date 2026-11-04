@@ -1,0 +1,213 @@
+[gd_scene load_steps=22 format=3 uid="uid://bx4kno5rtneh6"]
+
+[ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
+[ext_resource type="Texture2D" uid="uid://dvmgtlbkiwyco" path="res://Assets/Clydesdale_base_grey.png" id="1_ikk15"]
+[ext_resource type="Texture2D" uid="uid://d3db3ggl85wfe" path="res://Assets/IMG_3641.png" id="2_wd0k0"]
+[ext_resource type="Texture2D" uid="uid://3y1topgnva0m" path="res://Assets/Clydesdale_base_red.png" id="3_fvi5k"]
+[ext_resource type="Texture2D" uid="uid://xji1g6e7aiub" path="res://Assets/IMG_1370.png" id="3_yk0co"]
+[ext_resource type="Texture2D" uid="uid://bkrtv1equgnt0" path="res://Assets/IMG_1371.png" id="4_0lsct"]
+[ext_resource type="Texture2D" uid="uid://48t1ufjjvl3h" path="res://Assets/IMG_1372.png" id="5_42rsm"]
+[ext_resource type="Texture2D" uid="uid://pkkpm1fdbpth" path="res://Assets/IMG_1373.png" id="6_wd0k0"]
+[ext_resource type="Texture2D" uid="uid://dvji7p3fj8a08" path="res://Assets/IMG_1374.png" id="7_l1xfc"]
+[ext_resource type="Texture2D" uid="uid://cnx4th4jmj8e7" path="res://Assets/IMG_1375.png" id="8_fvi5k"]
+[ext_resource type="Texture2D" uid="uid://c1cj24knahqdo" path="res://Assets/IMG_1376.png" id="9_1r8bo"]
+[ext_resource type="Texture2D" uid="uid://c3dpyn221u4t1" path="res://Assets/IMG_1377.png" id="10_akih7"]
+[ext_resource type="Script" uid="uid://8hgnwmgp3ns8" path="res://state_machine.gd" id="11_0lsct"]
+[ext_resource type="Script" uid="uid://mdj7ebr4hc5c" path="res://state_idle.gd" id="12_42rsm"]
+[ext_resource type="Script" uid="uid://b0qr2cagvysf3" path="res://state_trot.gd" id="13_wd0k0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0078p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wd0k0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fvi5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fvi5k")
+}],
+"loop": false,
+"name": &"idle_ears",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ikk15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ikk15")
+}],
+"loop": false,
+"name": &"idle_tailswish",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yk0co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0lsct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_42rsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wd0k0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l1xfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fvi5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1r8bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_akih7")
+}],
+"loop": true,
+"name": &"trot",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_knagl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1abo5"]
+resource_name = "go to item 0"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(900, 500), Vector2(800, 914)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kl852"]
+resource_name = "go to item 1"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(900, 500), Vector2(1440, 440)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ikk15"]
+resource_name = "start position"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(900, 500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
+_data = {
+&"RESET": SubResource("Animation_knagl"),
+&"go to item 0": SubResource("Animation_1abo5"),
+&"go to item 1": SubResource("Animation_kl852"),
+&"start position": SubResource("Animation_ikk15")
+}
+
+[node name="PlayerHorse" type="CharacterBody2D"]
+script = ExtResource("1_0078p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-17, -7)
+scale = Vector2(0.11253854, 0.11253855)
+sprite_frames = SubResource("SpriteFrames_0078p")
+animation = &"idle_tailswish"
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_4nmru")
+}
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("11_0lsct")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("12_42rsm")
+metadata/_custom_type_script = "uid://mdj7ebr4hc5c"
+
+[node name="Trot" type="Node" parent="StateMachine"]
+script = ExtResource("13_wd0k0")
+metadata/_custom_type_script = "uid://b0qr2cagvysf3"

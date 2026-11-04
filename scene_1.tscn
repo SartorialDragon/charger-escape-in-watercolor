@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6vj32msjxnf6"]
+
+[ext_resource type="Script" uid="uid://cqxqnw2okqmeg" path="res://scene_1.gd" id="1_1abo5"]
+[ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="1_3sd7o"]
+[ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="2_3xosi"]
+[ext_resource type="Texture2D" uid="uid://mgh0t0w786jh" path="res://Assets/battleback7.png" id="2_knagl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knagl"]
+bg_color = Color(1, 1, 1, 0.58431375)
+
+[node name="Scene1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1abo5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2785.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_knagl")
+
+[node name="Interactable Item 0" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 123.000015
+offset_top = 170.99994
+offset_right = 390.29407
+offset_bottom = 298.99994
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+stretch_mode = 0
+
+[node name="Interactable Item 1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1581.0
+offset_top = 353.99997
+offset_right = 1716.5294
+offset_bottom = 481.99997
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+stretch_mode = 0
+
+[node name="Interactable Item 2" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1657.0001
+offset_top = 837.0
+offset_right = 1841.889
+offset_bottom = 965.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+stretch_mode = 0
+
+[node name="Interactable Item 3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 3371.0
+offset_top = 9.0
+offset_right = 3506.5293
+offset_bottom = 248.30437
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+stretch_mode = 0
+
+[node name="PlayerHorse" parent="." instance=ExtResource("2_3xosi")]
+
+[node name="AnimatedSprite2D" parent="PlayerHorse" index="0"]
+animation = &"trot"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 542)
+
+[node name="ClueDialogue" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="ClueDialogue"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.0
+offset_top = -407.0
+offset_right = 765.0
+offset_bottom = 407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knagl")
+
+[node name="Panel2" type="Panel" parent="ClueDialogue/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -765.0
+offset_top = 220.0
+offset_right = 765.0
+offset_bottom = 407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knagl")
+
+[node name="Label" type="Label" parent="ClueDialogue/Panel/Panel2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_right = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="ClueDialogue"]
+offset_left = 1649.0
+offset_top = 858.0
+offset_right = 1725.0
+offset_bottom = 938.0
+theme_override_font_sizes/font_size = 42
+text = " > "
+
+[connection signal="pressed" from="Interactable Item 0" to="." method="_on_interactable_item_0_pressed"]
+[connection signal="pressed" from="Interactable Item 1" to="." method="_on_interactable_item_1_pressed"]
+[connection signal="pressed" from="Interactable Item 2" to="." method="_on_interactable_item_2_pressed"]
+[connection signal="pressed" from="Interactable Item 3" to="." method="_on_interactable_item_3_pressed"]
+
+[editable path="PlayerHorse"]
