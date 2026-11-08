@@ -1,9 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6vj32msjxnf6"]
+[gd_scene load_steps=9 format=3 uid="uid://b6vj32msjxnf6"]
 
 [ext_resource type="Script" uid="uid://cqxqnw2okqmeg" path="res://scene_1.gd" id="1_1abo5"]
 [ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="1_3sd7o"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="2_3xosi"]
 [ext_resource type="Texture2D" uid="uid://mgh0t0w786jh" path="res://Assets/battleback7.png" id="2_knagl"]
+
+[sub_resource type="Animation" id="Animation_knagl"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3382.0002, 94), Vector2(3382, 346)]
+}
+
+[sub_resource type="Animation" id="Animation_kl852"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3382.0002, 94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
+_data = {
+&"RESET": SubResource("Animation_kl852"),
+&"fall": SubResource("Animation_knagl")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knagl"]
 bg_color = Color(1, 1, 1, 0.58431375)
@@ -67,6 +103,23 @@ offset_bottom = 248.30437
 scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
+
+[node name="Interactable Item 4" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3382.0002
+offset_top = 94.0
+offset_right = 3426.34
+offset_bottom = 132.95654
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="Interactable Item 4"]
+libraries = {
+&"": SubResource("AnimationLibrary_4nmru")
+}
 
 [node name="PlayerHorse" parent="." instance=ExtResource("2_3xosi")]
 
@@ -136,5 +189,6 @@ text = " > "
 [connection signal="pressed" from="Interactable Item 1" to="." method="_on_interactable_item_1_pressed"]
 [connection signal="pressed" from="Interactable Item 2" to="." method="_on_interactable_item_2_pressed"]
 [connection signal="pressed" from="Interactable Item 3" to="." method="_on_interactable_item_3_pressed"]
+[connection signal="pressed" from="Interactable Item 4" to="." method="_on_interactable_item_4_pressed"]
 
 [editable path="PlayerHorse"]

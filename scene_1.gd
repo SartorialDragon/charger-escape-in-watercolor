@@ -40,9 +40,18 @@ func _on_interactable_item_2_pressed() -> void:
 	$ClueDialogue.show()
 	await $ClueDialogue/Button.pressed
 	$ClueDialogue.hide()
+	var R = 1.0
+	var G = 1.0
+	var B = 1.0
+	var A = 1.0
 	if Global.clues_found["Interactable 2"] == false:
 		for n in 200:
+			R -= 0.005
+			G -= 0.005
+			B -= 0.005
+			A -= 0.005
 			$Camera2D.position.x += 8
+			$TextureRect.modulate = Color(R, G, B, A)
 			await get_tree().create_timer(0.00000001).timeout
 	Global.clues_found["Interactable 2"] = true
 
@@ -51,10 +60,19 @@ func _on_interactable_item_3_pressed() -> void:
 	Global.interactable3.emit(Vector2($"Interactable Item 3".position.x - 100, $"Interactable Item 3".position.y + 180)) 
 	Global.clues_found["Interactable 3"] = true
 	await Global.arrived
+	if not Global.clues_found["Interactable 4"] == true:
+		$"Interactable Item 4".show()
+		$"Interactable Item 4/AnimationPlayer4".play("fall")
+	
+	
+func _on_interactable_item_4_pressed() -> void:
 	$ClueDialogue.show()
 	await $ClueDialogue/Button.pressed
 	$ClueDialogue.hide()
+	Global.clues_found["Interactable 4"] = true
+	$"Interactable Item 4".hide()
 	check_level_end()
+
 
 func check_level_end():
 	for n in Global.clues_found:

@@ -14,4 +14,5 @@ var clues_found = {
 	"Interactable 1" : false,
 	"Interactable 2" : false,
 	"Interactable 3" : false,
+	"Interactable 4" : false,
 }
