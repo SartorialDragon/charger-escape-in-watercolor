@@ -1,0 +1,7 @@
+Credits:
+	Coding: SartorialDragon, sekelsta, Nichelbichel
+	GameDirector: Nichelbichel
+	Art, Voiceacting, StoryDesign: Artemisia
+	
+	Tutorials Coding:
+		Dialogue System: https://codingquests.io/blog/godot-4-dialogue-system-tutorial

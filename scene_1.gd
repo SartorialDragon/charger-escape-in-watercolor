@@ -1,7 +1,7 @@
 extends Control
 
 
-
+var dialogue: DialogueData
 
 
 func _ready():
@@ -11,24 +11,22 @@ func _ready():
 
 func _on_interactable_item_0_pressed() -> void:
 	Global.visit_clue.emit(Vector2($"Interactable Item 0".position.x + 450, $"Interactable Item 0".position.y + 120)) 
-	Global.clues_found["Interactable 0"] = true
 	await Global.arrived
 	# play the respective clue stuff
-	$ClueDialogue.show()
-	await $ClueDialogue/Button.pressed
-	$ClueDialogue.hide()
+	dialogue = load("res://Dialogue/conversation0.tres")
+	DialogueManager.start_dialogue(dialogue)
+	Global.clues_found["Interactable 0"] = true
 	if Global.clues_found["Interactable 1"] == true:
 		$"Interactable Item 2".show()
 		
 
 func _on_interactable_item_1_pressed() -> void:
 	Global.visit_clue.emit(Vector2($"Interactable Item 1".position.x - 100, $"Interactable Item 1".position.y + 120)) 
-	Global.clues_found["Interactable 1"] = true
 	await Global.arrived
 	# play the respective clue stuff
-	$ClueDialogue.show()
-	await $ClueDialogue/Button.pressed
-	$ClueDialogue.hide()
+	dialogue = load("res://Dialogue/conversation1.tres")
+	DialogueManager.start_dialogue(dialogue)
+	Global.clues_found["Interactable 1"] = true
 	if Global.clues_found["Interactable 0"] == true:
 		$"Interactable Item 2".show()
 		
@@ -37,9 +35,8 @@ func _on_interactable_item_2_pressed() -> void:
 	Global.visit_clue.emit(Vector2($"Interactable Item 2".position.x - 100, $"Interactable Item 2".position.y + 120)) 
 	await Global.arrived
 	# play clue stuff
-	$ClueDialogue.show()
-	await $ClueDialogue/Button.pressed
-	$ClueDialogue.hide()
+	dialogue = load("res://Dialogue/conversation2.tres")
+	DialogueManager.start_dialogue(dialogue)
 	var R = 1.0
 	var G = 1.0
 	var B = 1.0
@@ -58,20 +55,25 @@ func _on_interactable_item_2_pressed() -> void:
 
 func _on_interactable_item_3_pressed() -> void:
 	Global.visit_clue.emit(Vector2($"Interactable Item 3".position.x - 100, $"Interactable Item 3".position.y + 180)) 
+	await Global.arrived # BUG i should make an "is already here?“ check.
 	Global.clues_found["Interactable 3"] = true
-	await Global.arrived
 	if not Global.clues_found["Interactable 4"] == true:
 		$"Interactable Item 4".show()
 		$"Interactable Item 4/AnimationPlayer4".play("fall")
 	
 	
 func _on_interactable_item_4_pressed() -> void:
-	$ClueDialogue.show()
-	await $ClueDialogue/Button.pressed
-	$ClueDialogue.hide()
+	dialogue = load("res://Dialogue/conversation4.tres")
+	DialogueManager.start_dialogue(dialogue)
 	Global.clues_found["Interactable 4"] = true
 	$"Interactable Item 4".hide()
 	check_level_end()
+
+
+func update_dialogue():
+	$ClueDialogue.show()
+	await $ClueDialogue/Button.pressed
+	$ClueDialogue.hide()
 
 
 func check_level_end():

@@ -1,24 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6vj32msjxnf6"]
+[gd_scene load_steps=10 format=3 uid="uid://b6vj32msjxnf6"]
 
 [ext_resource type="Script" uid="uid://cqxqnw2okqmeg" path="res://scene_1.gd" id="1_1abo5"]
 [ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="1_3sd7o"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="2_3xosi"]
 [ext_resource type="Texture2D" uid="uid://mgh0t0w786jh" path="res://Assets/battleback7.png" id="2_knagl"]
-
-[sub_resource type="Animation" id="Animation_knagl"]
-resource_name = "fall"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(3382.0002, 94), Vector2(3382, 346)]
-}
+[ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_kl852"]
 
 [sub_resource type="Animation" id="Animation_kl852"]
 length = 0.001
@@ -33,6 +19,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(3382.0002, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_knagl"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3382.0002, 94), Vector2(3382, 346)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
@@ -131,59 +132,67 @@ position = Vector2(958, 542)
 
 [node name="ClueDialogue" type="CanvasLayer" parent="."]
 visible = false
+script = ExtResource("5_kl852")
 
-[node name="Panel" type="Panel" parent="ClueDialogue"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -765.0
-offset_top = -407.0
-offset_right = 765.0
-offset_bottom = 407.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue"]
+offset_left = 156.0
+offset_top = 92.0
+offset_right = 1763.0
+offset_bottom = 1038.0
+alignment = 1
+
+[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.89
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextPanel" type="Panel" parent="ClueDialogue/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_knagl")
 
-[node name="Panel2" type="Panel" parent="ClueDialogue/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -765.0
-offset_top = 220.0
-offset_right = 765.0
-offset_bottom = 407.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_knagl")
-
-[node name="Label" type="Label" parent="ClueDialogue/Panel/Panel2"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/DialoguePanel/TextPanel"]
+layout_mode = 0
 offset_left = 74.0
-offset_right = -79.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = 26.0
+offset_right = 1550.0
+offset_bottom = 279.0
+
+[node name="SpeakerLabel" type="Label" parent="ClueDialogue/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Echo"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel" type="Label" parent="ClueDialogue/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="ClueDialogue"]
-offset_left = 1649.0
-offset_top = 858.0
-offset_right = 1725.0
-offset_bottom = 938.0
+[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/DialoguePanel"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ClueDialogue/DialoguePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ClueDialogue/DialoguePanel/HBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = " > "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
 
 [connection signal="pressed" from="Interactable Item 0" to="." method="_on_interactable_item_0_pressed"]
 [connection signal="pressed" from="Interactable Item 1" to="." method="_on_interactable_item_1_pressed"]

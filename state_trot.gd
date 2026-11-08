@@ -3,11 +3,9 @@ extends State
 class_name HorseTrot
 
 func enter():
-	print("trot")
 	get_parent().get_parent().get_node("AnimatedSprite2D").play("trot")
 	
 func exit():
-	print("trot stop")
 	Global.arrived.emit()
 	
 	

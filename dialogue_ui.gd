@@ -1,0 +1,34 @@
+extends CanvasLayer
+
+@onready var clue_dialogue: CanvasLayer = self
+@onready var memory_panel: TextureRect = $DialoguePanel/MemoryPanel
+@onready var speaker_label: Label = %SpeakerLabel
+@onready var text_label: Label = %TextLabel
+
+func _ready() -> void:
+	clue_dialogue.visible = false
+	DialogueManager.dialogue_started.connect(_on_started)
+	DialogueManager.line_displayed.connect(_on_line)
+	DialogueManager.dialogue_ended.connect(_on_ended)
+
+
+func _on_started(_data: DialogueData) -> void:
+	clue_dialogue.visible = true
+
+
+func _on_line(line: DialogueLine) -> void:
+	print("on line received")
+	memory_panel.texture = line.image
+	speaker_label.text = line.speaker
+	text_label.text = line.text
+	$AudioStreamPlayer.stream = line.vc_file
+	$AudioStreamPlayer.play()
+   
+
+func _on_ended() -> void:
+	clue_dialogue.visible = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and DialogueManager.is_active:
+		DialogueManager.advance()
