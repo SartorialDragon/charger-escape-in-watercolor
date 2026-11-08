@@ -1,10 +1,7 @@
 extends Node
 
 
-signal interactable0
-signal interactable1
-signal interactable2
-signal interactable3
+signal visit_clue
 signal arrived
 
 var current_state: State
