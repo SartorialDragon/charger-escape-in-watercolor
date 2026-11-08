@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=5 format=3 uid="uid://b8auaxcnqbdfk"]
+
+[ext_resource type="Script" uid="uid://bfd27i8hxob7i" path="res://dialogue_line.gd" id="1_356he"]
+[ext_resource type="Resource" uid="uid://dmb0vd52j2047" path="res://Dialogue/1.tres" id="2_gqf1b"]
+[ext_resource type="Resource" uid="uid://dip0hju5oel4j" path="res://Dialogue/2.tres" id="3_lmxfl"]
+[ext_resource type="Script" uid="uid://xm6usgauyy8r" path="res://dialogue_data.gd" id="4_ywsb7"]
+
+[resource]
+script = ExtResource("4_ywsb7")
+id = "0"
+lines = Array[ExtResource("1_356he")]([ExtResource("2_gqf1b"), ExtResource("3_lmxfl")])
+start_id = "1"
+metadata/_custom_type_script = "uid://xm6usgauyy8r"
