@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6vj32msjxnf6"]
+[gd_scene load_steps=12 format=3 uid="uid://b6vj32msjxnf6"]
 
 [ext_resource type="Script" uid="uid://cqxqnw2okqmeg" path="res://scene_1.gd" id="1_1abo5"]
 [ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="1_3sd7o"]
@@ -42,8 +42,14 @@ _data = {
 &"fall": SubResource("Animation_knagl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl852"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knagl"]
 bg_color = Color(1, 1, 1, 0.58431375)
+
+[sub_resource type="Theme" id="Theme_kl852"]
+Button/font_sizes/font_size = 42
 
 [node name="Scene1" type="Control"]
 layout_mode = 3
@@ -64,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_knagl")
 
-[node name="Interactable Item 0" type="TextureButton" parent="."]
+[node name="Interactable Item 0" type="TextureButton" parent="." groups=["hear", "interactables", "see", "smell"]]
 layout_mode = 0
 offset_left = 123.000015
 offset_top = 170.99994
@@ -74,7 +80,8 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
-[node name="Interactable Item 1" type="TextureButton" parent="."]
+[node name="Interactable Item 1" type="TextureButton" parent="." groups=["hear", "interactables"]]
+self_modulate = Color(1, 1, 0, 1)
 layout_mode = 0
 offset_left = 1581.0
 offset_top = 353.99997
@@ -84,8 +91,9 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
-[node name="Interactable Item 2" type="TextureButton" parent="."]
+[node name="Interactable Item 2" type="TextureButton" parent="." groups=["interactables", "see"]]
 visible = false
+self_modulate = Color(0.13725491, 0.18039216, 1, 1)
 layout_mode = 0
 offset_left = 1657.0001
 offset_top = 837.0
@@ -95,7 +103,8 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
-[node name="Interactable Item 3" type="TextureButton" parent="."]
+[node name="Interactable Item 3" type="TextureButton" parent="." groups=["interactables", "smell"]]
+self_modulate = Color(0.20784314, 0.75686276, 0.20784314, 1)
 layout_mode = 0
 offset_left = 3371.0
 offset_top = 9.0
@@ -105,8 +114,9 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
-[node name="Interactable Item 4" type="TextureButton" parent="."]
+[node name="Interactable Item 4" type="TextureButton" parent="." groups=["interactables", "see", "smell"]]
 visible = false
+self_modulate = Color(0.5156258, 0.07043769, 0, 1)
 layout_mode = 0
 offset_left = 3382.0002
 offset_top = 94.0
@@ -122,6 +132,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_4nmru")
 }
 
+[node name="Interactable Item 5" type="TextureButton" parent="." groups=["interactables", "smell"]]
+self_modulate = Color(0.25882354, 1, 0.3019608, 1)
+layout_mode = 0
+offset_left = 2897.0
+offset_top = 802.0
+offset_right = 3500.1897
+offset_bottom = 930.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("1_3sd7o")
+stretch_mode = 0
+
 [node name="PlayerHorse" parent="." instance=ExtResource("2_3xosi")]
 
 [node name="AnimatedSprite2D" parent="PlayerHorse" index="0"]
@@ -134,33 +155,40 @@ position = Vector2(958, 542)
 visible = false
 script = ExtResource("5_kl852")
 
-[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue"]
+[node name="Panel" type="Panel" parent="ClueDialogue"]
+offset_right = 1921.0
+offset_bottom = 1088.0
+focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kl852")
+
+[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue/Panel"]
+layout_mode = 0
 offset_left = 156.0
 offset_top = 92.0
 offset_right = 1763.0
 offset_bottom = 1038.0
 alignment = 1
 
-[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/DialoguePanel"]
+[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/Panel/DialoguePanel"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.89
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextPanel" type="Panel" parent="ClueDialogue/DialoguePanel"]
+[node name="TextPanel" type="Panel" parent="ClueDialogue/Panel/DialoguePanel"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_knagl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/DialoguePanel/TextPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/Panel/DialoguePanel/TextPanel"]
 layout_mode = 0
 offset_left = 74.0
 offset_top = 26.0
 offset_right = 1550.0
 offset_bottom = 279.0
 
-[node name="SpeakerLabel" type="Label" parent="ClueDialogue/DialoguePanel/TextPanel/VBoxContainer"]
+[node name="SpeakerLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
@@ -170,7 +198,7 @@ text = "Echo"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TextLabel" type="Label" parent="ClueDialogue/DialoguePanel/TextPanel/VBoxContainer"]
+[node name="TextLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
@@ -180,24 +208,56 @@ text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine e
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/DialoguePanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/Panel/DialoguePanel"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="ClueDialogue/DialoguePanel/HBoxContainer"]
+[node name="Control" type="Control" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="ClueDialogue/DialoguePanel/HBoxContainer"]
+[node name="AdvanceDialogueButton" type="Button" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = " > "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
 
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -977.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SeeButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kl852")
+text = "See"
+
+[node name="HearButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kl852")
+text = "Hear"
+
+[node name="SmellButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kl852")
+text = "Smell"
+
 [connection signal="pressed" from="Interactable Item 0" to="." method="_on_interactable_item_0_pressed"]
 [connection signal="pressed" from="Interactable Item 1" to="." method="_on_interactable_item_1_pressed"]
 [connection signal="pressed" from="Interactable Item 2" to="." method="_on_interactable_item_2_pressed"]
 [connection signal="pressed" from="Interactable Item 3" to="." method="_on_interactable_item_3_pressed"]
 [connection signal="pressed" from="Interactable Item 4" to="." method="_on_interactable_item_4_pressed"]
+[connection signal="pressed" from="Interactable Item 5" to="." method="_on_interactable_item_5_pressed"]
+[connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/SeeButton" to="." method="_on_see_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/HearButton" to="." method="_on_hear_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/SmellButton" to="." method="_on_smell_button_pressed"]
 
 [editable path="PlayerHorse"]
