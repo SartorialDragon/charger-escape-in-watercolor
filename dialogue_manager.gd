@@ -20,7 +20,7 @@ func start_dialogue(data: DialogueData) -> void:
 
 func _show_line(line_id: String) -> void:
 	current_line = current_data.get_line(line_id)
-	print(current_line)
+	#print(current_line)
 	if current_line == null:
 		end_dialogue()
 		return

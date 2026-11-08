@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var clue_dialogue: CanvasLayer = self
-@onready var memory_panel: TextureRect = $DialoguePanel/MemoryPanel
+@onready var memory_panel: TextureRect = $Panel/DialoguePanel/MemoryPanel
 @onready var speaker_label: Label = %SpeakerLabel
 @onready var text_label: Label = %TextLabel
 
@@ -14,10 +14,11 @@ func _ready() -> void:
 
 func _on_started(_data: DialogueData) -> void:
 	clue_dialogue.visible = true
+	%AdvanceDialogueButton.grab_focus()
 
 
 func _on_line(line: DialogueLine) -> void:
-	print("on line received")
+	print("on line received	: ", line.id)
 	memory_panel.texture = line.image
 	speaker_label.text = line.speaker
 	text_label.text = line.text
@@ -28,7 +29,12 @@ func _on_line(line: DialogueLine) -> void:
 func _on_ended() -> void:
 	clue_dialogue.visible = false
 
+# not needed because the UI button now grabs the focus anyway and this would double the input
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("interact") and DialogueManager.is_active:
+		#DialogueManager.advance()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and DialogueManager.is_active:
+
+func _on_advance_dialogue_button_pressed() -> void:
+	if DialogueManager.is_active:
 		DialogueManager.advance()
