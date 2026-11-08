@@ -6,10 +6,7 @@ var click_position = Vector2()
 var target_position = Vector2()
 
 func _ready():
-	Global.interactable0.connect(move_to)
-	Global.interactable1.connect(move_to)
-	Global.interactable2.connect(move_to)
-	Global.interactable3.connect(move_to)
+	Global.visit_clue.connect(move_to)
 	position = Vector2(900, 500)
 	click_position = position
 	

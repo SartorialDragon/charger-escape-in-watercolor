@@ -10,7 +10,7 @@ func _ready():
 	
 
 func _on_interactable_item_0_pressed() -> void:
-	Global.interactable0.emit(Vector2($"Interactable Item 0".position.x + 450, $"Interactable Item 0".position.y + 120)) 
+	Global.visit_clue.emit(Vector2($"Interactable Item 0".position.x + 450, $"Interactable Item 0".position.y + 120)) 
 	Global.clues_found["Interactable 0"] = true
 	await Global.arrived
 	# play the respective clue stuff
@@ -22,7 +22,7 @@ func _on_interactable_item_0_pressed() -> void:
 		
 
 func _on_interactable_item_1_pressed() -> void:
-	Global.interactable1.emit(Vector2($"Interactable Item 1".position.x - 100, $"Interactable Item 1".position.y + 120)) 
+	Global.visit_clue.emit(Vector2($"Interactable Item 1".position.x - 100, $"Interactable Item 1".position.y + 120)) 
 	Global.clues_found["Interactable 1"] = true
 	await Global.arrived
 	# play the respective clue stuff
@@ -34,7 +34,7 @@ func _on_interactable_item_1_pressed() -> void:
 		
 
 func _on_interactable_item_2_pressed() -> void:
-	Global.interactable2.emit(Vector2($"Interactable Item 2".position.x - 100, $"Interactable Item 2".position.y + 120)) 
+	Global.visit_clue.emit(Vector2($"Interactable Item 2".position.x - 100, $"Interactable Item 2".position.y + 120)) 
 	await Global.arrived
 	# play clue stuff
 	$ClueDialogue.show()
@@ -57,7 +57,7 @@ func _on_interactable_item_2_pressed() -> void:
 
 
 func _on_interactable_item_3_pressed() -> void:
-	Global.interactable3.emit(Vector2($"Interactable Item 3".position.x - 100, $"Interactable Item 3".position.y + 180)) 
+	Global.visit_clue.emit(Vector2($"Interactable Item 3".position.x - 100, $"Interactable Item 3".position.y + 180)) 
 	Global.clues_found["Interactable 3"] = true
 	await Global.arrived
 	if not Global.clues_found["Interactable 4"] == true:
