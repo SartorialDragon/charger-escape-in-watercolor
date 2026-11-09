@@ -259,9 +259,6 @@ stretch_mode = 0
 
 [node name="PlayerHorse" parent="." instance=ExtResource("4_sc4lb")]
 
-[node name="AnimatedSprite2D" parent="PlayerHorse" index="0"]
-animation = &"trot"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(958, 542)
 
@@ -355,5 +352,3 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mwlxs")
 [connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]
 [connection signal="pressed" from="RockSlide" to="." method="_on_rock_slide_pressed"]
 [connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]
-
-[editable path="PlayerHorse"]
