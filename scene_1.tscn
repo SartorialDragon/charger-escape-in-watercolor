@@ -70,7 +70,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_knagl")
 
-[node name="Interactable Item 0" type="TextureButton" parent="." groups=["hear", "interactables", "see", "smell"]]
+[node name="Interactable Item 0" type="TextureButton" parent="." groups=["hear", "interactables", "on_screen", "see", "smell"]]
+visible = false
 layout_mode = 0
 offset_left = 123.000015
 offset_top = 170.99994
@@ -80,7 +81,8 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
-[node name="Interactable Item 1" type="TextureButton" parent="." groups=["hear", "interactables"]]
+[node name="Interactable Item 1" type="TextureButton" parent="." groups=["hear", "interactables", "on_screen"]]
+visible = false
 self_modulate = Color(1, 1, 0, 1)
 layout_mode = 0
 offset_left = 1581.0
@@ -104,6 +106,7 @@ texture_normal = ExtResource("1_3sd7o")
 stretch_mode = 0
 
 [node name="Interactable Item 3" type="TextureButton" parent="." groups=["interactables", "smell"]]
+visible = false
 self_modulate = Color(0.20784314, 0.75686276, 0.20784314, 1)
 layout_mode = 0
 offset_left = 3371.0
@@ -133,6 +136,7 @@ libraries = {
 }
 
 [node name="Interactable Item 5" type="TextureButton" parent="." groups=["interactables", "smell"]]
+visible = false
 self_modulate = Color(0.25882354, 1, 0.3019608, 1)
 layout_mode = 0
 offset_left = 2897.0

@@ -29,6 +29,10 @@ window/size/viewport_height=1080
 
 movie_writer/movie_file="F:/Sarto/Documents/GODOT Games/charger-escape-in-watercolor/movie.avi"
 
+[global_group]
+
+on_screen="interactables currently accessible"
+
 [input]
 
 click={
