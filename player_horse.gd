@@ -7,7 +7,8 @@ var target_position = Vector2()
 
 func _ready():
 	Global.visit_clue.connect(move_to)
-	position = Vector2(900, 500)
+	await get_tree().create_timer(0.01).timeout # this could use refactoring, without timer the variable is not set right yet
+	position = Global.player_start_position
 	click_position = position
 	
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://drxgi20steto1"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_tbaj8"]
+[ext_resource type="AudioStream" uid="uid://ctv0mg0ukrn3o" path="res://Assets/400124__harrietniamh__footsteps-in-dry-grass.ogg" id="2_mtryu"]
+
+[resource]
+script = ExtResource("1_tbaj8")
+id = "10"
+speaker = "Echo"
+text = "(memory of stallion, + sound hallucination)"
+vc_file = ExtResource("2_mtryu")

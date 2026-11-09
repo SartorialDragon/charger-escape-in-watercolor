@@ -8,6 +8,7 @@ var clues_on_screen: Array = []
 
 
 func _ready():
+	Global.player_start_position = Vector2(900, 500)
 	_on_see_button_pressed()
 	
 
