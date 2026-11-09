@@ -6,18 +6,19 @@ signal arrived
 
 var current_state: State
 
-enum senses {SEE, HEAR, SMELL}
-var current_sense: senses = 0
+#enum senses {SEE, HEAR, SMELL}
+#var current_sense: senses = 0
 
 
-# this means the clue is *visible* in the right sense mode unless it's not been discovered!
+
+# this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
-	"Interactable Item 0" : true,
-	"Interactable Item 1" : true,
+	"Interactable Item 0" : false,
+	"Interactable Item 1" : false,
 	"Interactable Item 2" : false,
-	"Interactable Item 3" : true,
+	"Interactable Item 3" : false,
 	"Interactable Item 4" : false,
-	"Interactable Item 5" : true,
+	"Interactable Item 5" : false,
 }
 
 # this means it has been clicked
