@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogueLine" load_steps=4 format=3 uid="uid://dmb0vd52j2047"]
 
-[ext_resource type="Script" uid="uid://bfd27i8hxob7i" path="res://dialogue_line.gd" id="1_51hy7"]
-[ext_resource type="Texture2D" uid="uid://3y1topgnva0m" path="res://Assets/Clydesdale_base_red.png" id="1_cieqn"]
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_51hy7"]
+[ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="1_cieqn"]
 [ext_resource type="AudioStream" uid="uid://ctv0mg0ukrn3o" path="res://Assets/400124__harrietniamh__footsteps-in-dry-grass.ogg" id="2_cieqn"]
 
 [resource]
@@ -12,4 +12,3 @@ image = ExtResource("1_cieqn")
 text = "What happened to him?!"
 vc_file = ExtResource("2_cieqn")
 next_id = "2"
-metadata/_custom_type_script = "uid://bfd27i8hxob7i"
