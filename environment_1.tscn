@@ -1,0 +1,290 @@
+[gd_scene load_steps=14 format=3 uid="uid://dnwrm3qsnnl1y"]
+
+[ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
+[ext_resource type="Texture2D" uid="uid://mgh0t0w786jh" path="res://Assets/battleback7.png" id="2_s87xn"]
+[ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="3_mwlxs"]
+[ext_resource type="Texture2D" uid="uid://brb7nhqq51fgh" path="res://Assets/rock_cluster.png" id="3_s87xn"]
+[ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="4_mwlxs"]
+[ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
+[ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_ebayx"]
+
+[sub_resource type="Animation" id="Animation_sc4lb"]
+resource_name = "scent_waft"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.4966664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1926.0004, 160), Vector2(782, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 7.5333333, 7.863333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ebayx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1926.0004, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
+_data = {
+&"RESET": SubResource("Animation_ebayx"),
+&"scent_waft": SubResource("Animation_sc4lb")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j7cg"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjqet"]
+bg_color = Color(1, 1, 1, 0.58431375)
+
+[sub_resource type="Theme" id="Theme_awyal"]
+Button/font_sizes/font_size = 42
+
+[node name="Environment1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oep84")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.05882353, 1, 0.9490196, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2785.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s87xn")
+
+[node name="RockCluster" type="TextureButton" parent="." groups=["hear", "interactables", "on_screen", "see", "smell"]]
+layout_mode = 0
+offset_left = 768.99994
+offset_top = 291.0
+offset_right = 1036.294
+offset_bottom = 419.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_s87xn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
+layout_mode = 0
+offset_left = 1926.0004
+offset_top = 160.0
+offset_right = 2176.977
+offset_bottom = 221.21739
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_mwlxs")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ScentAnimationPlayer" type="AnimationPlayer" parent="StallionScent"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4nmru")
+}
+
+[node name="Interactable Item 1" type="TextureButton" parent="." groups=["hear", "interactables"]]
+visible = false
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_left = 1581.0
+offset_top = 353.99997
+offset_right = 1716.5294
+offset_bottom = 481.99997
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_mwlxs")
+stretch_mode = 0
+
+[node name="Interactable Item 2" type="TextureButton" parent="." groups=["interactables", "see"]]
+visible = false
+self_modulate = Color(0.13725491, 0.18039216, 1, 1)
+layout_mode = 0
+offset_left = 1657.0001
+offset_top = 837.0
+offset_right = 1841.889
+offset_bottom = 965.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_mwlxs")
+stretch_mode = 0
+
+[node name="Interactable Item 3" type="TextureButton" parent="." groups=["interactables", "smell"]]
+visible = false
+self_modulate = Color(0.20784314, 0.75686276, 0.20784314, 1)
+layout_mode = 0
+offset_left = 3371.0
+offset_top = 9.0
+offset_right = 3506.5293
+offset_bottom = 248.30437
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_mwlxs")
+stretch_mode = 0
+
+[node name="Interactable Item 5" type="TextureButton" parent="." groups=["interactables", "smell"]]
+visible = false
+self_modulate = Color(0.25882354, 1, 0.3019608, 1)
+layout_mode = 0
+offset_left = 2897.0
+offset_top = 802.0
+offset_right = 3500.1897
+offset_bottom = 930.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_mwlxs")
+stretch_mode = 0
+
+[node name="PlayerHorse" parent="." instance=ExtResource("4_sc4lb")]
+
+[node name="AnimatedSprite2D" parent="PlayerHorse" index="0"]
+animation = &"trot"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 542)
+
+[node name="ClueDialogue" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("5_ebayx")
+
+[node name="Panel" type="Panel" parent="ClueDialogue"]
+offset_right = 1921.0
+offset_bottom = 1088.0
+focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6j7cg")
+
+[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue/Panel"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 92.0
+offset_right = 1763.0
+offset_bottom = 1038.0
+alignment = 1
+
+[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.89
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextPanel" type="Panel" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xjqet")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/Panel/DialoguePanel/TextPanel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 26.0
+offset_right = 1550.0
+offset_bottom = 279.0
+
+[node name="SpeakerLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Echo"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AdvanceDialogueButton" type="Button" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " > "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -977.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SeeButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_awyal")
+text = "See"
+
+[node name="HearButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_awyal")
+text = "Hear"
+
+[node name="SmellButton" type="Button" parent="UILayer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_awyal")
+text = "Smell"
+
+[connection signal="pressed" from="RockCluster" to="." method="_on_rock_cluster_pressed"]
+[connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]
+[connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/SeeButton" to="." method="_on_see_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/HearButton" to="." method="_on_hear_button_pressed"]
+[connection signal="pressed" from="UILayer/HBoxContainer/SmellButton" to="." method="_on_smell_button_pressed"]
+
+[editable path="PlayerHorse"]
