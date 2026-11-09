@@ -30,6 +30,7 @@ func _on_ended() -> void:
 	clue_dialogue.visible = false
 
 # not needed because the UI button now grabs the focus anyway and this would double the input
+# might be needed because if the sense buttons grab focus, it's a problem BUG
 #func _unhandled_input(event: InputEvent) -> void:
 	#if event.is_action_pressed("interact") and DialogueManager.is_active:
 		#DialogueManager.advance()
