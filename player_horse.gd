@@ -31,3 +31,11 @@ func change_position():
 		move_and_slide()
 	else:
 		velocity = Vector2(0, 0)
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		print("click")
+		$Senses.show()
+		await get_tree().create_timer(3).timeout
+		$Senses.hide()

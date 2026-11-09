@@ -4,14 +4,16 @@ extends Node
 signal visit_clue
 signal arrived
 
+signal sense_mode_changed
+
 var current_state: State
-var player_start_position: Vector2 = Vector2(0,0)
-enum POIs {START, ROCKCLUSTER, STALLIONSCENT, }
+var player_start_position: Vector2 = Vector2(200,200)
+enum POIs {START, ROCKCLUSTER, STALLIONSCENT, ROCKSLIDE, }
 var player_POI_position: POIs = POIs.START
 
 
-#enum senses {SEE, HEAR, SMELL}
-#var current_sense: senses = 0
+enum senses {SEE, HEAR, SMELL}
+var current_sense: senses = senses.SEE
 
 
 # these have been moved to the environment script for environment1, they don't actually need to be global, but only for the current environment's scene.
