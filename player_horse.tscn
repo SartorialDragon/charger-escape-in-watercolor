@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx4kno5rtneh6"]
+[gd_scene load_steps=24 format=3 uid="uid://bx4kno5rtneh6"]
 
 [ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
 [ext_resource type="Texture2D" uid="uid://dvmgtlbkiwyco" path="res://Assets/Clydesdale_base_grey.png" id="1_ikk15"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" uid="uid://mdj7ebr4hc5c" path="res://state_idle.gd" id="12_42rsm"]
 [ext_resource type="Script" uid="uid://b0qr2cagvysf3" path="res://state_trot.gd" id="13_wd0k0"]
 [ext_resource type="PackedScene" uid="uid://bpsr46ju4is3u" path="res://senses.tscn" id="16_1r8bo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8bo"]
+size = Vector2(103, 82)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0078p"]
 animations = [{
@@ -186,8 +189,11 @@ _data = {
 }
 
 [node name="PlayerHorse" type="CharacterBody2D"]
-position = Vector2(83, 193)
 script = ExtResource("1_0078p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15.5, -13)
+shape = SubResource("RectangleShape2D_1r8bo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-17, -7)
