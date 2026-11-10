@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Charger Escape in Watercolor"
-run/main_scene="uid://b6vj32msjxnf6"
+run/main_scene="uid://dnwrm3qsnnl1y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

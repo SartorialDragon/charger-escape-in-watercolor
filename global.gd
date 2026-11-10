@@ -8,7 +8,7 @@ signal sense_mode_changed
 
 var current_state: State
 var player_start_position: Vector2 = Vector2(200,200)
-enum POIs {START, ROCKCLUSTER, STALLIONSCENT, ROCKSLIDE, }
+enum POIs {START, ROCKCLUSTER_0, ROCKCLUSTER_1, ROCKCLUSTER_2, STALLIONSCENT, ROCKSLIDE, }
 var player_POI_position: POIs = POIs.START
 
 

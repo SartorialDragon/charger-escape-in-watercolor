@@ -17,9 +17,9 @@ func _physics_process(delta: float) -> void:
 	
 func move_to(pos):
 	if position.x < pos.x:
-		$AnimatedSprite2D.flip_h = false
-	else:
 		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 	click_position = pos
 	
 
