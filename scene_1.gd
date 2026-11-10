@@ -9,6 +9,7 @@ var clues_on_screen: Array = []
 
 func _ready():
 	Global.player_start_position = Vector2(900, 500)
+	Global.sense_mode_changed.connect(sense_change)
 	_on_see_button_pressed()
 	
 
@@ -48,7 +49,7 @@ func _on_interactable_item_2_pressed() -> void:
 	var B = 1.0
 	var A = 1.0
 	if Global.clues_interacted["Interactable 2"] == false:
-		for n in 250:
+		for n in 190:
 			R -= 0.005
 			G -= 0.005
 			B -= 0.005
@@ -103,8 +104,17 @@ func check_level_end():
 	print("Level finished!")
 
 
+func sense_change():
+	if Global.current_sense == Global.senses.SEE:
+		_on_see_button_pressed()
+	if Global.current_sense == Global.senses.HEAR:
+		_on_hear_button_pressed()
+	if Global.current_sense == Global.senses.SMELL:
+		_on_smell_button_pressed()
+
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
+	print("react")
 	visible_clues = get_tree().get_nodes_in_group("see")
 	update_sense()
 
