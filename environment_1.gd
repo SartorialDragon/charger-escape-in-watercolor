@@ -50,15 +50,16 @@ func _on_scent_pressed() -> void:
 		# change state to sniff: play a sniff animation once, then idle
 		dialogue = load("res://Dialogue/E1_scent_remember.tres")
 		DialogueManager.start_dialogue(dialogue)
-		clues_interacted["StallionScent"] = true
+		
 		await DialogueManager.dialogue_ended
-		for n in 100:
-			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
-		clues_on_screen = get_tree().get_nodes_in_group("on_screen")
-		for n in clues_on_screen:
-			n.remove_from_group("on_screen")
-		$RockSlide.add_to_group("on_screen")
+		if not clues_interacted["StallionScent"]:
+			for n in 100:
+				$Camera2D.position.x += 8
+				await get_tree().create_timer(0.00000001).timeout
+			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
+			$StallionScent.remove_from_group("on_screen")
+			$RockSlide.add_to_group("on_screen")
+			clues_interacted["StallionScent"] = true
 
 
 func _on_rock_slide_pressed() -> void:
