@@ -188,6 +188,10 @@ _data = {
 &"start position": SubResource("Animation_ikk15")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1r8bo"]
+radius = 497.60742
+height = 995.21484
+
 [node name="PlayerHorse" type="CharacterBody2D"]
 script = ExtResource("1_0078p")
 
@@ -201,11 +205,6 @@ scale = Vector2(0.11253854, 0.11253855)
 sprite_frames = SubResource("SpriteFrames_0078p")
 animation = &"idle"
 flip_h = true
-
-[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/Area2D"]
-polygon = PackedVector2Array(-239.9178, -151.05934, -284.34705, -231.03194, -382.0913, -133.28766, -444.29224, -142.17351, -417.6347, -284.34702, -444.29224, -319.8904, -346.54797, -417.6347, -311.00458, -382.0913, -124.40184, -328.77625, -35.54338, -239.9178, 302.11874, -257.68948, 417.6347, -71.08675, 462.06396, 177.71689, 337.6621, 239.9178, 293.2329, 204.37442, 248.80367, 328.7762, 106.63014, 293.23285, 159.94522, 168.83104, 159.94522, 26.657532, 124.40184, -17.771687, -106.63014, 26.657532, -79.97261, 319.89038, -248.80367, 328.7762, -204.37444, 44.429222, -248.80367, -79.972595)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
@@ -226,10 +225,22 @@ script = ExtResource("13_wd0k0")
 metadata/_custom_type_script = "uid://b0qr2cagvysf3"
 
 [node name="Senses" parent="." instance=ExtResource("16_1r8bo")]
-visible = true
 offset_left = -17.0
 offset_top = -102.0
 offset_right = -6.0
 offset_bottom = -89.0
 
-[connection signal="input_event" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-17, -7)
+scale = Vector2(0.11253854, 0.11253855)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -79.972534)
+shape = SubResource("CapsuleShape2D_1r8bo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-17, -7)
+scale = Vector2(0.11253854, 0.11253855)
+polygon = PackedVector2Array(-239.9178, -151.05934, -284.34705, -231.03194, -382.0913, -133.28766, -444.29224, -142.17351, -417.6347, -284.34702, -444.29224, -319.8904, -346.54797, -417.6347, -311.00458, -382.0913, -124.40184, -328.77625, -35.54338, -239.9178, 302.11874, -257.68948, 417.6347, -71.08675, 462.06396, 177.71689, 337.6621, 239.9178, 293.2329, 204.37442, 248.80367, 328.7762, 106.63014, 293.23285, 159.94522, 168.83104, 159.94522, 26.657532, 124.40184, -17.771687, -106.63014, 26.657532, -79.97261, 319.89038, -248.80367, 328.7762, -204.37444, 44.429222, -248.80367, -79.972595)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
