@@ -186,6 +186,7 @@ _data = {
 }
 
 [node name="PlayerHorse" type="CharacterBody2D"]
+position = Vector2(83, 193)
 script = ExtResource("1_0078p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -72,8 +72,8 @@ func _on_interactable_item_3_pressed() -> void:
 	#Global.clues_discovered["Interactable Item 4"] = true
 	$"Interactable Item 4".add_to_group("on_screen")
 	update_sense()
-	$"Interactable Item 4/AnimationPlayer4".play("fall")
-	
+	# somehow the animation is gone and i'm not remaking it due to this scene being prototype only
+	#$"Interactable Item 4/AnimationPlayer4".play("fall")
 	
 func _on_interactable_item_4_pressed() -> void:
 	dialogue = load("res://Dialogue/conversation4.tres")
@@ -114,7 +114,6 @@ func sense_change():
 
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
-	print("react")
 	visible_clues = get_tree().get_nodes_in_group("see")
 	update_sense()
 
