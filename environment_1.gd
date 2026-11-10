@@ -26,24 +26,62 @@ func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	_on_see_button_pressed()
+
+
+#func _on_rock_cluster_pressed() -> void:
+	#Global.visit_clue.emit(Vector2(%RockCluster.position.x + 200, %RockCluster.position.y + 70))
+	#await Global.arrived
+	#Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
+	## play the respective clue stuff
+	##dialogue = load("res://Dialogue/conversation0.tres")
+	##DialogueManager.start_dialogue(dialogue)
+	#clues_interacted["RockCluster"] = true
+	
+	
+func _on_rock_cluster_0_pressed() -> void:
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_0:
+		pass
+	elif Global.player_POI_position == Global.POIs.ROCKCLUSTER_2:
+		dialogue = load("res://Dialogue/E1_can't_reach.tres")
+		DialogueManager.start_dialogue(dialogue)
+	else:
+		Global.visit_clue.emit(Vector2(%RockCluster0.position.x + 200, %RockCluster0.position.y + 70))
+		await Global.arrived
+		Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
 	
 
+func _on_rock_cluster_1_pressed() -> void:
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
+		pass
+	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_0 and Global.player_POI_position != Global.POIs.ROCKCLUSTER_2:
+		dialogue = load("res://Dialogue/E1_can't_reach.tres")
+		DialogueManager.start_dialogue(dialogue)
+	else:
+		Global.visit_clue.emit(Vector2(%RockCluster1.position.x + 200, %RockCluster1.position.y + 70))
+		await Global.arrived
+		Global.player_POI_position = Global.POIs.ROCKCLUSTER_1
 
-func _on_rock_cluster_pressed() -> void:
-	Global.visit_clue.emit(Vector2($RockCluster.position.x + 200, $RockCluster.position.y + 70))
-	Global.player_POI_position = Global.POIs.ROCKCLUSTER
-	await Global.arrived
-	# play the respective clue stuff
-	#dialogue = load("res://Dialogue/conversation0.tres")
-	#DialogueManager.start_dialogue(dialogue)
-	clues_interacted["RockCluster"] = true
+
+func _on_rock_cluster_2_pressed() -> void:
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2:
+		pass
+	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_1:
+		dialogue = load("res://Dialogue/E1_can't_reach.tres")
+		DialogueManager.start_dialogue(dialogue)
+	else:
+		Global.visit_clue.emit(Vector2(%RockCluster2.position.x + 200, %RockCluster2.position.y + 70))
+		await Global.arrived
+		Global.player_POI_position = Global.POIs.ROCKCLUSTER_2
+		clues_interacted["RockCluster"] = true
+
+
 	
 
 func _on_scent_pressed() -> void:
 	# play the respective clue stuff
 
 # If click scent while on the ground: too high to reach
-	if Global.player_POI_position != Global.POIs.ROCKCLUSTER or $StallionScent.position.x > $RockCluster.position.x + 200 :
+	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_2 or %StallionScent.position.x > %RockCluster2.position.x + 200 :
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
@@ -57,21 +95,38 @@ func _on_scent_pressed() -> void:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
-			$StallionScent.remove_from_group("on_screen")
-			$RockSlide.add_to_group("on_screen")
+			%StallionScent.remove_from_group("on_screen")
+			%RockSlide.add_to_group("on_screen")
 			clues_interacted["StallionScent"] = true
 
 
 func _on_rock_slide_pressed() -> void:
-	Global.visit_clue.emit(Vector2($RockSlide.position.x - 150, $RockSlide.position.y + 900))
-	Global.player_POI_position = Global.POIs.ROCKSLIDE
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
+		dialogue = load("res://Dialogue/E1_can't_reach.tres")
+		DialogueManager.start_dialogue(dialogue)
+	else:
+		Global.visit_clue.emit(Vector2(%RockSlide.position.x - 150, %RockSlide.position.y + 800))
+		Global.player_POI_position = Global.POIs.ROCKSLIDE
+		await Global.arrived
+		# play the respective clue stuff
+		await get_tree().create_timer(1).timeout # replace with interaction being an extra step
+		%RockslideAnimationPlayer.play("kicked")
+		clues_interacted["RockSlide"] = true
+		play_cutscene_to_stallion()
+		
+
+func play_cutscene_to_stallion():
+	for n in 150:
+			$Camera2D.position.x += 8
+			await get_tree().create_timer(0.00000001).timeout
+	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 150, %StallionHallucination0.position.y + 400))
+	for n in 350:
+			$Camera2D.position.x += 8
+			await get_tree().create_timer(0.00000001).timeout
 	await Global.arrived
-	# play the respective clue stuff
-	%RockslideAnimationPlayer.play("kicked")
-	#dialogue = load("res://Dialogue/conversation0.tres")
-	#DialogueManager.start_dialogue(dialogue)
-	clues_interacted["RockSlide"] = true
-	switch_scene()
+	%HallucinationAnimationPlayer.play("hallucination")
+	
+	#switch_scene()
 
 
 func switch_scene():
@@ -118,7 +173,7 @@ func _on_see_button_pressed() -> void:
 func _on_hear_button_pressed() -> void:
 	visible_clues = get_tree().get_nodes_in_group("hear")
 	update_sense()
-	if clues_on_screen.has($RockSlide) and not clues_discovered["StallionScent"]:
+	if clues_on_screen.has(%RockSlide) and not clues_discovered["StallionScent"]:
 		%RockslideAnimationPlayer.play("rockslide")
 		clues_discovered["StallionScent"] = true
 

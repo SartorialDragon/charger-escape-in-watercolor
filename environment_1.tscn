@@ -1,39 +1,51 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=24 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
-[ext_resource type="Texture2D" uid="uid://mgh0t0w786jh" path="res://Assets/battleback7.png" id="2_s87xn"]
+[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
+[ext_resource type="Texture2D" uid="uid://ckt1x5c3g3nn7" path="res://Assets/IMG_3672.png" id="2_mwlxs"]
 [ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="3_mwlxs"]
 [ext_resource type="Texture2D" uid="uid://brb7nhqq51fgh" path="res://Assets/rock_cluster.png" id="3_s87xn"]
+[ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="4_mwlxs"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_ebayx"]
+[ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
 
-[sub_resource type="Animation" id="Animation_sc4lb"]
-resource_name = "scent_waft"
-length = 8.0
+[sub_resource type="Animation" id="Animation_awyal"]
+resource_name = "hallucination"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 7.4966664),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333, 1.2, 1.6, 2.0333333, 2.4666667, 2.8666666, 3.17, 3.56, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1926.0004, 160), Vector2(782, 160)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.26666668), Color(1, 1, 1, 0.09803922), Color(1, 1, 1, 0.40392157), Color(1, 1, 1, 0.53333336), Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0.40784314), Color(1, 1, 1, 0.1764706), Color(1, 1, 1, 0.41960785), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 7.5333333, 7.863333),
-"transitions": PackedFloat32Array(1, 1, 1),
+
+[sub_resource type="Animation" id="Animation_pl4m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs3hf"]
+_data = {
+&"RESET": SubResource("Animation_pl4m5"),
+&"hallucination": SubResource("Animation_awyal")
 }
 
 [sub_resource type="Animation" id="Animation_ebayx"]
@@ -63,15 +75,9 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
-_data = {
-&"RESET": SubResource("Animation_ebayx"),
-&"scent_waft": SubResource("Animation_sc4lb")
-}
-
-[sub_resource type="Animation" id="Animation_mwlxs"]
-resource_name = "rockslide"
-length = 2.0
+[sub_resource type="Animation" id="Animation_sc4lb"]
+resource_name = "scent_waft"
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,10 +85,28 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9666667),
+"times": PackedFloat32Array(0, 7.4966664),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2741, -774), Vector2(2546.0002, 57)]
+"values": [Vector2(1926.0004, 160), Vector2(782, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 7.5333333, 7.863333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nmru"]
+_data = {
+&"RESET": SubResource("Animation_ebayx"),
+&"scent_waft": SubResource("Animation_sc4lb")
 }
 
 [sub_resource type="Animation" id="Animation_6j7cg"]
@@ -140,6 +164,22 @@ tracks/1/keys = {
 "values": [Vector2(2546, 57), Vector2(2546, 849)]
 }
 
+[sub_resource type="Animation" id="Animation_mwlxs"]
+resource_name = "rockslide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2741, -774), Vector2(2546.0002, 57)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_awyal"]
 _data = {
 &"RESET": SubResource("Animation_6j7cg"),
@@ -165,19 +205,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oep84")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(0.05882353, 1, 0.9490196, 1)
-layout_mode = 1
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2785.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_s87xn")
+texture = ExtResource("2_ebayx")
+stretch_mode = 2
 
-[node name="RockCluster" type="TextureButton" parent="." groups=["hear", "interactables", "on_screen", "see", "smell"]]
-layout_mode = 0
+[node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Middle" type="TextureRect" parent="BackgroundLayers/Parallax2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 5758.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mwlxs")
+
+[node name="RockCluster0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+unique_name_in_owner = true
+offset_left = 906.0
+offset_top = 384.0
+offset_right = 1173.294
+offset_bottom = 512.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_s87xn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RockCluster1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+unique_name_in_owner = true
 offset_left = 768.99994
 offset_top = 291.0
 offset_right = 1036.294
@@ -187,7 +258,39 @@ texture_normal = ExtResource("3_s87xn")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="RockCluster2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+unique_name_in_owner = true
+offset_left = 912.0
+offset_top = 211.0
+offset_right = 1179.294
+offset_bottom = 339.0
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("3_s87xn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("4_sc4lb")]
+
+[node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 4578.0005
+offset_top = 291.0
+offset_right = 5085.752
+offset_bottom = 691.6957
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("8_6j7cg")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="HallucinationAnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2/StallionHallucination0"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_bs3hf")
+}
+
 [node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1926.0004
 offset_top = 160.0
@@ -205,6 +308,7 @@ libraries = {
 }
 
 [node name="RockSlide" type="TextureButton" parent="." groups=["hear", "interactables"]]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 3240.0
 offset_top = -71.0
@@ -233,18 +337,6 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("3_mwlxs")
 stretch_mode = 0
 
-[node name="Interactable Item 3" type="TextureButton" parent="." groups=["interactables", "smell"]]
-visible = false
-self_modulate = Color(0.20784314, 0.75686276, 0.20784314, 1)
-layout_mode = 0
-offset_left = 3371.0
-offset_top = 9.0
-offset_right = 3506.5293
-offset_bottom = 248.30437
-scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_mwlxs")
-stretch_mode = 0
-
 [node name="Interactable Item 5" type="TextureButton" parent="." groups=["interactables", "smell"]]
 visible = false
 self_modulate = Color(0.25882354, 1, 0.3019608, 1)
@@ -257,7 +349,22 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("3_mwlxs")
 stretch_mode = 0
 
-[node name="PlayerHorse" parent="." instance=ExtResource("4_sc4lb")]
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.1, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_6j7cg")
+stretch_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(958, 542)
@@ -348,7 +455,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mwlxs")
 
-[connection signal="pressed" from="RockCluster" to="." method="_on_rock_cluster_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster2" to="." method="_on_rock_cluster_2_pressed"]
 [connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]
 [connection signal="pressed" from="RockSlide" to="." method="_on_rock_slide_pressed"]
 [connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]

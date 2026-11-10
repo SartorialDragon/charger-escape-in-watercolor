@@ -1,20 +1,22 @@
-[gd_scene load_steps=24 format=3 uid="uid://bx4kno5rtneh6"]
+[gd_scene load_steps=27 format=3 uid="uid://bx4kno5rtneh6"]
 
 [ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
 [ext_resource type="Texture2D" uid="uid://dvmgtlbkiwyco" path="res://Assets/Clydesdale_base_grey.png" id="1_ikk15"]
-[ext_resource type="Texture2D" uid="uid://d3db3ggl85wfe" path="res://Assets/IMG_3641.png" id="2_wd0k0"]
+[ext_resource type="Texture2D" uid="uid://hoeax3hlimtg" path="res://ArtAssets/IMG_1388.png" id="2_bgieg"]
 [ext_resource type="Texture2D" uid="uid://3y1topgnva0m" path="res://Assets/Clydesdale_base_red.png" id="3_fvi5k"]
-[ext_resource type="Texture2D" uid="uid://xji1g6e7aiub" path="res://Assets/IMG_1370.png" id="3_yk0co"]
-[ext_resource type="Texture2D" uid="uid://bkrtv1equgnt0" path="res://Assets/IMG_1371.png" id="4_0lsct"]
-[ext_resource type="Texture2D" uid="uid://48t1ufjjvl3h" path="res://Assets/IMG_1372.png" id="5_42rsm"]
-[ext_resource type="Texture2D" uid="uid://pkkpm1fdbpth" path="res://Assets/IMG_1373.png" id="6_wd0k0"]
-[ext_resource type="Texture2D" uid="uid://dvji7p3fj8a08" path="res://Assets/IMG_1374.png" id="7_l1xfc"]
-[ext_resource type="Texture2D" uid="uid://cnx4th4jmj8e7" path="res://Assets/IMG_1375.png" id="8_fvi5k"]
-[ext_resource type="Texture2D" uid="uid://c1cj24knahqdo" path="res://Assets/IMG_1376.png" id="9_1r8bo"]
-[ext_resource type="Texture2D" uid="uid://c3dpyn221u4t1" path="res://Assets/IMG_1377.png" id="10_akih7"]
+[ext_resource type="Texture2D" uid="uid://cjrd5wck0e7cb" path="res://ArtAssets/IMG_1389.png" id="3_udm22"]
+[ext_resource type="Texture2D" uid="uid://ki3hvn3dkgog" path="res://ArtAssets/IMG_1390.png" id="4_gym2r"]
+[ext_resource type="Texture2D" uid="uid://dfhw3ndqdg6nr" path="res://ArtAssets/IMG_1391.png" id="7_bgieg"]
+[ext_resource type="Texture2D" uid="uid://dqfoykkcj40lq" path="res://ArtAssets/IMG_1392.png" id="8_udm22"]
+[ext_resource type="Texture2D" uid="uid://bejjdi2p8yct1" path="res://ArtAssets/IMG_1393.png" id="9_gym2r"]
+[ext_resource type="Texture2D" uid="uid://btqwfaa0apyct" path="res://ArtAssets/IMG_1394.png" id="10_rm1oq"]
 [ext_resource type="Script" uid="uid://8hgnwmgp3ns8" path="res://state_machine.gd" id="11_0lsct"]
+[ext_resource type="Texture2D" uid="uid://bsig4v2v2f0e6" path="res://ArtAssets/IMG_1395.png" id="11_amrei"]
 [ext_resource type="Script" uid="uid://mdj7ebr4hc5c" path="res://state_idle.gd" id="12_42rsm"]
+[ext_resource type="Texture2D" uid="uid://c4qo35wclef1f" path="res://ArtAssets/IMG_1396.png" id="12_pctog"]
 [ext_resource type="Script" uid="uid://b0qr2cagvysf3" path="res://state_trot.gd" id="13_wd0k0"]
+[ext_resource type="Texture2D" uid="uid://ef3een5me8hx" path="res://ArtAssets/IMG_1397.png" id="13_yvvyo"]
+[ext_resource type="Texture2D" uid="uid://biecdcgdbj2vl" path="res://ArtAssets/IMG_1398.png" id="14_1llnb"]
 [ext_resource type="PackedScene" uid="uid://bpsr46ju4is3u" path="res://senses.tscn" id="16_1r8bo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8bo"]
@@ -24,11 +26,17 @@ size = Vector2(103, 82)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wd0k0")
+"texture": ExtResource("2_bgieg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_udm22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gym2r")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -54,28 +62,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yk0co")
+"texture": ExtResource("7_bgieg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_0lsct")
+"texture": ExtResource("8_udm22")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_42rsm")
+"texture": ExtResource("9_gym2r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_wd0k0")
+"texture": ExtResource("10_rm1oq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_l1xfc")
+"texture": ExtResource("11_amrei")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_fvi5k")
+"texture": ExtResource("12_pctog")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_1r8bo")
+"texture": ExtResource("13_yvvyo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_akih7")
+"texture": ExtResource("14_1llnb")
 }],
 "loop": true,
 "name": &"trot",
@@ -193,6 +201,7 @@ radius = 497.60742
 height = 995.21484
 
 [node name="PlayerHorse" type="CharacterBody2D"]
+scale = Vector2(1.9379834, 1.9379834)
 script = ExtResource("1_0078p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -203,7 +212,8 @@ shape = SubResource("RectangleShape2D_1r8bo")
 position = Vector2(-17, -7)
 scale = Vector2(0.11253854, 0.11253855)
 sprite_frames = SubResource("SpriteFrames_0078p")
-animation = &"idle"
+animation = &"trot"
+frame_progress = 0.65135604
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -225,6 +235,7 @@ script = ExtResource("13_wd0k0")
 metadata/_custom_type_script = "uid://b0qr2cagvysf3"
 
 [node name="Senses" parent="." instance=ExtResource("16_1r8bo")]
+visible = true
 offset_left = -17.0
 offset_top = -102.0
 offset_right = -6.0
@@ -237,10 +248,5 @@ scale = Vector2(0.11253854, 0.11253855)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -79.972534)
 shape = SubResource("CapsuleShape2D_1r8bo")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-17, -7)
-scale = Vector2(0.11253854, 0.11253855)
-polygon = PackedVector2Array(-239.9178, -151.05934, -284.34705, -231.03194, -382.0913, -133.28766, -444.29224, -142.17351, -417.6347, -284.34702, -444.29224, -319.8904, -346.54797, -417.6347, -311.00458, -382.0913, -124.40184, -328.77625, -35.54338, -239.9178, 302.11874, -257.68948, 417.6347, -71.08675, 462.06396, 177.71689, 337.6621, 239.9178, 293.2329, 204.37442, 248.80367, 328.7762, 106.63014, 293.23285, 159.94522, 168.83104, 159.94522, 26.657532, 124.40184, -17.771687, -106.63014, 26.657532, -79.97261, 319.89038, -248.80367, 328.7762, -204.37444, 44.429222, -248.80367, -79.972595)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
