@@ -119,7 +119,7 @@ func play_cutscene_to_stallion():
 	for n in 150:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
-	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 150, %StallionHallucination0.position.y + 400))
+	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
 	for n in 350:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
