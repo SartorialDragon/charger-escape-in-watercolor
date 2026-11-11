@@ -5,3 +5,9 @@ Credits:
 	
 	Tutorials Coding:
 		Dialogue System: https://codingquests.io/blog/godot-4-dialogue-system-tutorial
+		
+		SFX:
+			Rocks Falling: https://pixabay.com/sound-effects/film-special-effects-stones-falling-6375/
+			
+			Rock Crack: https://pixabay.com/sound-effects/film-special-effects-rock-destroy-6409/
+			
