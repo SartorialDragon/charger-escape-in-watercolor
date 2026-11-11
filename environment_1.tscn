@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
@@ -10,6 +10,49 @@
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_ebayx"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
+[ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
+[ext_resource type="Texture2D" uid="uid://dwwo7t5ndlfug" path="res://Assets/rock0.png" id="9_pl4m5"]
+[ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="11_xjqet"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
+
+[sub_resource type="Animation" id="Animation_pl4m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4751, 525)]
+}
 
 [sub_resource type="Animation" id="Animation_awyal"]
 resource_name = "hallucination"
@@ -49,45 +92,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(4751, 525), Vector2(4751, 525), Vector2(5500, 400)]
-}
-
-[sub_resource type="Animation" id="Animation_pl4m5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4751, 525)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bs3hf"]
@@ -156,6 +160,10 @@ _data = {
 &"RESET": SubResource("Animation_ebayx"),
 &"scent_waft": SubResource("Animation_sc4lb")
 }
+
+[sub_resource type="Curve" id="Curve_pl4m5"]
+_data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_6j7cg"]
 length = 0.001
@@ -356,6 +364,28 @@ libraries = {
 &"": SubResource("AnimationLibrary_4nmru")
 }
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StallionScent"]
+position = Vector2(148.07819, 29.0628)
+scale = Vector2(0.99999994, 1)
+emitting = false
+amount = 100
+texture = ExtResource("8_awyal")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_pl4m5")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
 [node name="RockSlide" type="TextureButton" parent="." groups=["hear", "interactables"]]
 unique_name_in_owner = true
 layout_mode = 0
@@ -364,7 +394,7 @@ offset_top = -71.0
 offset_right = 3570.4575
 offset_bottom = 566.8357
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_s87xn")
+texture_normal = ExtResource("9_pl4m5")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -503,6 +533,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mwlxs")
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xjqet")
+bus = &"Music"
+parameters/looping = true
+
+[node name="SFXAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_bs3hf")
+bus = &"Music"
 
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]

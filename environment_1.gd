@@ -88,7 +88,7 @@ func _on_scent_pressed() -> void:
 		# change state to sniff: play a sniff animation once, then idle
 		dialogue = load("res://Dialogue/E1_scent_remember.tres")
 		DialogueManager.start_dialogue(dialogue)
-		
+		%StallionScent.visible = false
 		await DialogueManager.dialogue_ended
 		if not clues_interacted["StallionScent"]:
 			for n in 100:
@@ -96,8 +96,9 @@ func _on_scent_pressed() -> void:
 				await get_tree().create_timer(0.00000001).timeout
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			%StallionScent.remove_from_group("on_screen")
-			%RockSlide.add_to_group("on_screen")
 			clues_interacted["StallionScent"] = true
+			
+			sense_change() # to trigger the rockslide if already in hearing mode
 
 
 func _on_rock_slide_pressed() -> void:
@@ -105,14 +106,17 @@ func _on_rock_slide_pressed() -> void:
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
-		Global.visit_clue.emit(Vector2(%RockSlide.position.x - 150, %RockSlide.position.y + 800))
-		Global.player_POI_position = Global.POIs.ROCKSLIDE
-		await Global.arrived
-		# play the respective clue stuff
-		await get_tree().create_timer(1).timeout # replace with interaction being an extra step
-		%RockslideAnimationPlayer.play("kicked")
-		clues_interacted["RockSlide"] = true
-		play_cutscene_to_stallion()
+		if Global.player_POI_position != Global.POIs.ROCKSLIDE:
+			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 150, %RockSlide.position.y + 800))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.ROCKSLIDE
+		else:
+			# play the respective clue stuff
+			%RockslideAnimationPlayer.play("kicked")
+			$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
+			$SFXAudio.play()
+			clues_interacted["RockSlide"] = true
+			play_cutscene_to_stallion()
 		
 
 func play_cutscene_to_stallion():
@@ -120,13 +124,16 @@ func play_cutscene_to_stallion():
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
-	for n in 350:
+	for n in 400:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 	await Global.arrived
 	%HallucinationAnimationPlayer.play("hallucination")
-	
-	#switch_scene()
+	await %HallucinationAnimationPlayer.animation_finished
+	await get_tree().create_timer(1).timeout
+	Global.visit_clue.emit(Vector2(5500, 525))
+	await get_tree().create_timer(1).timeout
+	switch_scene()
 
 
 func switch_scene():
@@ -166,24 +173,93 @@ func sense_change():
 
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
+	hide_sounds()
+	hide_scents()
+	lighten_surroundings()
+	normalize_music()
 	visible_clues = get_tree().get_nodes_in_group("see")
 	update_sense()
 
 
 func _on_hear_button_pressed() -> void:
+	hide_scents()
+	darken_surroundings()
+	muffle_music()
+	show_sounds()
 	visible_clues = get_tree().get_nodes_in_group("hear")
-	update_sense()
-	if clues_on_screen.has(%RockSlide) and not clues_discovered["StallionScent"]:
+	
+	# this should go somewhere different
+	if clues_interacted["StallionScent"] and not clues_discovered["RockSlide"]:
+		print("true")
 		%RockslideAnimationPlayer.play("rockslide")
-		clues_discovered["StallionScent"] = true
+		$SFXAudio.stream = load("res://Assets/freesound_community-stones-falling-6375.mp3")
+		$SFXAudio.play()
+		%RockSlide.add_to_group("on_screen")
+		#clues_discovered["RockSlide"] = true
+	else:
+		print(clues_discovered)
+	update_sense()
 
 
 func _on_smell_button_pressed() -> void:
+	hide_sounds()
+	normalize_music()
+	darken_surroundings()
+	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
 	if not clues_interacted["StallionScent"]:
 		play_scent()
 	
+	
+func darken_surroundings():
+	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
+	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
+
+
+func lighten_surroundings():
+	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
+	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(1.0, 1.0, 1.0)
+	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
+
+
+func muffle_music():
+	$MusicAudio.volume_db = -7.153
+	$MusicAudio.pitch_scale = 0.81
+	
+	
+func normalize_music():
+	$MusicAudio.volume_db = 0.0
+	$MusicAudio.pitch_scale = 0.0
+
+
+func show_scents():
+	if not clues_interacted["StallionScent"]:
+		$StallionScent/CPUParticles2D.visible = true
+		$StallionScent/CPUParticles2D.emitting = true
+	
+
+func hide_scents():
+	$StallionScent/CPUParticles2D.visible = false
+	$StallionScent/CPUParticles2D.emitting = false
+
+
+func show_sounds():
+	if not clues_interacted["RockSlide"]:
+		if not clues_discovered["RockSlide"]:
+			%RockSlide.texture_normal = load("res://Assets/rock2.png")
+		else:
+			%RockSlide.texture_normal = load("res://Assets/rock3.png")
+
+
+func hide_sounds():
+	if not clues_interacted["RockSlide"]:
+		if not clues_discovered["RockSlide"]:
+			%RockSlide.texture_normal = load("res://Assets/rock0.png")
+		else:
+			%RockSlide.texture_normal = load("res://Assets/rock1.png")
+
 
 # updates showing all currently discovered clues
 func update_sense():
