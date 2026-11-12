@@ -7,6 +7,7 @@ signal sense_mode_changed
 
 signal hint_needed
 signal hint_done
+signal got_up
 
 
 var current_state: State
@@ -39,6 +40,7 @@ var clues_interacted = {
 	"Interactable 3" : false,
 	"Interactable 4" : false,
 	"Interactable 5" : false,
+	"GetUp" : false,
 	"Echo" : false,
 	"Sight" : false,
 	"Hearing" : false,

@@ -274,6 +274,7 @@ offset_right = 3838.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ebayx")
 stretch_mode = 2
 
@@ -289,10 +290,12 @@ offset_right = 5758.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_mwlxs")
 
-[node name="RockCluster0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+[node name="RockCluster0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
+visible = false
 offset_left = 906.0
 offset_top = 384.0
 offset_right = 1173.294
@@ -302,8 +305,9 @@ texture_normal = ExtResource("3_s87xn")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RockCluster1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+[node name="RockCluster1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
+visible = false
 offset_left = 768.99994
 offset_top = 291.0
 offset_right = 1036.294
@@ -313,8 +317,9 @@ texture_normal = ExtResource("3_s87xn")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RockCluster2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "on_screen", "see", "smell"]]
+[node name="RockCluster2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["on_screen", "see"]]
 unique_name_in_owner = true
+visible = false
 offset_left = 912.0
 offset_top = 211.0
 offset_right = 1179.294
@@ -325,6 +330,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("4_sc4lb")]
+input_pickable = true
 
 [node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
@@ -495,6 +501,7 @@ text = " > "
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
