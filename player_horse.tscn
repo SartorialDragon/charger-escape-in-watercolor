@@ -252,6 +252,7 @@ script = ExtResource("13_wd0k0")
 metadata/_custom_type_script = "uid://b0qr2cagvysf3"
 
 [node name="Senses" parent="." instance=ExtResource("16_1r8bo")]
+visible = false
 offset_left = -17.0
 offset_top = -102.0
 offset_right = -6.0
