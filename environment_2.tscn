@@ -1,0 +1,593 @@
+[gd_scene load_steps=27 format=3 uid="uid://ch7dghvwbv0tg"]
+
+[ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
+[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_w4vuy"]
+[ext_resource type="Texture2D" uid="uid://ba0lb1j7sxu" path="res://Assets/bg_65.png" id="3_ygjpp"]
+[ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="4_ygjpp"]
+[ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="5_826ab"]
+[ext_resource type="Texture2D" uid="uid://ce4817xwbr3gc" path="res://Assets/New Piskel-9.png.png" id="5_bt657"]
+[ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="6_1jxss"]
+[ext_resource type="Texture2D" uid="uid://dyl1e11eo6fue" path="res://Assets/Bucket Empty.png" id="6_826ab"]
+[ext_resource type="Texture2D" uid="uid://b3c6rkeuuw7m7" path="res://Assets/New Piskel-10.png.png" id="7_1jxss"]
+[ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="7_226vn"]
+[ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_3mwvo"]
+[ext_resource type="Texture2D" uid="uid://dcuhs8h4pv20i" path="res://Assets/New Piskel-7.png.png" id="8_bt657"]
+[ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="10_jb611"]
+[ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="11_k5e16"]
+[ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="12_wja3w"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="13_yjv7e"]
+
+[sub_resource type="Curve" id="Curve_trxam"]
+_data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_pl4m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4751, 525)]
+}
+
+[sub_resource type="Animation" id="Animation_awyal"]
+resource_name = "hallucination"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333, 1.2, 1.6, 2.0333333, 2.4666667, 2.8666666, 3.17, 3.56, 5.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.26666668), Color(1, 1, 1, 0.09803922), Color(1, 1, 1, 0.40392157), Color(1, 1, 1, 0.53333336), Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0.40784314), Color(1, 1, 1, 0.1764706), Color(1, 1, 1, 0.41960785), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.6399999, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4751, 525), Vector2(4751, 525), Vector2(5500, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs3hf"]
+_data = {
+&"RESET": SubResource("Animation_pl4m5"),
+&"hallucination": SubResource("Animation_awyal")
+}
+
+[sub_resource type="Animation" id="Animation_826ab"]
+resource_name = "scent_waft"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4196.0005, 609), Vector2(3589, 642)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.9, 6.48),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1jxss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4196.0005, 609)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_226vn"]
+_data = {
+&"RESET": SubResource("Animation_1jxss"),
+&"scent_waft": SubResource("Animation_826ab")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6krrs"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gw62"]
+bg_color = Color(1, 1, 1, 0.58431375)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiedm"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="environment2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3181v")
+
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w4vuy")
+stretch_mode = 2
+
+[node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Middle" type="TextureRect" parent="BackgroundLayers/Parallax2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 5758.0
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ygjpp")
+
+[node name="Tree0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
+unique_name_in_owner = true
+offset_left = 906.0
+offset_top = 266.99997
+offset_right = 1173.294
+offset_bottom = 467.3478
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_ygjpp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TreeParticles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree0"]
+unique_name_in_owner = true
+position = Vector2(172.3399, 89.0435)
+scale = Vector2(0.9999998, 1)
+emitting = false
+amount = 100
+texture = ExtResource("8_3mwvo")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_trxam")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
+[node name="ManeHair" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+visible = false
+offset_left = 1067.0
+offset_top = 328.00006
+offset_right = 1225.1536
+offset_bottom = 393.9036
+rotation = 0.72082096
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("5_bt657")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Bucket" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
+unique_name_in_owner = true
+offset_left = 2454.0
+offset_top = 358.00003
+offset_right = 2547.899
+offset_bottom = 458.00003
+rotation = 1.3613569
+texture_normal = ExtResource("6_826ab")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Stream" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "see", "smell"]]
+unique_name_in_owner = true
+offset_left = 2144.0002
+offset_top = 775.0
+offset_right = 2237.8992
+offset_bottom = 875.0
+scale = Vector2(8.881775, 2.469204)
+texture_normal = ExtResource("7_1jxss")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Tree1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3539.0
+offset_top = 250.99997
+offset_right = 3806.294
+offset_bottom = 451.3478
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_ygjpp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TreeParticles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree1"]
+unique_name_in_owner = true
+position = Vector2(133.85619, 170.04834)
+scale = Vector2(0.3, 0.49787593)
+amount = 20
+texture = ExtResource("8_bt657")
+speed_scale = 0.3
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(200, 1)
+spread = 45.56
+gravity = Vector2(0, -800)
+angular_velocity_max = 25.71
+angle_min = 68.6
+angle_max = 77.1
+scale_amount_min = 0.3
+color = Color(0.53246933, 0.5324694, 0.53246933, 1)
+
+[node name="Tree2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3565.0
+offset_top = 386.0
+offset_right = 3832.294
+offset_bottom = 586.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_ygjpp")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="TreeParticles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree2"]
+unique_name_in_owner = true
+position = Vector2(154.77113, 179.32368)
+scale = Vector2(0.29999998, 0.3)
+amount = 20
+texture = ExtResource("8_bt657")
+speed_scale = 0.3
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(200, 1)
+spread = 45.56
+gravity = Vector2(0, -800)
+angular_velocity_max = 25.71
+angle_min = 68.6
+angle_max = 77.1
+scale_amount_min = 0.3
+color = Color(0.53246933, 0.5324694, 0.53246933, 1)
+
+[node name="Tree3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3461.0002
+offset_top = 470.0
+offset_right = 3728.2942
+offset_bottom = 670.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_ygjpp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TreeParticles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree3"]
+unique_name_in_owner = true
+position = Vector2(112.940895, 173.14009)
+scale = Vector2(0.29999995, 0.3)
+amount = 20
+texture = ExtResource("8_bt657")
+speed_scale = 0.3
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(200, 1)
+spread = 45.56
+gravity = Vector2(0, -800)
+angular_velocity_max = 25.71
+angle_min = 68.6
+angle_max = 77.1
+scale_amount_min = 0.3
+color = Color(0.53246933, 0.5324694, 0.53246933, 1)
+
+[node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("5_826ab")]
+
+[node name="Tree4" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3565.0
+offset_top = 641.0
+offset_right = 3832.294
+offset_bottom = 841.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("4_ygjpp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TreeParticles4" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree4"]
+unique_name_in_owner = true
+position = Vector2(144.732, 168.81158)
+scale = Vector2(0.29999995, 0.3)
+amount = 20
+texture = ExtResource("8_bt657")
+speed_scale = 0.3
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(200, 1)
+spread = 45.56
+gravity = Vector2(0, -800)
+angular_velocity_max = 25.71
+angle_min = 68.6
+angle_max = 77.1
+scale_amount_min = 0.3
+color = Color(0.53246933, 0.5324694, 0.53246933, 1)
+
+[node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 4751.0
+offset_top = 525.0
+offset_right = 5065.2104
+offset_bottom = 772.9615
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("6_1jxss")
+ignore_texture_size = true
+stretch_mode = 4
+flip_h = true
+
+[node name="HallucinationAnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2/StallionHallucination0"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_bs3hf")
+}
+
+[node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 4196.0005
+offset_top = 609.0
+offset_right = 4446.999
+offset_bottom = 670.2178
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("7_226vn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StallionScent"]
+position = Vector2(148.07819, 29.0628)
+scale = Vector2(0.99999994, 1)
+emitting = false
+amount = 100
+texture = ExtResource("8_3mwvo")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_trxam")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
+[node name="ScentAnimationPlayer" type="AnimationPlayer" parent="StallionScent"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_226vn")
+}
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.1, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_jb611")
+stretch_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 542)
+
+[node name="ClueDialogue" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_k5e16")
+
+[node name="Panel" type="Panel" parent="ClueDialogue"]
+offset_right = 1921.0
+offset_bottom = 1088.0
+focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6krrs")
+
+[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue/Panel"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 92.0
+offset_right = 1763.0
+offset_bottom = 1038.0
+alignment = 1
+
+[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.89
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextPanel" type="Panel" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gw62")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/Panel/DialoguePanel/TextPanel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 26.0
+offset_right = 1550.0
+offset_bottom = 279.0
+
+[node name="SpeakerLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Echo"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AdvanceDialogueButton" type="Button" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " > "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="SwitchScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="SwitchScreen"]
+self_modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qiedm")
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_wja3w")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="SFXAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_yjv7e")
+bus = &"Music"
+
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree0" to="." method="_on_tree_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/ManeHair" to="." method="_on_mane_hair_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Bucket" to="." method="_on_bucket_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Stream" to="." method="_on_stream_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree1" to="." method="_on_tree_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree2" to="." method="_on_tree_2_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree3" to="." method="_on_tree_3_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree4" to="." method="_on_tree_4_pressed"]
+[connection signal="pressed" from="StallionScent" to="." method="_on_stallion_scent_pressed"]
+[connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]

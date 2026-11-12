@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cka3qg1yet7wf"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_yxmrp"]
+
+[resource]
+script = ExtResource("1_yxmrp")
+id = "13"
+speaker = "Echo"
+text = "That smells like him!"

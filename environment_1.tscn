@@ -1,9 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=28 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
 [ext_resource type="Texture2D" uid="uid://ckt1x5c3g3nn7" path="res://Assets/IMG_3672.png" id="2_mwlxs"]
-[ext_resource type="Texture2D" uid="uid://c55sfmfjwgc32" path="res://icon.svg" id="3_mwlxs"]
 [ext_resource type="Texture2D" uid="uid://brb7nhqq51fgh" path="res://Assets/rock_cluster.png" id="3_s87xn"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="4_mwlxs"]
@@ -112,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1926.0004, 160)]
+"values": [Vector2(4164.9995, 585)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,10 +136,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 7.4966664),
+"times": PackedFloat32Array(0, 7.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1926.0004, 160), Vector2(782, 160)]
+"values": [Vector2(1935.0001, 137.99994), Vector2(782, 160)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -349,10 +348,10 @@ libraries = {
 [node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1926.0004
-offset_top = 160.0
-offset_right = 2176.977
-offset_bottom = 221.21739
+offset_left = 4164.9995
+offset_top = 585.0
+offset_right = 4415.9766
+offset_bottom = 646.21765
 scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("4_mwlxs")
 ignore_texture_size = true
@@ -403,30 +402,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_awyal")
 }
-
-[node name="Interactable Item 2" type="TextureButton" parent="." groups=["interactables", "see"]]
-visible = false
-self_modulate = Color(0.13725491, 0.18039216, 1, 1)
-layout_mode = 0
-offset_left = 1657.0001
-offset_top = 837.0
-offset_right = 1841.889
-offset_bottom = 965.0
-scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_mwlxs")
-stretch_mode = 0
-
-[node name="Interactable Item 5" type="TextureButton" parent="." groups=["interactables", "smell"]]
-visible = false
-self_modulate = Color(0.25882354, 1, 0.3019608, 1)
-layout_mode = 0
-offset_left = 2897.0
-offset_top = 802.0
-offset_right = 3500.1897
-offset_bottom = 930.0
-scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_mwlxs")
-stretch_mode = 0
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.1, 1)

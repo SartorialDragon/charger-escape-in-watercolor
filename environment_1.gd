@@ -26,16 +26,6 @@ func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	_on_see_button_pressed()
-
-
-#func _on_rock_cluster_pressed() -> void:
-	#Global.visit_clue.emit(Vector2(%RockCluster.position.x + 200, %RockCluster.position.y + 70))
-	#await Global.arrived
-	#Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
-	## play the respective clue stuff
-	##dialogue = load("res://Dialogue/conversation0.tres")
-	##DialogueManager.start_dialogue(dialogue)
-	#clues_interacted["RockCluster"] = true
 	
 	
 func _on_rock_cluster_0_pressed() -> void:
@@ -144,7 +134,7 @@ func switch_scene():
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scene_1.tscn")
+	get_tree().change_scene_to_file("res://environment_2.tscn")
 
 
 	
@@ -153,13 +143,6 @@ func play_scent():
 	await %ScentAnimationPlayer.animation_finished
 	if not clues_interacted["StallionScent"]:
 		play_scent()
-	
-
-func check_level_end():
-	for n in clues_interacted:
-		if clues_interacted[n] == false:
-			return
-	print("Level finished!")
 
 
 func sense_change():
