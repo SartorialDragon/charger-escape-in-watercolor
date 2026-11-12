@@ -7,12 +7,29 @@ var target_position = Vector2()
 
 func _ready():
 	Global.visit_clue.connect(move_to)
+	Global.hint_needed.connect(give_hint)
+	Global.hint_done.connect(hide_hint)
 	await get_tree().create_timer(0.01).timeout # this could use refactoring, without timer the variable is not set right yet
 	position = Global.player_start_position
 	click_position = position
 	
+	
 func _physics_process(delta: float) -> void:
 	change_position()
+	
+	
+func give_hint(pos):
+	match pos:
+		"Echo":
+			$HintParticles.position = Vector2(-13, -11)
+		_:
+			$HintParticles.position = Vector2(0, 0)
+	$HintParticles.emitting = true
+	
+	
+func hide_hint(pos):
+	Global.clues_discovered[pos] = true
+	$HintParticles.emitting = false
 	
 	
 func move_to(pos):
@@ -31,6 +48,19 @@ func change_position():
 		move_and_slide()
 	else:
 		velocity = Vector2(0, 0)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test"):
+		test()
+
+
+func test():
+	print("clicktest")
+	$Senses.show()
+	await get_tree().create_timer(3).timeout
+	$Senses.hide()
+
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

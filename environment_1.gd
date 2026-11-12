@@ -15,6 +15,10 @@ var clues_discovered = { # key needs to be identical with node name
 
 # this means it has been clicked
 var clues_interacted = {
+	"Echo" : false,
+	"Sight" : false,
+	"Hearing" : false,
+	"Smell" : false,
 	"RockCluster" : false,
 	"StallionScent" : false,
 	"RockSlide" : false,
@@ -25,7 +29,17 @@ var clues_interacted = {
 func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
-	_on_see_button_pressed()
+	Global.game_started.connect(start_game)
+	_on_hear_button_pressed()
+	
+func start_game():
+	for n in 90:
+			$Camera2D.position.x += 8
+			await get_tree().create_timer(0.00000001).timeout
+	await get_tree().create_timer(3).timeout
+	if not Global.clues_interacted["Echo"]:
+		Global.hint_needed.emit("Echo")
+	
 	
 	
 func _on_rock_cluster_0_pressed() -> void:
@@ -173,14 +187,10 @@ func _on_hear_button_pressed() -> void:
 	
 	# this should go somewhere different
 	if clues_interacted["StallionScent"] and not clues_discovered["RockSlide"]:
-		print("true")
 		%RockslideAnimationPlayer.play("rockslide")
 		$SFXAudio.stream = load("res://Assets/freesound_community-stones-falling-6375.mp3")
 		$SFXAudio.play()
 		%RockSlide.add_to_group("on_screen")
-		#clues_discovered["RockSlide"] = true
-	else:
-		print(clues_discovered)
 	update_sense()
 
 
@@ -214,7 +224,7 @@ func muffle_music():
 	
 func normalize_music():
 	$MusicAudio.volume_db = 0.0
-	$MusicAudio.pitch_scale = 0.0
+	$MusicAudio.pitch_scale = 1.0
 
 
 func show_scents():
@@ -255,3 +265,18 @@ func update_sense():
 	for n in clues_on_screen:
 		if clues_discovered[n.name]:
 			n.show()
+
+
+
+func _on_player_horse_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print("input")
+	if event.is_action_pressed("click"):
+		print("click")
+		$Senses.show()
+		await get_tree().create_timer(3).timeout
+		$Senses.hide()
+
+
+
+func _on_player_horse_mouse_entered() -> void:
+	print("hello")
