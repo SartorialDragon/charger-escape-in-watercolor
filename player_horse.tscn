@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bx4kno5rtneh6"]
+[gd_scene load_steps=29 format=3 uid="uid://bx4kno5rtneh6"]
 
 [ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
 [ext_resource type="Texture2D" uid="uid://dvmgtlbkiwyco" path="res://Assets/Clydesdale_base_grey.png" id="1_ikk15"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ef3een5me8hx" path="res://ArtAssets/IMG_1397.png" id="13_yvvyo"]
 [ext_resource type="Texture2D" uid="uid://biecdcgdbj2vl" path="res://ArtAssets/IMG_1398.png" id="14_1llnb"]
 [ext_resource type="PackedScene" uid="uid://bpsr46ju4is3u" path="res://senses.tscn" id="16_1r8bo"]
+[ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="19_udm22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8bo"]
 size = Vector2(103, 82)
@@ -212,6 +213,10 @@ _data = {
 radius = 497.60742
 height = 995.21484
 
+[sub_resource type="Curve" id="Curve_gym2r"]
+_data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="PlayerHorse" type="CharacterBody2D"]
 scale = Vector2(1.9379834, 1.9379834)
 script = ExtResource("1_0078p")
@@ -247,7 +252,6 @@ script = ExtResource("13_wd0k0")
 metadata/_custom_type_script = "uid://b0qr2cagvysf3"
 
 [node name="Senses" parent="." instance=ExtResource("16_1r8bo")]
-visible = true
 offset_left = -17.0
 offset_top = -102.0
 offset_right = -6.0
@@ -261,4 +265,27 @@ scale = Vector2(0.11253854, 0.11253855)
 position = Vector2(0, -79.972534)
 shape = SubResource("CapsuleShape2D_1r8bo")
 
+[node name="HintParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-12.900006, -11.352006)
+scale = Vector2(0.99999994, 1)
+emitting = false
+amount = 100
+texture = ExtResource("19_udm22")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 40.0
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_gym2r")
+color = Color(0.48000002, 0.5146667, 1, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

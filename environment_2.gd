@@ -156,7 +156,6 @@ func _on_tree_pressed(tree, particle):
 					%Bucket.texture_normal = load("res://Assets/Bucket Empty.png")
 					particle.emitting = false
 					clues_interacted[tree.name] = true
-					print(clues_interacted)
 					clues_interacted["Smoldering"] = true
 					for n in 4:
 						if clues_interacted["Tree"+str(n)] == false:
