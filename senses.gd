@@ -13,15 +13,21 @@ func _input(event: InputEvent) -> void:
 
 func _on_look_pressed() -> void:
 	Global.current_sense = Global.senses.SEE
+	if not Global.clues_interacted["GetUp"]:
+		Global.got_up.emit()
+		Global.clues_interacted["GetUp"] = true
 	Global.hint_done.emit("Echo")
 	Global.hint_done.emit("Sight")
 	Global.sense_mode_changed.emit()
+	hide()
+
 
 func _on_hear_pressed() -> void:
 	Global.current_sense = Global.senses.HEAR
 	Global.hint_done.emit("Echo")
 	Global.hint_done.emit("Hearing")
 	Global.sense_mode_changed.emit()
+	hide()
 	
 
 func _on_smell_pressed() -> void:
@@ -29,3 +35,4 @@ func _on_smell_pressed() -> void:
 	Global.hint_done.emit("Echo")
 	Global.hint_done.emit("Scent")
 	Global.sense_mode_changed.emit()
+	hide()

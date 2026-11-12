@@ -22,6 +22,12 @@ func give_hint(pos):
 	match pos:
 		"Echo":
 			$HintParticles.position = Vector2(-13, -11)
+		"Sight":
+			$HintParticles.position = Vector2(-64, -111)
+		"Scent":
+			$HintParticles.position = Vector2(25, -111)
+		"Hearing":
+			$HintParticles.position = Vector2(-17, -128)
 		_:
 			$HintParticles.position = Vector2(0, 0)
 	$HintParticles.emitting = true
@@ -50,22 +56,20 @@ func change_position():
 		velocity = Vector2(0, 0)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test"):
-		test()
-
-
-func test():
-	print("clicktest")
-	$Senses.show()
-	await get_tree().create_timer(3).timeout
-	$Senses.hide()
-
-
-
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		print("click")
 		$Senses.show()
 		await get_tree().create_timer(3).timeout
 		$Senses.hide()
+
+
+
+func _on_texture_button_pressed() -> void:
+	$Senses.show()
+	await get_tree().create_timer(2).timeout
+	if not Global.clues_interacted["Sight"] and $Senses.visible:
+		give_hint("Sight")
+		Global.clues_interacted["Sight"] = true
+	else:	
+		Global.hint_done.emit("Echo")

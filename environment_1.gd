@@ -8,17 +8,15 @@ var clues_on_screen: Array = []
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
-	"RockCluster" : false,
+	"RockCluster0" : false,
+	"RockCluster1" : false,
+	"RockCluster2" : false,
 	"StallionScent" : false,
 	"RockSlide" : false,
 }
 
 # this means it has been clicked
 var clues_interacted = {
-	"Echo" : false,
-	"Sight" : false,
-	"Hearing" : false,
-	"Smell" : false,
 	"RockCluster" : false,
 	"StallionScent" : false,
 	"RockSlide" : false,
@@ -30,16 +28,23 @@ func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.game_started.connect(start_game)
+	Global.got_up.connect(	_on_get_up)
 	_on_hear_button_pressed()
+	
 	
 func start_game():
 	for n in 90:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(5).timeout
 	if not Global.clues_interacted["Echo"]:
 		Global.hint_needed.emit("Echo")
 	
+	
+func _on_get_up():
+	%RockCluster0.add_to_group("see")
+	%RockCluster1.add_to_group("see")
+	%RockCluster2.add_to_group("see")
 	
 	
 func _on_rock_cluster_0_pressed() -> void:
@@ -260,23 +265,8 @@ func update_sense():
 	# sets all clues (currently on screen) of the current sense to discovered
 	for n in clues_on_screen:
 		if visible_clues.has(n):
-				clues_discovered[n.name] = true
+			clues_discovered[n.name] = true
 	# shows all discovered clues currently on screen
 	for n in clues_on_screen:
 		if clues_discovered[n.name]:
-			n.show()
-
-
-
-func _on_player_horse_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print("input")
-	if event.is_action_pressed("click"):
-		print("click")
-		$Senses.show()
-		await get_tree().create_timer(3).timeout
-		$Senses.hide()
-
-
-
-func _on_player_horse_mouse_entered() -> void:
-	print("hello")
+				n.show()

@@ -300,7 +300,7 @@ func muffle_music():
 	
 func normalize_music():
 	$MusicAudio.volume_db = 0.0
-	$MusicAudio.pitch_scale = 0.0
+	$MusicAudio.pitch_scale = 1.0
 
 
 func show_scents():
