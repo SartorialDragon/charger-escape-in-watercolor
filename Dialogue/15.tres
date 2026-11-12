@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cnix5e06j0uiy"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_l0dft"]
+
+[resource]
+script = ExtResource("1_l0dft")
+id = "15"
+speaker = "Echo"
+text = "I can't pass through the smoldering trees!"
