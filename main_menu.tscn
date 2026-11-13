@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=3 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +17,7 @@ script = ExtResource("1_06t4h")
 layout_mode = 0
 offset_right = 529.0
 offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_06t4h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -37,16 +40,19 @@ size_flags_vertical = 3
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 text = "Quit Game"
 
 [node name="Control2" type="Control" parent="Panel/VBoxContainer"]

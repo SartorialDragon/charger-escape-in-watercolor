@@ -2,8 +2,13 @@ extends Control
 
 var dialogue: DialogueData
 
+var cursor_default = load("res://Assets/Cursor_Sepia.png")
+var cursor_POI = load("res://Assets/Cursor_Brown.png")
+
 var visible_clues: Array = []
 var clues_on_screen: Array = []
+
+
 
 
 # this means the clue has been discovered in sense mode or through solving other clues!
@@ -37,6 +42,8 @@ var clues_interacted = {
 
 
 func _ready():
+	Input.set_custom_mouse_cursor(cursor_default)
+	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
@@ -45,7 +52,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if clues_interacted["Bucket"] == true and clues_interacted["Smoldering"] == false:
-		%Bucket.position = $BackgroundLayers/Parallax2D2/PlayerHorse.position
+		%Bucket.position = Vector2($BackgroundLayers/Parallax2D2/PlayerHorse.position.x -170, $BackgroundLayers/Parallax2D2/PlayerHorse.position.y - 170)
 	
 	
 	
@@ -161,7 +168,7 @@ func _on_tree_pressed(tree, particle):
 					clues_interacted[tree.name] = true
 					clues_interacted["Smoldering"] = true
 					for n in 4:
-						if clues_interacted["Tree"+str(n)] == false:
+						if clues_interacted["Tree"+str(n+1)] == false:
 							clues_interacted["Smoldering"] = false
 		
 
