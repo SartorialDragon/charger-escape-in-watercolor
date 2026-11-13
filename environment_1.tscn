@@ -1,12 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
 [ext_resource type="Texture2D" uid="uid://ckt1x5c3g3nn7" path="res://Assets/IMG_3672.png" id="2_mwlxs"]
-[ext_resource type="Texture2D" uid="uid://brb7nhqq51fgh" path="res://Assets/rock_cluster.png" id="3_s87xn"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
+[ext_resource type="Texture2D" uid="uid://d27xut2vu8ia2" path="res://ArtAssets/rockcluster.png" id="4_pl4m5"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_ebayx"]
+[ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="7_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
 [ext_resource type="Texture2D" uid="uid://dwwo7t5ndlfug" path="res://Assets/rock0.png" id="9_pl4m5"]
@@ -148,7 +149,7 @@ tracks/1/path = NodePath(".:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 7.5333333, 7.863333),
+"times": PackedFloat32Array(0.05, 6.4666667, 7.863333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -293,44 +294,62 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_mwlxs")
 
-[node name="RockCluster0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+[node name="RockCluster" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
 visible = false
-offset_left = 906.0
-offset_top = 384.0
-offset_right = 1173.294
-offset_bottom = 512.0
+offset_left = 606.0
+offset_top = 215.0
+offset_right = 1386.0
+offset_bottom = 576.0
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_s87xn")
+texture_normal = ExtResource("4_pl4m5")
+stretch_mode = 5
+
+[node name="RockCluster0" type="TextureButton" parent="BackgroundLayers/Parallax2D2/RockCluster" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 194.92804
+offset_top = 204.05797
+offset_right = 368.1045
+offset_bottom = 237.32382
+scale = Vector2(1.1953125, 1.6171875)
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RockCluster1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+[node name="RockCluster1" type="TextureButton" parent="BackgroundLayers/Parallax2D2/RockCluster" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
-visible = false
-offset_left = 768.99994
-offset_top = 291.0
-offset_right = 1036.294
-offset_bottom = 419.0
+layout_mode = 0
+offset_left = 412.44446
+offset_top = 142.22221
+offset_right = 535.6272
+offset_bottom = 181.22354
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_s87xn")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RockCluster2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["on_screen", "see"]]
+[node name="RockCluster2" type="TextureButton" parent="BackgroundLayers/Parallax2D2/RockCluster" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
-visible = false
-offset_left = 912.0
-offset_top = 211.0
-offset_right = 1179.294
-offset_bottom = 339.0
+layout_mode = 0
+offset_left = 284.4444
+offset_top = 96.463776
+offset_right = 392.92926
+offset_bottom = 129.34724
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("3_s87xn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RockCluster3" type="TextureButton" parent="BackgroundLayers/Parallax2D2/RockCluster" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 395.7124
+offset_top = 22.879227
+offset_right = 530.79346
+offset_bottom = 55.38034
+scale = Vector2(1.1953125, 1.6171875)
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("4_sc4lb")]
-input_pickable = true
 
 [node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
@@ -359,6 +378,7 @@ offset_top = 585.0
 offset_right = 4415.9766
 offset_bottom = 646.21765
 scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("7_bs3hf")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -530,9 +550,10 @@ layout_mode = 1
 offset_left = -600.0
 offset_right = -600.0
 
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster2" to="." method="_on_rock_cluster_2_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster2" to="." method="_on_rock_cluster_2_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster3" to="." method="_on_rock_cluster_3_pressed"]
 [connection signal="input_event" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_input_event"]
 [connection signal="mouse_entered" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_mouse_entered"]
 [connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]

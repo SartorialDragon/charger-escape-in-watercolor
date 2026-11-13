@@ -39,6 +39,7 @@ var clues_interacted = {
 func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
+	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
 	
 
@@ -56,9 +57,11 @@ func _on_tree_0_pressed() -> void:
 	else:
 		if Global.current_sense == Global.senses.SEE:
 			dialogue = load("res://Dialogue/E2_can't_see.tres")
+			print("see ", dialogue)
 			DialogueManager.start_dialogue(dialogue)
 		elif Global.current_sense == Global.senses.HEAR:
-			dialogue = load("res://Dialogue/E1_can't_hear.tres")
+			print("hear ", dialogue)
+			dialogue = load("res://Dialogue/E2_can't_hear.tres")
 			DialogueManager.start_dialogue(dialogue)
 		elif Global.current_sense == Global.senses.SMELL:
 			%ManeHair.visible = true
@@ -120,7 +123,7 @@ func _on_stream_pressed() -> void:
 		Global.player_POI_position = Global.POIs.STREAM
 	else:
 		if clues_interacted["Bucket"]:
-			%Bucket.texture_normal = load("res://Assets/Bucket.png")
+			%Bucket.texture_normal = load("res://ArtAssets/bucket_full.png")
 
 
 func _on_tree_1_pressed() -> void:
@@ -149,11 +152,11 @@ func _on_tree_pressed(tree, particle):
 			dialogue = load("res://Dialogue/E2_can't_pass.tres")
 			DialogueManager.start_dialogue(dialogue)
 		else:
-			if not %Bucket.texture_normal == load("res://Assets/Bucket.png"):
+			if not %Bucket.texture_normal == load("res://ArtAssets/bucket_full.png"):
 				pass
 			else:
 				if not clues_interacted[tree.name]:
-					%Bucket.texture_normal = load("res://Assets/Bucket Empty.png")
+					%Bucket.texture_normal = load("res://ArtAssets/bucket_empty.png")
 					particle.emitting = false
 					clues_interacted[tree.name] = true
 					clues_interacted["Smoldering"] = true

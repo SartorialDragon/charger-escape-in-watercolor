@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyl1e11eo6fue"
-path="res://.godot/imported/Bucket Empty.png-b21c0792c961a2897ecb169a5ec331b7.ctex"
+uid="uid://d27xut2vu8ia2"
+path="res://.godot/imported/rockcluster.png-785e97e3cfaa9ead379813ce7049d8ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bucket Empty.png"
-dest_files=["res://.godot/imported/Bucket Empty.png-b21c0792c961a2897ecb169a5ec331b7.ctex"]
+source_file="res://ArtAssets/rockcluster.png"
+dest_files=["res://.godot/imported/rockcluster.png-785e97e3cfaa9ead379813ce7049d8ec.ctex"]
 
 [params]
 

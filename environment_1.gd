@@ -8,9 +8,11 @@ var clues_on_screen: Array = []
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
+	"RockCluster" : false,
 	"RockCluster0" : false,
 	"RockCluster1" : false,
 	"RockCluster2" : false,
+	"RockCluster3" : false,
 	"StallionScent" : false,
 	"RockSlide" : false,
 }
@@ -42,20 +44,20 @@ func start_game():
 	
 	
 func _on_get_up():
-	%RockCluster0.add_to_group("see")
-	%RockCluster1.add_to_group("see")
-	%RockCluster2.add_to_group("see")
+	%RockCluster.add_to_group("see")
 	
 	
 func _on_rock_cluster_0_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_0:
 		pass
-	elif Global.player_POI_position == Global.POIs.ROCKCLUSTER_2:
+	elif Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_3:
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster0.position.x + 200, %RockCluster0.position.y + 70))
+		Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
 		await Global.arrived
+		print(%RockCluster0.position.x +100, %RockCluster0.position.y + 50)
+		print($BackgroundLayers/Parallax2D2/PlayerHorse.position)
 		Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
 	
 
@@ -66,7 +68,7 @@ func _on_rock_cluster_1_pressed() -> void:
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster1.position.x + 200, %RockCluster1.position.y + 70))
+		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 620, %RockCluster.position.y + 200))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.ROCKCLUSTER_1
 
@@ -74,13 +76,25 @@ func _on_rock_cluster_1_pressed() -> void:
 func _on_rock_cluster_2_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2:
 		pass
-	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_1:
+	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_1 and Global.player_POI_position != Global.POIs.ROCKCLUSTER_3:
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster2.position.x + 200, %RockCluster2.position.y + 70))
+		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 440, %RockCluster.position.y + 120))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.ROCKCLUSTER_2
+
+
+func _on_rock_cluster_3_pressed() -> void:
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_3:
+		pass
+	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_2:
+		dialogue = load("res://Dialogue/E1_can't_reach.tres")
+		DialogueManager.start_dialogue(dialogue)
+	else:
+		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 610, %RockCluster.position.y + 10))
+		await Global.arrived
+		Global.player_POI_position = Global.POIs.ROCKCLUSTER_3
 		clues_interacted["RockCluster"] = true
 
 
@@ -90,7 +104,7 @@ func _on_scent_pressed() -> void:
 	# play the respective clue stuff
 
 # If click scent while on the ground: too high to reach
-	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_2 or %StallionScent.position.x > %RockCluster2.position.x + 200 :
+	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_3 or %StallionScent.position.x > %RockCluster.position.x + 600 :
 		dialogue = load("res://Dialogue/E1_can't_reach.tres")
 		DialogueManager.start_dialogue(dialogue)
 	else:
