@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="5_826ab"]
 [ext_resource type="Texture2D" uid="uid://ce4817xwbr3gc" path="res://Assets/New Piskel-9.png.png" id="5_bt657"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="6_1jxss"]
-[ext_resource type="Texture2D" uid="uid://dyl1e11eo6fue" path="res://Assets/Bucket Empty.png" id="6_826ab"]
 [ext_resource type="Texture2D" uid="uid://b3c6rkeuuw7m7" path="res://Assets/New Piskel-10.png.png" id="7_1jxss"]
 [ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="7_226vn"]
+[ext_resource type="Texture2D" uid="uid://sqkv46fiebdn" path="res://ArtAssets/bucket_empty.png" id="7_bt657"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_3mwvo"]
-[ext_resource type="Texture2D" uid="uid://dcuhs8h4pv20i" path="res://Assets/New Piskel-7.png.png" id="8_bt657"]
+[ext_resource type="Texture2D" uid="uid://cuivaa7vi174o" path="res://ArtAssets/smoke.png" id="9_bt657"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="10_jb611"]
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="11_k5e16"]
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="12_wja3w"]
@@ -106,6 +106,33 @@ _data = {
 &"hallucination": SubResource("Animation_awyal")
 }
 
+[sub_resource type="Animation" id="Animation_1jxss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4196.0005, 609)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_826ab"]
 resource_name = "scent_waft"
 length = 7.0
@@ -134,33 +161,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1jxss"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4196.0005, 609)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_226vn"]
 _data = {
 &"RESET": SubResource("Animation_1jxss"),
@@ -176,7 +176,7 @@ bg_color = Color(1, 1, 1, 0.58431375)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiedm"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="environment2" type="Control"]
+[node name="Environment2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,12 +266,13 @@ stretch_mode = 0
 
 [node name="Bucket" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
 unique_name_in_owner = true
-offset_left = 2454.0
-offset_top = 358.00003
-offset_right = 2547.899
-offset_bottom = 458.00003
+offset_left = 2609.0002
+offset_top = 252.00005
+offset_right = 3041.8352
+offset_bottom = 712.95856
 rotation = 1.3613569
-texture_normal = ExtResource("6_826ab")
+scale = Vector2(0.6087415, 0.6087415)
+texture_normal = ExtResource("7_bt657")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -302,7 +303,7 @@ unique_name_in_owner = true
 position = Vector2(133.85619, 170.04834)
 scale = Vector2(0.3, 0.49787593)
 amount = 20
-texture = ExtResource("8_bt657")
+texture = ExtResource("9_bt657")
 speed_scale = 0.3
 local_coords = true
 emission_shape = 3
@@ -332,7 +333,7 @@ unique_name_in_owner = true
 position = Vector2(154.77113, 179.32368)
 scale = Vector2(0.29999998, 0.3)
 amount = 20
-texture = ExtResource("8_bt657")
+texture = ExtResource("9_bt657")
 speed_scale = 0.3
 local_coords = true
 emission_shape = 3
@@ -361,7 +362,7 @@ unique_name_in_owner = true
 position = Vector2(112.940895, 173.14009)
 scale = Vector2(0.29999995, 0.3)
 amount = 20
-texture = ExtResource("8_bt657")
+texture = ExtResource("9_bt657")
 speed_scale = 0.3
 local_coords = true
 emission_shape = 3
@@ -392,7 +393,7 @@ unique_name_in_owner = true
 position = Vector2(144.732, 168.81158)
 scale = Vector2(0.29999995, 0.3)
 amount = 20
-texture = ExtResource("8_bt657")
+texture = ExtResource("9_bt657")
 speed_scale = 0.3
 local_coords = true
 emission_shape = 3
@@ -558,6 +559,7 @@ text = " > "
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false

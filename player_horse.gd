@@ -23,7 +23,7 @@ func give_hint(pos):
 		"Echo":
 			$HintParticles.position = Vector2(-13, -11)
 		"Sight":
-			$HintParticles.position = Vector2(-64, -111)
+			$HintParticles.position = Vector2(-64, -70)
 		"Scent":
 			$HintParticles.position = Vector2(25, -111)
 		"Hearing":
@@ -57,6 +57,7 @@ func change_position():
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print(event)
 	if event.is_action_pressed("click"):
 		print("click")
 		$Senses.show()

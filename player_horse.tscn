@@ -219,6 +219,7 @@ point_count = 2
 
 [node name="PlayerHorse" type="CharacterBody2D"]
 scale = Vector2(1.9379834, 1.9379834)
+input_pickable = true
 script = ExtResource("1_0078p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -253,10 +254,10 @@ metadata/_custom_type_script = "uid://b0qr2cagvysf3"
 
 [node name="Senses" parent="." instance=ExtResource("16_1r8bo")]
 visible = false
-offset_left = -17.0
-offset_top = -102.0
-offset_right = -6.0
-offset_bottom = -89.0
+offset_left = -12.384007
+offset_top = -55.212036
+offset_right = -1.3840075
+offset_bottom = -42.212036
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-17, -7)
