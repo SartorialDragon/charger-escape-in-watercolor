@@ -2,6 +2,9 @@ extends Control
 
 var dialogue: DialogueData
 
+var cursor_default = load("res://Assets/Cursor_Sepia.png")
+var cursor_POI = load("res://Assets/Cursor_Brown.png")
+
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
@@ -27,7 +30,9 @@ var clues_interacted = {
 
 
 func _ready():
-	Global.player_start_position = Vector2(400, 750)
+	Input.set_custom_mouse_cursor(cursor_default)
+	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
+	Global.player_start_position = Vector2(700, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.game_started.connect(start_game)
 	Global.got_up.connect(	_on_get_up)
@@ -35,7 +40,7 @@ func _ready():
 	
 	
 func start_game():
-	for n in 90:
+	for n in 110:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 	await get_tree().create_timer(5).timeout
@@ -226,6 +231,7 @@ func _on_smell_button_pressed() -> void:
 	
 func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky2.self_modulate = Color(0.282, 0.282, 0.282)
 	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
 

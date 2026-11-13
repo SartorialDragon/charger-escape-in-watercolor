@@ -2,6 +2,9 @@ extends Control
 
 var dialogue: DialogueData
 
+var cursor_default = load("res://Assets/Cursor_Sepia.png")
+var cursor_POI = load("res://Assets/Cursor_Brown.png")
+
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
@@ -51,6 +54,8 @@ var clues_interacted = {
 
 
 func _ready():
+	Input.set_custom_mouse_cursor(cursor_default)
+	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
