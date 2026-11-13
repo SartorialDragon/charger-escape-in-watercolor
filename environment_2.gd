@@ -234,7 +234,7 @@ func switch_scene():
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scene_1.tscn")
+	get_tree().change_scene_to_file("res://environment_3.tscn")
 
 
 	
