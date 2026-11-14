@@ -64,10 +64,8 @@ func _on_tree_0_pressed() -> void:
 	else:
 		if Global.current_sense == Global.senses.SEE:
 			dialogue = load("res://Dialogue/E2_can't_see.tres")
-			print("see ", dialogue)
 			DialogueManager.start_dialogue(dialogue)
 		elif Global.current_sense == Global.senses.HEAR:
-			print("hear ", dialogue)
 			dialogue = load("res://Dialogue/E2_can't_hear.tres")
 			DialogueManager.start_dialogue(dialogue)
 		elif Global.current_sense == Global.senses.SMELL:

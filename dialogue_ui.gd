@@ -18,7 +18,6 @@ func _on_started(_data: DialogueData) -> void:
 
 
 func _on_line(line: DialogueLine) -> void:
-	print("on line received	: ", line.id)
 	memory_panel.texture = line.image
 	speaker_label.text = line.speaker
 	text_label.text = line.text

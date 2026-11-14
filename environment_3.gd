@@ -17,17 +17,6 @@ var clues_discovered = { # key needs to be identical with node name
 	"SoftSpot" : false,
 	"StallionHallucination" : false,
 	"Hoofprints" : false,
-	
-	"Tree0" : false,
-	"ManeHair" : false,
-	"Bucket" : false,
-	"Stream" : false,
-	"Tree1" : false,
-	"Tree2" : false,
-	"Tree3" : false,
-	"Tree4" : false,
-	"StallionScent" : false,
-	"Smoldering" : false,
 }
 
 # this means it has been clicked
@@ -38,17 +27,6 @@ var clues_interacted = {
 	"SoftSpot" : false,
 	"StallionHallucination" : false,
 	"Hoofprints" : false,
-	
-	"Tree0" : false,
-	"ManeHair" : false,
-	"Bucket" : false,
-	"Stream" : false,
-	"Tree1" : false,
-	"Tree2" : false,
-	"Tree3" : false,
-	"Tree4" : false,
-	"StallionScent" : false,
-	"Smoldering" : false,
 }
 
 
