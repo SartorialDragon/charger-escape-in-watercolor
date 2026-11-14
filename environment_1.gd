@@ -61,8 +61,6 @@ func _on_rock_cluster_0_pressed() -> void:
 	else:
 		Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
 		await Global.arrived
-		print(%RockCluster0.position.x +100, %RockCluster0.position.y + 50)
-		print($BackgroundLayers/Parallax2D2/PlayerHorse.position)
 		Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
 	
 

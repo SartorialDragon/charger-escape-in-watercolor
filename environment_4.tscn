@@ -1,0 +1,593 @@
+[gd_scene load_steps=23 format=3 uid="uid://dqhutmoylg7ve"]
+
+[ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
+[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_um664"]
+[ext_resource type="Texture2D" uid="uid://c4k7ory2t3yt1" path="res://Assets/bg_0.png" id="3_um664"]
+[ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="4_vylta"]
+[ext_resource type="Texture2D" uid="uid://b3c6rkeuuw7m7" path="res://Assets/New Piskel-10.png.png" id="5_5jeke"]
+[ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="6_8xvv2"]
+[ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="7_vylta"]
+[ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="8_6fwi5"]
+[ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="8_mxxf3"]
+[ext_resource type="Texture2D" uid="uid://dmc2cwtij1ghl" path="res://ArtAssets/rock1.png" id="9_8xvv2"]
+[ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="10_r3iwi"]
+[ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="11_bnibu"]
+[ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="12_ki76w"]
+[ext_resource type="Texture2D" uid="uid://bl0d8kjoagwgs" path="res://ArtAssets/tree2.png" id="12_vylta"]
+[ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="13_edo2x"]
+[ext_resource type="Texture2D" uid="uid://brai801lvtqll" path="res://ArtAssets/he_is_dead.png" id="14_5jeke"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_aodgo"]
+
+[sub_resource type="Curve" id="Curve_2li0a"]
+_data = [Vector2(0.0050167143, 0.22229773), 0.0, 0.0, 0, 0, Vector2(1, 0.4167233), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xifw"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m86cq"]
+bg_color = Color(1, 1, 1, 0.58431375)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylta"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76ml2"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Environment4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fjkyu")
+
+[node name="BackgroundLayers" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_um664")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Middle" type="TextureRect" parent="BackgroundLayers/Parallax2D2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 5758.0
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_um664")
+metadata/_edit_use_anchors_ = true
+
+[node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 847.0
+offset_top = 586.0
+offset_right = 994.2418
+offset_bottom = 646.599
+scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Particles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent0"]
+unique_name_in_owner = true
+position = Vector2(58.56208, 24.734291)
+scale = Vector2(0.9999998, 1)
+amount = 100
+texture = ExtResource("4_vylta")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
+[node name="Scent1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_left = 1382.0
+offset_top = 422.0
+offset_right = 1504.9805
+offset_bottom = 473.94202
+scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Particles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent1"]
+unique_name_in_owner = true
+position = Vector2(35.13724, 19.169073)
+scale = Vector2(0.9999998, 1)
+amount = 100
+texture = ExtResource("4_vylta")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
+[node name="Sound0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_left = 1692.0
+offset_top = 601.0
+offset_right = 1830.0392
+offset_bottom = 652.942
+scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Particles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Sound0"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(53.542465, 25.971008)
+scale = Vector2(0.9999998, 1)
+amount = 100
+texture = ExtResource("4_vylta")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(1, 0.932, 0.49, 1)
+
+[node name="Spring" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see", "smell"]]
+unique_name_in_owner = true
+offset_left = 3675.0
+offset_top = 727.0
+offset_right = 3768.899
+offset_bottom = 827.0
+scale = Vector2(8.881775, 2.469204)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_5jeke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Destroy0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+self_modulate = Color(3.17842, 3.17842, 3.17842, 1)
+offset_left = 4261.0
+offset_top = 223.0
+offset_right = 4528.294
+offset_bottom = 423.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("6_8xvv2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RedParticles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy0"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(138.03912, 137.27536)
+scale = Vector2(0.99999976, 1)
+emitting = false
+amount = 500
+texture = ExtResource("4_vylta")
+speed_scale = 1.38
+explosiveness = 0.18
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.95558554, 0, 0.03693862, 1)
+
+[node name="Destroy1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3880.9998
+offset_top = 325.0
+offset_right = 4148.294
+offset_bottom = 525.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("7_vylta")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="RedParticles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy1"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(133.01965, 99.55556)
+scale = Vector2(0.99999976, 1)
+emitting = false
+amount = 500
+texture = ExtResource("4_vylta")
+speed_scale = 1.38
+explosiveness = 0.18
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.95558554, 0, 0.03693862, 1)
+
+[node name="Destroy2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+self_modulate = Color(3.178, 3.178, 3.178, 1)
+offset_left = 4779.0
+offset_top = 701.0
+offset_right = 5046.294
+offset_bottom = 901.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("6_8xvv2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RedParticles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy2"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(129.67322, 131.09177)
+scale = Vector2(0.99999976, 1)
+emitting = false
+amount = 500
+texture = ExtResource("4_vylta")
+speed_scale = 1.38
+explosiveness = 0.18
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.95558554, 0, 0.03693862, 1)
+
+[node name="Destroy3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 4568.9995
+offset_top = 399.0
+offset_right = 4836.294
+offset_bottom = 599.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("8_6fwi5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RedParticles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy3"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(125.490585, 103.26572)
+scale = Vector2(0.99999976, 1)
+emitting = false
+amount = 500
+texture = ExtResource("4_vylta")
+speed_scale = 1.38
+explosiveness = 0.18
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.95558554, 0, 0.03693862, 1)
+
+[node name="Destroy4" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3439.0
+offset_top = 380.0
+offset_right = 3706.294
+offset_bottom = 580.34784
+scale = Vector2(1.1953125, 1.6171875)
+texture_normal = ExtResource("9_8xvv2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RedParticles4" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy4"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(122.980225, 112.54106)
+scale = Vector2(0.99999976, 1)
+emitting = false
+amount = 500
+texture = ExtResource("4_vylta")
+speed_scale = 1.38
+explosiveness = 0.18
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2li0a")
+color = Color(0.95558554, 0, 0.03693862, 1)
+
+[node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("8_mxxf3")]
+
+[node name="Stallion" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3970.0
+offset_top = 678.0
+offset_right = 4284.2104
+offset_bottom = 925.9615
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("10_r3iwi")
+ignore_texture_size = true
+stretch_mode = 4
+flip_v = true
+
+[node name="StallionHallucination1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.3137255)
+offset_left = 3094.0
+offset_top = 525.0
+offset_right = 3408.2104
+offset_bottom = 772.9615
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("10_r3iwi")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Bush" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3797.0
+offset_top = 596.0
+offset_right = 4180.4736
+offset_bottom = 1066.2661
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("12_vylta")
+stretch_mode = 4
+
+[node name="Bush2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3994.0002
+offset_top = 524.00006
+offset_right = 4377.4736
+offset_bottom = 994.2661
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("12_vylta")
+stretch_mode = 4
+flip_h = true
+
+[node name="Bush3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+unique_name_in_owner = true
+offset_left = 3938.0
+offset_top = 533.00006
+offset_right = 4321.4736
+offset_bottom = 1003.2661
+scale = Vector2(0.9257477, 1.2524822)
+texture_normal = ExtResource("12_vylta")
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2"]
+root_node = NodePath("../Bush")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.1, 1)
+repeat_size = Vector2(1920, 0)
+
+[node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 3838.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_bnibu")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(958, 542)
+
+[node name="ClueDialogue" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("12_ki76w")
+
+[node name="Panel" type="Panel" parent="ClueDialogue"]
+offset_right = 1921.0
+offset_bottom = 1088.0
+focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xifw")
+
+[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue/Panel"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 92.0
+offset_right = 1763.0
+offset_bottom = 1038.0
+alignment = 1
+
+[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.89
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextPanel" type="Panel" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_m86cq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/Panel/DialoguePanel/TextPanel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 26.0
+offset_right = 1550.0
+offset_bottom = 279.0
+
+[node name="SpeakerLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "Echo"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/Panel/DialoguePanel"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AdvanceDialogueButton" type="Button" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = " > "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
+
+[node name="StillImageLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="StillImageLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vylta")
+
+[node name="StillImage" type="TextureRect" parent="StillImageLayer/Panel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -889.15125
+offset_top = -502.0
+offset_right = 889.15125
+offset_bottom = 502.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_5jeke")
+expand_mode = 1
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="SwitchScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="SwitchScreen"]
+self_modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_76ml2")
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_edo2x")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="SFXAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_aodgo")
+bus = &"Music"
+
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent0" to="." method="_on_scent_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent1" to="." method="_on_scent_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Spring" to="." method="_on_spring_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy0" to="." method="_on_destroy_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy1" to="." method="_on_destroy_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy2" to="." method="_on_destroy_2_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy3" to="." method="_on_destroy_3_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy4" to="." method="_on_destroy_4_pressed"]
+[connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]

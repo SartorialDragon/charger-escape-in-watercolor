@@ -34,6 +34,7 @@ func give_hint(pos):
 	
 	
 func hide_hint(pos):
+	print("pos: ", pos, " hidden")
 	Global.clues_discovered[pos] = true
 	$HintParticles.emitting = false
 	
