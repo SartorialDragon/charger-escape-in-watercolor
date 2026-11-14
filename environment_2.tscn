@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
-[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_w4vuy"]
+[ext_resource type="Texture2D" uid="uid://di4vfm2nnbdc5" path="res://ArtAssets/sky65.png" id="2_bt657"]
 [ext_resource type="Texture2D" uid="uid://ba0lb1j7sxu" path="res://Assets/bg_65.png" id="3_ygjpp"]
 [ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="4_ygjpp"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="5_826ab"]
@@ -188,7 +188,7 @@ script = ExtResource("1_3181v")
 [node name="BackgroundLayers" type="Node2D" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.05, 1)
 
 [node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
 anchors_preset = 15
@@ -199,7 +199,7 @@ offset_right = 3838.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_w4vuy")
+texture = ExtResource("2_bt657")
 stretch_mode = 2
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
@@ -224,6 +224,7 @@ offset_top = 266.99997
 offset_right = 1173.294
 offset_bottom = 467.3478
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ygjpp")
 ignore_texture_size = true
 stretch_mode = 0
@@ -260,18 +261,21 @@ offset_right = 1225.1536
 offset_bottom = 393.9036
 rotation = 0.72082096
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_bt657")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Bucket" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
 unique_name_in_owner = true
+z_index = 1
 offset_left = 2609.0002
 offset_top = 252.00005
 offset_right = 3041.8352
 offset_bottom = 712.95856
 rotation = 1.3613569
 scale = Vector2(0.6087415, 0.6087415)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_bt657")
 ignore_texture_size = true
 stretch_mode = 0
@@ -283,6 +287,7 @@ offset_top = 775.0
 offset_right = 2237.8992
 offset_bottom = 875.0
 scale = Vector2(8.881775, 2.469204)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_1jxss")
 ignore_texture_size = true
 stretch_mode = 0
@@ -294,6 +299,7 @@ offset_top = 250.99997
 offset_right = 3806.294
 offset_bottom = 451.3478
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ygjpp")
 ignore_texture_size = true
 stretch_mode = 0
@@ -323,6 +329,7 @@ offset_top = 386.0
 offset_right = 3832.294
 offset_bottom = 586.34784
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ygjpp")
 ignore_texture_size = true
 stretch_mode = 0
@@ -353,6 +360,7 @@ offset_top = 470.0
 offset_right = 3728.2942
 offset_bottom = 670.34784
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ygjpp")
 ignore_texture_size = true
 stretch_mode = 0
@@ -384,6 +392,7 @@ offset_top = 641.0
 offset_right = 3832.294
 offset_bottom = 841.34784
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ygjpp")
 ignore_texture_size = true
 stretch_mode = 0
@@ -413,7 +422,8 @@ offset_left = 4751.0
 offset_top = 525.0
 offset_right = 5065.2104
 offset_bottom = 772.9615
-scale = Vector2(0.9257477, 1.2524822)
+scale = Vector2(0.8074859, 1.0924809)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_1jxss")
 ignore_texture_size = true
 stretch_mode = 4
@@ -434,6 +444,7 @@ offset_top = 609.0
 offset_right = 4446.999
 offset_bottom = 670.2178
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_226vn")
 ignore_texture_size = true
 stretch_mode = 0

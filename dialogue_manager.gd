@@ -12,7 +12,10 @@ var current_line: DialogueLine
 var is_active: bool = false
 
 func start_dialogue(data: DialogueData) -> void:
-	current_data = data
+	if data != null: # this doesn't work because a failed load is not null
+		current_data = data
+	else:
+		current_data = load("res://Dialogue/dialogue_missing.tres")
 	is_active = true
 	dialogue_started.emit(data)
 	_show_line(data.start_id)
@@ -20,7 +23,6 @@ func start_dialogue(data: DialogueData) -> void:
 
 func _show_line(line_id: String) -> void:
 	current_line = current_data.get_line(line_id)
-	#print(current_line)
 	if current_line == null:
 		end_dialogue()
 		return

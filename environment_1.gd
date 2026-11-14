@@ -2,6 +2,9 @@ extends Control
 
 var dialogue: DialogueData
 
+var cursor_default = load("res://Assets/Cursor_Sepia.png")
+var cursor_POI = load("res://Assets/Cursor_Brown.png")
+
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
@@ -27,7 +30,9 @@ var clues_interacted = {
 
 
 func _ready():
-	Global.player_start_position = Vector2(400, 750)
+	Input.set_custom_mouse_cursor(cursor_default)
+	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
+	Global.player_start_position = Vector2(700, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.game_started.connect(start_game)
 	Global.got_up.connect(	_on_get_up)
@@ -35,7 +40,7 @@ func _ready():
 	
 	
 func start_game():
-	for n in 90:
+	for n in 110:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 	await get_tree().create_timer(5).timeout
@@ -56,8 +61,6 @@ func _on_rock_cluster_0_pressed() -> void:
 	else:
 		Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
 		await Global.arrived
-		print(%RockCluster0.position.x +100, %RockCluster0.position.y + 50)
-		print($BackgroundLayers/Parallax2D2/PlayerHorse.position)
 		Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
 	
 
@@ -154,7 +157,7 @@ func play_cutscene_to_stallion():
 	%HallucinationAnimationPlayer.play("hallucination")
 	await %HallucinationAnimationPlayer.animation_finished
 	await get_tree().create_timer(1).timeout
-	Global.visit_clue.emit(Vector2(5500, 525))
+	Global.visit_clue.emit(Vector2(5500, 700))
 	await get_tree().create_timer(1).timeout
 	switch_scene()
 
@@ -260,17 +263,17 @@ func hide_scents():
 func show_sounds():
 	if not clues_interacted["RockSlide"]:
 		if not clues_discovered["RockSlide"]:
-			%RockSlide.texture_normal = load("res://Assets/rock2.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 		else:
-			%RockSlide.texture_normal = load("res://Assets/rock3.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 
 
 func hide_sounds():
 	if not clues_interacted["RockSlide"]:
 		if not clues_discovered["RockSlide"]:
-			%RockSlide.texture_normal = load("res://Assets/rock0.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 		else:
-			%RockSlide.texture_normal = load("res://Assets/rock1.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 
 
 # updates showing all currently discovered clues

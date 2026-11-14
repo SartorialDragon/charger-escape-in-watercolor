@@ -1,17 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=20 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
-[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_jiugy"]
+[ext_resource type="Texture2D" uid="uid://bow8ftjmnxyi8" path="res://ArtAssets/sky30.png" id="2_2k1u2"]
 [ext_resource type="Texture2D" uid="uid://xg25ykeiprno" path="res://Assets/bg_30.png" id="3_trp7i"]
 [ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="4_wuhxp"]
+[ext_resource type="Texture2D" uid="uid://303nhfnhydg1" path="res://Assets/New Piskel-12.png.png" id="5_3jdq1"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="5_kvufe"]
-[ext_resource type="Texture2D" uid="uid://ce4817xwbr3gc" path="res://Assets/New Piskel-9.png.png" id="6_ostmy"]
-[ext_resource type="Texture2D" uid="uid://sqkv46fiebdn" path="res://ArtAssets/bucket_empty.png" id="7_f0v5m"]
-[ext_resource type="Texture2D" uid="uid://b3c6rkeuuw7m7" path="res://Assets/New Piskel-10.png.png" id="8_pfsxh"]
 [ext_resource type="Texture2D" uid="uid://cuivaa7vi174o" path="res://ArtAssets/smoke.png" id="9_00rjo"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="10_1nc6w"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="11_ykfhg"]
-[ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="12_a18tg"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="13_bahio"]
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="14_hbvfe"]
 [ext_resource type="Texture2D" uid="uid://dygb5kf4qy1hl" path="res://Assets/New Piskel-14.png.png" id="14_jiugy"]
@@ -25,152 +22,6 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_trp7i"]
 offsets = PackedFloat32Array(0, 0.24206349, 0.8055556)
 colors = PackedColorArray(0.77, 0.77, 0.77, 0.1254902, 0.85, 0.85, 0.85, 0.7490196, 0.71, 0.71, 0.71, 1)
-
-[sub_resource type="Animation" id="Animation_pl4m5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4751, 525)]
-}
-
-[sub_resource type="Animation" id="Animation_awyal"]
-resource_name = "hallucination"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333, 1.2, 1.6, 2.0333333, 2.4666667, 2.8666666, 3.17, 3.56, 5.866667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.26666668), Color(1, 1, 1, 0.09803922), Color(1, 1, 1, 0.40392157), Color(1, 1, 1, 0.53333336), Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0.40784314), Color(1, 1, 1, 0.1764706), Color(1, 1, 1, 0.41960785), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.65),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.6399999, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(4751, 525), Vector2(4751, 525), Vector2(5500, 400)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs3hf"]
-_data = {
-&"RESET": SubResource("Animation_pl4m5"),
-&"hallucination": SubResource("Animation_awyal")
-}
-
-[sub_resource type="Animation" id="Animation_1jxss"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4196.0005, 609)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_826ab"]
-resource_name = "scent_waft"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.733333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(4196.0005, 609), Vector2(3589, 642)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.9, 6.48),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_226vn"]
-_data = {
-&"RESET": SubResource("Animation_1jxss"),
-&"scent_waft": SubResource("Animation_826ab")
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dacjr"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
@@ -193,9 +44,10 @@ script = ExtResource("1_6trsd")
 [node name="BackgroundLayers" type="Node2D" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.05, 1)
 
 [node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
+z_index = -5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,8 +56,9 @@ offset_right = 3838.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jiugy")
+texture = ExtResource("2_2k1u2")
 stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
 scroll_scale = Vector2(0.7, 1)
@@ -221,23 +74,25 @@ offset_bottom = 1077.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_trp7i")
+metadata/_edit_use_anchors_ = true
 
-[node name="Tree0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
+[node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
 unique_name_in_owner = true
-offset_left = 906.0
-offset_top = 266.99997
-offset_right = 1173.294
-offset_bottom = 467.3478
+z_index = 1
+offset_left = 847.0
+offset_top = 586.0
+offset_right = 994.2418
+offset_bottom = 646.599
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("4_wuhxp")
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="TreeParticles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree0"]
+[node name="Particles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent0"]
 unique_name_in_owner = true
-position = Vector2(172.3399, 89.0435)
+position = Vector2(58.56208, 24.734291)
 scale = Vector2(0.9999998, 1)
-emitting = false
 amount = 100
 texture = ExtResource("5_kvufe")
 speed_scale = 0.2
@@ -256,52 +111,101 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_7xvgo")
 color = Color(0.6774726, 1, 0.6616442, 1)
 
-[node name="ManeHair" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+[node name="Scent1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
 visible = false
-offset_left = 1067.0
-offset_top = 328.00006
-offset_right = 1225.1536
-offset_bottom = 393.9036
-rotation = 0.72082096
+z_index = 1
+offset_left = 1382.0
+offset_top = 422.0
+offset_right = 1504.9805
+offset_bottom = 473.94202
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("6_ostmy")
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Bucket" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
+[node name="Particles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent1"]
 unique_name_in_owner = true
-offset_left = 2609.0002
-offset_top = 252.00005
-offset_right = 3041.8352
-offset_bottom = 712.95856
-rotation = 1.3613569
-scale = Vector2(0.6087415, 0.6087415)
-texture_normal = ExtResource("7_f0v5m")
+position = Vector2(35.13724, 19.169073)
+scale = Vector2(0.9999998, 1)
+amount = 100
+texture = ExtResource("5_kvufe")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_7xvgo")
+color = Color(0.6774726, 1, 0.6616442, 1)
+
+[node name="Sound0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_left = 1692.0
+offset_top = 601.0
+offset_right = 1830.0392
+offset_bottom = 652.942
+scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Stream" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables", "see", "smell"]]
+[node name="Particles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Sound0"]
 unique_name_in_owner = true
-offset_left = 2144.0002
-offset_top = 775.0
-offset_right = 2237.8992
-offset_bottom = 875.0
+z_index = 1
+position = Vector2(53.542465, 25.971008)
+scale = Vector2(0.9999998, 1)
+amount = 100
+texture = ExtResource("5_kvufe")
+speed_scale = 0.2
+explosiveness = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(40, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.57
+initial_velocity_max = 76.18
+angle_min = -565.7
+angle_max = 360.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_7xvgo")
+color = Color(1, 0.932, 0.49, 1)
+
+[node name="SoftSpot" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see", "smell"]]
+unique_name_in_owner = true
+offset_left = 2146.0002
+offset_top = 651.0
+offset_right = 2239.8992
+offset_bottom = 751.0
 scale = Vector2(8.881775, 2.469204)
-texture_normal = ExtResource("8_pfsxh")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_3jdq1")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Tree1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 3539.0
-offset_top = 250.99997
-offset_right = 3806.294
-offset_bottom = 451.3478
+offset_left = 2732.0002
+offset_top = 146.99998
+offset_right = 2999.2942
+offset_bottom = 347.34784
 scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("4_wuhxp")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="TreeParticles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree1"]
 unique_name_in_owner = true
@@ -323,15 +227,16 @@ color = Color(0.53246933, 0.5324694, 0.53246933, 1)
 
 [node name="Tree2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 3565.0
-offset_top = 386.0
-offset_right = 3832.294
-offset_bottom = 586.34784
+offset_left = 2277.0
+offset_top = 178.0
+offset_right = 2544.294
+offset_bottom = 378.34784
 scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("4_wuhxp")
 ignore_texture_size = true
 stretch_mode = 0
 flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [node name="TreeParticles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree2"]
 unique_name_in_owner = true
@@ -353,14 +258,15 @@ color = Color(0.53246933, 0.5324694, 0.53246933, 1)
 
 [node name="Tree3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 3461.0002
-offset_top = 470.0
-offset_right = 3728.2942
-offset_bottom = 670.34784
+offset_left = 3187.0
+offset_top = 282.0
+offset_right = 3454.294
+offset_bottom = 482.34784
 scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("4_wuhxp")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="TreeParticles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree3"]
 unique_name_in_owner = true
@@ -380,12 +286,15 @@ angle_max = 77.1
 scale_amount_min = 0.3
 color = Color(0.53246933, 0.5324694, 0.53246933, 1)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
+[node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("10_1nc6w")]
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
 self_modulate = Color(1, 1, 1, 0.654902)
 position = Vector2(1035, 560)
-amount = 100
+amount = 70
 texture = ExtResource("14_jiugy")
 lifetime = 8.68
+preprocess = 4.1
 randomness = 0.2
 lifetime_randomness = 0.2
 local_coords = true
@@ -401,7 +310,50 @@ scale_amount_min = 0.7
 scale_amount_max = 1.2
 color_ramp = SubResource("Gradient_trp7i")
 
-[node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("10_1nc6w")]
+[node name="SmokeParticles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
+self_modulate = Color(1, 1, 1, 0.654902)
+z_index = -2
+position = Vector2(1035, 560)
+amount = 70
+texture = ExtResource("14_jiugy")
+lifetime = 8.68
+preprocess = 4.1
+randomness = 0.2
+lifetime_randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 0.7
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_trp7i")
+
+[node name="SmokeParticles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
+self_modulate = Color(1, 1, 1, 0.654902)
+position = Vector2(3019, 440)
+amount = 60
+texture = ExtResource("14_jiugy")
+lifetime = 8.68
+preprocess = 4.1
+randomness = 0.2
+lifetime_randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 0.7
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_trp7i")
 
 [node name="Tree4" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
@@ -413,6 +365,7 @@ scale = Vector2(1.1953125, 1.6171875)
 texture_normal = ExtResource("4_wuhxp")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="TreeParticles4" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Tree4"]
 unique_name_in_owner = true
@@ -432,65 +385,18 @@ angle_max = 77.1
 scale_amount_min = 0.3
 color = Color(0.53246933, 0.5324694, 0.53246933, 1)
 
-[node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+[node name="StallionHallucination1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 4751.0
+visible = false
+self_modulate = Color(1, 1, 1, 0.3137255)
+offset_left = 3094.0
 offset_top = 525.0
-offset_right = 5065.2104
+offset_right = 3408.2104
 offset_bottom = 772.9615
 scale = Vector2(0.9257477, 1.2524822)
 texture_normal = ExtResource("11_ykfhg")
 ignore_texture_size = true
 stretch_mode = 4
-flip_h = true
-
-[node name="HallucinationAnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2/StallionHallucination0"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_bs3hf")
-}
-
-[node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 4196.0005
-offset_top = 609.0
-offset_right = 4446.999
-offset_bottom = 670.2178
-scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("12_a18tg")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="StallionScent"]
-position = Vector2(148.07819, 29.0628)
-scale = Vector2(0.99999994, 1)
-emitting = false
-amount = 100
-texture = ExtResource("5_kvufe")
-speed_scale = 0.2
-explosiveness = 0.1
-local_coords = true
-emission_shape = 3
-emission_rect_extents = Vector2(100, 1)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 28.57
-initial_velocity_max = 76.18
-angle_min = -565.7
-angle_max = 360.0
-scale_amount_min = 0.3
-scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_7xvgo")
-color = Color(0.6774726, 1, 0.6616442, 1)
-
-[node name="ScentAnimationPlayer" type="AnimationPlayer" parent="StallionScent"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_226vn")
-}
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.1, 1)
@@ -508,6 +414,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("13_bahio")
 stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(958, 542)
@@ -609,6 +516,8 @@ parameters/looping = true
 stream = ExtResource("16_k56vb")
 bus = &"Music"
 
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree0" to="." method="_on_tree_0_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/ManeHair" to="." method="_on_mane_hair_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent0" to="." method="_on_scent_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent1" to="." method="_on_scent_1_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/SoftSpot" to="." method="_on_soft_spot_pressed"]
 [connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]

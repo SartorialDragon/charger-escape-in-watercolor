@@ -294,6 +294,7 @@ offset_left = -58.30803
 offset_top = -43.344025
 offset_right = 33.54001
 offset_bottom = 38.70002
+mouse_default_cursor_shape = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

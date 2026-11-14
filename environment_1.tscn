@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
-[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
-[ext_resource type="Texture2D" uid="uid://ckt1x5c3g3nn7" path="res://Assets/IMG_3672.png" id="2_mwlxs"]
+[ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
+[ext_resource type="Texture2D" uid="uid://bjlmytor4etvc" path="res://ArtAssets/1middle.png" id="3_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://d27xut2vu8ia2" path="res://ArtAssets/rockcluster.png" id="4_pl4m5"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="7_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
-[ext_resource type="Texture2D" uid="uid://dwwo7t5ndlfug" path="res://Assets/rock0.png" id="9_pl4m5"]
+[ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="9_bs3hf"]
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="11_xjqet"]
 [ext_resource type="PackedScene" uid="uid://bgoef03blq4l2" path="res://main_menu.tscn" id="14_2dglh"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
@@ -257,6 +257,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = 118.0
+offset_right = -176.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oep84")
@@ -264,19 +268,19 @@ script = ExtResource("1_oep84")
 [node name="BackgroundLayers" type="Node2D" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.05, 1)
 
 [node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3838.0
+offset_left = 157.0
+offset_right = 3997.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_ebayx")
+texture = ExtResource("2_bs3hf")
 stretch_mode = 2
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
@@ -286,13 +290,13 @@ scroll_scale = Vector2(0.7, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 5758.0
+offset_left = -656.0
+offset_right = 6044.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_mwlxs")
+texture = ExtResource("3_bs3hf")
 
 [node name="RockCluster" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
@@ -313,6 +317,7 @@ offset_top = 204.05797
 offset_right = 368.1045
 offset_bottom = 237.32382
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -324,6 +329,7 @@ offset_top = 142.22221
 offset_right = 535.6272
 offset_bottom = 181.22354
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -335,6 +341,7 @@ offset_top = 96.463776
 offset_right = 392.92926
 offset_bottom = 129.34724
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -346,6 +353,7 @@ offset_top = 22.879227
 offset_right = 530.79346
 offset_bottom = 55.38034
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -359,6 +367,7 @@ offset_top = 525.0
 offset_right = 5065.2104
 offset_bottom = 772.9615
 scale = Vector2(0.9257477, 1.2524822)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_6j7cg")
 ignore_texture_size = true
 stretch_mode = 4
@@ -378,6 +387,7 @@ offset_top = 585.0
 offset_right = 4415.9766
 offset_bottom = 646.21765
 scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_bs3hf")
 ignore_texture_size = true
 stretch_mode = 0
@@ -415,12 +425,11 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 3240.0
 offset_top = -71.0
-offset_right = 3570.4575
+offset_right = 3612.0
 offset_bottom = 566.8357
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("9_pl4m5")
-ignore_texture_size = true
-stretch_mode = 0
+texture_normal = ExtResource("9_bs3hf")
+stretch_mode = 5
 
 [node name="RockslideAnimationPlayer" type="AnimationPlayer" parent="RockSlide"]
 unique_name_in_owner = true
