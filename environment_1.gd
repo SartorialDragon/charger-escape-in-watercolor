@@ -157,7 +157,7 @@ func play_cutscene_to_stallion():
 	%HallucinationAnimationPlayer.play("hallucination")
 	await %HallucinationAnimationPlayer.animation_finished
 	await get_tree().create_timer(1).timeout
-	Global.visit_clue.emit(Vector2(5500, 525))
+	Global.visit_clue.emit(Vector2(5500, 700))
 	await get_tree().create_timer(1).timeout
 	switch_scene()
 
@@ -229,7 +229,6 @@ func _on_smell_button_pressed() -> void:
 	
 func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D/Sky2.self_modulate = Color(0.282, 0.282, 0.282)
 	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
 
@@ -264,17 +263,17 @@ func hide_scents():
 func show_sounds():
 	if not clues_interacted["RockSlide"]:
 		if not clues_discovered["RockSlide"]:
-			%RockSlide.texture_normal = load("res://Assets/rock2.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 		else:
-			%RockSlide.texture_normal = load("res://Assets/rock3.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 
 
 func hide_sounds():
 	if not clues_interacted["RockSlide"]:
 		if not clues_discovered["RockSlide"]:
-			%RockSlide.texture_normal = load("res://Assets/rock0.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 		else:
-			%RockSlide.texture_normal = load("res://Assets/rock1.png")
+			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
 
 
 # updates showing all currently discovered clues

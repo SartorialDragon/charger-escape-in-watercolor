@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
-[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_w4vuy"]
+[ext_resource type="Texture2D" uid="uid://di4vfm2nnbdc5" path="res://ArtAssets/sky65.png" id="2_bt657"]
 [ext_resource type="Texture2D" uid="uid://ba0lb1j7sxu" path="res://Assets/bg_65.png" id="3_ygjpp"]
 [ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="4_ygjpp"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="5_826ab"]
@@ -188,7 +188,7 @@ script = ExtResource("1_3181v")
 [node name="BackgroundLayers" type="Node2D" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="BackgroundLayers"]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.05, 1)
 
 [node name="Sky" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
 anchors_preset = 15
@@ -199,7 +199,7 @@ offset_right = 3838.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_w4vuy")
+texture = ExtResource("2_bt657")
 stretch_mode = 2
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
