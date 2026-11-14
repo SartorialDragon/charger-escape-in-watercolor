@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
-[ext_resource type="Texture2D" uid="uid://ctriqm6fgrj7" path="res://Assets/IMG_3668.png" id="2_ebayx"]
+[ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://bjlmytor4etvc" path="res://ArtAssets/1middle.png" id="3_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://d27xut2vu8ia2" path="res://ArtAssets/rockcluster.png" id="4_pl4m5"]
@@ -274,26 +274,13 @@ scroll_scale = Vector2(0.05, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 1918.0
+offset_left = 157.0
+offset_right = 3997.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_ebayx")
-stretch_mode = 2
-
-[node name="Sky2" type="TextureRect" parent="BackgroundLayers/Parallax2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1912.0
-offset_right = 3832.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_ebayx")
+texture = ExtResource("2_bs3hf")
 stretch_mode = 2
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundLayers"]
