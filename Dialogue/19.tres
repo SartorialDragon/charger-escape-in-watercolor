@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://oj1aw7rd4w7"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_odywy"]
+
+[resource]
+script = ExtResource("1_odywy")
+id = "19"
+speaker = "Echo"
+text = "Where am I? I need to open my eyes..."

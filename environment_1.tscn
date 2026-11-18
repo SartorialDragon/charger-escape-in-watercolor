@@ -1,19 +1,187 @@
-[gd_scene load_steps=29 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=33 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://bjlmytor4etvc" path="res://ArtAssets/1middle.png" id="3_bs3hf"]
-[ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="4_6j7cg"]
+[ext_resource type="Texture2D" uid="uid://dmc2cwtij1ghl" path="res://ArtAssets/rock1.png" id="4_1x6qx"]
 [ext_resource type="Texture2D" uid="uid://d27xut2vu8ia2" path="res://ArtAssets/rockcluster.png" id="4_pl4m5"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="4_sc4lb"]
-[ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="5_ebayx"]
+[ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="5_tof0b"]
+[ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="6_rdret"]
 [ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="7_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
 [ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="9_bs3hf"]
+[ext_resource type="Texture2D" uid="uid://cronaquuvx4do" path="res://ArtAssets/environment 1 foreground.png" id="10_bs3hf"]
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="11_xjqet"]
+[ext_resource type="Texture2D" uid="uid://cheivd2j1bd5s" path="res://ArtAssets/rock_broken.png" id="12_hm8ff"]
 [ext_resource type="PackedScene" uid="uid://bgoef03blq4l2" path="res://main_menu.tscn" id="14_2dglh"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
+[ext_resource type="AudioStream" uid="uid://bbxrycuvo3s2r" path="res://Assets/freesound_community-stones-falling-6375.mp3" id="14_je0s5"]
+[ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="17_rdret"]
+[ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="18_rdret"]
+
+[sub_resource type="Animation" id="Animation_6j7cg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_bs3hf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.23038346]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2100, 150)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xjqet"]
+resource_name = "kicked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("9_bs3hf"), ExtResource("12_hm8ff")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../SFXAudio:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_bs3hf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../SFXAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mwlxs"]
+resource_name = "rockslide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2100, 150), Vector2(2150, 230)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.23038346, 0.06632251157578473]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../SFXAudio:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_je0s5")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../SFXAudio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awyal"]
+_data = {
+&"RESET": SubResource("Animation_6j7cg"),
+&"kicked": SubResource("Animation_xjqet"),
+&"rockslide": SubResource("Animation_mwlxs")
+}
 
 [sub_resource type="Animation" id="Animation_pl4m5"]
 length = 0.001
@@ -165,90 +333,6 @@ _data = {
 _data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_6j7cg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3240, -71)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(330.45752, 637.8357)]
-}
-
-[sub_resource type="Animation" id="Animation_xjqet"]
-resource_name = "kicked"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.100000024),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(330.45752, 637.8357), Vector2(330.45752, 68.94684)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.100000024),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2546, 57), Vector2(2546, 849)]
-}
-
-[sub_resource type="Animation" id="Animation_mwlxs"]
-resource_name = "rockslide"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2741, -774), Vector2(2546.0002, 57)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_awyal"]
-_data = {
-&"RESET": SubResource("Animation_6j7cg"),
-&"kicked": SubResource("Animation_xjqet"),
-&"rockslide": SubResource("Animation_mwlxs")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j7cg"]
-bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjqet"]
-bg_color = Color(1, 1, 1, 0.58431375)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwlxs"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -297,6 +381,60 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_bs3hf")
+
+[node name="Rock1" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+z_index = 4
+layout_mode = 0
+offset_left = 3052.0
+offset_top = 907.0
+offset_right = 3366.0
+offset_bottom = 1104.0
+texture = ExtResource("4_1x6qx")
+
+[node name="Rock4" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+layout_mode = 0
+offset_left = 2880.0
+offset_top = 548.0
+offset_right = 3194.0
+offset_bottom = 745.0
+texture = ExtResource("4_1x6qx")
+flip_h = true
+
+[node name="Rock2" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+layout_mode = 0
+offset_left = 3045.0
+offset_top = 558.0
+offset_right = 3378.0
+offset_bottom = 755.0
+texture = ExtResource("5_tof0b")
+
+[node name="Rock5" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+z_index = 4
+layout_mode = 0
+offset_left = 2908.0
+offset_top = 868.0
+offset_right = 3241.0
+offset_bottom = 1065.0
+texture = ExtResource("5_tof0b")
+flip_h = true
+
+[node name="Rock3" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+layout_mode = 0
+offset_left = 2935.0
+offset_top = 377.0
+offset_right = 3270.0
+offset_bottom = 671.0
+texture = ExtResource("6_rdret")
+
+[node name="Rock6" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+z_index = 4
+layout_mode = 0
+offset_left = 2964.0
+offset_top = 734.0
+offset_right = 3299.0
+offset_bottom = 1028.0
+texture = ExtResource("6_rdret")
+flip_h = true
 
 [node name="RockCluster" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
@@ -356,6 +494,25 @@ scale = Vector2(1.1953125, 1.6171875)
 mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="RockSlide" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["hear", "interactables"]]
+unique_name_in_owner = true
+visible = false
+offset_left = 2100.0
+offset_top = 150.0
+offset_right = 2472.0
+offset_bottom = 787.8352
+rotation = -0.23038346
+scale = Vector2(1.1953125, 1.6171875)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_bs3hf")
+stretch_mode = 5
+
+[node name="RockslideAnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2/RockSlide"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_awyal")
+}
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("4_sc4lb")]
 
@@ -420,114 +577,32 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_pl4m5")
 color = Color(0.6774726, 1, 0.6616442, 1)
 
-[node name="RockSlide" type="TextureButton" parent="." groups=["hear", "interactables"]]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 3240.0
-offset_top = -71.0
-offset_right = 3612.0
-offset_bottom = 566.8357
-scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("9_bs3hf")
-stretch_mode = 5
-
-[node name="RockslideAnimationPlayer" type="AnimationPlayer" parent="RockSlide"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_awyal")
-}
-
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.1, 1)
-repeat_size = Vector2(1920, 0)
+repeat_size = Vector2(6700, 0)
 
 [node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3838.0
+offset_left = -655.0
+offset_right = 6045.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_6j7cg")
+texture = ExtResource("10_bs3hf")
 stretch_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 542)
 
-[node name="ClueDialogue" type="CanvasLayer" parent="."]
+[node name="ErrorDialogue" parent="." instance=ExtResource("17_rdret")]
 visible = false
-script = ExtResource("5_ebayx")
 
-[node name="Panel" type="Panel" parent="ClueDialogue"]
-offset_right = 1921.0
-offset_bottom = 1088.0
-focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
-theme_override_styles/panel = SubResource("StyleBoxFlat_6j7cg")
-
-[node name="DialoguePanel" type="VBoxContainer" parent="ClueDialogue/Panel"]
-layout_mode = 0
-offset_left = 156.0
-offset_top = 92.0
-offset_right = 1763.0
-offset_bottom = 1038.0
-alignment = 1
-
-[node name="MemoryPanel" type="TextureRect" parent="ClueDialogue/Panel/DialoguePanel"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.89
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TextPanel" type="Panel" parent="ClueDialogue/Panel/DialoguePanel"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_xjqet")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ClueDialogue/Panel/DialoguePanel/TextPanel"]
-layout_mode = 0
-offset_left = 74.0
-offset_top = 26.0
-offset_right = 1550.0
-offset_bottom = 279.0
-
-[node name="SpeakerLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 42
-text = "Echo"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="TextLabel" type="Label" parent="ClueDialogue/Panel/DialoguePanel/TextPanel/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 42
-text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ClueDialogue/Panel/DialoguePanel"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AdvanceDialogueButton" type="Button" parent="ClueDialogue/Panel/DialoguePanel/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = " > "
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClueDialogue"]
+[node name="ClueDialogue" parent="." instance=ExtResource("18_rdret")]
+visible = false
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 visible = false
@@ -554,6 +629,11 @@ parameters/looping = true
 stream = ExtResource("14_bs3hf")
 bus = &"Music"
 
+[node name="VAAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_bs3hf")
+bus = &"VA"
+
 [node name="MainMenu" parent="." instance=ExtResource("14_2dglh")]
 layout_mode = 1
 offset_left = -600.0
@@ -563,8 +643,7 @@ offset_right = -600.0
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster2" to="." method="_on_rock_cluster_2_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster3" to="." method="_on_rock_cluster_3_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockSlide" to="." method="_on_rock_slide_pressed"]
 [connection signal="input_event" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_input_event"]
 [connection signal="mouse_entered" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_mouse_entered"]
 [connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]
-[connection signal="pressed" from="RockSlide" to="." method="_on_rock_slide_pressed"]
-[connection signal="pressed" from="ClueDialogue/Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="ClueDialogue" method="_on_advance_dialogue_button_pressed"]

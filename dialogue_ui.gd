@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var memory_panel: TextureRect = $Panel/DialoguePanel/MemoryPanel
 @onready var speaker_label: Label = %SpeakerLabel
 @onready var text_label: Label = %TextLabel
+@onready var va_audio: AudioStreamPlayer = %VAAudio
+
+
 
 func _ready() -> void:
 	clue_dialogue.visible = false
@@ -21,12 +24,13 @@ func _on_line(line: DialogueLine) -> void:
 	memory_panel.texture = line.image
 	speaker_label.text = line.speaker
 	text_label.text = line.text
-	$AudioStreamPlayer.stream = line.vc_file
-	$AudioStreamPlayer.play()
+	va_audio.stream = line.vc_file
+	va_audio.play()
    
 
 func _on_ended() -> void:
 	clue_dialogue.visible = false
+	va_audio.stop()
 
 # not needed because the UI button now grabs the focus anyway and this would double the input
 # might be needed because if the sense buttons grab focus, it's a problem BUG

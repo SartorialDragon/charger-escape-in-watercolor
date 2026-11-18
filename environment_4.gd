@@ -1,6 +1,6 @@
 extends Control
 
-var dialogue: DialogueData
+var dialogue: NodePath
 
 var cursor_default = load("res://Assets/Cursor_Sepia.png")
 var cursor_POI = load("res://Assets/Cursor_Brown.png")
@@ -59,8 +59,8 @@ func _on_scent_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_0
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent0"] = true
 			clues_discovered["Scent1"] = true
 			#%Scent1.add_to_group("smell")
@@ -74,8 +74,8 @@ func _on_scent_1_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_1
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent1"] = true
 			clues_discovered["Sound0"] = true
 			#%Sound0.add_to_group("hear")
@@ -88,8 +88,8 @@ func _on_sound_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SOUND_0
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Sound0"] = true
 			await DialogueManager.dialogue_ended
 			for n in 150:

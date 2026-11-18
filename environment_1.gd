@@ -1,6 +1,6 @@
 extends Control
 
-var dialogue: DialogueData
+var dialogue: NodePath
 
 var cursor_default = load("res://Assets/Cursor_Sepia.png")
 var cursor_POI = load("res://Assets/Cursor_Brown.png")
@@ -43,6 +43,9 @@ func start_game():
 	for n in 110:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
+	dialogue = "res://Dialogue/19_tutorial.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	await get_tree().create_timer(5).timeout
 	if not Global.clues_interacted["Echo"]:
 		Global.hint_needed.emit("Echo")
@@ -56,64 +59,81 @@ func _on_rock_cluster_0_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_0:
 		pass
 	elif Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_3:
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
+		if Global.current_sense != Global.senses.SEE:
+			print("wrong sense")
+			dialogue = "res://Dialogue/05_need_to_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		else:
+			Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
 	
 
 func _on_rock_cluster_1_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
 		pass
 	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_0 and Global.player_POI_position != Global.POIs.ROCKCLUSTER_2:
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 620, %RockCluster.position.y + 200))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.ROCKCLUSTER_1
+		if Global.current_sense != Global.senses.SEE:
+			print("wrong sense")
+			dialogue = "res://Dialogue/05_need_to_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		else:
+			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 620, %RockCluster.position.y + 200))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.ROCKCLUSTER_1
 
 
 func _on_rock_cluster_2_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2:
 		pass
 	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_1 and Global.player_POI_position != Global.POIs.ROCKCLUSTER_3:
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 440, %RockCluster.position.y + 120))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.ROCKCLUSTER_2
+		if Global.current_sense != Global.senses.SEE:
+			print("wrong sense")
+			dialogue = "res://Dialogue/05_need_to_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		else:
+			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 440, %RockCluster.position.y + 120))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.ROCKCLUSTER_2
 
 
 func _on_rock_cluster_3_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_3:
 		pass
 	elif Global.player_POI_position != Global.POIs.ROCKCLUSTER_2:
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
-		Global.visit_clue.emit(Vector2(%RockCluster.position.x + 610, %RockCluster.position.y + 10))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.ROCKCLUSTER_3
-		clues_interacted["RockCluster"] = true
+		if Global.current_sense != Global.senses.SEE:
+			dialogue = "res://Dialogue/05_need_to_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		else:
+			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 610, %RockCluster.position.y + 10))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.ROCKCLUSTER_3
+			clues_interacted["RockCluster"] = true
 
-
-	
 
 func _on_scent_pressed() -> void:
 	# play the respective clue stuff
 
 # If click scent while on the ground: too high to reach
 	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_3 or %StallionScent.position.x > %RockCluster.position.x + 600 :
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		# change state to sniff: play a sniff animation once, then idle
-		dialogue = load("res://Dialogue/E1_scent_remember.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/07_scent_remember.tres"
+		DialogueManager.start_dialogue(dialogue, 0)
 		%StallionScent.visible = false
 		await DialogueManager.dialogue_ended
 		if not clues_interacted["StallionScent"]:
@@ -129,19 +149,25 @@ func _on_scent_pressed() -> void:
 
 func _on_rock_slide_pressed() -> void:
 	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
+		dialogue = "res://Dialogue/06_can't_reach.tres"
+		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.player_POI_position != Global.POIs.ROCKSLIDE:
-			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 150, %RockSlide.position.y + 800))
+			#if Global.current_sense == Global.senses.HEAR:
+				#dialogue = load("res://Dialogue/13_can't_hear.tres")
+				#DialogueManager.start_dialogue(dialogue)
+			#elif Global.current_sense == Global.senses.SMELL:
+				#dialogue = load("res://Dialogue/14_can't_smell.tres")
+				#DialogueManager.start_dialogue(dialogue)
+			#elif Global.current_sense == Global.senses.SEE:
+			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 100, %RockSlide.position.y + 600))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKSLIDE
 		else:
 			# play the respective clue stuff
 			%RockslideAnimationPlayer.play("kicked")
-			$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
-			$SFXAudio.play()
 			clues_interacted["RockSlide"] = true
+			%RockSlide.disabled = true
 			play_cutscene_to_stallion()
 		
 
@@ -210,8 +236,8 @@ func _on_hear_button_pressed() -> void:
 	# this should go somewhere different
 	if clues_interacted["StallionScent"] and not clues_discovered["RockSlide"]:
 		%RockslideAnimationPlayer.play("rockslide")
-		$SFXAudio.stream = load("res://Assets/freesound_community-stones-falling-6375.mp3")
-		$SFXAudio.play()
+		#$SFXAudio.stream = load("res://Assets/freesound_community-stones-falling-6375.mp3")
+		#$SFXAudio.play()
 		%RockSlide.add_to_group("on_screen")
 	update_sense()
 
@@ -229,15 +255,19 @@ func _on_smell_button_pressed() -> void:
 	
 func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
+	%RockCluster.self_modulate = Color(0.282, 0.282, 0.282)
+	%RockSlide.self_modulate = Color(0.282, 0.282, 0.282)
 
 
 func lighten_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(1.0, 1.0, 1.0)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(1.0, 1.0, 1.0)
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
-
+	%RockCluster.self_modulate = Color(1.0, 1.0, 1.0)
+	%RockSlide.self_modulate = Color(1.0, 1.0, 1.0)
+	
 
 func muffle_music():
 	$MusicAudio.volume_db = -7.153
@@ -269,11 +299,8 @@ func show_sounds():
 
 
 func hide_sounds():
-	if not clues_interacted["RockSlide"]:
-		if not clues_discovered["RockSlide"]:
-			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
-		else:
-			%RockSlide.texture_normal = load("res://ArtAssets/rock.png")
+	pass
+		
 
 
 # updates showing all currently discovered clues

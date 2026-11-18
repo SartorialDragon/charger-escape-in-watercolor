@@ -3,22 +3,28 @@ extends Node
 
 # Tutorial: https://codingquests.io/blog/godot-4-dialogue-system-tutorial
 
-signal dialogue_started(data: DialogueData)
+signal dialogue_started(file: NodePath, type: int)
 signal line_displayed(line: DialogueLine)
 signal dialogue_ended
+signal error_dialogue_started(file: NodePath, type: int)
+
 
 var current_data: DialogueData
 var current_line: DialogueLine
 var is_active: bool = false
 
-func start_dialogue(data: DialogueData) -> void:
-	if data != null: # this doesn't work because a failed load is not null
-		current_data = data
+func start_dialogue(file: NodePath, type: int) -> void:
+	if FileAccess.file_exists(file):
+		current_data = load(file)
 	else:
-		current_data = load("res://Dialogue/dialogue_missing.tres")
+		current_data = load("res://Dialogue/00_dialogue_missing.tres")
 	is_active = true
-	dialogue_started.emit(data)
-	_show_line(data.start_id)
+	match type:
+		0:
+			dialogue_started.emit(current_data)
+		1:
+			error_dialogue_started.emit(current_data)
+	_show_line(current_data.start_id)
 	
 
 func _show_line(line_id: String) -> void:
