@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpsr46ju4is3u"]
 
 [ext_resource type="Script" uid="uid://clmlsokffm87i" path="res://senses.gd" id="1_lvkvm"]
-[ext_resource type="Texture2D" uid="uid://d3jvwb20vo3ic" path="res://Assets/look.png" id="2_cq1gk"]
-[ext_resource type="Texture2D" uid="uid://bgum0x14sbyat" path="res://Assets/listen.png" id="3_skx81"]
-[ext_resource type="Texture2D" uid="uid://twyvq0a3vcox" path="res://Assets/notaboob.png" id="4_75gsu"]
+[ext_resource type="Texture2D" uid="uid://4b5c8nw2jb1o" path="res://ArtAssets/sense_see.png" id="2_lvkvm"]
+[ext_resource type="Texture2D" uid="uid://psmdsja273fq" path="res://ArtAssets/sense_hear.png" id="3_cq1gk"]
+[ext_resource type="Texture2D" uid="uid://buejm63odlpcf" path="res://ArtAssets/sense_smell.png" id="4_skx81"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvkvm"]
 bg_color = Color(0, 0, 0, 1)
@@ -27,14 +27,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvkvm")
 
+[node name="Look2" type="TextureButton" parent="."]
+self_modulate = Color(0.49019608, 0.49019608, 1, 1)
+layout_mode = 0
+offset_left = -86.0
+offset_top = -38.0
+offset_right = -46.0
+offset_bottom = 2.0
+scale = Vector2(1.5461903, 1.5461903)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_lvkvm")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Look" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = -67.0
-offset_top = -30.0
-offset_right = -27.0
-offset_bottom = 10.0
+offset_left = -81.0
+offset_top = -33.0
+offset_right = -41.0
+offset_bottom = 7.0
+scale = Vector2(1.2884918, 1.2884918)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("2_cq1gk")
+texture_normal = ExtResource("2_lvkvm")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -48,14 +62,28 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lvkvm")
 text = "1"
 horizontal_alignment = 1
 
+[node name="Hear2" type="TextureButton" parent="."]
+self_modulate = Color(1, 0.933, 0.49, 1)
+layout_mode = 0
+offset_left = -25.0
+offset_top = -53.0
+offset_right = 15.0
+offset_bottom = -13.0
+scale = Vector2(1.5461903, 1.5461903)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_cq1gk")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Hear" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = -21.0
-offset_top = -49.0
-offset_right = 19.0
-offset_bottom = -9.0
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = -8.0
+scale = Vector2(1.2884918, 1.2884918)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("3_skx81")
+texture_normal = ExtResource("3_cq1gk")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -69,14 +97,28 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lvkvm")
 text = "2"
 horizontal_alignment = 1
 
+[node name="Smell2" type="TextureButton" parent="."]
+self_modulate = Color(0.678, 1, 0.663, 1)
+layout_mode = 0
+offset_left = 37.0
+offset_top = -36.0
+offset_right = 77.0
+offset_bottom = 4.0
+scale = Vector2(1.5461903, 1.5461903)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_skx81")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Smell" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = -29.0
-offset_right = 64.0
-offset_bottom = 11.0
+offset_left = 42.0
+offset_top = -31.0
+offset_right = 82.0
+offset_bottom = 9.0
+scale = Vector2(1.2884918, 1.2884918)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_75gsu")
+texture_normal = ExtResource("4_skx81")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -90,6 +132,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lvkvm")
 text = "3"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="Look2" to="." method="_on_look_pressed"]
 [connection signal="pressed" from="Look" to="." method="_on_look_pressed"]
+[connection signal="pressed" from="Hear2" to="." method="_on_hear_pressed"]
 [connection signal="pressed" from="Hear" to="." method="_on_hear_pressed"]
+[connection signal="pressed" from="Smell2" to="." method="_on_smell_pressed"]
 [connection signal="pressed" from="Smell" to="." method="_on_smell_pressed"]

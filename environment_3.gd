@@ -1,6 +1,6 @@
 extends Control
 
-var dialogue: DialogueData
+var dialogue: NodePath
 
 var cursor_default = load("res://Assets/Cursor_Sepia.png")
 var cursor_POI = load("res://Assets/Cursor_Brown.png")
@@ -48,8 +48,8 @@ func _on_scent_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_0
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent0"] = true
 			clues_discovered["Scent1"] = true
 			#%Scent1.add_to_group("smell")
@@ -63,8 +63,8 @@ func _on_scent_1_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_1
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent1"] = true
 			clues_discovered["Sound0"] = true
 			#%Sound0.add_to_group("hear")
@@ -77,8 +77,8 @@ func _on_sound_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SOUND_0
 		else:
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Sound0"] = true
 			await DialogueManager.dialogue_ended
 			for n in 150:
@@ -89,13 +89,15 @@ func _on_sound_0_pressed() -> void:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
 			await Global.arrived
-			dialogue = load("res://Dialogue/dialogue_missing.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			for n in clues_on_screen:
 				n.remove_from_group("on_screen")
 			%SoftSpot.add_to_group("on_screen")
+			%SoftSpot.disabled = false
 			%StallionHallucination1.add_to_group("on_screen")
+
 
 func _on_soft_spot_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SOFTSPOT:
@@ -153,13 +155,13 @@ func _on_smell_button_pressed() -> void:
 	
 func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
 
 
 func lighten_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(1.0, 1.0, 1.0)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(1.0, 1.0, 1.0)
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
 
 

@@ -10,6 +10,21 @@ func _input(event: InputEvent) -> void:
 		_on_smell_pressed()
 
 
+#func _process(delta: float) -> void:
+	#if $Look.is_hovered():
+		#$Look2.self_modulate = Color(0.49, 0.49, 1.0)
+	#else:
+		#$Look2.self_modulate = Color(0.0, 0.0, 0.0)
+	#if $Hear.is_hovered():
+		#$Hear2.self_modulate = Color(1.0, 0.933, 0.49)
+	#else:
+		#$Hear2.self_modulate = Color(0.0, 0.0, 0.0)
+	#if $Smell.is_hovered():
+		#$Smell2.self_modulate = Color(0.678, 1.0, 0.663)
+	#else:
+		#$Smell2.self_modulate = Color(0.0, 0.0, 0.0)
+
+
 
 func _on_look_pressed() -> void:
 	Global.current_sense = Global.senses.SEE

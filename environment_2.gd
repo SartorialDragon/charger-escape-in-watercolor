@@ -1,6 +1,6 @@
 extends Control
 
-var dialogue: DialogueData
+var dialogue: NodePath
 
 var cursor_default = load("res://Assets/Cursor_Sepia.png")
 var cursor_POI = load("res://Assets/Cursor_Brown.png")
@@ -14,13 +14,12 @@ var clues_on_screen: Array = []
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
 	"Tree0" : false,
-	"ManeHair" : false,
+	"Tree0Mane" : false,
 	"Bucket" : false,
 	"Stream" : false,
 	"Tree1" : false,
 	"Tree2" : false,
 	"Tree3" : false,
-	"Tree4" : false,
 	"StallionScent" : false,
 	"Smoldering" : false,
 }
@@ -28,13 +27,12 @@ var clues_discovered = { # key needs to be identical with node name
 # this means it has been clicked
 var clues_interacted = {
 	"Tree0" : false,
-	"ManeHair" : false,
+	"Tree0Mane" : false,
 	"Bucket" : false,
 	"Stream" : false,
 	"Tree1" : false,
 	"Tree2" : false,
 	"Tree3" : false,
-	"Tree4" : false,
 	"StallionScent" : false,
 	"Smoldering" : false,
 }
@@ -63,19 +61,19 @@ func _on_tree_0_pressed() -> void:
 		Global.player_POI_position = Global.POIs.TREE_0
 	else:
 		if Global.current_sense == Global.senses.SEE:
-			dialogue = load("res://Dialogue/E2_can't_see.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/08_can't_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
 		elif Global.current_sense == Global.senses.HEAR:
-			dialogue = load("res://Dialogue/E2_can't_hear.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/13_can't_hear.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
 		elif Global.current_sense == Global.senses.SMELL:
-			%ManeHair.visible = true
+			%Tree0Mane.visible = true
 			clues_interacted["Tree0"] = true
 
 
 func _on_mane_hair_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.TREE_0:
-		Global.visit_clue.emit(Vector2(%Tree0.position.x + 80, %Tree0.position.y + 260))
+		Global.visit_clue.emit(Vector2(%Tree0Mane.position.x + 80, %Tree0Mane.position.y + 260))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.TREE_0
 	else:
@@ -84,46 +82,48 @@ func _on_mane_hair_pressed() -> void:
 		elif Global.current_sense == Global.senses.HEAR:
 			pass
 		elif Global.current_sense == Global.senses.SMELL:
-			dialogue = load("res://Dialogue/E2_his_mane.tres")
-			DialogueManager.start_dialogue(dialogue)
+			%Tree0Mane.add_to_group("on_screen")
+			dialogue = "res://Dialogue/09_his_mane.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
 			await DialogueManager.dialogue_ended
-			if not clues_interacted["ManeHair"]:
+			if not clues_interacted["Tree0Mane"]:
 				for n in 50:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.00000001).timeout
-				Global.visit_clue.emit(Vector2(2600, 550))
-				for n in 350:
+				Global.visit_clue.emit(Vector2(2600, 750))
+				for n in 250:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.00000001).timeout
 				await Global.arrived
+				%Stream.disabled = false
 				clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 				%Tree0.remove_from_group("on_screen")
-				%ManeHair.remove_from_group("on_screen")
+				%Tree0Mane.remove_from_group("on_screen")
 				%Bucket.add_to_group("on_screen")
 				%Stream.add_to_group("on_screen")
 				%Tree1.add_to_group("on_screen")
 				%Tree2.add_to_group("on_screen")
 				%Tree3.add_to_group("on_screen")
-				%Tree4.add_to_group("on_screen")
-				clues_interacted["ManeHair"] = true
+				clues_interacted["Tree0Mane"] = true
 
 
 func _on_bucket_pressed() -> void:
-	if Global.player_POI_position != Global.POIs.BUCKET:
-		Global.visit_clue.emit(Vector2(%Bucket.position.x + 120, %Bucket.position.y + 60))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.BUCKET
-	else:
-		# pick up bucket
-		dialogue = load("res://Dialogue/E2_human_waste.tres")
-		DialogueManager.start_dialogue(dialogue)
-		clues_interacted["Bucket"] = true
-		%Bucket.rotation = 0.0
+	if not clues_interacted["Bucket"]:
+		if Global.player_POI_position != Global.POIs.BUCKET:
+			Global.visit_clue.emit(Vector2(%Bucket.position.x + 50, %Bucket.position.y + 100))
+			await Global.arrived
+			Global.player_POI_position = Global.POIs.BUCKET
+		else:
+			# pick up bucket
+			dialogue = "res://Dialogue/10_human_waste.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
+			clues_interacted["Bucket"] = true
+			%Bucket.rotation = 0.0
 
 
 func _on_stream_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.STREAM:
-		Global.visit_clue.emit(Vector2(%Stream.position.x + 400, %Stream.position.y + 100))
+		Global.visit_clue.emit(Vector2(%Stream.position.x + 600, %Stream.position.y + 100))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.STREAM
 	else:
@@ -139,14 +139,11 @@ func _on_tree_2_pressed() -> void:
 
 func _on_tree_3_pressed() -> void:
 	_on_tree_pressed(%Tree3, %TreeParticles3)
-
-func _on_tree_4_pressed() -> void:
-	_on_tree_pressed(%Tree4, %TreeParticles4)
 	
 
 func _on_tree_pressed(tree, particle):
 	if Global.player_POI_position != Global.POIs.TREES:
-		Global.visit_clue.emit(Vector2(tree.position.x - 120, tree.position.y + 260))
+		Global.visit_clue.emit(Vector2(tree.position.x - 40, tree.position.y + 150))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.TREES
 	elif clues_interacted["Smoldering"]:
@@ -154,8 +151,8 @@ func _on_tree_pressed(tree, particle):
 			move_through_trees()
 	else:
 		if not clues_interacted["Bucket"]:
-			dialogue = load("res://Dialogue/E2_can't_pass.tres")
-			DialogueManager.start_dialogue(dialogue)
+			dialogue = "res://Dialogue/12_can't_pass.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
 		else:
 			if not %Bucket.texture_normal == load("res://ArtAssets/bucket_full.png"):
 				pass
@@ -163,18 +160,20 @@ func _on_tree_pressed(tree, particle):
 				if not clues_interacted[tree.name]:
 					%Bucket.texture_normal = load("res://ArtAssets/bucket_empty.png")
 					particle.emitting = false
+					tree.texture_normal = load("res://ArtAssets/e2 smoldering_off.png")
 					clues_interacted[tree.name] = true
 					clues_interacted["Smoldering"] = true
-					for n in 4:
+					for n in 3:
 						if clues_interacted["Tree"+str(n+1)] == false:
 							clues_interacted["Smoldering"] = false
 		
 
 func move_through_trees():
+	%BucketAnimationPlayer.play("fall")
 	for n in 50:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00000001).timeout
-	Global.visit_clue.emit(Vector2(4500, 650))
+	Global.visit_clue.emit(Vector2(4500, 800))
 	for n in 260:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00000001).timeout
@@ -182,53 +181,54 @@ func move_through_trees():
 	clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 	for n in clues_on_screen:
 		n.remove_from_group("on_screen")
-	%StallionScent.add_to_group("on_screen")
-	
-
-func _on_stallion_scent_pressed() -> void:
-	pass # Replace with function body.
-
-
-func _on_scent_pressed() -> void:
-	# play the respective clue stuff
-
-# If click scent while on the ground: too high to reach
-	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_2 or %StallionScent.position.x > %RockCluster2.position.x + 200 :
-		dialogue = load("res://Dialogue/E1_can't_reach.tres")
-		DialogueManager.start_dialogue(dialogue)
-	else:
-		# change state to sniff: play a sniff animation once, then idle
-		dialogue = load("res://Dialogue/E1_scent_remember.tres")
-		DialogueManager.start_dialogue(dialogue)
-		%StallionScent.visible = false
-		await DialogueManager.dialogue_ended
-		if not clues_interacted["StallionScent"]:
-			for n in 100:
-				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
-			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
-			%StallionScent.remove_from_group("on_screen")
-			clues_interacted["StallionScent"] = true
-			
-			sense_change() # to trigger the rockslide if already in hearing mode
-
-
-
-func play_cutscene_to_stallion():
-	for n in 150:
-			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
-	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
-	for n in 400:
-			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
-	await Global.arrived
-	%HallucinationAnimationPlayer.play("hallucination")
-	await %HallucinationAnimationPlayer.animation_finished
-	await get_tree().create_timer(1).timeout
-	Global.visit_clue.emit(Vector2(5500, 525))
+	#%StallionScent.add_to_group("on_screen")
 	await get_tree().create_timer(1).timeout
 	switch_scene()
+
+#func _on_stallion_scent_pressed() -> void:
+	#pass # Replace with function body.
+
+
+#func _on_scent_pressed() -> void:
+	## play the respective clue stuff
+#
+## If click scent while on the ground: too high to reach
+	#if Global.player_POI_position != Global.POIs.ROCKCLUSTER_2 or %StallionScent.position.x > %RockCluster2.position.x + 200 :
+		#dialogue = "res://Dialogue/06_can't_reach.tres"
+		#DialogueManager.start_dialogue(dialogue, 1)
+	#else:
+		## change state to sniff: play a sniff animation once, then idle
+		#dialogue = "res://Dialogue/07_scent_remember.tres"
+		#DialogueManager.start_dialogue(dialogue, 0)
+		#%StallionScent.visible = false
+		#await DialogueManager.dialogue_ended
+		#if not clues_interacted["StallionScent"]:
+			#for n in 100:
+				#$Camera2D.position.x += 8
+				#await get_tree().create_timer(0.00000001).timeout
+			#clues_on_screen = get_tree().get_nodes_in_group("on_screen")
+			#%StallionScent.remove_from_group("on_screen")
+			#clues_interacted["StallionScent"] = true
+			#
+			#sense_change() # to trigger the rockslide if already in hearing mode
+
+
+
+#func play_cutscene_to_stallion():
+	#for n in 150:
+			#$Camera2D.position.x += 8
+			#await get_tree().create_timer(0.00000001).timeout
+	#Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
+	#for n in 400:
+			#$Camera2D.position.x += 8
+			#await get_tree().create_timer(0.00000001).timeout
+	#await Global.arrived
+	#%HallucinationAnimationPlayer.play("hallucination")
+	#await %HallucinationAnimationPlayer.animation_finished
+	#await get_tree().create_timer(1).timeout
+	#Global.visit_clue.emit(Vector2(5500, 525))
+	#await get_tree().create_timer(1).timeout
+	#switch_scene()
 
 
 func switch_scene():
@@ -280,8 +280,8 @@ func _on_hear_button_pressed() -> void:
 
 func _on_smell_button_pressed() -> void:
 	hide_sounds()
-	normalize_music()
 	darken_surroundings()
+	normalize_music()
 	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
@@ -290,16 +290,30 @@ func _on_smell_button_pressed() -> void:
 	
 	
 func darken_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
-	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky.modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
+	$Parallax2D3/Foreground.modulate = Color(0.282, 0.282, 0.282)
+	%Tree0.self_modulate = Color(0.282, 0.282, 0.282)
+	%Tree0Mane.self_modulate = Color(0.282, 0.282, 0.282)
+	%Bucket.modulate = Color(0.282, 0.282, 0.282)
+	%Stream.modulate = Color(0.282, 0.282, 0.282)
+	%Tree1.modulate = Color(0.282, 0.282, 0.282)
+	%Tree2.modulate = Color(0.282, 0.282, 0.282)
+	%Tree3.modulate = Color(0.282, 0.282, 0.282)
 
 
 func lighten_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(1.0, 1.0, 1.0)
-	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
-
+	$BackgroundLayers/Parallax2D/Sky.modulate = Color(1.0, 1.0, 1.0)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(1.0, 1.0, 1.0)
+	$Parallax2D3/Foreground.modulate = Color(1.0, 1.0, 1.0)
+	%Tree0.self_modulate = Color(1.0, 1.0, 1.0)
+	%Tree0Mane.self_modulate = Color(1.0, 1.0, 1.0)
+	%Bucket.modulate = Color(1.0, 1.0, 1.0)
+	%Stream.modulate = Color(1.0, 1.0, 1.0)
+	%Tree1.modulate = Color(1.0, 1.0, 1.0)
+	%Tree2.modulate = Color(1.0, 1.0, 1.0)
+	%Tree3.modulate = Color(1.0, 1.0, 1.0)
+	
 
 func muffle_music():
 	$MusicAudio.volume_db = -7.153
@@ -309,6 +323,7 @@ func muffle_music():
 func normalize_music():
 	$MusicAudio.volume_db = 0.0
 	$MusicAudio.pitch_scale = 1.0
+	%Tree0Mane.self_modulate = Color(1.0, 1.0, 1.0)
 
 
 func show_scents():
@@ -318,6 +333,9 @@ func show_scents():
 	if %Tree0.is_in_group("on_screen"):
 		%TreeParticles0.visible = true
 		%TreeParticles0.emitting = true
+		if clues_discovered["Tree0Mane"]:
+			%TreeParticlesMane.visible = true
+			%TreeParticlesMane.emitting = true
 		# actually this should only switch on/of scent marking particles, not the smoke itself
 			
 	
@@ -327,6 +345,8 @@ func hide_scents():
 	$StallionScent/CPUParticles2D.emitting = false
 	%TreeParticles0.visible = false
 	%TreeParticles0.emitting = false
+	%TreeParticlesMane.visible = false
+	%TreeParticlesMane.emitting = false
 
 func show_sounds():
 	#if not clues_interacted["RockSlide"]:
