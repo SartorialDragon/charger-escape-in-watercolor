@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cr8qhdt5breux"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_5mvpc"]
+[ext_resource type="AudioStream" uid="uid://dqubmrkriuolj" path="res://Dialogue/VA/E2_23_start_2.ogg" id="2_0yml3"]
+
+[resource]
+script = ExtResource("1_5mvpc")
+id = "24"
+speaker = "Echo"
+text = "I just know it's so hard to breathe. From the red comes the grey, and the grey gnaws on my lungs. I need to look closer. I know we ran this way..."
+vc_file = ExtResource("2_0yml3")

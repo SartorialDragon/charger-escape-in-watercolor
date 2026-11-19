@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=4 format=3 uid="uid://bucitcmxoydm8"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_h365i"]
+[ext_resource type="Resource" uid="uid://dhbqhus8icl80" path="res://Dialogue/21.tres" id="2_7xqqq"]
+[ext_resource type="Script" path="res://dialogue_data.gd" id="3_yyccv"]
+
+[resource]
+script = ExtResource("3_yyccv")
+id = "21"
+lines = Array[ExtResource("1_h365i")]([ExtResource("2_7xqqq")])
+start_id = "21"

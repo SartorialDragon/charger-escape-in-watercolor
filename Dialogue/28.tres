@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://dfny2dqa1jjxl"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_2mdpo"]
+[ext_resource type="AudioStream" uid="uid://dhycrml7dkmq7" path="res://Dialogue/VA/E3_start.ogg" id="2_glypw"]
+
+[resource]
+script = ExtResource("1_2mdpo")
+id = "28"
+speaker = "Echo"
+text = "I kept going. What else was I to do? The air thickened, and I was so tired. I know the reasonable thing was to turn around, but if you have not loved, you would not understand why I still went."
+vc_file = ExtResource("2_glypw")

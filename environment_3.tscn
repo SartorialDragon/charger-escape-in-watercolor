@@ -18,6 +18,21 @@
 _data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_3jdq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_2k1u2"]
 resource_name = "hallucination"
 length = 7.0
@@ -32,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5176471), Color(1, 1, 1, 0.21176471), Color(1, 1, 1, 0.60784316), Color(1, 1, 1, 0.38039216), Color(1, 1, 1, 0.8117647), Color(1, 1, 1, 0.4392157), Color(1, 1, 1, 0.6901961), Color(1, 1, 1, 0.9098039), Color(1, 1, 1, 0.61960787), Color(1, 1, 1, 0.91764706), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_3jdq1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6trsd"]
@@ -176,6 +176,20 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_7xvgo")
 color = Color(0.6774726, 1, 0.6616442, 1)
 
+[node name="SoftSpot" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
+unique_name_in_owner = true
+offset_left = 1425.0
+offset_top = 448.0
+offset_right = 1518.899
+offset_bottom = 608.0
+scale = Vector2(11.441777, 3.1910663)
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("5_y78ea")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
 [node name="Sound0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
 visible = false
@@ -212,21 +226,6 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_7xvgo")
 color = Color(1, 0.932, 0.49, 1)
 
-[node name="SoftSpot" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
-unique_name_in_owner = true
-visible = false
-offset_left = 1462.0
-offset_top = 280.99997
-offset_right = 1555.899
-offset_bottom = 440.99997
-scale = Vector2(12.56178, 3.4922748)
-mouse_default_cursor_shape = 2
-disabled = true
-texture_normal = ExtResource("5_y78ea")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
 [node name="Hoofprints" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
 offset_left = 4218.0
@@ -241,9 +240,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Particles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Hoofprints"]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(24.882477, 17.009521)
 scale = Vector2(0.13458036, 0.65494287)
-amount = 100
+amount = 300
 texture = ExtResource("5_kvufe")
 speed_scale = 0.2
 explosiveness = 0.1
@@ -383,6 +383,6 @@ bus = &"VA"
 
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent0" to="." method="_on_scent_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent1" to="." method="_on_scent_1_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/SoftSpot" to="." method="_on_soft_spot_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Hoofprints" to="." method="_on_hoofprints_pressed"]

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://drxgi20steto1"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://drxgi20steto1"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_tbaj8"]
+[ext_resource type="AudioStream" uid="uid://h7gak6h17c41" path="res://Dialogue/VA/03_on_rockcluster.ogg" id="2_tbaj8"]
 
 [resource]
 script = ExtResource("1_tbaj8")
 id = "10"
 speaker = "Echo"
-text = "(memory of stallion, + sound hallucination)"
+text = "I was overwhelmed. Too many smells, too many of them too hard to place apart. I saw a rock structure and climbed it on weary legs. There-- his scent. I knew it as well as I knew my own life. What was there to do but follow it?"
+vc_file = ExtResource("2_tbaj8")

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cka3qg1yet7wf"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cka3qg1yet7wf"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_yxmrp"]
+[ext_resource type="AudioStream" uid="uid://cgx06wk626ab5" path="res://Dialogue/VA/E2_his_mane.ogg" id="2_xxv4g"]
 
 [resource]
 script = ExtResource("1_yxmrp")
 id = "13"
 speaker = "Echo"
-text = "That smells like him!"
+text = "There! That's his mane. I know it clear as day. So he WAS here, and went this way. My love, I'll find you."
+vc_file = ExtResource("2_xxv4g")

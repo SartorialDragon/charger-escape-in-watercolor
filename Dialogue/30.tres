@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cdwx2dgk5k4ia"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_eqsjm"]
+[ext_resource type="AudioStream" uid="uid://dw74viyqlixbc" path="res://Dialogue/VA/E3_soft_spot_memory.ogg" id="2_4ox66"]
+
+[resource]
+script = ExtResource("1_eqsjm")
+id = "30"
+speaker = "Echo"
+text = "It was there, collapsed amongst our fallen lands that I swore I saw him again. So close, and beckoning me. He'd draw me forth even when we were young. 'Run with me,' he'd say, and I would. But my love, I... cannot go so quickly, now. But I'll keep going."
+vc_file = ExtResource("2_4ox66")

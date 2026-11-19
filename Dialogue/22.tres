@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cq7o5w3g7wr8x"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_o5utc"]
+[ext_resource type="AudioStream" uid="uid://bluuqmphcpcoa" path="res://Dialogue/VA/02_intro_2.ogg" id="2_1w7f6"]
+
+[resource]
+script = ExtResource("1_o5utc")
+id = "22"
+speaker = "Echo"
+text = "A chestnut stallion who taught me the truth and meaning behind certain words. Magnificence. Devotion. Love. He had to still be out there, just as I was."
+vc_file = ExtResource("2_1w7f6")

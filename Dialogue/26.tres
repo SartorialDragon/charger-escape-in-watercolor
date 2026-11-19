@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://bl5sx0h73gk7p"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_ovym5"]
+[ext_resource type="AudioStream" uid="uid://haf47ntf110b" path="res://Dialogue/VA/E2_human_trash.ogg" id="2_8ao2o"]
+
+[resource]
+script = ExtResource("1_ovym5")
+id = "26"
+speaker = "Echo"
+text = "Ah! Well, the humans are always leaving rubbish around our wilds. Sometimes they chase us with loud machines. Sometimes they simply pass through, but leave behind their trash. But I can use this."
+vc_file = ExtResource("2_8ao2o")

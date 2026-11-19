@@ -224,7 +224,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_awyal"]
 resource_name = "hallucination"
-length = 6.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -232,7 +232,7 @@ tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333, 1.2, 1.6, 2.0333333, 2.4666667, 2.8666666, 3.17, 3.56, 5.866667),
+"times": PackedFloat32Array(0.9333333, 1.3666666, 1.7666667, 2.1333332, 2.5333333, 2.9666667, 3.4, 3.7999997, 4.1033335, 4.4933333, 7.8333335),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.26666668), Color(1, 1, 1, 0.09803922), Color(1, 1, 1, 0.40392157), Color(1, 1, 1, 0.53333336), Color(1, 1, 1, 0.16470589), Color(1, 1, 1, 0.40784314), Color(1, 1, 1, 0.1764706), Color(1, 1, 1, 0.41960785), Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0)]
@@ -244,7 +244,7 @@ tracks/1/path = NodePath(".:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.65),
+"times": PackedFloat32Array(0, 4.4666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -256,7 +256,7 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.6399999, 6),
+"times": PackedFloat32Array(0, 4.4666667, 7.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(4751, 525), Vector2(4751, 525), Vector2(5500, 400)]
@@ -522,7 +522,7 @@ self_modulate = Color(1, 1, 1, 0)
 offset_left = 4751.0
 offset_top = 525.0
 offset_right = 5065.2104
-offset_bottom = 772.9615
+offset_bottom = 772.95996
 scale = Vector2(0.9257477, 1.2524822)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_6j7cg")
@@ -598,15 +598,6 @@ stretch_mode = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(300, 542)
 
-[node name="ErrorDialogue" parent="." instance=ExtResource("17_rdret")]
-visible = false
-
-[node name="ClueDialogue" parent="." instance=ExtResource("18_rdret")]
-visible = false
-
-[node name="UILayer" type="CanvasLayer" parent="."]
-visible = false
-
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -618,6 +609,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mwlxs")
+
+[node name="ErrorDialogue" parent="." instance=ExtResource("17_rdret")]
+visible = false
+
+[node name="ClueDialogue" parent="." instance=ExtResource("18_rdret")]
+visible = false
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_xjqet")
