@@ -23,7 +23,7 @@ func update(_delta):
 
 	
 func physics_update(_delta):
-	if get_parent().get_parent().velocity.x != 0:
+	if get_parent().get_parent().velocity.x != 0.0:
 		transitioned.emit(self, "trot")
 	
 	

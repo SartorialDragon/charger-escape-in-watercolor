@@ -196,6 +196,8 @@ point_count = 2
 [node name="PlayerHorse" type="CharacterBody2D"]
 scale = Vector2(1.9379834, 1.9379834)
 input_pickable = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_0078p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -270,6 +272,14 @@ offset_top = -43.344025
 offset_right = 33.54001
 offset_bottom = 38.70002
 mouse_default_cursor_shape = 2
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 100.0
+target_desired_distance = 100.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+debug_path_custom_line_width = 1.58
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

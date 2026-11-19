@@ -45,7 +45,7 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
-	_provisorium()
+	#_provisorium()
 	
 
 func _provisorium():
@@ -68,13 +68,20 @@ func _on_sound_0_pressed() -> void:
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Sound0"] = true
 			await DialogueManager.dialogue_ended
-			for n in 150:
+			for n in 600:
 				$Camera2D.position.x += 8
+				if $Camera2D.position.x * 0.7 >= player_horse.position.x:
+					Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 				await get_tree().create_timer(0.00000001).timeout
-			Global.visit_clue.emit(Vector2(3420, 500))
-			for n in 400:
-				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
+			
+			
+			#for n in 150:
+				#$Camera2D.position.x += 8
+				#await get_tree().create_timer(0.00000001).timeout
+			#Global.visit_clue.emit(Vector2(3420, 500))
+			#for n in 400:
+				#$Camera2D.position.x += 8
+				#await get_tree().create_timer(0.00000001).timeout
 			await Global.arrived
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			for n in clues_on_screen:
@@ -105,7 +112,7 @@ func cutscene_dead():
 		$StillImageLayer/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		$StillImageLayer/Panel/StillImage.self_modulate = Color(1.0, 1.0, 1.0, A)
 		await get_tree().create_timer(0.1).timeout
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(1).timeout #DEBUG make timer longer
 	$StillImageLayer.hide()
 	rage()
 	
@@ -113,6 +120,7 @@ func cutscene_dead():
 	
 
 func rage():
+	#Global.navigation_mode = true
 	for n in 5:
 		clues_discovered["Destroy"+str(n)] = true
 	%RedParticles0.emitting = true
@@ -142,27 +150,28 @@ func _on_destroy_4_pressed() -> void:
 
 func _on_destroy(pos, object, particle):
 	if Global.player_POI_position != pos:
-		Global.visit_clue.emit(Vector2(object.position.x +20, object.position.y + 260))
+		Global.visit_clue.emit(Vector2(object.position.x +100, object.position.y + 200))
 		await Global.arrived
 		Global.player_POI_position = pos
 	else:
-		if not clues_interacted[object.name]:
-			particle.emitting = false
-			if "rock" in object.texture_normal.resource_path:
-				object.texture_normal = load("res://ArtAssets/rock_broken_.png")
-			if "tree" in object.texture_normal.resource_path:
-				object.texture_normal = load("res://ArtAssets/tree_broken.png")
-			clues_interacted[object.name] = true
-			clues_interacted["Rage"] = true
-			for n in 5:
-				if clues_interacted["Destroy"+str(n)] == false:
-					clues_interacted["Rage"] = false
-			if clues_interacted["Rage"]:
-				$RageLayer/AnimationPlayer.stop()
-				$RageLayer.hide()
-				await get_tree().create_timer(2).timeout
-				# lie down animation
-				cutscene_grief()
+		if clues_discovered[object.name]:
+			if not clues_interacted[object.name]:
+				particle.emitting = false
+				if "rock" in object.texture_normal.resource_path:
+					object.texture_normal = load("res://ArtAssets/rock_broken_.png")
+				if "tree" in object.texture_normal.resource_path:
+					object.texture_normal = load("res://ArtAssets/tree_broken.png")
+				clues_interacted[object.name] = true
+				clues_interacted["Rage"] = true
+				for n in 5:
+					if clues_interacted["Destroy"+str(n)] == false:
+						clues_interacted["Rage"] = false
+				if clues_interacted["Rage"]:
+					$RageLayer/AnimationPlayer.stop()
+					$RageLayer.hide()
+					await get_tree().create_timer(2).timeout
+					# lie down animation
+					cutscene_grief()
 
 	
 func cutscene_grief():
@@ -262,9 +271,9 @@ func hide_scents():
 
 
 func show_sounds():
-	if clues_discovered["Sound0"]:
-		%Sound0.visible = true
-		%Particles2.emitting = true
+	#if clues_discovered["Sound0"]:
+	%Sound0.visible = true
+	%Particles2.emitting = true
 
 
 func hide_sounds():

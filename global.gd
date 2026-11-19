@@ -15,6 +15,7 @@ var player_start_position: Vector2 = Vector2(200,200)
 enum POIs {START, ROCKCLUSTER_0, ROCKCLUSTER_1, ROCKCLUSTER_2, ROCKCLUSTER_3, STALLIONSCENT, ROCKSLIDE, TREE_0, TREES, BUCKET, STREAM, SCENT_0, SCENT_1, SOUND_0, SOFTSPOT, HOOFPRINTS, SPRING, DESTROY0, DESTROY1, DESTROY2, DESTROY3, DESTROY4, }
 var player_POI_position: POIs = POIs.START
 
+var navigation_mode = false
 
 enum senses {SEE, HEAR, SMELL}
 var current_sense: senses = senses.HEAR
