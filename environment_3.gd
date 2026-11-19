@@ -8,6 +8,8 @@ var cursor_POI = load("res://Assets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
+@onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
+
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -52,6 +54,8 @@ func _on_scent_0_pressed() -> void:
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent0"] = true
 			clues_discovered["Scent1"] = true
+			await DialogueManager.dialogue_ended
+			%Scent0.remove_from_group("smell")
 			#%Scent1.add_to_group("smell")
 			_on_smell_button_pressed()
 
@@ -67,7 +71,10 @@ func _on_scent_1_pressed() -> void:
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent1"] = true
 			clues_discovered["Sound0"] = true
-			#%Sound0.add_to_group("hear")
+			await DialogueManager.dialogue_ended
+			%Sound0.add_to_group("hear")
+			%Scent1.remove_from_group("smell")
+			_on_smell_button_pressed()
 
 
 func _on_sound_0_pressed() -> void:
@@ -81,22 +88,23 @@ func _on_sound_0_pressed() -> void:
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Sound0"] = true
 			await DialogueManager.dialogue_ended
-			for n in 150:
+			%Sound0.remove_from_group("hear")
+			_on_hear_button_pressed()
+			for n in 250:
 				$Camera2D.position.x += 8
+				if $Camera2D.position.x * 0.7 >= player_horse.position.x:
+					Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 				await get_tree().create_timer(0.00000001).timeout
-			Global.visit_clue.emit(Vector2(2120, 500))
-			for n in 200:
-				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
-			await Global.arrived
+			#print($Camera2D.position.x, " player: ", player_horse.position.x)
 			dialogue = "res://Dialogue/00_dialogue_missing.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			for n in clues_on_screen:
 				n.remove_from_group("on_screen")
 			%SoftSpot.add_to_group("on_screen")
+			%SoftSpot.add_to_group("see")
 			%SoftSpot.disabled = false
-			%StallionHallucination1.add_to_group("on_screen")
+			%StallionHallucination.add_to_group("on_screen")
 
 
 func _on_soft_spot_pressed() -> void:
@@ -105,16 +113,57 @@ func _on_soft_spot_pressed() -> void:
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SOFTSPOT
 	else:
-		# lie down animation
-		clues_interacted["Softspot"] = true
-		cutscene_hallucination()
+		if not clues_interacted["SoftSpot"]:
+			# lie down animation
+			clues_interacted["SoftSpot"] = true
+			await get_tree().create_timer(3).timeout
+			stallion_hallucination()
+	
+
+func stallion_hallucination() -> void:
+	%StallionHallucination.show()
+	if not clues_interacted["StallionHallucination"]:
+		%HallucinationAnimationPlayer.play("hallucination")
+		dialogue = "res://Dialogue/00_dialogue_missing.tres"
+		DialogueManager.start_dialogue(dialogue, 0)
+		await %HallucinationAnimationPlayer.animation_finished
+		clues_interacted["StallionHallucination"] = true
+		for n in 350:
+			$Camera2D.position.x += 8
+			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
+				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
+			await get_tree().create_timer(0.00000001).timeout
+		#print($Camera2D.position.x, " player: ", player_horse.position.x)
+		clues_on_screen = get_tree().get_nodes_in_group("on_screen")
+		for n in clues_on_screen:
+			n.remove_from_group("on_screen")
+		%Hoofprints.add_to_group("on_screen")
+		%Hoofprints.add_to_group("smell")
+		clues_discovered["Hoofprints"] = true
 
 
-func cutscene_hallucination():
-	await get_tree().create_timer(3).timeout
-	%StallionHallucination1.show()
-	#%HallucinationAnimationPlayer.play("hallucination")
-	#await %HallucinationAnimationPlayer.animation_finished
+func _on_hoofprints_pressed() -> void:
+	print("click hoofprints")
+	if Global.player_POI_position != Global.POIs.HOOFPRINTS:
+		Global.visit_clue.emit(Vector2(%Hoofprints.position.x + 50, %Hoofprints.position.y + 20))
+		await Global.arrived
+		Global.player_POI_position = Global.POIs.HOOFPRINTS
+		%Hoofprints.texture_normal = load("res://ArtAssets/hoofprints.png")
+	else:
+		if Global.current_sense == Global.senses.SEE:
+			dialogue = "res://Dialogue/08_can't_see.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		elif Global.current_sense == Global.senses.HEAR:
+			dialogue = "res://Dialogue/13_can't_hear.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		elif Global.current_sense == Global.senses.SMELL:
+			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
+			await DialogueManager.dialogue_ended
+			clues_interacted["Hoofprints"] = true
+			Global.visit_clue.emit(Vector2(player_horse.position.x + 1000, player_horse.position.y + 0))
+			await get_tree().create_timer(1.5).timeout
+			switch_scene()
 
 
 func sense_change():
@@ -157,13 +206,17 @@ func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
 	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
-
+	%SoftSpot.modulate = Color(0.282, 0.282, 0.282)
+	%Hoofprints.modulate = Color(0.282, 0.282, 0.282)
+	
 
 func lighten_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
 	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(1.0, 1.0, 1.0)
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
-
+	%SoftSpot.modulate = Color(1.0, 1.0, 1.0)
+	%Hoofprints.modulate = Color(1.0, 1.0, 1.0)
+	
 
 func muffle_music():
 	$MusicAudio.volume_db = -7.153
@@ -178,9 +231,11 @@ func normalize_music():
 func show_scents():
 	%Scent0.visible = true
 	%Particles0.emitting = true
-	if clues_discovered["Scent1"]:
+	if clues_discovered["Scent1"] and not clues_interacted["Scent1"]:
 		%Scent1.visible = true
 		%Particles1.emitting = true
+	%Hoofprints.visible = true
+	%Particles3.emitting = true
 
 
 func hide_scents():
@@ -188,10 +243,13 @@ func hide_scents():
 	%Particles0.emitting = false
 	%Scent1.visible = false
 	%Particles1.emitting = false
+	if %Hoofprints.texture_normal == null:
+		%Hoofprints.visible = false
+	%Particles3.emitting = false
 
 
 func show_sounds():
-	if clues_discovered["Sound0"]:
+	if clues_discovered["Sound0"] and not clues_interacted["Sound0"]:
 		%Sound0.visible = true
 		%Particles2.emitting = true
 
@@ -199,6 +257,7 @@ func show_sounds():
 func hide_sounds():
 	%Sound0.visible = false
 	%Particles2.emitting = false
+
 
 # updates showing all currently discovered clues
 func update_sense():
@@ -208,9 +267,16 @@ func update_sense():
 		if visible_clues.has(n):
 				clues_discovered[n.name] = true
 	# shows all discovered clues currently on screen
+	var sense_clues = ["Scent0", "Scent1", "Sound0"]
 	for n in clues_on_screen:
 		if clues_discovered[n.name]:
 			n.show()
+			# the sense clues in this episode are meant to disappear after use
+			if sense_clues.has(n.name):
+				if not clues_interacted[n.name]:
+					n.show()
+				else:
+					n.hide()
 
 
 func switch_scene():

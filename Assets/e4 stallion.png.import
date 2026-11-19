@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xg25ykeiprno"
-path="res://.godot/imported/bg_30.png-ae09c247990bdf765ae0aca888ae989b.ctex"
+uid="uid://bcoqoa16ljxwk"
+path="res://.godot/imported/e4 stallion.png-32d8bec47deeb68fe38e1c605f7292ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bg_30.png"
-dest_files=["res://.godot/imported/bg_30.png-ae09c247990bdf765ae0aca888ae989b.ctex"]
+source_file="res://Assets/e4 stallion.png"
+dest_files=["res://.godot/imported/e4 stallion.png-32d8bec47deeb68fe38e1c605f7292ff.ctex"]
 
 [params]
 

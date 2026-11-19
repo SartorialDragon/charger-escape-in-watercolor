@@ -25,7 +25,6 @@ func _input(event: InputEvent) -> void:
 		#$Smell2.self_modulate = Color(0.0, 0.0, 0.0)
 
 
-
 func _on_look_pressed() -> void:
 	Global.current_sense = Global.senses.SEE
 	if not Global.clues_interacted["GetUp"]:
