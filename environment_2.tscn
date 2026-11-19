@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://y43gdtmn3t58" path="res://ArtAssets/e2 asset2.png" id="5_jb611"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="6_1jxss"]
 [ext_resource type="Texture2D" uid="uid://u0b0ubw7ns5q" path="res://ArtAssets/e2 asset3.png" id="6_k5e16"]
-[ext_resource type="Texture2D" uid="uid://pyvajgc2hjvh" path="res://Assets/wind.png" id="7_226vn"]
 [ext_resource type="Texture2D" uid="uid://sqkv46fiebdn" path="res://ArtAssets/bucket_empty.png" id="7_bt657"]
 [ext_resource type="Texture2D" uid="uid://bgutf8xxcp7eo" path="res://ArtAssets/e2 asset4.png" id="7_wja3w"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_3mwvo"]
@@ -21,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="13_yjv7e"]
 [ext_resource type="Texture2D" uid="uid://dneua5ud5kb6c" path="res://ArtAssets/environment 2 foreground.png" id="14_voe02"]
 [ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="17_6krrs"]
+[ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="18_6krrs"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="19_jb611"]
 [ext_resource type="Texture2D" uid="uid://dmlqjadft1d6f" path="res://ArtAssets/e2 foreground trees.png" id="19_k5e16"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="19_voe02"]
@@ -575,7 +575,7 @@ offset_right = 4446.999
 offset_bottom = 670.2178
 scale = Vector2(1.1953125, 1.6171875)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7_226vn")
+texture_normal = ExtResource("18_6krrs")
 ignore_texture_size = true
 stretch_mode = 0
 

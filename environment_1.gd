@@ -2,8 +2,8 @@ extends Control
 
 var dialogue: NodePath
 
-var cursor_default = load("res://Assets/Cursor_Sepia.png")
-var cursor_POI = load("res://Assets/Cursor_Brown.png")
+var cursor_default = load("res://ArtAssets/Cursor_Sepia.png")
+var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 
 var visible_clues: Array = []
 var clues_on_screen: Array = []

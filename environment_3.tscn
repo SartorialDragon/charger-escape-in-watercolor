@@ -284,7 +284,7 @@ libraries = {
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.1, 1)
-repeat_size = Vector2(1920, 0)
+repeat_size = Vector2(6000, 0)
 
 [node name="Foreground" type="TextureRect" parent="Parallax2D3"]
 anchors_preset = 15

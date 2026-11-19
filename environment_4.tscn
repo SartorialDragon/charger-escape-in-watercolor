@@ -1,16 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=28 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
 [ext_resource type="Texture2D" uid="uid://d6abxoqlm8tb" path="res://Assets/environment 4 middleground.png" id="3_6fwi5"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="4_vylta"]
-[ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="6_8xvv2"]
-[ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="7_vylta"]
-[ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="8_6fwi5"]
+[ext_resource type="Texture2D" uid="uid://bfum20ia4e2sj" path="res://ArtAssets/e4 tree.png" id="5_5jeke"]
+[ext_resource type="Texture2D" uid="uid://03jwf3ngbsvl" path="res://ArtAssets/rock1_.png" id="6_5jeke"]
+[ext_resource type="Texture2D" uid="uid://dqwsaaym7wjax" path="res://ArtAssets/rock2_.png" id="7_vylta"]
+[ext_resource type="Texture2D" uid="uid://dmdsfealnmqrf" path="res://ArtAssets/rock3_.png" id="8_6fwi5"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="8_mxxf3"]
-[ext_resource type="Texture2D" uid="uid://dmc2cwtij1ghl" path="res://ArtAssets/rock1.png" id="9_8xvv2"]
-[ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="10_r3iwi"]
-[ext_resource type="Texture2D" uid="uid://bl0d8kjoagwgs" path="res://ArtAssets/tree2.png" id="12_vylta"]
+[ext_resource type="Texture2D" uid="uid://bcoqoa16ljxwk" path="res://Assets/e4 stallion.png" id="10_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://860apyh5ntpj" path="res://ArtAssets/environment 4 foreground.png" id="13_8xvv2"]
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="13_edo2x"]
 [ext_resource type="Texture2D" uid="uid://brai801lvtqll" path="res://ArtAssets/he_is_dead.png" id="14_5jeke"]
@@ -24,6 +23,113 @@ point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylta"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_5jeke"]
+resource_name = "new_slide"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/StillImage:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.3333333, 4.36, 5.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vylta"]
+resource_name = "show_slideshow"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.1254902), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6fwi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/StillImage:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xvv2"]
+_data = {
+&"RESET": SubResource("Animation_6fwi5"),
+&"new_slide": SubResource("Animation_5jeke"),
+&"show_slideshow": SubResource("Animation_vylta")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jeke"]
+bg_color = Color(0.53, 0.07949998, 0.07949998, 1)
+
+[sub_resource type="Animation" id="Animation_8xvv2"]
+resource_name = "rage"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.100000024, 0.7, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.53, 0.07949998, 0.07949998, 0.23921569), Color(0.53, 0.07949998, 0.07949998, 0.6039216), Color(0.53, 0.07949998, 0.07949998, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_lgckb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.53, 0.07949998, 0.07949998, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mxxf3"]
+_data = {
+&"RESET": SubResource("Animation_lgckb"),
+&"rage": SubResource("Animation_8xvv2")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76ml2"]
 bg_color = Color(0, 0, 0, 1)
@@ -108,33 +214,22 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_2li0a")
 color = Color(1, 0.932, 0.49, 1)
 
-[node name="Spring" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see", "smell"]]
-unique_name_in_owner = true
-offset_left = 3675.0
-offset_top = 727.0
-offset_right = 3768.899
-offset_bottom = 827.0
-scale = Vector2(8.881775, 2.469204)
-mouse_default_cursor_shape = 2
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="Destroy0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-self_modulate = Color(3.17842, 3.17842, 3.17842, 1)
-offset_left = 4261.0
-offset_top = 223.0
-offset_right = 4528.294
-offset_bottom = 423.34784
+offset_left = 3408.0
+offset_top = 270.0
+offset_right = 3782.5415
+offset_bottom = 550.7343
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("6_8xvv2")
-ignore_texture_size = true
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_5jeke")
 stretch_mode = 0
+flip_h = true
 
 [node name="RedParticles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy0"]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(138.03912, 137.27536)
+position = Vector2(188.2352, 131.09178)
 scale = Vector2(0.99999976, 1)
 emitting = false
 amount = 500
@@ -162,10 +257,10 @@ offset_top = 325.0
 offset_right = 4148.294
 offset_bottom = 525.34784
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("7_vylta")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_5jeke")
 ignore_texture_size = true
 stretch_mode = 0
-flip_h = true
 
 [node name="RedParticles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Destroy1"]
 unique_name_in_owner = true
@@ -193,14 +288,13 @@ color = Color(0.95558554, 0, 0.03693862, 1)
 
 [node name="Destroy2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-visible = false
-self_modulate = Color(3.178, 3.178, 3.178, 1)
-offset_left = 4779.0
-offset_top = 701.0
-offset_right = 5046.294
-offset_bottom = 901.34784
+offset_left = 4700.25
+offset_top = 567.0
+offset_right = 5041.792
+offset_bottom = 823.0
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("6_8xvv2")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_5jeke")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -230,12 +324,13 @@ color = Color(0.95558554, 0, 0.03693862, 1)
 
 [node name="Destroy3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 4568.9995
-offset_top = 399.0
-offset_right = 4836.294
-offset_bottom = 599.34784
+offset_left = 4240.0
+offset_top = 312.0
+offset_right = 4507.2944
+offset_bottom = 469.06287
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("8_6fwi5")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_vylta")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -265,12 +360,13 @@ color = Color(0.95558554, 0, 0.03693862, 1)
 
 [node name="Destroy4" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 3439.0
-offset_top = 380.0
-offset_right = 3706.294
-offset_bottom = 580.34784
+offset_left = 4880.0
+offset_top = 338.0
+offset_right = 5147.294
+offset_bottom = 538.34784
 scale = Vector2(1.1953125, 1.6171875)
-texture_normal = ExtResource("9_8xvv2")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_6fwi5")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -299,71 +395,27 @@ scale_amount_curve = SubResource("Curve_2li0a")
 color = Color(0.95558554, 0, 0.03693862, 1)
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("8_mxxf3")]
+z_index = 3
 
-[node name="Stallion" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+[node name="Spring" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
-offset_left = 3970.0
-offset_top = 678.0
-offset_right = 4284.2104
-offset_bottom = 925.9615
+offset_left = 4250.0
+offset_top = 650.0
+offset_right = 4688.1616
+offset_bottom = 854.8471
 scale = Vector2(0.9257477, 1.2524822)
-texture_normal = ExtResource("10_r3iwi")
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_8xvv2")
 ignore_texture_size = true
-stretch_mode = 4
+stretch_mode = 5
 flip_v = true
-
-[node name="StallionHallucination1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(1, 1, 1, 0.3137255)
-offset_left = 3094.0
-offset_top = 525.0
-offset_right = 3408.2104
-offset_bottom = 772.9615
-scale = Vector2(0.9257477, 1.2524822)
-texture_normal = ExtResource("10_r3iwi")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Bush" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
-unique_name_in_owner = true
-offset_left = 3797.0
-offset_top = 596.0
-offset_right = 4180.4736
-offset_bottom = 1066.2661
-scale = Vector2(0.9257477, 1.2524822)
-texture_normal = ExtResource("12_vylta")
-stretch_mode = 4
-
-[node name="Bush2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
-unique_name_in_owner = true
-offset_left = 3994.0002
-offset_top = 524.00006
-offset_right = 4377.4736
-offset_bottom = 994.2661
-scale = Vector2(0.9257477, 1.2524822)
-texture_normal = ExtResource("12_vylta")
-stretch_mode = 4
-flip_h = true
-
-[node name="Bush3" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
-unique_name_in_owner = true
-offset_left = 3938.0
-offset_top = 533.00006
-offset_right = 4321.4736
-offset_bottom = 1003.2661
-scale = Vector2(0.9257477, 1.2524822)
-texture_normal = ExtResource("12_vylta")
-stretch_mode = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundLayers/Parallax2D2"]
-root_node = NodePath("../Bush")
 
 [node name="Parallax2D3" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.1, 1)
-repeat_size = Vector2(1920, 0)
+repeat_size = Vector2(6000, 0)
 
 [node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -377,6 +429,73 @@ mouse_filter = 2
 texture = ExtResource("13_8xvv2")
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.5, 1)
+scroll_offset = Vector2(4005, 50)
+
+[node name="Rock1" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 2545.0
+offset_top = 545.0
+offset_right = 2919.0
+offset_bottom = 965.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("6_5jeke")
+
+[node name="Rock2" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 2845.0
+offset_top = 439.0
+offset_right = 3219.0
+offset_bottom = 859.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("7_vylta")
+
+[node name="Rock3" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 2695.0
+offset_top = 437.0
+offset_right = 3069.0
+offset_bottom = 857.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("8_6fwi5")
+
+[node name="Rock4" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 3138.0
+offset_top = 494.0
+offset_right = 3512.0
+offset_bottom = 914.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("6_5jeke")
+flip_h = true
+
+[node name="Rock5" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 3438.0
+offset_top = 388.0
+offset_right = 3812.0
+offset_bottom = 808.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("7_vylta")
+flip_h = true
+
+[node name="Rock6" type="TextureRect" parent="Parallax2D4"]
+z_index = 7
+offset_left = 3288.0
+offset_top = 386.0
+offset_right = 3662.0
+offset_bottom = 806.0
+scale = Vector2(1.6399902, 1.9599903)
+mouse_filter = 2
+texture = ExtResource("8_6fwi5")
+flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(958, 542)
@@ -399,6 +518,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vylta")
 
 [node name="StillImage" type="TextureRect" parent="StillImageLayer/Panel"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -414,6 +534,49 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_5jeke")
 expand_mode = 1
+
+[node name="Credits" type="Label" parent="StillImageLayer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 42
+text = "Credits:
+
+Artemisia
+Nichelbichel
+SartorialDragon
+sekelsta
+...."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StillAnimationPlayer" type="AnimationPlayer" parent="StillImageLayer"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_8xvv2")
+}
+
+[node name="RageLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="RageLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jeke")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RageLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_mxxf3")
+}
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 visible = false
@@ -446,9 +609,9 @@ stream = ExtResource("14_aodgo")
 bus = &"VA"
 
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Spring" to="." method="_on_spring_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy0" to="." method="_on_destroy_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy1" to="." method="_on_destroy_1_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy2" to="." method="_on_destroy_2_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy3" to="." method="_on_destroy_3_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy4" to="." method="_on_destroy_4_pressed"]
+[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Spring" to="." method="_on_spring_pressed"]
