@@ -2,8 +2,8 @@ extends Control
 
 var dialogue: NodePath
 
-var cursor_default = load("res://Assets/Cursor_Sepia.png")
-var cursor_POI = load("res://Assets/Cursor_Brown.png")
+var cursor_default = load("res://ArtAssets/Cursor_Sepia.png")
+var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 
 var visible_clues: Array = []
 var clues_on_screen: Array = []
@@ -19,13 +19,9 @@ var clues_discovered = { # key needs to be identical with node name
 	"Destroy2" : false,
 	"Destroy3" : false,
 	"Destroy4" : false,
-	"Scent0" : false,
-	"Scent1" : false,
 	"Sound0" : false,
 	"Spring" : false,
 	"Rage" : false,
-	"StallionHallucination" : false,
-	"Hoofprints" : false,
 }
 
 # this means it has been clicked
@@ -35,13 +31,9 @@ var clues_interacted = {
 	"Destroy2" : false,
 	"Destroy3" : false,
 	"Destroy4" : false,
-	"Scent0" : false,
-	"Scent1" : false,
 	"Sound0" : false,
 	"Spring" : false,
 	"Rage" : false,
-	"StallionHallucination" : false,
-	"Hoofprints" : false,
 }
 
 
@@ -57,27 +49,12 @@ func _ready():
 	
 
 func _provisorium():
+	#await get_tree().create_timer(4).timeout
 	for n in 600:
 			$Camera2D.position.x += 8
 			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
 				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 			await get_tree().create_timer(0.00000001).timeout
-
-	
-
-
-func _on_scent_1_pressed() -> void:
-	if Global.current_sense == Global.senses.SMELL:
-		if Global.player_POI_position != Global.POIs.SCENT_1:
-			Global.visit_clue.emit(Vector2(%Scent1.position.x - 50, %Scent1.position.y + 0))
-			await Global.arrived
-			Global.player_POI_position = Global.POIs.SCENT_1
-		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
-			DialogueManager.start_dialogue(dialogue, 0)
-			clues_interacted["Scent1"] = true
-			clues_discovered["Sound0"] = true
-			#%Sound0.add_to_group("hear")
 
 
 func _on_sound_0_pressed() -> void:
@@ -110,44 +87,12 @@ func _on_sound_0_pressed() -> void:
 			%Destroy4.add_to_group("on_screen")
 
 
-func _on_destroy_0_pressed() -> void:
-	_on_destroy(%Destroy0, %RedParticles0)
-
-func _on_destroy_1_pressed() -> void:
-	_on_destroy(%Destroy1, %RedParticles1)
-
-func _on_destroy_2_pressed() -> void:
-	_on_destroy(%Destroy2, %RedParticles2)
-
-func _on_destroy_3_pressed() -> void:
-	_on_destroy(%Destroy3, %RedParticles3)
-
-func _on_destroy_4_pressed() -> void:
-	_on_destroy(%Destroy4, %RedParticles4)
-	
-
-func _on_destroy(object, particle):
-	if not clues_interacted[object.name]:
-		Global.visit_clue.emit(Vector2(object.position.x - 0, object.position.y + 260))
-		await Global.arrived
-		Global.player_POI_position = Global.POIs.DESTROY
-		particle.emitting = false
-		clues_interacted[object.name] = true
-		clues_interacted["Rage"] = true
-		for n in 5:
-			if clues_interacted["Destroy"+str(n)] == false:
-				clues_interacted["Rage"] = false
-		if clues_interacted["Rage"]:
-			cutscene_grief()
-
-
 func _on_spring_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SPRING:
-		Global.visit_clue.emit(Vector2(%Spring.position.x +400, %Spring.position.y + 100))
+		Global.visit_clue.emit(Vector2(%Spring.position.x +100, %Spring.position.y + 10))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SPRING
 	else:
-		# lie down animation
 		clues_interacted["Spring"] = true
 		cutscene_dead()
 
@@ -164,9 +109,7 @@ func cutscene_dead():
 	$StillImageLayer.hide()
 	rage()
 	
-	
-func cutscene_grief():
-	cutscene_dead()
+
 	
 
 func rage():
@@ -177,8 +120,76 @@ func rage():
 	%RedParticles2.emitting = true
 	%RedParticles3.emitting = true
 	%RedParticles4.emitting = true
+	$RageLayer.visible = true
+	$RageLayer/AnimationPlayer.play("rage")
 
 
+func _on_destroy_0_pressed() -> void:
+	_on_destroy(Global.POIs.DESTROY0, %Destroy0, %RedParticles0)
+
+func _on_destroy_1_pressed() -> void:
+	_on_destroy(Global.POIs.DESTROY1, %Destroy1, %RedParticles1)
+
+func _on_destroy_2_pressed() -> void:
+	_on_destroy(Global.POIs.DESTROY2, %Destroy2, %RedParticles2)
+
+func _on_destroy_3_pressed() -> void:
+	_on_destroy(Global.POIs.DESTROY3, %Destroy3, %RedParticles3)
+
+func _on_destroy_4_pressed() -> void:
+	_on_destroy(Global.POIs.DESTROY4, %Destroy4, %RedParticles4)
+	
+
+func _on_destroy(pos, object, particle):
+	if Global.player_POI_position != pos:
+		Global.visit_clue.emit(Vector2(object.position.x +20, object.position.y + 260))
+		await Global.arrived
+		Global.player_POI_position = pos
+	else:
+		if not clues_interacted[object.name]:
+			particle.emitting = false
+			if "rock" in object.texture_normal.resource_path:
+				object.texture_normal = load("res://ArtAssets/rock_broken_.png")
+			if "tree" in object.texture_normal.resource_path:
+				object.texture_normal = load("res://ArtAssets/tree_broken.png")
+			clues_interacted[object.name] = true
+			clues_interacted["Rage"] = true
+			for n in 5:
+				if clues_interacted["Destroy"+str(n)] == false:
+					clues_interacted["Rage"] = false
+			if clues_interacted["Rage"]:
+				$RageLayer/AnimationPlayer.stop()
+				$RageLayer.hide()
+				await get_tree().create_timer(2).timeout
+				# lie down animation
+				cutscene_grief()
+
+	
+func cutscene_grief():
+	$StillImageLayer.show()
+	%StillAnimationPlayer.play("show_slideshow")
+	next_slide("res://ArtAssets/still1.png")
+	await %StillAnimationPlayer.animation_finished
+	next_slide("res://ArtAssets/still2.png")
+	await %StillAnimationPlayer.animation_finished
+	next_slide("res://ArtAssets/still3.png")
+	await %StillAnimationPlayer.animation_finished
+	next_slide("res://ArtAssets/still4.png")
+	await %StillAnimationPlayer.animation_finished
+	next_slide("res://ArtAssets/still5.png")
+	await %StillAnimationPlayer.animation_finished
+	next_slide("res://ArtAssets/still6.png")
+	await %StillAnimationPlayer.animation_finished
+	$StillImageLayer/Panel/Credits.show()
+	
+	
+func next_slide(path):
+	%StillImage.texture = load(path)
+	%StillAnimationPlayer.play("new_slide")
+	
+	
+	
+	
 func sense_change():
 	if Global.current_sense == Global.senses.SEE:
 		_on_see_button_pressed()
@@ -238,18 +249,16 @@ func normalize_music():
 
 
 func show_scents():
-	%Scent0.visible = true
-	%Particles0.emitting = true
-	if clues_discovered["Scent1"]:
-		%Scent1.visible = true
-		%Particles1.emitting = true
+	#%Scent0.visible = true
+	#%Particles0.emitting = true
+	#if clues_discovered["Scent1"]:
+		#%Scent1.visible = true
+		#%Particles1.emitting = true
+	pass
 
 
 func hide_scents():
-	%Scent0.visible = false
-	%Particles0.emitting = false
-	%Scent1.visible = false
-	%Particles1.emitting = false
+	pass
 
 
 func show_sounds():

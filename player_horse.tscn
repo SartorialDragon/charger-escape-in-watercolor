@@ -1,9 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx4kno5rtneh6"]
+[gd_scene load_steps=27 format=3 uid="uid://bx4kno5rtneh6"]
 
 [ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
-[ext_resource type="Texture2D" uid="uid://dvmgtlbkiwyco" path="res://Assets/Clydesdale_base_grey.png" id="1_ikk15"]
 [ext_resource type="Texture2D" uid="uid://7yf7ni8ksp03" path="res://ArtAssets/IMG_1399.png" id="2_bgieg"]
-[ext_resource type="Texture2D" uid="uid://3y1topgnva0m" path="res://Assets/Clydesdale_base_red.png" id="3_fvi5k"]
 [ext_resource type="Texture2D" uid="uid://cj3xk36nhlegm" path="res://ArtAssets/IMG_1400.png" id="3_udm22"]
 [ext_resource type="Texture2D" uid="uid://ckh3ltygqn4j4" path="res://ArtAssets/IMG_1401.png" id="4_gym2r"]
 [ext_resource type="Texture2D" uid="uid://dfhw3ndqdg6nr" path="res://ArtAssets/IMG_1391.png" id="7_bgieg"]
@@ -49,28 +47,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_fvi5k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_fvi5k")
-}],
-"loop": false,
-"name": &"idle_ears",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_ikk15")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_ikk15")
-}],
-"loop": false,
-"name": &"idle_tailswish",
 "speed": 2.0
 }, {
 "frames": [{
@@ -231,7 +207,6 @@ position = Vector2(-17, -7)
 scale = Vector2(0.11253854, 0.11253855)
 sprite_frames = SubResource("SpriteFrames_0078p")
 animation = &"idle"
-frame_progress = 0.17616506
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
