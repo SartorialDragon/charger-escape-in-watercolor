@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://dhbqhus8icl80"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_ckdkn"]
+[ext_resource type="AudioStream" uid="uid://dqhybexpqf1ht" path="res://Dialogue/VA/04_rockslide.ogg" id="2_w0bsa"]
+
+[resource]
+script = ExtResource("1_ckdkn")
+id = "21"
+speaker = "Echo"
+text = "Some crumpled rocks blocked my path, burnt and collapsed, and I kicked them until I had a path ahead. He was that way. I knew it. I felt him."
+vc_file = ExtResource("2_w0bsa")

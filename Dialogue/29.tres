@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://blqn2pbc16cwl"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_ac35f"]
+[ext_resource type="AudioStream" uid="uid://rojx0gihr1db" path="res://Dialogue/VA/E3_need_a_break.ogg" id="2_vi6bd"]
+
+[resource]
+script = ExtResource("1_ac35f")
+id = "29"
+speaker = "Echo"
+text = "It's so hard breathe. I... I need to find him, I just... A little break. I need a little break. He'd understand. A-Ah. "
+vc_file = ExtResource("2_vi6bd")

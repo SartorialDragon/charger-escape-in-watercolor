@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://d0akiltc4ebhe"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_wfte8"]
+[ext_resource type="AudioStream" uid="uid://dtli2eocu0u1l" path="res://Dialogue/VA/01_intro.ogg" id="2_rkaxh"]
+
+[resource]
+script = ExtResource("1_wfte8")
+id = "20"
+speaker = "Echo"
+text = "Red. It was all red. Red, and thick, and choking. I could not see forward, and I could not see him, for he is red, too. As such we were separated. As such everything fell apart."
+vc_file = ExtResource("2_rkaxh")

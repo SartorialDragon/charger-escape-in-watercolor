@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cnthg6i23ro8k"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_xms17"]
+[ext_resource type="AudioStream" uid="uid://qxqe80815brv" path="res://Dialogue/VA/E4_start.ogg" id="2_by2nm"]
+
+[resource]
+script = ExtResource("1_xms17")
+id = "32"
+speaker = "Echo"
+text = "Everything has led me here, but there's nothing left. How much did the red devour? How little do we have now? We used to soak ourselves here and then bask in the sun. Now, even the sun is grey. Oh, my love, where are you?"
+vc_file = ExtResource("2_by2nm")

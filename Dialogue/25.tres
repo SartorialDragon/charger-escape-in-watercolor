@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://d1257yyd8v14s"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_rvia8"]
+[ext_resource type="AudioStream" uid="uid://1qbmwstwiiht" path="res://Dialogue/VA/E2_still_burning.ogg" id="2_sa0hm"]
+
+[resource]
+script = ExtResource("1_rvia8")
+id = "25"
+speaker = "Echo"
+text = "The trees are burning, still. It's the grey again. And the red. I'll have to figure something out to get through."
+vc_file = ExtResource("2_sa0hm")

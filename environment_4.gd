@@ -45,6 +45,9 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	dialogue = "res://Dialogue/32_E4_start.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	_provisorium()
 	
 
@@ -105,6 +108,9 @@ func cutscene_dead():
 		$StillImageLayer/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		$StillImageLayer/Panel/StillImage.self_modulate = Color(1.0, 1.0, 1.0, A)
 		await get_tree().create_timer(0.1).timeout
+	dialogue = "res://Dialogue/33_finding_him.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	await get_tree().create_timer(4).timeout
 	$StillImageLayer.hide()
 	rage()
@@ -122,22 +128,38 @@ func rage():
 	%RedParticles4.emitting = true
 	$RageLayer.visible = true
 	$RageLayer/AnimationPlayer.play("rage")
+	
 
 
 func _on_destroy_0_pressed() -> void:
 	_on_destroy(Global.POIs.DESTROY0, %Destroy0, %RedParticles0)
+	dialogue = "res://Dialogue/34_rage0.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 
 func _on_destroy_1_pressed() -> void:
 	_on_destroy(Global.POIs.DESTROY1, %Destroy1, %RedParticles1)
+	dialogue = "res://Dialogue/35_rage1.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 
 func _on_destroy_2_pressed() -> void:
 	_on_destroy(Global.POIs.DESTROY2, %Destroy2, %RedParticles2)
+	dialogue = "res://Dialogue/38_rage4.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 
 func _on_destroy_3_pressed() -> void:
 	_on_destroy(Global.POIs.DESTROY3, %Destroy3, %RedParticles3)
+	dialogue = "res://Dialogue/36_rage2.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 
 func _on_destroy_4_pressed() -> void:
 	_on_destroy(Global.POIs.DESTROY4, %Destroy4, %RedParticles4)
+	dialogue = "res://Dialogue/37_rage3.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	
 
 func _on_destroy(pos, object, particle):
@@ -149,8 +171,13 @@ func _on_destroy(pos, object, particle):
 		if not clues_interacted[object.name]:
 			particle.emitting = false
 			if "rock" in object.texture_normal.resource_path:
+				$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
+				$SFXAudio.play()
 				object.texture_normal = load("res://ArtAssets/rock_broken_.png")
 			if "tree" in object.texture_normal.resource_path:
+				# find sfx for tree breaking
+				#$SFXAudio.stream = load("")
+				#$SFXAudio.play()
 				object.texture_normal = load("res://ArtAssets/tree_broken.png")
 			clues_interacted[object.name] = true
 			clues_interacted["Rage"] = true

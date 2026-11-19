@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://dlmthx6a6htxy"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_vtvm5"]
+[ext_resource type="AudioStream" uid="uid://dbfye4moo7rur" path="res://Dialogue/VA/E2_pass_through_trees.ogg" id="2_scxtw"]
+
+[resource]
+script = ExtResource("1_vtvm5")
+id = "27"
+speaker = "Echo"
+text = "No more red. I can pass. I know he's this way, the air is just... heavy. But loving is a heavy thing, too."
+vc_file = ExtResource("2_scxtw")

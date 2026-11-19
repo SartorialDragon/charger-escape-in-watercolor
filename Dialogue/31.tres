@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://b3ccuvvrcy0el"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_guwpo"]
+[ext_resource type="AudioStream" uid="uid://2qgqlnd43mwi" path="res://Dialogue/VA/E3_hoofprints.ogg" id="2_jijct"]
+
+[resource]
+script = ExtResource("1_guwpo")
+id = "31"
+speaker = "Echo"
+text = "What are...? Oh. Hoofprints! Everything smells ashen, but I know their shape. He was here. He went this way! I have to.... keep going."
+vc_file = ExtResource("2_jijct")

@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvcicixgaavdy"]
+[gd_scene load_steps=5 format=3 uid="uid://cvcicixgaavdy"]
 
 [ext_resource type="Script" uid="uid://ctnibtcpfhid7" path="res://dialogue_ui.gd" id="1_njptv"]
+[ext_resource type="Theme" uid="uid://cmmr17076fsyd" path="res://theme_dialogue_ui.tres" id="2_2x5cq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x5cq"]
-bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.64705884)
+bg_color = Color(0.13, 0.13, 0.13, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6amk"]
-bg_color = Color(1, 1, 1, 0.58431375)
+bg_color = Color(1, 1, 1, 0.6745098)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="ClueDialogue" type="CanvasLayer"]
 script = ExtResource("1_njptv")
@@ -14,15 +24,21 @@ script = ExtResource("1_njptv")
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1921.0
 offset_bottom = 1088.0
-focus_next = NodePath("DialoguePanel/HBoxContainer/AdvanceDialogueButton")
+focus_next = NodePath("../AdvanceDialogueButton")
 theme_override_styles/panel = SubResource("StyleBoxFlat_2x5cq")
 
 [node name="DialoguePanel" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 156.0
-offset_top = 92.0
-offset_right = 1763.0
-offset_bottom = 1038.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -803.5
+offset_top = -946.0
+offset_right = 803.5
+grow_horizontal = 2
+grow_vertical = 0
 alignment = 1
 
 [node name="MemoryPanel" type="TextureRect" parent="Panel/DialoguePanel"]
@@ -48,6 +64,7 @@ offset_bottom = 279.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "Echo"
@@ -58,25 +75,27 @@ autowrap_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.91
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 36
 text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/DialoguePanel"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Panel/DialoguePanel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AdvanceDialogueButton" type="Button" parent="Panel/DialoguePanel/HBoxContainer"]
+[node name="AdvanceDialogueButton" type="Button" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+z_index = 5
+offset_left = 1677.0
+offset_top = 983.0
+offset_right = 1731.0
+offset_bottom = 1049.0
+scale = Vector2(1.44, 1.44)
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_2x5cq")
 theme_override_font_sizes/font_size = 42
 text = " > "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="Panel/DialoguePanel/HBoxContainer/AdvanceDialogueButton" to="." method="_on_advance_dialogue_button_pressed"]
+[connection signal="pressed" from="AdvanceDialogueButton" to="." method="_on_advance_dialogue_button_pressed"]

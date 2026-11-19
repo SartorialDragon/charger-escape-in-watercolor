@@ -50,7 +50,7 @@ func _on_scent_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_0
 		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			dialogue = "res://Dialogue/28_E3_start.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent0"] = true
 			clues_discovered["Scent1"] = true
@@ -96,7 +96,7 @@ func _on_sound_0_pressed() -> void:
 					Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 				await get_tree().create_timer(0.00000001).timeout
 			#print($Camera2D.position.x, " player: ", player_horse.position.x)
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			dialogue = "res://Dialogue/29_need_a_break.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			for n in clues_on_screen:
@@ -109,7 +109,7 @@ func _on_sound_0_pressed() -> void:
 
 func _on_soft_spot_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SOFTSPOT:
-		Global.visit_clue.emit(Vector2(%SoftSpot.position.x +400, %SoftSpot.position.y + 100))
+		Global.visit_clue.emit(Vector2(%SoftSpot.position.x +700, %SoftSpot.position.y + 250))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SOFTSPOT
 	else:
@@ -124,9 +124,10 @@ func stallion_hallucination() -> void:
 	%StallionHallucination.show()
 	if not clues_interacted["StallionHallucination"]:
 		%HallucinationAnimationPlayer.play("hallucination")
-		dialogue = "res://Dialogue/00_dialogue_missing.tres"
-		DialogueManager.start_dialogue(dialogue, 0)
 		await %HallucinationAnimationPlayer.animation_finished
+		dialogue = "res://Dialogue/30_soft_spot_memory.tres"
+		DialogueManager.start_dialogue(dialogue, 0)
+		await DialogueManager.dialogue_ended
 		clues_interacted["StallionHallucination"] = true
 		for n in 350:
 			$Camera2D.position.x += 8
@@ -143,7 +144,6 @@ func stallion_hallucination() -> void:
 
 
 func _on_hoofprints_pressed() -> void:
-	print("click hoofprints")
 	if Global.player_POI_position != Global.POIs.HOOFPRINTS:
 		Global.visit_clue.emit(Vector2(%Hoofprints.position.x + 50, %Hoofprints.position.y + 20))
 		await Global.arrived
@@ -157,7 +157,7 @@ func _on_hoofprints_pressed() -> void:
 			dialogue = "res://Dialogue/13_can't_hear.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		elif Global.current_sense == Global.senses.SMELL:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			dialogue = "res://Dialogue/31_hoofprints.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			await DialogueManager.dialogue_ended
 			clues_interacted["Hoofprints"] = true
@@ -236,6 +236,7 @@ func show_scents():
 		%Particles1.emitting = true
 	%Hoofprints.visible = true
 	%Particles3.emitting = true
+	print("particles emitting")
 
 
 func hide_scents():

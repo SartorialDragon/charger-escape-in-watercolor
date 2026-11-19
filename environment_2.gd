@@ -46,6 +46,9 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	dialogue = "res://Dialogue/23_E2 start.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	#await DialogueManager.dialogue_ended
 	
 
 func _physics_process(_delta: float) -> void:
@@ -105,6 +108,8 @@ func _on_mane_hair_pressed() -> void:
 				%Tree2.add_to_group("on_screen")
 				%Tree3.add_to_group("on_screen")
 				clues_interacted["Tree0Mane"] = true
+				dialogue = "res://Dialogue/25_still_burning.tres"
+				DialogueManager.start_dialogue(dialogue, 0)
 
 
 func _on_bucket_pressed() -> void:
@@ -115,7 +120,7 @@ func _on_bucket_pressed() -> void:
 			Global.player_POI_position = Global.POIs.BUCKET
 		else:
 			# pick up bucket
-			dialogue = "res://Dialogue/10_human_waste.tres"
+			dialogue = "res://Dialogue/26_human_trash.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Bucket"] = true
 			%Bucket.rotation = 0.0
@@ -169,6 +174,9 @@ func _on_tree_pressed(tree, particle):
 		
 
 func move_through_trees():
+	dialogue = "res://Dialogue/27_pass_through_trees.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	%BucketAnimationPlayer.play("fall")
 	for n in 50:
 		$Camera2D.position.x += 8
@@ -184,51 +192,6 @@ func move_through_trees():
 	#%StallionScent.add_to_group("on_screen")
 	await get_tree().create_timer(1).timeout
 	switch_scene()
-
-#func _on_stallion_scent_pressed() -> void:
-	#pass # Replace with function body.
-
-
-#func _on_scent_pressed() -> void:
-	## play the respective clue stuff
-#
-## If click scent while on the ground: too high to reach
-	#if Global.player_POI_position != Global.POIs.ROCKCLUSTER_2 or %StallionScent.position.x > %RockCluster2.position.x + 200 :
-		#dialogue = "res://Dialogue/06_can't_reach.tres"
-		#DialogueManager.start_dialogue(dialogue, 1)
-	#else:
-		## change state to sniff: play a sniff animation once, then idle
-		#dialogue = "res://Dialogue/07_scent_remember.tres"
-		#DialogueManager.start_dialogue(dialogue, 0)
-		#%StallionScent.visible = false
-		#await DialogueManager.dialogue_ended
-		#if not clues_interacted["StallionScent"]:
-			#for n in 100:
-				#$Camera2D.position.x += 8
-				#await get_tree().create_timer(0.00000001).timeout
-			#clues_on_screen = get_tree().get_nodes_in_group("on_screen")
-			#%StallionScent.remove_from_group("on_screen")
-			#clues_interacted["StallionScent"] = true
-			#
-			#sense_change() # to trigger the rockslide if already in hearing mode
-
-
-
-#func play_cutscene_to_stallion():
-	#for n in 150:
-			#$Camera2D.position.x += 8
-			#await get_tree().create_timer(0.00000001).timeout
-	#Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
-	#for n in 400:
-			#$Camera2D.position.x += 8
-			#await get_tree().create_timer(0.00000001).timeout
-	#await Global.arrived
-	#%HallucinationAnimationPlayer.play("hallucination")
-	#await %HallucinationAnimationPlayer.animation_finished
-	#await get_tree().create_timer(1).timeout
-	#Global.visit_clue.emit(Vector2(5500, 525))
-	#await get_tree().create_timer(1).timeout
-	#switch_scene()
 
 
 func switch_scene():

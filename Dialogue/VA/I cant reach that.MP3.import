@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rtc4fs286ew3"
+path="res://.godot/imported/I cant reach that.MP3-e97044c716716b67a7bcf310749973ff.mp3str"
+
+[deps]
+
+source_file="res://Dialogue/VA/I cant reach that.MP3"
+dest_files=["res://.godot/imported/I cant reach that.MP3-e97044c716716b67a7bcf310749973ff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

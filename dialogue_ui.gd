@@ -30,7 +30,7 @@ func _on_line(line: DialogueLine) -> void:
 
 func _on_ended() -> void:
 	clue_dialogue.visible = false
-	va_audio.stop()
+	#va_audio.stop()
 
 # not needed because the UI button now grabs the focus anyway and this would double the input
 # might be needed because if the sense buttons grab focus, it's a problem BUG

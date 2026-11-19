@@ -24,6 +24,33 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylta"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_6fwi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/StillImage:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_5jeke"]
 resource_name = "new_slide"
 length = 6.0
@@ -56,7 +83,17 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0.1254902), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_6fwi5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xvv2"]
+_data = {
+&"RESET": SubResource("Animation_6fwi5"),
+&"new_slide": SubResource("Animation_5jeke"),
+&"show_slideshow": SubResource("Animation_vylta")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jeke"]
+bg_color = Color(0.53, 0.07949998, 0.07949998, 1)
+
+[sub_resource type="Animation" id="Animation_lgckb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,30 +105,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0.53, 0.07949998, 0.07949998, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/StillImage:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xvv2"]
-_data = {
-&"RESET": SubResource("Animation_6fwi5"),
-&"new_slide": SubResource("Animation_5jeke"),
-&"show_slideshow": SubResource("Animation_vylta")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jeke"]
-bg_color = Color(0.53, 0.07949998, 0.07949998, 1)
 
 [sub_resource type="Animation" id="Animation_8xvv2"]
 resource_name = "rage"
@@ -108,21 +123,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.53, 0.07949998, 0.07949998, 0.23921569), Color(0.53, 0.07949998, 0.07949998, 0.6039216), Color(0.53, 0.07949998, 0.07949998, 0.2)]
-}
-
-[sub_resource type="Animation" id="Animation_lgckb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.53, 0.07949998, 0.07949998, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxxf3"]
@@ -500,12 +500,6 @@ flip_h = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(958, 542)
 
-[node name="ErrorDialogue" parent="." instance=ExtResource("14_6fwi5")]
-visible = false
-
-[node name="ClueDialogue2" parent="." instance=ExtResource("15_8xvv2")]
-visible = false
-
 [node name="StillImageLayer" type="CanvasLayer" parent="."]
 visible = false
 
@@ -560,6 +554,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_8xvv2")
 }
+
+[node name="ErrorDialogue" parent="." instance=ExtResource("14_6fwi5")]
+visible = false
+
+[node name="ClueDialogue2" parent="." instance=ExtResource("15_8xvv2")]
+visible = false
 
 [node name="RageLayer" type="CanvasLayer" parent="."]
 visible = false

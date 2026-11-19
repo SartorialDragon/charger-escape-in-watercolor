@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://bdca7b3rpwwqr"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_5f4om"]
+[ext_resource type="AudioStream" uid="uid://cxyor6ig1ng5x" path="res://Dialogue/VA/E2_23_start_1.ogg" id="2_e4fst"]
+
+[resource]
+script = ExtResource("1_5f4om")
+id = "23"
+speaker = "Echo"
+text = "I remember this place differently. When I fled, it was red, but before, it was lush and green like the rest of our lands. I think this is where I was separated, but I hardly remember now."
+vc_file = ExtResource("2_e4fst")
+next_id = "24"

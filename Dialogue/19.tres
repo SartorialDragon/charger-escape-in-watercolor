@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://oj1aw7rd4w7"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://oj1aw7rd4w7"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_odywy"]
+[ext_resource type="AudioStream" uid="uid://bymld86xqv2kd" path="res://Dialogue/VA/02_intro_1.ogg" id="2_k8f1m"]
 
 [resource]
 script = ExtResource("1_odywy")
 id = "19"
 speaker = "Echo"
-text = "Where am I? I need to open my eyes..."
+text = "I woke beside a small lake, disoriented, exhausted. I didn't know how I managed to make it to my feet, but I did. I needed to find him-- my love."
+vc_file = ExtResource("2_k8f1m")
+next_id = "22"

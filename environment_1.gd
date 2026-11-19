@@ -40,15 +40,34 @@ func _ready():
 	
 	
 func start_game():
+	$SwitchScreen.show()
+	# screen darkens
+	var A = 0.0
+	for n in 10:
+		A += 0.1
+		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
+		await get_tree().create_timer(0.1).timeout
+	dialogue = "res://Dialogue/20_intro.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
+	# screen brightens
+	A = 1.0
+	for n in 10:
+		A -= 0.1
+		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
+		await get_tree().create_timer(0.1).timeout
+	# camera scrolls
 	for n in 110:
-			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
+		$Camera2D.position.x += 8
+		await get_tree().create_timer(0.00000001).timeout
+	
 	dialogue = "res://Dialogue/19_tutorial.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
-	await get_tree().create_timer(5).timeout
-	if not Global.clues_interacted["Echo"]:
-		Global.hint_needed.emit("Echo")
+	#await get_tree().create_timer(5).timeout
+	#if not Global.clues_interacted["Echo"]:
+		#Global.hint_needed.emit("Echo")
+	$SwitchScreen.hide()
 	
 	
 func _on_get_up():
@@ -168,6 +187,9 @@ func _on_rock_slide_pressed() -> void:
 			%RockslideAnimationPlayer.play("kicked")
 			clues_interacted["RockSlide"] = true
 			%RockSlide.disabled = true
+			dialogue = "res://Dialogue/21_rockslide.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
+			await DialogueManager.dialogue_ended
 			play_cutscene_to_stallion()
 		
 
