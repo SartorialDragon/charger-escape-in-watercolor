@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bow8ftjmnxyi8"
-path="res://.godot/imported/sky30.png-43d0ba50c6f19dbded8b9890faa3ce96.ctex"
+uid="uid://beqsu6vemva5k"
+path="res://.godot/imported/hoofprints.png-9e81c28168fb61e8f48c2f539f1479ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/sky30.png"
-dest_files=["res://.godot/imported/sky30.png-43d0ba50c6f19dbded8b9890faa3ce96.ctex"]
+source_file="res://ArtAssets/hoofprints.png"
+dest_files=["res://.godot/imported/hoofprints.png-9e81c28168fb61e8f48c2f539f1479ba.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ch7dghvwbv0tg"]
+[gd_scene load_steps=40 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
 [ext_resource type="Texture2D" uid="uid://2uyx8lhu2v2p" path="res://ArtAssets/environment 2 sky.png" id="2_826ab"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="12_wja3w"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="13_yjv7e"]
 [ext_resource type="Texture2D" uid="uid://dneua5ud5kb6c" path="res://ArtAssets/environment 2 foreground.png" id="14_voe02"]
+[ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="17_6krrs"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="19_jb611"]
 [ext_resource type="Texture2D" uid="uid://dmlqjadft1d6f" path="res://ArtAssets/e2 foreground trees.png" id="19_k5e16"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="19_voe02"]
@@ -151,6 +152,10 @@ _data = {
 &"RESET": SubResource("Animation_pl4m5"),
 &"hallucination": SubResource("Animation_awyal")
 }
+
+[sub_resource type="Gradient" id="Gradient_6gw62"]
+offsets = PackedFloat32Array(0, 0.32142857, 0.6468254, 1)
+colors = PackedColorArray(0.85, 0.85, 0.85, 0.27450982, 0.77, 0.77, 0.77, 0.84705883, 0.74, 0.74, 0.74, 0.85882354, 0.77, 0.77, 0.77, 0.1254902)
 
 [sub_resource type="Animation" id="Animation_1jxss"]
 length = 0.001
@@ -517,6 +522,48 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_bs3hf")
 }
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
+self_modulate = Color(1, 1, 1, 0.654902)
+position = Vector2(3000, 455)
+amount = 30
+texture = ExtResource("17_6krrs")
+lifetime = 8.68
+preprocess = 4.1
+randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 0.7
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_6gw62")
+
+[node name="SmokeParticles2" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2"]
+self_modulate = Color(1, 1, 1, 0.654902)
+position = Vector2(4938, 359)
+amount = 30
+texture = ExtResource("17_6krrs")
+lifetime = 8.68
+preprocess = 4.1
+randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 0.7
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_6gw62")
 
 [node name="StallionScent" type="TextureButton" parent="." groups=["interactables", "smell"]]
 unique_name_in_owner = true

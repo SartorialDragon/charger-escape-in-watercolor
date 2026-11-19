@@ -1,18 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=21 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
-[ext_resource type="Texture2D" uid="uid://dc2ld3c4f7d6m" path="res://ArtAssets/sky0.png" id="2_vylta"]
-[ext_resource type="Texture2D" uid="uid://c4k7ory2t3yt1" path="res://Assets/bg_0.png" id="3_um664"]
+[ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
+[ext_resource type="Texture2D" uid="uid://d6abxoqlm8tb" path="res://Assets/environment 4 middleground.png" id="3_6fwi5"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="4_vylta"]
-[ext_resource type="Texture2D" uid="uid://b3c6rkeuuw7m7" path="res://Assets/New Piskel-10.png.png" id="5_5jeke"]
 [ext_resource type="Texture2D" uid="uid://cdlnnt5wg7hcc" path="res://Assets/New Piskel-11.png.png" id="6_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="7_vylta"]
 [ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="8_6fwi5"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="8_mxxf3"]
 [ext_resource type="Texture2D" uid="uid://dmc2cwtij1ghl" path="res://ArtAssets/rock1.png" id="9_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="10_r3iwi"]
-[ext_resource type="Texture2D" uid="uid://c173qin6yfijo" path="res://Assets/IMG_3670.png" id="11_bnibu"]
 [ext_resource type="Texture2D" uid="uid://bl0d8kjoagwgs" path="res://ArtAssets/tree2.png" id="12_vylta"]
+[ext_resource type="Texture2D" uid="uid://860apyh5ntpj" path="res://ArtAssets/environment 4 foreground.png" id="13_8xvv2"]
 [ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="13_edo2x"]
 [ext_resource type="Texture2D" uid="uid://brai801lvtqll" path="res://ArtAssets/he_is_dead.png" id="14_5jeke"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="14_6fwi5"]
@@ -48,12 +47,12 @@ z_index = -5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3838.0
+offset_left = -6.0
+offset_right = 5754.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vylta")
+texture = ExtResource("2_6fwi5")
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -70,78 +69,8 @@ offset_right = 5758.0
 offset_bottom = 1077.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_um664")
+texture = ExtResource("3_6fwi5")
 metadata/_edit_use_anchors_ = true
-
-[node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
-unique_name_in_owner = true
-z_index = 1
-offset_left = 847.0
-offset_top = 586.0
-offset_right = 994.2418
-offset_bottom = 646.599
-scale = Vector2(1.1953125, 1.6171875)
-mouse_default_cursor_shape = 2
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Particles0" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent0"]
-unique_name_in_owner = true
-position = Vector2(58.56208, 24.734291)
-scale = Vector2(0.9999998, 1)
-amount = 100
-texture = ExtResource("4_vylta")
-speed_scale = 0.2
-explosiveness = 0.1
-local_coords = true
-emission_shape = 3
-emission_rect_extents = Vector2(40, 1)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 28.57
-initial_velocity_max = 76.18
-angle_min = -565.7
-angle_max = 360.0
-scale_amount_min = 0.3
-scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_2li0a")
-color = Color(0.6774726, 1, 0.6616442, 1)
-
-[node name="Scent1" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
-unique_name_in_owner = true
-visible = false
-z_index = 1
-offset_left = 1382.0
-offset_top = 422.0
-offset_right = 1504.9805
-offset_bottom = 473.94202
-scale = Vector2(1.1953125, 1.6171875)
-mouse_default_cursor_shape = 2
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Particles1" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Scent1"]
-unique_name_in_owner = true
-position = Vector2(35.13724, 19.169073)
-scale = Vector2(0.9999998, 1)
-amount = 100
-texture = ExtResource("4_vylta")
-speed_scale = 0.2
-explosiveness = 0.1
-local_coords = true
-emission_shape = 3
-emission_rect_extents = Vector2(40, 1)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 28.57
-initial_velocity_max = 76.18
-angle_min = -565.7
-angle_max = 360.0
-scale_amount_min = 0.3
-scale_amount_max = 0.3
-scale_amount_curve = SubResource("Curve_2li0a")
-color = Color(0.6774726, 1, 0.6616442, 1)
 
 [node name="Sound0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
@@ -187,7 +116,6 @@ offset_right = 3768.899
 offset_bottom = 827.0
 scale = Vector2(8.881775, 2.469204)
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("5_5jeke")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -265,6 +193,7 @@ color = Color(0.95558554, 0, 0.03693862, 1)
 
 [node name="Destroy2" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(3.178, 3.178, 3.178, 1)
 offset_left = 4779.0
 offset_top = 701.0
@@ -438,13 +367,14 @@ repeat_size = Vector2(1920, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_right = 3838.0
-offset_bottom = 1080.0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 5768.0
+offset_bottom = 1079.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("11_bnibu")
+texture = ExtResource("13_8xvv2")
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
@@ -452,8 +382,10 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(958, 542)
 
 [node name="ErrorDialogue" parent="." instance=ExtResource("14_6fwi5")]
+visible = false
 
 [node name="ClueDialogue2" parent="." instance=ExtResource("15_8xvv2")]
+visible = false
 
 [node name="StillImageLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -513,8 +445,6 @@ unique_name_in_owner = true
 stream = ExtResource("14_aodgo")
 bus = &"VA"
 
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent0" to="." method="_on_scent_0_pressed"]
-[connection signal="pressed" from="BackgroundLayers/Parallax2D2/Scent1" to="." method="_on_scent_1_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Spring" to="." method="_on_spring_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy0" to="." method="_on_destroy_0_pressed"]

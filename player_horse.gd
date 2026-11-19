@@ -34,7 +34,7 @@ func give_hint(pos):
 	
 	
 func hide_hint(pos):
-	print("pos: ", pos, " hidden")
+	#print("pos: ", pos, " hidden")
 	Global.clues_discovered[pos] = true
 	$HintParticles.emitting = false
 	
@@ -59,7 +59,7 @@ func change_position():
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		print("click")
+		#print("click")
 		$Senses.show()
 		await get_tree().create_timer(3).timeout
 		$Senses.hide()

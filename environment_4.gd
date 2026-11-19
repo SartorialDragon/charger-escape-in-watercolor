@@ -8,6 +8,9 @@ var cursor_POI = load("res://Assets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
+@onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
+
+
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -50,21 +53,17 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	_provisorium()
 	
+
+func _provisorium():
+	for n in 600:
+			$Camera2D.position.x += 8
+			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
+				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
+			await get_tree().create_timer(0.00000001).timeout
+
 	
-func _on_scent_0_pressed() -> void:
-	if Global.current_sense == Global.senses.SMELL:
-		if Global.player_POI_position != Global.POIs.SCENT_0:
-			Global.visit_clue.emit(Vector2(%Scent0.position.x - 50, %Scent0.position.y + 0))
-			await Global.arrived
-			Global.player_POI_position = Global.POIs.SCENT_0
-		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
-			DialogueManager.start_dialogue(dialogue, 0)
-			clues_interacted["Scent0"] = true
-			clues_discovered["Scent1"] = true
-			#%Scent1.add_to_group("smell")
-			_on_smell_button_pressed()
 
 
 func _on_scent_1_pressed() -> void:
