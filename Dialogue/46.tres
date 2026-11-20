@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://x3ubu4bekfr0"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_2rmsf"]
+[ext_resource type="AudioStream" uid="uid://326icbny2mek" path="res://Dialogue/VA/E4_finding_him_2.ogg" id="2_8rjh8"]
+
+[resource]
+script = ExtResource("1_2rmsf")
+id = "46"
+speaker = "Echo"
+text = "He can't be dead. Oh-- oh!"
+vc_file = ExtResource("2_8rjh8")

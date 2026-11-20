@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
-[ext_resource type="Texture2D" uid="uid://x7rnopxng55a" path="res://ArtAssets/environment 3 middleground.png" id="3_6trsd"]
+[ext_resource type="Texture2D" uid="uid://drchd8reh28wa" path="res://ArtAssets/e3 middleground.png" id="3_y78ea"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="5_kvufe"]
 [ext_resource type="Texture2D" uid="uid://0neaj8a6suo6" path="res://ArtAssets/environment 3 softspot.png" id="5_y78ea"]
-[ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="6_4k26e"]
+[ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="9_2k1u2"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="10_1nc6w"]
 [ext_resource type="Texture2D" uid="uid://r7fu37joidpc" path="res://ArtAssets/environment 3 foreground.png" id="11_jiugy"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="11_ykfhg"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="12_3jdq1"]
+[ext_resource type="AudioStream" uid="uid://dxegg5hhkhmd6" path="res://Music/E3 Seeing - Before Resting.mp3" id="12_y78ea"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="13_6trsd"]
-[ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="15_1rgsv"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="16_k56vb"]
 
 [sub_resource type="Curve" id="Curve_7xvgo"]
@@ -103,7 +103,7 @@ offset_right = 5758.0
 offset_bottom = 1077.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_6trsd")
+texture = ExtResource("3_y78ea")
 metadata/_edit_use_anchors_ = true
 
 [node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
@@ -178,10 +178,10 @@ color = Color(0.6774726, 1, 0.6616442, 1)
 
 [node name="SoftSpot" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
 unique_name_in_owner = true
-offset_left = 1425.0
-offset_top = 448.0
-offset_right = 1518.899
-offset_bottom = 608.0
+offset_left = 1687.0001
+offset_top = 505.99997
+offset_right = 1780.8992
+offset_bottom = 666.0
 scale = Vector2(11.441777, 3.1910663)
 mouse_default_cursor_shape = 2
 disabled = true
@@ -240,7 +240,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Particles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Hoofprints"]
 unique_name_in_owner = true
-z_index = 1
+z_index = 2
 position = Vector2(24.882477, 17.009521)
 scale = Vector2(0.13458036, 0.65494287)
 amount = 300
@@ -301,10 +301,10 @@ stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="SmokeParticles" type="CPUParticles2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.654902)
+self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(948, 570)
 amount = 200
-texture = ExtResource("6_4k26e")
+texture = ExtResource("9_2k1u2")
 lifetime = 8.68
 preprocess = 4.1
 randomness = 0.2
@@ -322,10 +322,10 @@ scale_amount_max = 1.2
 color_ramp = SubResource("Gradient_trp7i")
 
 [node name="SmokeParticles3" type="CPUParticles2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.654902)
+self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(4964, 489)
 amount = 200
-texture = ExtResource("6_4k26e")
+texture = ExtResource("9_2k1u2")
 lifetime = 8.68
 preprocess = 4.1
 randomness = 0.2
@@ -367,7 +367,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gclrd")
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_1rgsv")
+stream = ExtResource("12_y78ea")
 autoplay = true
 bus = &"Music"
 parameters/looping = true

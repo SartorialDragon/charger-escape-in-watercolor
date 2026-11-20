@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://xdfv2uwckiyj"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_r5t4a"]
+[ext_resource type="AudioStream" uid="uid://b3hwanr4jet6w" path="res://Dialogue/VA/Ending_5.ogg" id="2_pfhox"]
+
+[resource]
+script = ExtResource("1_r5t4a")
+id = "44"
+speaker = "Echo"
+text = "They waited for me until the earth started to take my love back, for I could not bring myself to go yet. But I took one step, and then another, and they surrounded me, close and warm. 'Keep moving forward,' one of them told me, 'even though there's no real coming back from this,' So move forward, I did."
+vc_file = ExtResource("2_pfhox")

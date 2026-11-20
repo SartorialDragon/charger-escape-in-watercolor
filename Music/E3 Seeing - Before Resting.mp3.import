@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxegg5hhkhmd6"
+path="res://.godot/imported/E3 Seeing - Before Resting.mp3-1361c6e7318d83d3f5b9910b2aeaf98d.mp3str"
+
+[deps]
+
+source_file="res://Music/E3 Seeing - Before Resting.mp3"
+dest_files=["res://.godot/imported/E3 Seeing - Before Resting.mp3-1361c6e7318d83d3f5b9910b2aeaf98d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cvo1hbqoridm5"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_wotm4"]
+[ext_resource type="AudioStream" uid="uid://c02xprkesx4ia" path="res://Dialogue/VA/E4 Rage_2.ogg" id="2_r7sal"]
+
+[resource]
+script = ExtResource("1_wotm4")
+id = "36"
+speaker = "Echo"
+text = "I looked at him, and oh, I seethed with rage, for the humans had made our days warmer and warmer and we had said 'it will not come to something so bad. It will not erase what we have.' Lies! The red took him, and rage took me, too!"
+vc_file = ExtResource("2_r7sal")

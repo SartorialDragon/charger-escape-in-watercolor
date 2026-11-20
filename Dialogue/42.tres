@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://b0gwwd2w8ao2p"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_y7rbb"]
+[ext_resource type="AudioStream" uid="uid://ci3qh3mctucsw" path="res://Dialogue/VA/Ending_3.ogg" id="2_5prqg"]
+
+[resource]
+script = ExtResource("1_y7rbb")
+id = "42"
+speaker = "Echo"
+text = "It was then that I saw my love flicker before my eyes. His body was cold against my skin,but the stallion I saw was warm, and familiar. He called out, too. He stood between us. 'I am here no longer,' I heard him utter in my empty heart, 'but you are. So live. Stand, and live.'"
+vc_file = ExtResource("2_5prqg")

@@ -46,6 +46,7 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	await get_tree().create_timer(1).timeout
 	dialogue = "res://Dialogue/23_E2 start.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	#await DialogueManager.dialogue_ended

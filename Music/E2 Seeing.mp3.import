@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bi86en1m365j8"
+path="res://.godot/imported/E2 Seeing.mp3-0a7276ab5673a6c78f53504a19fe35b2.mp3str"
+
+[deps]
+
+source_file="res://Music/E2 Seeing.mp3"
+dest_files=["res://.godot/imported/E2 Seeing.mp3-0a7276ab5673a6c78f53504a19fe35b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

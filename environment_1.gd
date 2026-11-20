@@ -47,6 +47,7 @@ func start_game():
 		A += 0.1
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
+	$Title.hide()
 	dialogue = "res://Dialogue/20_intro.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -167,7 +168,7 @@ func _on_scent_pressed() -> void:
 
 
 func _on_rock_slide_pressed() -> void:
-	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
+	if Global.player_POI_position == Global.POIs.ROCKCLUSTER_3 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_2 or Global.player_POI_position == Global.POIs.ROCKCLUSTER_1:
 		dialogue = "res://Dialogue/06_can't_reach.tres"
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:

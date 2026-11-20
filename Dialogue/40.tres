@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://dyhqika46aj4x"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_3da5b"]
+[ext_resource type="AudioStream" uid="uid://bma6b72hyx24u" path="res://Dialogue/VA/Ending_1.ogg" id="2_wlpnn"]
+
+[resource]
+script = ExtResource("1_3da5b")
+id = "40"
+speaker = "Echo"
+text = "After I exhausted all my strength, I laid beside him, my once-great warrior and love, who did not fare as I did. I do not know how much time passed, only that it was when I hoped time would end that I heard hoofprints, and looked up."
+vc_file = ExtResource("2_wlpnn")

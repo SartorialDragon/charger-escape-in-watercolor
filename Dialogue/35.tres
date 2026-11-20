@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://vdrve2v63ssq"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_7onl0"]
+[ext_resource type="AudioStream" uid="uid://2w3gyb3s3p6" path="res://Dialogue/VA/E4 Rage_1.ogg" id="2_354sv"]
+
+[resource]
+script = ExtResource("1_7onl0")
+id = "35"
+speaker = "Echo"
+text = "How can this world move without him in it? He was my universe! He was my heart!"
+vc_file = ExtResource("2_354sv")

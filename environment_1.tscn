@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=34 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
@@ -13,13 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
 [ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="9_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://cronaquuvx4do" path="res://ArtAssets/environment 1 foreground.png" id="10_bs3hf"]
-[ext_resource type="AudioStream" uid="uid://djehgq1gc2bv8" path="res://Assets/placeholder_ost.mp3" id="11_xjqet"]
 [ext_resource type="Texture2D" uid="uid://cheivd2j1bd5s" path="res://ArtAssets/rock_broken.png" id="12_hm8ff"]
 [ext_resource type="PackedScene" uid="uid://bgoef03blq4l2" path="res://main_menu.tscn" id="14_2dglh"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
 [ext_resource type="AudioStream" uid="uid://bbxrycuvo3s2r" path="res://Assets/freesound_community-stones-falling-6375.mp3" id="14_je0s5"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="17_rdret"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="18_rdret"]
+[ext_resource type="AudioStream" uid="uid://bavayodpenwj2" path="res://Music/E1 Seeing.mp3" id="19_rdret"]
+[ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="21_hm8ff"]
 
 [sub_resource type="Animation" id="Animation_6j7cg"]
 length = 0.001
@@ -620,7 +621,7 @@ visible = false
 visible = false
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_xjqet")
+stream = ExtResource("19_rdret")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
@@ -638,6 +639,23 @@ bus = &"VA"
 layout_mode = 1
 offset_left = -600.0
 offset_right = -600.0
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -796.0
+offset_top = -288.0
+offset_right = 45.914
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6399993, 0.6399993)
+texture = ExtResource("21_hm8ff")
+expand_mode = 1
 
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]

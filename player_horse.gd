@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var speed = 300
 
 var click_position = Vector2()
 var target_position = Vector2()
@@ -49,9 +48,9 @@ func move_to(pos):
 
 	
 func change_position():
-	if position.distance_to(click_position) > 3:
+	if position.distance_to(click_position) > 10:
 		target_position = (click_position - position).normalized()
-		velocity = target_position * speed
+		velocity = target_position * Global.speed
 		move_and_slide()
 	else:
 		velocity = Vector2(0, 0)
