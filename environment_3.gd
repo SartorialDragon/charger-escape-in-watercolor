@@ -114,6 +114,8 @@ func _on_soft_spot_pressed() -> void:
 		Global.player_POI_position = Global.POIs.SOFTSPOT
 	else:
 		if not clues_interacted["SoftSpot"]:
+			$MusicAudio.stream = load("res://Music/Don't Give Up.mp3")
+			$MusicAudio.play()
 			# lie down animation
 			clues_interacted["SoftSpot"] = true
 			await get_tree().create_timer(3).timeout
@@ -129,6 +131,8 @@ func stallion_hallucination() -> void:
 		DialogueManager.start_dialogue(dialogue, 0)
 		await DialogueManager.dialogue_ended
 		clues_interacted["StallionHallucination"] = true
+		$MusicAudio.stream = load("res://Music/E3 Seeing - Before Resting.mp3")
+		$MusicAudio.play()
 		for n in 350:
 			$Camera2D.position.x += 8
 			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
@@ -207,7 +211,7 @@ func darken_surroundings():
 	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
 	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
 	%SoftSpot.modulate = Color(0.282, 0.282, 0.282)
-	%Hoofprints.modulate = Color(0.282, 0.282, 0.282)
+	%Hoofprints.self_modulate = Color(0.282, 0.282, 0.282)
 	
 
 func lighten_surroundings():
@@ -215,7 +219,7 @@ func lighten_surroundings():
 	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(1.0, 1.0, 1.0)
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
 	%SoftSpot.modulate = Color(1.0, 1.0, 1.0)
-	%Hoofprints.modulate = Color(1.0, 1.0, 1.0)
+	%Hoofprints.self_modulate = Color(1.0, 1.0, 1.0)
 	
 
 func muffle_music():

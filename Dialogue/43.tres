@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://b0idd61e0hwi8"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_p4mmq"]
+[ext_resource type="AudioStream" uid="uid://gerv7w314jtc" path="res://Dialogue/VA/Ending_4.ogg" id="2_oanve"]
+
+[resource]
+script = ExtResource("1_p4mmq")
+id = "43"
+speaker = "Echo"
+text = "I got up. I hated that I did. I looked at him. I hated that he was gone. I loved him. I would always love him."
+vc_file = ExtResource("2_oanve")

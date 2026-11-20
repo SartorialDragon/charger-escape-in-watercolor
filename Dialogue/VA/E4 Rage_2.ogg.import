@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c02xprkesx4ia"
+path="res://.godot/imported/E4 Rage_2.ogg-36ea4ea87a72dd042f34bcac0480b195.oggvorbisstr"
+
+[deps]
+
+source_file="res://Dialogue/VA/E4 Rage_2.ogg"
+dest_files=["res://.godot/imported/E4 Rage_2.ogg-36ea4ea87a72dd042f34bcac0480b195.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

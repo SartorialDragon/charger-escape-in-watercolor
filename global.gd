@@ -9,6 +9,7 @@ signal hint_needed
 signal hint_done
 signal got_up
 
+var speed = 300
 
 var current_state: State
 var player_start_position: Vector2 = Vector2(200,200)

@@ -45,6 +45,7 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	await get_tree().create_timer(1).timeout
 	dialogue = "res://Dialogue/32_E4_start.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -53,11 +54,28 @@ func _ready():
 
 func _provisorium():
 	#await get_tree().create_timer(4).timeout
-	for n in 600:
+	for n in 520:
 			$Camera2D.position.x += 8
 			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
 				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 			await get_tree().create_timer(0.00000001).timeout
+	await Global.arrived
+	dialogue = "res://Dialogue/33_finding_him.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
+	for n in 320:
+			$Camera2D.position.x += 2
+			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
+				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
+			await get_tree().create_timer(0.00000001).timeout
+	#$BackgroundLayers/Parallax2D2/PlayerHorse/Camera2D.enabled = true
+	#$Camera2D.enabled = false
+	var A = 1.0
+	for n in 10:
+		A -= 0.1
+		$Parallax2D4.modulate = Color(1.0, 1.0, 1.0, A)
+		await get_tree().create_timer(0.1).timeout
+
 
 
 func _on_sound_0_pressed() -> void:
@@ -92,12 +110,30 @@ func _on_sound_0_pressed() -> void:
 
 func _on_spring_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SPRING:
-		Global.visit_clue.emit(Vector2(%Spring.position.x +100, %Spring.position.y + 10))
+		%BentTree.z_index = 0
+		if not clues_interacted["Spring"]:
+			Global.visit_clue.emit(Vector2(%Spring.position.x +100, %Spring.position.y + 10))
+		else:
+			if clues_interacted["Rage"]:
+				Global.visit_clue.emit(Vector2(%Spring.position.x +350, %Spring.position.y + 10))
+				#await Global.arrived
+				#Global.visit_clue.emit(Vector2(%Spring.position.x +250, %Spring.position.y + 10))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SPRING
 	else:
-		clues_interacted["Spring"] = true
-		cutscene_dead()
+		if not clues_interacted["Spring"]:
+			clues_interacted["Spring"] = true
+			dialogue = "res://Dialogue/46_finding_him_2.tres"
+			DialogueManager.start_dialogue(dialogue, 0)
+			await DialogueManager.dialogue_ended
+			cutscene_dead()
+		else:
+			if clues_interacted["Rage"]:
+				# lie down animation
+				dialogue = "res://Dialogue/39_i_love_him.tres"
+				DialogueManager.start_dialogue(dialogue, 0)
+				await DialogueManager.dialogue_ended
+				cutscene_grief()
 
 
 func cutscene_dead():
@@ -108,111 +144,103 @@ func cutscene_dead():
 		$StillImageLayer/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		$StillImageLayer/Panel/StillImage.self_modulate = Color(1.0, 1.0, 1.0, A)
 		await get_tree().create_timer(0.1).timeout
-	dialogue = "res://Dialogue/33_finding_him.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
 	await get_tree().create_timer(4).timeout
 	$StillImageLayer.hide()
-	rage()
-	
-
-	
-
-func rage():
-	for n in 5:
-		clues_discovered["Destroy"+str(n)] = true
+	clues_discovered["Destroy0"] = true
+	Global.speed = 400
 	%RedParticles0.emitting = true
-	%RedParticles1.emitting = true
-	%RedParticles2.emitting = true
-	%RedParticles3.emitting = true
-	%RedParticles4.emitting = true
 	$RageLayer.visible = true
 	$RageLayer/AnimationPlayer.play("rage")
-	
+	%BentTree.z_index = 4
 
 
 func _on_destroy_0_pressed() -> void:
-	_on_destroy(Global.POIs.DESTROY0, %Destroy0, %RedParticles0)
-	dialogue = "res://Dialogue/34_rage0.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
-
+	_on_destroy(Global.POIs.DESTROY0, %Destroy0, %RedParticles0, "res://Dialogue/34_rage0.tres", %Destroy1)
+	
 func _on_destroy_1_pressed() -> void:
-	_on_destroy(Global.POIs.DESTROY1, %Destroy1, %RedParticles1)
-	dialogue = "res://Dialogue/35_rage1.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
+	_on_destroy(Global.POIs.DESTROY1, %Destroy1, %RedParticles1, "res://Dialogue/35_rage1.tres", %Destroy3)
 
 func _on_destroy_2_pressed() -> void:
-	_on_destroy(Global.POIs.DESTROY2, %Destroy2, %RedParticles2)
-	dialogue = "res://Dialogue/38_rage4.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
+	_on_destroy(Global.POIs.DESTROY2, %Destroy2, %RedParticles2, "res://Dialogue/38_rage4.tres", null)
 
 func _on_destroy_3_pressed() -> void:
-	_on_destroy(Global.POIs.DESTROY3, %Destroy3, %RedParticles3)
-	dialogue = "res://Dialogue/36_rage2.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
+	_on_destroy(Global.POIs.DESTROY3, %Destroy3, %RedParticles3, "res://Dialogue/36_rage2.tres", %Destroy4)
 
 func _on_destroy_4_pressed() -> void:
-	_on_destroy(Global.POIs.DESTROY4, %Destroy4, %RedParticles4)
-	dialogue = "res://Dialogue/37_rage3.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
-	
+	_on_destroy(Global.POIs.DESTROY4, %Destroy4, %RedParticles4, "res://Dialogue/37_rage3.tres", %Destroy2)
 
-func _on_destroy(pos, object, particle):
-	if Global.player_POI_position != pos:
-		Global.visit_clue.emit(Vector2(object.position.x +20, object.position.y + 260))
-		await Global.arrived
-		Global.player_POI_position = pos
-	else:
-		if not clues_interacted[object.name]:
-			particle.emitting = false
-			if "rock" in object.texture_normal.resource_path:
-				$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
-				$SFXAudio.play()
-				object.texture_normal = load("res://ArtAssets/rock_broken_.png")
-			if "tree" in object.texture_normal.resource_path:
-				# find sfx for tree breaking
-				#$SFXAudio.stream = load("")
-				#$SFXAudio.play()
-				object.texture_normal = load("res://ArtAssets/tree_broken.png")
-			clues_interacted[object.name] = true
-			clues_interacted["Rage"] = true
-			for n in 5:
-				if clues_interacted["Destroy"+str(n)] == false:
-					clues_interacted["Rage"] = false
-			if clues_interacted["Rage"]:
-				$RageLayer/AnimationPlayer.stop()
-				$RageLayer.hide()
-				await get_tree().create_timer(2).timeout
-				# lie down animation
-				cutscene_grief()
+
+func _on_destroy(pos, object, particle, line, next_object):
+	if object.get_child(0).emitting:
+		if Global.player_POI_position != pos:
+			Global.visit_clue.emit(Vector2(object.position.x +30, object.position.y + 260))
+			await Global.arrived
+			Global.player_POI_position = pos
+		else:
+			if not clues_interacted[object.name]:
+				particle.emitting = false
+				if "rock" in object.texture_normal.resource_path:
+					$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
+					$SFXAudio.play()
+					object.texture_normal = load("res://ArtAssets/rock_broken_.png")
+				if "tree" in object.texture_normal.resource_path:
+					# find sfx for tree breaking
+					#$SFXAudio.stream = load("")
+					#$SFXAudio.play()
+					object.texture_normal = load("res://ArtAssets/tree_broken.png")
+				if $SFXAudio.playing:
+					await $SFXAudio.finished
+				dialogue = line
+				DialogueManager.start_dialogue(dialogue, 0)
+				await DialogueManager.dialogue_ended
+				clues_interacted[object.name] = true
+				if next_object != null:
+					clues_discovered[next_object.name] = true
+					next_object.get_child(0).emitting = true
+				else:
+					clues_interacted["Rage"] = true
+					Global.speed = 200
+					$RageLayer/AnimationPlayer.stop()
+					$RageLayer.hide()
 
 	
 func cutscene_grief():
 	$StillImageLayer.show()
 	%StillAnimationPlayer.play("show_slideshow")
-	next_slide("res://ArtAssets/still1.png")
+	next_slide("res://ArtAssets/still1.png", "res://Dialogue/40_ending1.tres")
 	await %StillAnimationPlayer.animation_finished
-	next_slide("res://ArtAssets/still2.png")
+	next_slide("res://ArtAssets/still3.png", "res://Dialogue/41_ending2.tres")
 	await %StillAnimationPlayer.animation_finished
-	next_slide("res://ArtAssets/still3.png")
+	next_slide("res://ArtAssets/still5.png", "res://Dialogue/42_ending3.tres")
 	await %StillAnimationPlayer.animation_finished
-	next_slide("res://ArtAssets/still4.png")
+	next_slide("res://ArtAssets/still4.png", "res://Dialogue/43_ending4.tres")
 	await %StillAnimationPlayer.animation_finished
-	next_slide("res://ArtAssets/still5.png")
+	next_slide("res://ArtAssets/still6.png", "res://Dialogue/44_ending5.tres")
 	await %StillAnimationPlayer.animation_finished
-	next_slide("res://ArtAssets/still6.png")
+	next_slide(null, "res://Dialogue/45_ending6.tres")
 	await %StillAnimationPlayer.animation_finished
 	$StillImageLayer/Panel/Credits.show()
+	var A = 0.0
+	for n in 10:
+		A += 0.1
+		$StillImageLayer/Panel/Credits.self_modulate = Color(1.0, 1.0, 1.0, A)
 	
 	
-func next_slide(path):
-	%StillImage.texture = load(path)
+func next_slide(path, line):
+	if path != null:
+		%StillImage.texture = load(path)
+	else:
+		%StillImage.texture = null
 	%StillAnimationPlayer.play("new_slide")
+	dialogue = line
+	DialogueManager.start_dialogue(dialogue, 0)
+	await get_tree().create_timer(2).timeout
+	%StillAnimationPlayer.pause()
+	if DialogueManager.is_active:
+		await DialogueManager.dialogue_ended
+	%StillAnimationPlayer.play()
+	
+	
 	
 	
 	

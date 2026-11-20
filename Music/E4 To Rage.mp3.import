@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjl8t23ntfkf4"
+path="res://.godot/imported/E4 To Rage.mp3-72be4c69a00cc6c20291c908bd16db6d.mp3str"
+
+[deps]
+
+source_file="res://Music/E4 To Rage.mp3"
+dest_files=["res://.godot/imported/E4 To Rage.mp3-72be4c69a00cc6c20291c908bd16db6d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

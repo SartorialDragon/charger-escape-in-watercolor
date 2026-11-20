@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://f37w0ax4diye"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_v3ii5"]
+[ext_resource type="AudioStream" uid="uid://gp300n1cvre8" path="res://Dialogue/VA/E4 Rage_0.ogg" id="2_3wjxg"]
+
+[resource]
+script = ExtResource("1_v3ii5")
+id = "34"
+speaker = "Echo"
+text = "No.... No, no, no, no! How could the red have killed him when he is so stunningly the same?"
+vc_file = ExtResource("2_3wjxg")

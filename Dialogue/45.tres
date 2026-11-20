@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://bsnmrah3rpumq"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_cj70k"]
+[ext_resource type="AudioStream" uid="uid://cqbwj35gxsrje" path="res://Dialogue/VA/Ending_6.ogg" id="2_y6jwy"]
+
+[resource]
+script = ExtResource("1_cj70k")
+id = "45"
+speaker = "Echo"
+text = "But listen to me, witnesses, strangers. You know already that what happened here cannot be undone. He will never be mine again in this life. But listen, listen. It still grows warm. Our lands are called sacred less and less, and treated in accordance to the falling reverence. So strangers, know this: the red could come for you too."
+vc_file = ExtResource("2_y6jwy")

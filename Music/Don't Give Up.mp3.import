@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgp6h0upnyhu3"
+path="res://.godot/imported/Don't Give Up.mp3-d082b4f5115012d03418744c4334eec3.mp3str"
+
+[deps]
+
+source_file="res://Music/Don't Give Up.mp3"
+dest_files=["res://.godot/imported/Don't Give Up.mp3-d082b4f5115012d03418744c4334eec3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

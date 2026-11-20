@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://bm6l0cju4qccq"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_ap3d4"]
+[ext_resource type="AudioStream" uid="uid://cwbifrpnhrofs" path="res://Dialogue/VA/E4 Rage_4.ogg" id="2_yt04b"]
+
+[resource]
+script = ExtResource("1_ap3d4")
+id = "38"
+speaker = "Echo"
+text = "Give him back! Listen to me and give him back!"
+vc_file = ExtResource("2_yt04b")

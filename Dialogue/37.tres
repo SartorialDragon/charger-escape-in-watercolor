@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cf87em4yucj8m"]
+
+[ext_resource type="Script" path="res://dialogue_line.gd" id="1_dxobc"]
+[ext_resource type="AudioStream" uid="uid://dy2vufqw274fa" path="res://Dialogue/VA/E4 Rage_3.ogg" id="2_q1dho"]
+
+[resource]
+script = ExtResource("1_dxobc")
+id = "37"
+speaker = "Echo"
+text = "This cannot be true. Why didn't he make it out? I curse the heat! I curse the red and the grey and the humans who made this our lives!"
+vc_file = ExtResource("2_q1dho")

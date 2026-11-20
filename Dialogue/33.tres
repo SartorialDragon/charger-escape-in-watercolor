@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://dthywnjteavy5"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_msbjg"]
-[ext_resource type="AudioStream" uid="uid://chypfw2mvppu6" path="res://Dialogue/VA/E4_finding_him.ogg" id="2_c0uia"]
+[ext_resource type="AudioStream" uid="uid://b2yw5cowp18xw" path="res://Dialogue/VA/E4_finding_him_1.ogg" id="2_msbjg"]
 
 [resource]
 script = ExtResource("1_msbjg")
 id = "33"
 speaker = "Echo"
-text = "I don't understand. That cannot be possible. He can't be dead. Oh-- oh!"
-vc_file = ExtResource("2_c0uia")
+text = "I don't understand. That cannot be possible."
+vc_file = ExtResource("2_msbjg")

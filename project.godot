@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Charger Escape in Watercolor"
+config/name="Red"
 run/main_scene="uid://dnwrm3qsnnl1y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://cqsrukeurxjlp"
 config/icon="uid://7yf7ni8ksp03"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
@@ -73,3 +75,4 @@ test={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
