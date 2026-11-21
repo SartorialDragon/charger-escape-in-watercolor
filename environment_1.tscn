@@ -525,7 +525,6 @@ offset_top = 525.0
 offset_right = 5065.2104
 offset_bottom = 772.95996
 scale = Vector2(0.9257477, 1.2524822)
-mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_6j7cg")
 ignore_texture_size = true
 stretch_mode = 4

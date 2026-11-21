@@ -202,7 +202,9 @@ func play_cutscene_to_stallion():
 	for n in 400:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
-	await Global.arrived
+	if Global.current_state.name == "Trot":
+		await Global.arrived
+	await get_tree().create_timer(1).timeout
 	%HallucinationAnimationPlayer.play("hallucination")
 	await %HallucinationAnimationPlayer.animation_finished
 	await get_tree().create_timer(1).timeout
