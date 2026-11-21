@@ -186,7 +186,8 @@ func move_through_trees():
 	for n in 260:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00000001).timeout
-	await Global.arrived
+	if Global.current_state.name == "Trot":
+		await Global.arrived
 	clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 	for n in clues_on_screen:
 		n.remove_from_group("on_screen")

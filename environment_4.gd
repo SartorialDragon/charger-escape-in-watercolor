@@ -59,7 +59,8 @@ func _provisorium():
 			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
 				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 			await get_tree().create_timer(0.00000001).timeout
-	await Global.arrived
+	if Global.current_state.name == "Trot":
+		await Global.arrived
 	dialogue = "res://Dialogue/33_finding_him.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -96,7 +97,7 @@ func _on_sound_0_pressed() -> void:
 			for n in 400:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
-			await Global.arrived
+			#await Global.arrived
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			for n in clues_on_screen:
 				n.remove_from_group("on_screen")
@@ -151,7 +152,7 @@ func cutscene_dead():
 	%RedParticles0.emitting = true
 	$RageLayer.visible = true
 	$RageLayer/AnimationPlayer.play("rage")
-	%BentTree.z_index = 4
+	
 
 
 func _on_destroy_0_pressed() -> void:
@@ -172,6 +173,7 @@ func _on_destroy_4_pressed() -> void:
 
 func _on_destroy(pos, object, particle, line, next_object):
 	if object.get_child(0).emitting:
+		%BentTree.z_index = 4
 		if Global.player_POI_position != pos:
 			Global.visit_clue.emit(Vector2(object.position.x +30, object.position.y + 260))
 			await Global.arrived
@@ -202,6 +204,7 @@ func _on_destroy(pos, object, particle, line, next_object):
 					Global.speed = 200
 					$RageLayer/AnimationPlayer.stop()
 					$RageLayer.hide()
+					%BentTree.z_index = 0
 
 	
 func cutscene_grief():

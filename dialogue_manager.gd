@@ -14,10 +14,10 @@ var current_line: DialogueLine
 var is_active: bool = false
 
 func start_dialogue(file: NodePath, type: int) -> void:
-	if FileAccess.file_exists(file):
-		current_data = load(file)
+	if ResourceLoader.exists(file):
+		current_data = ResourceLoader.load(file)
 	else:
-		current_data = load("res://Dialogue/00_dialogue_missing.tres")
+		current_data = ResourceLoader.load("res://Dialogue/00_dialogue_missing.tres")
 	is_active = true
 	match type:
 		0:
