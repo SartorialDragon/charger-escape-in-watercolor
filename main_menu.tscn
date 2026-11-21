@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=4 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="2_7vrkn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
 
@@ -36,6 +37,14 @@ alignment = 1
 [node name="Control" type="Control" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Title" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.64
+texture = ExtResource("2_7vrkn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
