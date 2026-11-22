@@ -115,6 +115,7 @@ func _on_soft_spot_pressed() -> void:
 		Global.player_POI_position = Global.POIs.SOFTSPOT
 	else:
 		if not clues_interacted["SoftSpot"]:
+			Global.clues_interacted["GetUp"] = false
 			$MusicAudio.stream = load("res://Music/Don't Give Up.mp3")
 			$MusicAudio.play()
 			# lie down animation
@@ -132,6 +133,7 @@ func stallion_hallucination() -> void:
 		DialogueManager.start_dialogue(dialogue, 0)
 		await DialogueManager.dialogue_ended
 		clues_interacted["StallionHallucination"] = true
+		Global.clues_interacted["GetUp"] = true
 		$MusicAudio.stream = load("res://Music/E3 Seeing - Before Resting.mp3")
 		$MusicAudio.play()
 		for n in 350:
@@ -241,7 +243,6 @@ func show_scents():
 		%Particles1.emitting = true
 	%Hoofprints.visible = true
 	%Particles3.emitting = true
-	print("particles emitting")
 
 
 func hide_scents():
