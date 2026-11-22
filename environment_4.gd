@@ -45,6 +45,7 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
+	Global.clues_interacted["GetUp"] = true
 	await get_tree().create_timer(1).timeout
 	dialogue = "res://Dialogue/32_E4_start.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
@@ -116,9 +117,7 @@ func _on_spring_pressed() -> void:
 			Global.visit_clue.emit(Vector2(%Spring.position.x +100, %Spring.position.y + 10))
 		else:
 			if clues_interacted["Rage"]:
-				Global.visit_clue.emit(Vector2(%Spring.position.x +350, %Spring.position.y + 10))
-				#await Global.arrived
-				#Global.visit_clue.emit(Vector2(%Spring.position.x +250, %Spring.position.y + 10))
+				Global.visit_clue.emit(Vector2(%Spring.position.x +150, %Spring.position.y + 0))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SPRING
 	else:
@@ -130,7 +129,8 @@ func _on_spring_pressed() -> void:
 			cutscene_dead()
 		else:
 			if clues_interacted["Rage"]:
-				# lie down animation
+				Global.clues_interacted["GetUp"] = false
+				await get_tree().create_timer(2).timeout
 				dialogue = "res://Dialogue/39_i_love_him.tres"
 				DialogueManager.start_dialogue(dialogue, 0)
 				await DialogueManager.dialogue_ended
@@ -190,8 +190,9 @@ func _on_destroy(pos, object, particle, line, next_object):
 					#$SFXAudio.stream = load("")
 					#$SFXAudio.play()
 					object.texture_normal = load("res://ArtAssets/tree_broken.png")
-				if $SFXAudio.playing:
-					await $SFXAudio.finished
+				#if $SFXAudio.playing:
+					#await $SFXAudio.finished
+				await get_tree().create_timer(1).timeout
 				dialogue = line
 				DialogueManager.start_dialogue(dialogue, 0)
 				await DialogueManager.dialogue_ended
@@ -285,9 +286,9 @@ func _on_smell_button_pressed() -> void:
 	
 	
 func darken_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.282, 0.282, 0.282)
-	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.5, 0.5, 0.5)
+	$Parallax2D3/Foreground.self_modulate = Color(0.5, 0.5, 0.5)
 
 
 func lighten_surroundings():

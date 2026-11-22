@@ -47,7 +47,6 @@ func start_game():
 		A += 0.1
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
-	$Title.hide()
 	dialogue = "res://Dialogue/20_intro.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -61,10 +60,6 @@ func start_game():
 	for n in 110:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00000001).timeout
-	
-	dialogue = "res://Dialogue/19_tutorial.tres"
-	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
 	#await get_tree().create_timer(5).timeout
 	#if not Global.clues_interacted["Echo"]:
 		#Global.hint_needed.emit("Echo")
@@ -73,6 +68,10 @@ func start_game():
 	
 func _on_get_up():
 	%RockCluster.add_to_group("see")
+	Global.clues_interacted["GetUp"] = true
+	dialogue = "res://Dialogue/19_tutorial.tres"
+	DialogueManager.start_dialogue(dialogue, 0)
+	await DialogueManager.dialogue_ended
 	
 	
 func _on_rock_cluster_0_pressed() -> void:
@@ -279,11 +278,11 @@ func _on_smell_button_pressed() -> void:
 	
 	
 func darken_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
-	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
-	%RockCluster.self_modulate = Color(0.282, 0.282, 0.282)
-	%RockSlide.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.5, 0.5, 0.5)
+	$Parallax2D3/Foreground.self_modulate = Color(0.5, 0.5, 0.5)
+	%RockCluster.self_modulate = Color(0.5, 0.5, 0.5)
+	%RockSlide.self_modulate = Color(0.5, 0.5, 0.5)
 
 
 func lighten_surroundings():

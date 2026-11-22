@@ -16,3 +16,5 @@ func update(_delta):
 func physics_update(_delta):
 	if get_parent().get_parent().velocity.x == 0:
 		transitioned.emit(self, "idle")
+	if not Global.clues_interacted["GetUp"]:
+		transitioned.emit(self, "lie")

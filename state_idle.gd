@@ -25,6 +25,14 @@ func update(_delta):
 func physics_update(_delta):
 	if get_parent().get_parent().velocity.x != 0:
 		transitioned.emit(self, "trot")
+	#elif 
+		
+	if not Global.clues_interacted["GetUp"]:
+		transitioned.emit(self, "lie")
+	if Global.current_sense == Global.senses.HEAR:
+		transitioned.emit(self, "hear")
+	elif Global.current_sense == Global.senses.SMELL:
+		transitioned.emit(self, "sniff")
 	
 	
 #func play_random_idle():
