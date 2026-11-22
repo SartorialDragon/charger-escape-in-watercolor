@@ -38,6 +38,7 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
+	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
 	
@@ -207,11 +208,11 @@ func _on_smell_button_pressed() -> void:
 	
 	
 func darken_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
-	$Parallax2D3/Foreground.self_modulate = Color(0.282, 0.282, 0.282)
-	%SoftSpot.modulate = Color(0.282, 0.282, 0.282)
-	%Hoofprints.self_modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.5, 0.5, 0.5)
+	$Parallax2D3/Foreground.self_modulate = Color(0.5, 0.5, 0.5)
+	%SoftSpot.modulate = Color(0.5, 0.5, 0.5)
+	%Hoofprints.self_modulate = Color(0.5, 0.5, 0.5)
 	
 
 func lighten_surroundings():

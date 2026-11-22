@@ -27,9 +27,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_look_pressed() -> void:
 	Global.current_sense = Global.senses.SEE
-	if not Global.clues_interacted["GetUp"]:
+	if not Global.clues_interacted["GetUp"] and not Global.clues_interacted["Echo"]:
 		Global.got_up.emit()
-		Global.clues_interacted["GetUp"] = true
 	Global.hint_done.emit("Echo")
 	Global.hint_done.emit("Sight")
 	Global.sense_mode_changed.emit()

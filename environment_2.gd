@@ -44,6 +44,7 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
+	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
 	await get_tree().create_timer(1).timeout
@@ -255,16 +256,16 @@ func _on_smell_button_pressed() -> void:
 	
 	
 func darken_surroundings():
-	$BackgroundLayers/Parallax2D/Sky.modulate = Color(0.282, 0.282, 0.282)
-	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.282, 0.282, 0.282)
-	$Parallax2D3/Foreground.modulate = Color(0.282, 0.282, 0.282)
-	%Tree0.self_modulate = Color(0.282, 0.282, 0.282)
-	%Tree0Mane.self_modulate = Color(0.282, 0.282, 0.282)
-	%Bucket.modulate = Color(0.282, 0.282, 0.282)
-	%Stream.modulate = Color(0.282, 0.282, 0.282)
-	%Tree1.modulate = Color(0.282, 0.282, 0.282)
-	%Tree2.modulate = Color(0.282, 0.282, 0.282)
-	%Tree3.modulate = Color(0.282, 0.282, 0.282)
+	$BackgroundLayers/Parallax2D/Sky.modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Middle.modulate = Color(0.5, 0.5, 0.5)
+	$Parallax2D3/Foreground.modulate = Color(0.5, 0.5, 0.5)
+	%Tree0.self_modulate = Color(0.5, 0.5, 0.5)
+	%Tree0Mane.self_modulate = Color(0.5, 0.5, 0.5)
+	%Bucket.modulate = Color(0.5, 0.5, 0.5)
+	%Stream.modulate = Color(0.5, 0.5, 0.5)
+	%Tree1.modulate = Color(0.5, 0.5, 0.5)
+	%Tree2.modulate = Color(0.5, 0.5, 0.5)
+	%Tree3.modulate = Color(0.5, 0.5, 0.5)
 
 
 func lighten_surroundings():
