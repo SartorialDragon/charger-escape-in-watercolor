@@ -82,7 +82,6 @@ func _on_rock_cluster_0_pressed() -> void:
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.current_sense != Global.senses.SEE:
-			print("wrong sense")
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
@@ -99,7 +98,6 @@ func _on_rock_cluster_1_pressed() -> void:
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.current_sense != Global.senses.SEE:
-			print("wrong sense")
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
@@ -116,7 +114,6 @@ func _on_rock_cluster_2_pressed() -> void:
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.current_sense != Global.senses.SEE:
-			print("wrong sense")
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
