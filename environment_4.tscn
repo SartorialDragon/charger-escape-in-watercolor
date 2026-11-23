@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=35 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
@@ -14,9 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://860apyh5ntpj" path="res://ArtAssets/environment 4 foreground.png" id="13_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://brai801lvtqll" path="res://ArtAssets/he_is_dead.png" id="14_5jeke"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="14_6fwi5"]
+[ext_resource type="Texture2D" uid="uid://bc02qu77cmk05" path="res://ArtAssets/smoke cloud_.png" id="14_8xvv2"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="14_aodgo"]
 [ext_resource type="AudioStream" uid="uid://bjl8t23ntfkf4" path="res://Music/E4 To Rage.mp3" id="15_5jeke"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="15_8xvv2"]
+[ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="15_lgckb"]
 
 [sub_resource type="Curve" id="Curve_2li0a"]
 _data = [Vector2(0.0050167143, 0.22229773), 0.0, 0.0, 0, 0, Vector2(1, 0.4167233), 0.0, 0.0, 0, 0]
@@ -24,6 +26,96 @@ point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vylta"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_lgckb"]
+offsets = PackedFloat32Array(0, 0.32142857, 0.6468254, 1)
+colors = PackedColorArray(0.85, 0.85, 0.85, 0.27450982, 0.77, 0.77, 0.77, 0.84705883, 0.74, 0.74, 0.74, 0.85882354, 0.77, 0.77, 0.77, 0.1254902)
+
+[sub_resource type="Animation" id="Animation_nacr6"]
+resource_name = "red smoke"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4666667, 2.9666667, 4.4, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255), Color(0.95, 0.20583336, 0, 0.32156864), Color(0.95, 0.20583336, 0, 0.69411767), Color(0.9539048, 0.20971644, 7.7250604e-07, 0.47577602), Color(0.95, 0.20583336, 0, 0.6117647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333, 2.0666666, 3.5666666, 4.8, 6.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3529412), Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3019608), Color(0.95, 0.20583336, 0, 0.59607846)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334, 1.4666667, 2.9666667, 4.6, 5.93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95, 0.20583336, 0, 0.1254902), Color(0.95, 0.20583336, 0, 0.5019608), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.47058824), Color(0.95, 0.20583336, 0, 0.12742865)]
+}
+
+[sub_resource type="Animation" id="Animation_vcw72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95, 0.20583336, 0, 0.1254902)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swvsa"]
+_data = {
+&"RESET": SubResource("Animation_vcw72"),
+&"red smoke": SubResource("Animation_nacr6")
+}
 
 [sub_resource type="Animation" id="Animation_6fwi5"]
 length = 0.001
@@ -508,6 +600,7 @@ expand_mode = 1
 
 [node name="Credits" type="Label" parent="StillImageLayer/Panel"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -525,6 +618,64 @@ sekelsta
 for the Tiny Horse Game Jam 2026"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="StillImageLayer/Panel"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3529412)
+position = Vector2(1154, 552)
+emitting = false
+amount = 150
+texture = ExtResource("14_8xvv2")
+lifetime = 8.68
+randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1700, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 1.5
+scale_amount_max = 3.5
+color = Color(1, 0.27933335, 0.060000002, 0.58431375)
+color_ramp = SubResource("Gradient_lgckb")
+
+[node name="Workaround" type="Node2D" parent="StillImageLayer/Panel"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StillImageLayer/Panel/Workaround"]
+libraries = {
+&"": SubResource("AnimationLibrary_swvsa")
+}
+
+[node name="Cloud0" type="TextureRect" parent="StillImageLayer/Panel/Workaround"]
+self_modulate = Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)
+offset_left = -1061.0
+offset_top = -1066.0
+offset_right = -60.994568
+offset_bottom = -65.99988
+scale = Vector2(3, 3)
+texture = ExtResource("15_lgckb")
+
+[node name="Cloud1" type="TextureRect" parent="StillImageLayer/Panel/Workaround"]
+self_modulate = Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)
+offset_left = -95.0
+offset_top = -653.0
+offset_right = 905.00543
+offset_bottom = 347.00012
+scale = Vector2(3, 3)
+texture = ExtResource("15_lgckb")
+
+[node name="Cloud2" type="TextureRect" parent="StillImageLayer/Panel/Workaround"]
+self_modulate = Color(0.95, 0.20583336, 0, 0.1254902)
+offset_left = -1268.0
+offset_top = -437.00006
+offset_right = -267.99457
+offset_bottom = 563.00006
+scale = Vector2(3, 3)
+texture = ExtResource("15_lgckb")
 
 [node name="StillAnimationPlayer" type="AnimationPlayer" parent="StillImageLayer"]
 unique_name_in_owner = true

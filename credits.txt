@@ -1,15 +1,17 @@
 Credits:
-	Coding: SartorialDragon, sekelsta, Nichelbichel
-	GameDirector: Nichelbichel
-	Art, Voiceacting, StoryDesign: Artemisia
+	Game Director: Nichelbichel
+	Coding: SartorialDragon, sekelsta
+	Artwork: Artemisia, Nichelbichel
+	Story Design: Artemisia, Nichelbichel, SartorialDragon, sekelsta
+	Script Writing: Artemisia
+	Voiceacting: Artemisia
 	
 	Tutorials Coding:
 		Dialogue System: https://codingquests.io/blog/godot-4-dialogue-system-tutorial
 		
-		SFX:
-			Rocks Falling: https://pixabay.com/sound-effects/film-special-effects-stones-falling-6375/
-			
-			Rock Crack: https://pixabay.com/sound-effects/film-special-effects-rock-destroy-6409/
+	SFX:
+		Rocks Falling: https://pixabay.com/sound-effects/film-special-effects-stones-falling-6375/
+		Rock Crack: https://pixabay.com/sound-effects/film-special-effects-rock-destroy-6409/
 			
 	Custom Cursors:
 		by Zeno (https://soundcloud.com/z_e_n_o)
