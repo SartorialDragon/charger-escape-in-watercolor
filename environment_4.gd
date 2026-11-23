@@ -50,8 +50,8 @@ func _ready():
 	
 
 func move_forward():
-	Global.visit_clue.emit(Vector2(player_horse.position.x + 3500, player_horse.position.y + 0))
-	for n in 530:
+	Global.visit_clue.emit(Vector2(player_horse.position.x + 3550, player_horse.position.y + 0))
+	for n in 520:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00001).timeout
 	if Global.current_state.name == "Trot":
@@ -60,7 +60,7 @@ func move_forward():
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 150, player_horse.position.y + 0))
-	for n in 310:
+	for n in 320:
 			$Camera2D.position.x += 2
 			await get_tree().create_timer(0.00000001).timeout
 	var A = 1.0

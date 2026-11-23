@@ -47,4 +47,4 @@ func end_dialogue() -> void:
 	is_active = false
 	current_data = null
 	current_line = null
-	dialogue_ended.emit()
+	dialogue_ended.emit(current_data)

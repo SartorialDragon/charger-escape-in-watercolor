@@ -44,7 +44,7 @@ tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.1, 1.5333333, 2.1, 2.6333334, 3.13, 3.72, 4.14, 4.6, 5.1, 6.866667),
+"times": PackedFloat32Array(0, 0.36666667, 0.93333334, 1.3666666, 1.9333332, 2.4666667, 2.9633334, 3.5533333, 3.9733331, 4.4333334, 4.9333334, 6.8333335),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5176471), Color(1, 1, 1, 0.21176471), Color(1, 1, 1, 0.60784316), Color(1, 1, 1, 0.38039216), Color(1, 1, 1, 0.8117647), Color(1, 1, 1, 0.4392157), Color(1, 1, 1, 0.6901961), Color(1, 1, 1, 0.9098039), Color(1, 1, 1, 0.61960787), Color(1, 1, 1, 0.91764706), Color(1, 1, 1, 0)]

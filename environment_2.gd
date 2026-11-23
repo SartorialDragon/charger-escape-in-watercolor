@@ -96,18 +96,18 @@ func _on_mane_hair_pressed() -> void:
 				for n in 250:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.00000001).timeout
+				%Bucket.add_to_group("on_screen")
+				$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = true
+				clues_interacted["Tree0Mane"] = true
 				await Global.arrived
 				%Stream.disabled = false
 				clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 				%Tree0.remove_from_group("on_screen")
 				%Tree0Mane.remove_from_group("on_screen")
-				%Bucket.add_to_group("on_screen")
 				%Stream.add_to_group("on_screen")
 				%Tree1.add_to_group("on_screen")
 				%Tree2.add_to_group("on_screen")
 				%Tree3.add_to_group("on_screen")
-				$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = true
-				clues_interacted["Tree0Mane"] = true
 				dialogue = "res://Dialogue/25_still_burning.tres"
 				DialogueManager.start_dialogue(dialogue, 0)
 
@@ -155,7 +155,7 @@ func _on_tree_pressed(tree, particle):
 		if tree.is_in_group("on_screen"):
 			move_through_trees()
 	else:
-		if not clues_interacted["Bucket"]:
+		if not clues_interacted["Bucket"] or not %Bucket.texture_normal == load("res://ArtAssets/bucket_full.png"):
 			dialogue = "res://Dialogue/12_can't_pass.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:

@@ -8,4 +8,4 @@
 script = ExtResource("3_gq7ae")
 id = "14"
 lines = Array[ExtResource("1_rj7d8")]([ExtResource("2_rj7d8")])
-start_id = "14"
+start_id = "16"
