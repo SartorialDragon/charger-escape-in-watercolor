@@ -182,13 +182,12 @@ func _on_destroy(pos, object, particle, line, next_object):
 			if not clues_interacted[object.name]:
 				particle.emitting = false
 				if "rock" in object.texture_normal.resource_path:
-					$SFXAudio.stream = load("res://Assets/freesound_community-rock-destroy-6409.mp3")
+					$SFXAudio.stream = load("res://SFX/freesound_community-rock-destroy-6409.mp3")
 					$SFXAudio.play()
 					object.texture_normal = load("res://ArtAssets/rock_broken_.png")
 				if "tree" in object.texture_normal.resource_path:
-					# find sfx for tree breaking
-					#$SFXAudio.stream = load("")
-					#$SFXAudio.play()
+					$SFXAudio.stream = load("res://SFX/Kick.ogg")
+					$SFXAudio.play()
 					object.texture_normal = load("res://ArtAssets/tree_broken.png")
 				#if $SFXAudio.playing:
 					#await $SFXAudio.finished

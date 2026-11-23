@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://coua5hqwjq550" path="res://ArtAssets/e2 smoldering_on.png" id="9_3mwvo"]
 [ext_resource type="Texture2D" uid="uid://cuivaa7vi174o" path="res://ArtAssets/smoke.png" id="9_bt657"]
 [ext_resource type="Texture2D" uid="uid://udo7h7wxm53v" path="res://ArtAssets/e2 mane.png" id="10_jb611"]
-[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="13_yjv7e"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="13_yjv7e"]
 [ext_resource type="Texture2D" uid="uid://dneua5ud5kb6c" path="res://ArtAssets/environment 2 foreground.png" id="14_voe02"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="17_6krrs"]
 [ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="18_6krrs"]

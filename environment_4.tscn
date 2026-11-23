@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://860apyh5ntpj" path="res://ArtAssets/environment 4 foreground.png" id="13_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://brai801lvtqll" path="res://ArtAssets/he_is_dead.png" id="14_5jeke"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="14_6fwi5"]
-[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_aodgo"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="14_aodgo"]
 [ext_resource type="AudioStream" uid="uid://bjl8t23ntfkf4" path="res://Music/E4 To Rage.mp3" id="15_5jeke"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="15_8xvv2"]
 

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="12_3jdq1"]
 [ext_resource type="AudioStream" uid="uid://dxegg5hhkhmd6" path="res://Music/E3 Seeing - Before Resting.mp3" id="12_y78ea"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="13_6trsd"]
-[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="16_k56vb"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="16_k56vb"]
 
 [sub_resource type="Curve" id="Curve_7xvgo"]
 _data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]

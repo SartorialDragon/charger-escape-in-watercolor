@@ -239,6 +239,9 @@ func sense_change():
 
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load("res://Music/E1 Seeing.mp3")
+	$MusicAudio.play(from_position)
 	hide_sounds()
 	hide_scents()
 	lighten_surroundings()
@@ -248,6 +251,9 @@ func _on_see_button_pressed() -> void:
 
 
 func _on_hear_button_pressed() -> void:
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load("res://Music/E1 Hearing.mp3")
+	$MusicAudio.play(from_position)
 	hide_scents()
 	darken_surroundings()
 	muffle_music()
@@ -264,6 +270,9 @@ func _on_hear_button_pressed() -> void:
 
 
 func _on_smell_button_pressed() -> void:
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load("res://Music/E1 Sniffing.mp3")
+	$MusicAudio.play(from_position)
 	hide_sounds()
 	normalize_music()
 	darken_surroundings()
@@ -292,7 +301,7 @@ func lighten_surroundings():
 
 func muffle_music():
 	$MusicAudio.volume_db = -7.153
-	$MusicAudio.pitch_scale = 0.81
+	#$MusicAudio.pitch_scale = 0.81
 	
 	
 func normalize_music():
