@@ -8,7 +8,7 @@ var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
-
+@onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
 
 
 # this means the clue has been discovered in sense mode or through solving other clues!
@@ -20,7 +20,6 @@ var clues_discovered = { # key needs to be identical with node name
 	"Tree1" : false,
 	"Tree2" : false,
 	"Tree3" : false,
-	"StallionScent" : false,
 	"Smoldering" : false,
 }
 
@@ -33,10 +32,8 @@ var clues_interacted = {
 	"Tree1" : false,
 	"Tree2" : false,
 	"Tree3" : false,
-	"StallionScent" : false,
 	"Smoldering" : false,
 }
-
 
 
 func _ready():
@@ -109,6 +106,7 @@ func _on_mane_hair_pressed() -> void:
 				%Tree1.add_to_group("on_screen")
 				%Tree2.add_to_group("on_screen")
 				%Tree3.add_to_group("on_screen")
+				$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = true
 				clues_interacted["Tree0Mane"] = true
 				dialogue = "res://Dialogue/25_still_burning.tres"
 				DialogueManager.start_dialogue(dialogue, 0)
@@ -176,6 +174,7 @@ func _on_tree_pressed(tree, particle):
 		
 
 func move_through_trees():
+	$BackgroundLayers/Parallax2D2/SmokeParticles2.emitting = true
 	dialogue = "res://Dialogue/27_pass_through_trees.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -187,12 +186,13 @@ func move_through_trees():
 	for n in 260:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.00000001).timeout
+	$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
 	if Global.current_state.name == "Trot":
 		await Global.arrived
+	Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
 	clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 	for n in clues_on_screen:
 		n.remove_from_group("on_screen")
-	#%StallionScent.add_to_group("on_screen")
 	await get_tree().create_timer(1).timeout
 	switch_scene()
 
@@ -208,14 +208,6 @@ func switch_scene():
 	get_tree().change_scene_to_file("res://environment_3.tscn")
 
 
-	
-func play_scent():
-	%ScentAnimationPlayer.play("scent_waft")
-	await %ScentAnimationPlayer.animation_finished
-	if not clues_interacted["StallionScent"]:
-		play_scent()
-
-
 func sense_change():
 	if Global.current_sense == Global.senses.SEE:
 		_on_see_button_pressed()
@@ -225,7 +217,6 @@ func sense_change():
 		_on_smell_button_pressed()
 
 
-# ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
 	hide_sounds()
 	hide_scents()
@@ -251,8 +242,6 @@ func _on_smell_button_pressed() -> void:
 	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
-	if not clues_interacted["StallionScent"]:
-		play_scent()
 	
 	
 func darken_surroundings():
@@ -293,9 +282,6 @@ func normalize_music():
 
 
 func show_scents():
-	if not clues_interacted["StallionScent"]:
-		$StallionScent/CPUParticles2D.visible = true
-		$StallionScent/CPUParticles2D.emitting = true
 	if %Tree0.is_in_group("on_screen"):
 		%TreeParticles0.visible = true
 		%TreeParticles0.emitting = true
@@ -307,27 +293,15 @@ func show_scents():
 	
 
 func hide_scents():
-	$StallionScent/CPUParticles2D.visible = false
-	$StallionScent/CPUParticles2D.emitting = false
 	%TreeParticles0.visible = false
 	%TreeParticles0.emitting = false
 	%TreeParticlesMane.visible = false
 	%TreeParticlesMane.emitting = false
 
 func show_sounds():
-	#if not clues_interacted["RockSlide"]:
-		#if not clues_discovered["RockSlide"]:
-			#%RockSlide.texture_normal = load("res://Assets/rock2.png")
-		#else:
-			#%RockSlide.texture_normal = load("res://Assets/rock3.png")
 	pass
 
 func hide_sounds():
-	#if not clues_interacted["RockSlide"]:
-		#if not clues_discovered["RockSlide"]:
-			#%RockSlide.texture_normal = load("res://Assets/rock0.png")
-		#else:
-			#%RockSlide.texture_normal = load("res://Assets/rock1.png")
 	pass
 
 # updates showing all currently discovered clues

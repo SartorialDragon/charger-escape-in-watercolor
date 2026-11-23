@@ -262,8 +262,6 @@ func _on_hear_button_pressed() -> void:
 	# this should go somewhere different
 	if clues_interacted["StallionScent"] and not clues_discovered["RockSlide"]:
 		%RockslideAnimationPlayer.play("rockslide")
-		#$SFXAudio.stream = load("res://Assets/freesound_community-stones-falling-6375.mp3")
-		#$SFXAudio.play()
 		%RockSlide.add_to_group("on_screen")
 	update_sense()
 
@@ -329,8 +327,7 @@ func show_sounds():
 
 func hide_sounds():
 	pass
-		
-
+	
 
 # updates showing all currently discovered clues
 func update_sense():
