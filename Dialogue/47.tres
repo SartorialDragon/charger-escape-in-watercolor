@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=4 format=3 uid="uid://d0weodwhnp7lx"]
+
+[ext_resource type="Texture2D" uid="uid://dpvat87cmaqdx" path="res://ArtAssets/still2.png" id="1_dcxve"]
+[ext_resource type="Script" path="res://dialogue_line.gd" id="2_xyfw0"]
+[ext_resource type="AudioStream" uid="uid://dxsmwxkchus5l" path="res://Dialogue/VA/e3_happy memory_1.ogg" id="3_sgtgn"]
+
+[resource]
+script = ExtResource("2_xyfw0")
+id = "47"
+speaker = "Echo"
+image = ExtResource("1_dcxve")
+text = "Searching only made me reminisce all the more. 'Why him?' I'd been asked, as if I'd have considered another. When he was young and smaller than the other studs, he'd still try to protect me from the bigger ones. And then when he was a bigger one, he would first, above all, be gentle."
+vc_file = ExtResource("3_sgtgn")

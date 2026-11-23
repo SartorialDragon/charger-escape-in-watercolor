@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cnix5e06j0uiy"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cnix5e06j0uiy"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_l0dft"]
+[ext_resource type="AudioStream" uid="uid://c6uj0vub8sfxm" path="res://Dialogue/VA/can't_pass.ogg" id="2_jo5on"]
 
 [resource]
 script = ExtResource("1_l0dft")
 id = "15"
 speaker = "Echo"
 text = "I can't pass through the smoldering trees!"
+vc_file = ExtResource("2_jo5on")

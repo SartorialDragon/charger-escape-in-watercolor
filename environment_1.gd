@@ -169,25 +169,24 @@ func _on_rock_slide_pressed() -> void:
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.player_POI_position != Global.POIs.ROCKSLIDE:
-			#if Global.current_sense == Global.senses.HEAR:
-				#dialogue = load("res://Dialogue/13_can't_hear.tres")
-				#DialogueManager.start_dialogue(dialogue)
-			#elif Global.current_sense == Global.senses.SMELL:
-				#dialogue = load("res://Dialogue/14_can't_smell.tres")
-				#DialogueManager.start_dialogue(dialogue)
-			#elif Global.current_sense == Global.senses.SEE:
 			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 100, %RockSlide.position.y + 600))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKSLIDE
 		else:
-			# play the respective clue stuff
-			%RockslideAnimationPlayer.play("kicked")
-			clues_interacted["RockSlide"] = true
-			%RockSlide.disabled = true
-			dialogue = "res://Dialogue/21_rockslide.tres"
-			DialogueManager.start_dialogue(dialogue, 0)
-			await DialogueManager.dialogue_ended
-			play_cutscene_to_stallion()
+			if Global.current_sense == Global.senses.HEAR:
+				dialogue = "res://Dialogue/13_can't_hear.tres"
+				DialogueManager.start_dialogue(dialogue, 1)
+			elif Global.current_sense == Global.senses.SMELL:
+				dialogue = "res://Dialogue/14_can't_smell.tres"
+				DialogueManager.start_dialogue(dialogue, 1)
+			elif Global.current_sense == Global.senses.SEE:
+				%RockslideAnimationPlayer.play("kicked")
+				clues_interacted["RockSlide"] = true
+				%RockSlide.disabled = true
+				dialogue = "res://Dialogue/21_rockslide.tres"
+				DialogueManager.start_dialogue(dialogue, 0)
+				await DialogueManager.dialogue_ended
+				play_cutscene_to_stallion()
 		
 
 func play_cutscene_to_stallion():

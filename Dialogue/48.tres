@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=4 format=3 uid="uid://dvbjav4w3gdf3"]
+
+[ext_resource type="Texture2D" uid="uid://dpvat87cmaqdx" path="res://ArtAssets/still2.png" id="1_h0oyd"]
+[ext_resource type="Script" path="res://dialogue_line.gd" id="2_84g55"]
+[ext_resource type="AudioStream" uid="uid://di6s68bk56n51" path="res://Dialogue/VA/e3_happy memory_2.ogg" id="3_b8e6q"]
+
+[resource]
+script = ExtResource("2_84g55")
+id = "48"
+speaker = "Echo"
+image = ExtResource("1_h0oyd")
+text = "He'd say that it seemed the air was getting hotter, but we did not have to rage and burn to match it. He could frighten the others because he was imposing yet chose to be kind, first. That dichotomy is not so common."
+vc_file = ExtResource("3_b8e6q")

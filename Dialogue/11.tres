@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://l33nexaajfx7"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://l33nexaajfx7"]
 
 [ext_resource type="Script" path="res://dialogue_line.gd" id="1_hve8b"]
+[ext_resource type="AudioStream" uid="uid://b1h7xjnolnxuo" path="res://Dialogue/VA/can't_see.ogg" id="2_dshx3"]
 
 [resource]
 script = ExtResource("1_hve8b")
 id = "11"
 speaker = "Echo"
 text = "I can't see anything interesting."
+vc_file = ExtResource("2_dshx3")

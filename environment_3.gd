@@ -68,7 +68,7 @@ func _on_scent_1_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_1
 		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			dialogue = "res://Dialogue/47_happy_memory.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Scent1"] = true
 			clues_discovered["Sound0"] = true
@@ -85,16 +85,18 @@ func _on_sound_0_pressed() -> void:
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SOUND_0
 		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
+			dialogue = "res://Dialogue/48_happy_memory.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			clues_interacted["Sound0"] = true
 			await DialogueManager.dialogue_ended
 			%Sound0.remove_from_group("hear")
 			_on_hear_button_pressed()
-			for n in 250:
+			for n in 100:
 				$Camera2D.position.x += 8
-				if $Camera2D.position.x * 0.7 >= player_horse.position.x:
-					Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
+				await get_tree().create_timer(0.00000001).timeout
+			Global.visit_clue.emit(Vector2(player_horse.position.x +4200, player_horse.position.y + 0))
+			for n in 150:
+				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
 			#print($Camera2D.position.x, " player: ", player_horse.position.x)
 			dialogue = "res://Dialogue/29_need_a_break.tres"
@@ -136,17 +138,19 @@ func stallion_hallucination() -> void:
 		Global.clues_interacted["GetUp"] = true
 		$MusicAudio.stream = load("res://Music/E3 Seeing - Before Resting.mp3")
 		$MusicAudio.play()
-		for n in 350:
+		for n in 50:
 			$Camera2D.position.x += 8
-			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
-				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
+			await get_tree().create_timer(0.00000001).timeout
+		Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
+		for n in 300:
+			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 		#print($Camera2D.position.x, " player: ", player_horse.position.x)
 		clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 		for n in clues_on_screen:
 			n.remove_from_group("on_screen")
 		%Hoofprints.add_to_group("on_screen")
-		%Hoofprints.add_to_group("smell")
+		%Hoofprints.add_to_group("see")
 		clues_discovered["Hoofprints"] = true
 
 
@@ -155,15 +159,14 @@ func _on_hoofprints_pressed() -> void:
 		Global.visit_clue.emit(Vector2(%Hoofprints.position.x + 50, %Hoofprints.position.y + 20))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.HOOFPRINTS
-		%Hoofprints.texture_normal = load("res://ArtAssets/hoofprints.png")
 	else:
-		if Global.current_sense == Global.senses.SEE:
-			dialogue = "res://Dialogue/08_can't_see.tres"
-			DialogueManager.start_dialogue(dialogue, 1)
-		elif Global.current_sense == Global.senses.HEAR:
+		if Global.current_sense == Global.senses.HEAR:
 			dialogue = "res://Dialogue/13_can't_hear.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		elif Global.current_sense == Global.senses.SMELL:
+			dialogue = "res://Dialogue/14_can't_smell.tres"
+			DialogueManager.start_dialogue(dialogue, 1)
+		else:
 			dialogue = "res://Dialogue/31_hoofprints.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
 			await DialogueManager.dialogue_ended
@@ -241,8 +244,6 @@ func show_scents():
 	if clues_discovered["Scent1"] and not clues_interacted["Scent1"]:
 		%Scent1.visible = true
 		%Particles1.emitting = true
-	%Hoofprints.visible = true
-	%Particles3.emitting = true
 
 
 func hide_scents():
@@ -250,9 +251,6 @@ func hide_scents():
 	%Particles0.emitting = false
 	%Scent1.visible = false
 	%Particles1.emitting = false
-	if %Hoofprints.texture_normal == null:
-		%Hoofprints.visible = false
-	%Particles3.emitting = false
 
 
 func show_sounds():
