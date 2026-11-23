@@ -32,7 +32,6 @@ var clues_interacted = {
 }
 
 
-
 func _ready():
 	Input.set_custom_mouse_cursor(cursor_default)
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
@@ -41,7 +40,6 @@ func _ready():
 	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
-	
 	
 	
 func _on_scent_0_pressed() -> void:
@@ -108,6 +106,7 @@ func _on_sound_0_pressed() -> void:
 			%SoftSpot.add_to_group("see")
 			%SoftSpot.disabled = false
 			%StallionHallucination.add_to_group("on_screen")
+			$SmokeParticles3.emitting = true
 
 
 func _on_soft_spot_pressed() -> void:
@@ -142,10 +141,10 @@ func stallion_hallucination() -> void:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
 		Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
+		$SmokeParticles.emitting = false
 		for n in 300:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.00000001).timeout
-		#print($Camera2D.position.x, " player: ", player_horse.position.x)
 		clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 		for n in clues_on_screen:
 			n.remove_from_group("on_screen")

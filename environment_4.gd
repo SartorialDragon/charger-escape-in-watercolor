@@ -11,7 +11,6 @@ var clues_on_screen: Array = []
 @onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
 
 
-
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
 	"Destroy0" : false,
@@ -35,7 +34,6 @@ var clues_interacted = {
 }
 
 
-
 func _ready():
 	Input.set_custom_mouse_cursor(cursor_default)
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
@@ -48,11 +46,10 @@ func _ready():
 	dialogue = "res://Dialogue/32_E4_start.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
-	_provisorium()
+	move_forward()
 	
 
-func _provisorium():
-	#await get_tree().create_timer(4).timeout
+func move_forward():
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 3500, player_horse.position.y + 0))
 	for n in 530:
 		$Camera2D.position.x += 8
@@ -66,8 +63,6 @@ func _provisorium():
 	for n in 310:
 			$Camera2D.position.x += 2
 			await get_tree().create_timer(0.00000001).timeout
-	#$BackgroundLayers/Parallax2D2/PlayerHorse/Camera2D.enabled = true
-	#$Camera2D.enabled = false
 	var A = 1.0
 	for n in 10:
 		A -= 0.1
@@ -117,7 +112,6 @@ func cutscene_dead():
 	%RedParticles0.emitting = true
 	$RageLayer.visible = true
 	$RageLayer/AnimationPlayer.play("rage")
-	
 
 
 func _on_destroy_0_pressed() -> void:
@@ -154,8 +148,6 @@ func _on_destroy(pos, object, particle, line, next_object):
 					$SFXAudio.stream = load("res://SFX/Kick.ogg")
 					$SFXAudio.play()
 					object.texture_normal = load("res://ArtAssets/tree_broken.png")
-				#if $SFXAudio.playing:
-					#await $SFXAudio.finished
 				await get_tree().create_timer(1).timeout
 				dialogue = line
 				DialogueManager.start_dialogue(dialogue, 0)
@@ -207,12 +199,8 @@ func next_slide(path, line):
 	if DialogueManager.is_active:
 		await DialogueManager.dialogue_ended
 	%StillAnimationPlayer.play()
-	
-	
-	
-	
-	
-	
+
+
 func sense_change():
 	if Global.current_sense == Global.senses.SEE:
 		_on_see_button_pressed()

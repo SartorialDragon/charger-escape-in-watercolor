@@ -327,6 +327,7 @@ color_ramp = SubResource("Gradient_trp7i")
 [node name="SmokeParticles3" type="CPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(4964, 489)
+emitting = false
 amount = 150
 texture = ExtResource("9_2k1u2")
 lifetime = 8.68
