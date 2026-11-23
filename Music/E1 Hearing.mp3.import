@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/E1 Hearing.mp3-1fd828d8ec3dd1075941f329387f8e
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

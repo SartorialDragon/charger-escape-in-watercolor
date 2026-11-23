@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/E4 To Rage.mp3-72be4c69a00cc6c20291c908bd16db
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
