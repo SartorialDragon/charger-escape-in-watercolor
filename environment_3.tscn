@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=21 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
 [ext_resource type="Texture2D" uid="uid://drchd8reh28wa" path="res://ArtAssets/e3 middleground.png" id="3_y78ea"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="5_kvufe"]
 [ext_resource type="Texture2D" uid="uid://0neaj8a6suo6" path="res://ArtAssets/environment 3 softspot.png" id="5_y78ea"]
+[ext_resource type="Texture2D" uid="uid://beqsu6vemva5k" path="res://ArtAssets/hoofprints.png" id="6_2k1u2"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="9_2k1u2"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="10_1nc6w"]
 [ext_resource type="Texture2D" uid="uid://r7fu37joidpc" path="res://ArtAssets/environment 3 foreground.png" id="11_jiugy"]
@@ -226,7 +227,7 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_7xvgo")
 color = Color(1, 0.932, 0.49, 1)
 
-[node name="Hoofprints" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
+[node name="Hoofprints" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables"]]
 unique_name_in_owner = true
 offset_left = 4218.0
 offset_top = 668.0
@@ -234,12 +235,14 @@ offset_right = 4268.0
 offset_bottom = 698.0
 scale = Vector2(8.881775, 2.469204)
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_2k1u2")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Particles3" type="CPUParticles2D" parent="BackgroundLayers/Parallax2D2/Hoofprints"]
 unique_name_in_owner = true
+visible = false
 z_index = 2
 position = Vector2(24.882477, 17.009521)
 scale = Vector2(0.13458036, 0.65494287)
@@ -324,7 +327,7 @@ color_ramp = SubResource("Gradient_trp7i")
 [node name="SmokeParticles3" type="CPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(4964, 489)
-amount = 200
+amount = 150
 texture = ExtResource("9_2k1u2")
 lifetime = 8.68
 preprocess = 4.1

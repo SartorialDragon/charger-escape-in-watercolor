@@ -19,7 +19,6 @@ var clues_discovered = { # key needs to be identical with node name
 	"Destroy2" : false,
 	"Destroy3" : false,
 	"Destroy4" : false,
-	"Sound0" : false,
 	"Spring" : false,
 	"Rage" : false,
 }
@@ -31,7 +30,6 @@ var clues_interacted = {
 	"Destroy2" : false,
 	"Destroy3" : false,
 	"Destroy4" : false,
-	"Sound0" : false,
 	"Spring" : false,
 	"Rage" : false,
 }
@@ -55,20 +53,18 @@ func _ready():
 
 func _provisorium():
 	#await get_tree().create_timer(4).timeout
-	for n in 520:
-			$Camera2D.position.x += 8
-			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
-				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
-			await get_tree().create_timer(0.00000001).timeout
+	Global.visit_clue.emit(Vector2(player_horse.position.x + 3500, player_horse.position.y + 0))
+	for n in 530:
+		$Camera2D.position.x += 8
+		await get_tree().create_timer(0.00001).timeout
 	if Global.current_state.name == "Trot":
 		await Global.arrived
 	dialogue = "res://Dialogue/33_finding_him.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
-	for n in 320:
+	Global.visit_clue.emit(Vector2(player_horse.position.x + 150, player_horse.position.y + 0))
+	for n in 310:
 			$Camera2D.position.x += 2
-			if $Camera2D.position.x * 0.7 >= player_horse.position.x:
-				Global.visit_clue.emit(Vector2($Camera2D.position.x * 0.7, player_horse.position.y + 0))
 			await get_tree().create_timer(0.00000001).timeout
 	#$BackgroundLayers/Parallax2D2/PlayerHorse/Camera2D.enabled = true
 	#$Camera2D.enabled = false
@@ -77,37 +73,6 @@ func _provisorium():
 		A -= 0.1
 		$Parallax2D4.modulate = Color(1.0, 1.0, 1.0, A)
 		await get_tree().create_timer(0.1).timeout
-
-
-
-func _on_sound_0_pressed() -> void:
-	if Global.current_sense == Global.senses.HEAR:
-		if Global.player_POI_position != Global.POIs.SOUND_0:
-			Global.visit_clue.emit(Vector2(%Sound0.position.x - 50, %Sound0.position.y + 0))
-			await Global.arrived
-			Global.player_POI_position = Global.POIs.SOUND_0
-		else:
-			dialogue = "res://Dialogue/00_dialogue_missing.tres"
-			DialogueManager.start_dialogue(dialogue, 0)
-			clues_interacted["Sound0"] = true
-			await DialogueManager.dialogue_ended
-			for n in 150:
-				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
-			Global.visit_clue.emit(Vector2(3420, 500))
-			for n in 400:
-				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
-			#await Global.arrived
-			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
-			for n in clues_on_screen:
-				n.remove_from_group("on_screen")
-			%Spring.add_to_group("on_screen")
-			%Destroy0.add_to_group("on_screen")
-			%Destroy1.add_to_group("on_screen")
-			%Destroy2.add_to_group("on_screen")
-			%Destroy3.add_to_group("on_screen")
-			%Destroy4.add_to_group("on_screen")
 
 
 func _on_spring_pressed() -> void:
@@ -307,11 +272,6 @@ func normalize_music():
 
 
 func show_scents():
-	#%Scent0.visible = true
-	#%Particles0.emitting = true
-	#if clues_discovered["Scent1"]:
-		#%Scent1.visible = true
-		#%Particles1.emitting = true
 	pass
 
 
@@ -320,14 +280,11 @@ func hide_scents():
 
 
 func show_sounds():
-	if clues_discovered["Sound0"]:
-		%Sound0.visible = true
-		%Particles2.emitting = true
+	pass
 
 
 func hide_sounds():
-	%Sound0.visible = false
-	%Particles2.emitting = false
+	pass
 
 # updates showing all currently discovered clues
 func update_sense():
