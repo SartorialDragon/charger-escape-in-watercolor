@@ -15,11 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://cronaquuvx4do" path="res://ArtAssets/environment 1 foreground.png" id="10_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://cheivd2j1bd5s" path="res://ArtAssets/rock_broken.png" id="12_hm8ff"]
 [ext_resource type="PackedScene" uid="uid://bgoef03blq4l2" path="res://main_menu.tscn" id="14_2dglh"]
-[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://Assets/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
-[ext_resource type="AudioStream" uid="uid://bbxrycuvo3s2r" path="res://Assets/freesound_community-stones-falling-6375.mp3" id="14_je0s5"]
+[ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
+[ext_resource type="AudioStream" uid="uid://bbxrycuvo3s2r" path="res://SFX/freesound_community-stones-falling-6375.mp3" id="14_je0s5"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="17_rdret"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="18_rdret"]
-[ext_resource type="AudioStream" uid="uid://bavayodpenwj2" path="res://Music/E1 Seeing.mp3" id="19_rdret"]
+[ext_resource type="AudioStream" uid="uid://ddd476yijm7f3" path="res://Music/Main Menu.mp3" id="19_rdret"]
 
 [sub_resource type="Animation" id="Animation_6j7cg"]
 length = 0.001
