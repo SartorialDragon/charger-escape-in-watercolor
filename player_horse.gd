@@ -31,10 +31,10 @@ func _physics_process(delta: float) -> void:
 	#$HintParticles.emitting = true
 	
 	
-#func hide_hint(pos):
-	##print("pos: ", pos, " hidden")
-	#Global.clues_discovered[pos] = true
-	#$HintParticles.emitting = false
+func hide_hint(pos):
+	#print("pos: ", pos, " hidden")
+	Global.clues_discovered[pos] = true
+	$HintParticles.emitting = false
 	
 	
 func move_to(pos):

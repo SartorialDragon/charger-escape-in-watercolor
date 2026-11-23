@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=25 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://beqsu6vemva5k" path="res://ArtAssets/hoofprints.png" id="6_2k1u2"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="9_2k1u2"]
 [ext_resource type="PackedScene" uid="uid://bx4kno5rtneh6" path="res://player_horse.tscn" id="10_1nc6w"]
+[ext_resource type="Texture2D" uid="uid://bc02qu77cmk05" path="res://ArtAssets/smoke cloud_.png" id="10_2k1u2"]
 [ext_resource type="Texture2D" uid="uid://r7fu37joidpc" path="res://ArtAssets/environment 3 foreground.png" id="11_jiugy"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="11_ykfhg"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="12_3jdq1"]
@@ -54,6 +55,92 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_3jdq1"),
 &"hallucination": SubResource("Animation_2k1u2")
+}
+
+[sub_resource type="Animation" id="Animation_6trsd"]
+resource_name = "grey smoke"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.41, 3.1, 4.5666666, 5.8333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.8784314), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.8666667), Color(1, 1, 1, 0.63529414), Color(1, 1, 1, 0.8509804)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667, 1.9, 3.4, 4.8333335, 5.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.4862745), Color(1, 1, 1, 0.90588236), Color(1, 1, 1, 0.5137255), Color(1, 1, 1, 0.8509804), Color(1, 1, 1, 0.5372549)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 1.39, 2.6333334, 4.11, 5.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.92156863), Color(1, 1, 1, 0.6509804), Color(1, 1, 1, 0.8862745), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 0.9137255)]
+}
+
+[sub_resource type="Animation" id="Animation_jiugy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.2901961)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trp7i"]
+_data = {
+&"RESET": SubResource("Animation_jiugy"),
+&"grey smoke": SubResource("Animation_6trsd")
 }
 
 [sub_resource type="Gradient" id="Gradient_trp7i"]
@@ -303,11 +390,123 @@ texture = ExtResource("11_jiugy")
 stretch_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="Workaround" type="Node2D" parent="."]
+visible = false
+position = Vector2(948, 570)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Workaround"]
+libraries = {
+&"": SubResource("AnimationLibrary_trp7i")
+}
+
+[node name="Cloud0" type="TextureRect" parent="Workaround"]
+offset_left = -1952.0001
+offset_top = -1667.0
+offset_right = -951.9947
+offset_bottom = -666.9999
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud1" type="TextureRect" parent="Workaround"]
+self_modulate = Color(1, 1, 1, 0.2901961)
+offset_left = -1889.0
+offset_top = -774.0
+offset_right = -888.99457
+offset_bottom = 226.00012
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud2" type="TextureRect" parent="Workaround"]
+offset_left = -1404.0
+offset_top = -1326.0
+offset_right = -403.99463
+offset_bottom = -325.99988
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Workaround2" type="Node2D" parent="."]
+visible = false
+position = Vector2(948, 570)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Workaround2"]
+libraries = {
+&"": SubResource("AnimationLibrary_trp7i")
+}
+
+[node name="Cloud0" type="TextureRect" parent="Workaround2"]
+offset_left = -1558.0001
+offset_top = -1788.0
+offset_right = -557.9947
+offset_bottom = -787.9999
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud1" type="TextureRect" parent="Workaround2"]
+self_modulate = Color(1, 1, 1, 0.2901961)
+offset_left = -1756.0
+offset_top = -892.0
+offset_right = -755.99457
+offset_bottom = 108.00012
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud2" type="TextureRect" parent="Workaround2"]
+offset_left = -1363.0
+offset_top = -1129.0
+offset_right = -362.99463
+offset_bottom = -128.99988
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Workaround3" type="Node2D" parent="."]
+visible = false
+position = Vector2(4270, 516)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Workaround3"]
+libraries = {
+&"": SubResource("AnimationLibrary_trp7i")
+}
+
+[node name="Cloud0" type="TextureRect" parent="Workaround3"]
+offset_left = -1558.0001
+offset_top = -1788.0
+offset_right = -557.9947
+offset_bottom = -787.9999
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud1" type="TextureRect" parent="Workaround3"]
+self_modulate = Color(1, 1, 1, 0.2901961)
+offset_left = -1756.0
+offset_top = -892.0
+offset_right = -755.99457
+offset_bottom = 108.00012
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
+[node name="Cloud2" type="TextureRect" parent="Workaround3"]
+offset_left = -1363.0
+offset_top = -1129.0
+offset_right = -362.99463
+offset_bottom = -128.99988
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("9_2k1u2")
+
 [node name="SmokeParticles" type="CPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(948, 570)
+emitting = false
 amount = 200
-texture = ExtResource("9_2k1u2")
+texture = ExtResource("10_2k1u2")
 lifetime = 8.68
 preprocess = 4.1
 randomness = 0.2
@@ -320,8 +519,8 @@ initial_velocity_min = 11.9
 initial_velocity_max = 35.71
 angle_min = -8.6
 angle_max = 8.6
-scale_amount_min = 0.7
-scale_amount_max = 1.2
+scale_amount_min = 1.5
+scale_amount_max = 3.5
 color_ramp = SubResource("Gradient_trp7i")
 
 [node name="SmokeParticles3" type="CPUParticles2D" parent="."]
@@ -329,7 +528,7 @@ self_modulate = Color(1, 1, 1, 0.3529412)
 position = Vector2(4964, 489)
 emitting = false
 amount = 150
-texture = ExtResource("9_2k1u2")
+texture = ExtResource("10_2k1u2")
 lifetime = 8.68
 preprocess = 4.1
 randomness = 0.2
@@ -342,8 +541,8 @@ initial_velocity_min = 11.9
 initial_velocity_max = 35.71
 angle_min = -8.6
 angle_max = 8.6
-scale_amount_min = 0.7
-scale_amount_max = 1.2
+scale_amount_min = 1.5
+scale_amount_max = 3.5
 color_ramp = SubResource("Gradient_trp7i")
 
 [node name="Camera2D" type="Camera2D" parent="."]

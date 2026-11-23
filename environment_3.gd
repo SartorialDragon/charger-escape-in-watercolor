@@ -39,6 +39,13 @@ func _ready():
 	Global.sense_mode_changed.connect(sense_change)
 	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
+	if OS.has_feature("web"):
+		$Workaround.show()
+		$Workaround/AnimationPlayer.play("grey smoke")
+		$Workaround2.show()
+		$Workaround2/AnimationPlayer.play("grey smoke")
+	else:
+		$SmokeParticles.emitting = true
 	_on_see_button_pressed()
 	
 	
@@ -106,7 +113,18 @@ func _on_sound_0_pressed() -> void:
 			%SoftSpot.add_to_group("see")
 			%SoftSpot.disabled = false
 			%StallionHallucination.add_to_group("on_screen")
-			$SmokeParticles3.emitting = true
+			if OS.has_feature("web"):
+				$Workaround.hide()
+				$Workaround/AnimationPlayer.stop()
+				$Workaround2.hide()
+				$Workaround2/AnimationPlayer.stop()
+			else:
+				$SmokeParticles.emitting = false
+			if OS.has_feature("web"):
+				$Workaround3.show()
+				$Workaround3/AnimationPlayer.play("grey smoke")
+			else:
+				$SmokeParticles3.emitting = true
 
 
 func _on_soft_spot_pressed() -> void:

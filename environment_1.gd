@@ -37,9 +37,12 @@ func _ready():
 	Global.game_started.connect(start_game)
 	Global.got_up.connect(	_on_get_up)
 	_on_hear_button_pressed()
+	$MusicAudio.stream = load("res://Music/Main Menu.mp3")
+	$MusicAudio.play()
 	
 	
 func start_game():
+	# fade music audio when sound settings implemented
 	$SwitchScreen.show()
 	# screen darkens
 	var A = 0.0
@@ -47,9 +50,20 @@ func start_game():
 		A += 0.1
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
+	if OS.has_feature("web"):
+		$SwitchScreen/Panel/Workaround.show()
+		$SwitchScreen/Panel/Workaround/AnimationPlayer.play("red smoke")
+	else:
+		$SwitchScreen/Panel/SmokeParticles.emitting = true
 	dialogue = "res://Dialogue/20_intro.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
+	if OS.has_feature("web"):
+		$SwitchScreen/Panel/Workaround.hide()
+		$SwitchScreen/Panel/Workaround/AnimationPlayer.stop()
+	else:
+		$SwitchScreen/Panel/SmokeParticles.emitting = false
+		$SwitchScreen/Panel/SmokeParticles.visible = false
 	# screen brightens
 	A = 1.0
 	for n in 10:
@@ -64,7 +78,7 @@ func start_game():
 	#if not Global.clues_interacted["Echo"]:
 		#Global.hint_needed.emit("Echo")
 	$SwitchScreen.hide()
-	
+
 	
 func _on_get_up():
 	%RockCluster.add_to_group("see")
@@ -210,6 +224,7 @@ func play_cutscene_to_stallion():
 
 func switch_scene():
 	$SwitchScreen.show()
+	$SwitchScreen/Panel/Workaround.hide()
 	var A = 0.0
 	for n in 10:
 		A += 0.1

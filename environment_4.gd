@@ -179,6 +179,8 @@ func cutscene_grief():
 	await %StillAnimationPlayer.animation_finished
 	next_slide(null, "res://Dialogue/45_ending6.tres")
 	await %StillAnimationPlayer.animation_finished
+	$StillImageLayer/Panel/SmokeParticles.emitting = false
+	$StillImageLayer/Panel/SmokeParticles.visible = false
 	$StillImageLayer/Panel/Credits.show()
 	var A = 0.0
 	for n in 10:
@@ -191,6 +193,12 @@ func next_slide(path, line):
 		%StillImage.texture = load(path)
 	else:
 		%StillImage.texture = null
+		if OS.has_feature("web"):
+			$StillImageLayer/Panel/Workaround.show()
+			$StillImageLayer/Panel/Workaround/AnimationPlayer.play("red smoke")
+		else:
+			$StillImageLayer/Panel/SmokeParticles.show()
+			$StillImageLayer/Panel/SmokeParticles.emitting = true
 	%StillAnimationPlayer.play("new_slide")
 	dialogue = line
 	DialogueManager.start_dialogue(dialogue, 0)

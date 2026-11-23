@@ -89,6 +89,14 @@ func _on_mane_hair_pressed() -> void:
 			DialogueManager.start_dialogue(dialogue, 0)
 			await DialogueManager.dialogue_ended
 			if not clues_interacted["Tree0Mane"]:
+				if OS.has_feature("web"):
+					$BackgroundLayers/Parallax2D2/Workaround.show()
+					$BackgroundLayers/Parallax2D2/Workaround/AnimationPlayer.play("grey smoke")
+					$BackgroundLayers/Parallax2D2/Workaround2.show()
+					$BackgroundLayers/Parallax2D2/Workaround2/AnimationPlayer.play("grey smoke")
+				else:
+					$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = true
+				# camera moves
 				for n in 50:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.00000001).timeout
@@ -97,7 +105,6 @@ func _on_mane_hair_pressed() -> void:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.00000001).timeout
 				%Bucket.add_to_group("on_screen")
-				$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = true
 				clues_interacted["Tree0Mane"] = true
 				await Global.arrived
 				%Stream.disabled = false
@@ -174,7 +181,11 @@ func _on_tree_pressed(tree, particle):
 		
 
 func move_through_trees():
-	$BackgroundLayers/Parallax2D2/SmokeParticles2.emitting = true
+	if OS.has_feature("web"):
+		$BackgroundLayers/Parallax2D2/Workaround2.show()
+		$BackgroundLayers/Parallax2D2/Workaround2/AnimationPlayer.play("grey smoke")
+	else:
+		$BackgroundLayers/Parallax2D2/SmokeParticles2.emitting = true
 	dialogue = "res://Dialogue/27_pass_through_trees.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -189,6 +200,11 @@ func move_through_trees():
 	$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
 	if Global.current_state.name == "Trot":
 		await Global.arrived
+	if OS.has_feature("web"):
+		$BackgroundLayers/Parallax2D2/Workaround.hide()
+		$BackgroundLayers/Parallax2D2/Workaround/AnimationPlayer.stop()
+	else:
+		$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
 	clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 	for n in clues_on_screen:
