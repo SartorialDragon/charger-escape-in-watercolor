@@ -92,7 +92,7 @@ func _on_sound_0_pressed() -> void:
 			for n in 100:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
-			Global.visit_clue.emit(Vector2(player_horse.position.x +4200, player_horse.position.y + 0))
+			Global.visit_clue.emit(Vector2(player_horse.position.x +500, player_horse.position.y + 0))
 			for n in 150:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00000001).timeout
@@ -121,7 +121,7 @@ func _on_soft_spot_pressed() -> void:
 			$MusicAudio.play()
 			# lie down animation
 			clues_interacted["SoftSpot"] = true
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(1).timeout
 			stallion_hallucination()
 	
 

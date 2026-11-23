@@ -11,6 +11,7 @@ extends CanvasLayer
 func _ready() -> void:
 	clue_dialogue.visible = false
 	DialogueManager.dialogue_started.connect(_on_started)
+	DialogueManager.error_dialogue_started.connect(_on_ended)
 	DialogueManager.line_displayed.connect(_on_line)
 	DialogueManager.dialogue_ended.connect(_on_ended)
 
@@ -28,7 +29,7 @@ func _on_line(line: DialogueLine) -> void:
 	va_audio.play()
    
 
-func _on_ended() -> void:
+func _on_ended(current_data) -> void:
 	clue_dialogue.visible = false
 	#va_audio.stop()
 

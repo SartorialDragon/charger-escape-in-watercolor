@@ -9,6 +9,7 @@ extends CanvasLayer
 func _ready() -> void:
 	error_dialogue.visible = false
 	DialogueManager.error_dialogue_started.connect(_on_error_started)
+	DialogueManager.dialogue_started.connect(_on_ended)
 	DialogueManager.line_displayed.connect(_on_line)
 	
 
@@ -25,8 +26,8 @@ func _on_line(line: DialogueLine) -> void:
 		await va_audio.finished
 	else:
 		await get_tree().create_timer(1.5).timeout
-	_on_ended()
+	_on_ended(DialogueManager.current_data)
    
 
-func _on_ended() -> void:
+func _on_ended(current_data) -> void:
 	error_dialogue.visible = false
