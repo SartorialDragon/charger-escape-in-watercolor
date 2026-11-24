@@ -131,7 +131,10 @@ func _on_mane_hair_pressed() -> void:
 					await get_tree().create_timer(0.00000001).timeout
 				%Bucket.add_to_group("on_screen")
 				clues_interacted["Tree0Mane"] = true
-				await Global.arrived
+				if Global.current_state.name == "Trot":
+					await Global.arrived
+				dialogue = "res://Dialogue/25_still_burning.tres"
+				DialogueManager.start_dialogue(dialogue, 0)
 				%Stream.disabled = false
 				clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 				%Tree0.remove_from_group("on_screen")
@@ -140,8 +143,7 @@ func _on_mane_hair_pressed() -> void:
 				%Tree1.add_to_group("on_screen")
 				%Tree2.add_to_group("on_screen")
 				%Tree3.add_to_group("on_screen")
-				dialogue = "res://Dialogue/25_still_burning.tres"
-				DialogueManager.start_dialogue(dialogue, 0)
+				
 
 
 func _on_bucket_pressed() -> void:
@@ -165,6 +167,8 @@ func _on_stream_pressed() -> void:
 		Global.player_POI_position = Global.POIs.STREAM
 	else:
 		if clues_interacted["Bucket"]:
+			$SFXAudio.stream = load("res://SFX/421184__inspectorj__water-pouring-a.ogg")
+			$SFXAudio.play()
 			%Bucket.texture_normal = load("res://ArtAssets/bucket_full.png")
 
 
@@ -195,6 +199,8 @@ func _on_tree_pressed(tree, particle):
 				pass
 			else:
 				if not clues_interacted[tree.name]:
+					$SFXAudio.stream = load("res://SFX/666290__ekrcoaster__water-steaming-on-hot-surface-1.ogg")
+					$SFXAudio.play()
 					%Bucket.texture_normal = load("res://ArtAssets/bucket_empty.png")
 					particle.emitting = false
 					tree.texture_normal = load("res://ArtAssets/e2 smoldering_off.png")

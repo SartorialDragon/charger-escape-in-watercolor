@@ -29,6 +29,7 @@ var clues_discovered = { # key needs to be identical with node name
 	"Sight" : false,
 	"Hearing" : false,
 	"Scent" : false,
+	"Credits" : false,
 }
 
 # this means it has been clicked
@@ -38,4 +39,5 @@ var clues_interacted = {
 	"Sight" : false,
 	"Hearing" : false,
 	"Scent" : false,
+	"Credits" : false,
 }
