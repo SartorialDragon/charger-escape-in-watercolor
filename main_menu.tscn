@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=10 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://b0vo5rmahyiji" path="res://Baltime.ttf" id="1_glbon"]
 [ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://cooii4ytftbn1" path="res://Assets/mainmenu bg.png" id="2_fu7sn"]
+[ext_resource type="Theme" uid="uid://cmmr17076fsyd" path="res://theme_dialogue_ui.tres" id="4_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="5_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://bhld402wka3lb" path="res://SFX/669449__ericssoundschmiede__sfx_stone_scrap_massive_01.ogg" id="7_qe12f"]
 
 [sub_resource type="Theme" id="Theme_qe12f"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -25,20 +27,161 @@ grow_vertical = 2
 theme = SubResource("Theme_qe12f")
 script = ExtResource("1_06t4h")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="SettingsPanel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2614.0
+offset_right = 3835.0
+offset_bottom = 1080.0
+theme = ExtResource("4_nlkkf")
+texture = ExtResource("2_fu7sn")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="SettingsPanel" type="VBoxContainer" parent="SettingsPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 365.0
+offset_top = 98.0
+offset_right = -117.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel" type="Label" parent="SettingsPanel/SettingsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.46811914, 0.0617697, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsLabel2" type="Label" parent="SettingsPanel/SettingsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsLabel3" type="Label" parent="SettingsPanel/SettingsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitPanel" type="VBoxContainer" parent="SettingsPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 401.0
+offset_top = 93.0
+offset_right = -117.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="QuitLabel" type="Label" parent="SettingsPanel/QuitPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.46666667, 0.0627451, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 64
+text = "Quit Game?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/QuitPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="YesButton" type="TextureButton" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SettingsPanel/QuitPanel/HBoxContainer/YesButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Yes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NoButton" type="TextureButton" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SettingsPanel/QuitPanel/HBoxContainer/NoButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainPanel" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 682.0
 offset_bottom = 1080.0
 texture = ExtResource("2_fu7sn")
 expand_mode = 1
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="MainPanel"]
 layout_mode = 0
 offset_right = 529.0
 offset_bottom = 1078.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_06t4h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,11 +195,11 @@ grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+[node name="Control" type="Control" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Title" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Title" type="TextureRect" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.64
@@ -64,7 +207,7 @@ texture = ExtResource("2_7vrkn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StartButton" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -72,7 +215,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/StartButton"]
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/StartButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +226,7 @@ text = "Start Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="ContinueButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -92,7 +235,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/ContinueButton"]
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/ContinueButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +246,7 @@ text = "Continue Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsButton" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -111,7 +254,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/SettingsButton"]
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/SettingsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,7 +265,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -130,7 +273,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/QuitButton"]
+[node name="Label" type="Label" parent="MainPanel/Panel/VBoxContainer/QuitButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,11 +284,16 @@ text = "Quit Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="Panel/VBoxContainer"]
+[node name="Control2" type="Control" parent="MainPanel/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qe12f")
+
+[connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="MainPanel/Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainPanel/Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MainPanel/Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainPanel/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

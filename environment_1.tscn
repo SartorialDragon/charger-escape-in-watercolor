@@ -343,6 +343,45 @@ bg_color = Color(0, 0, 0, 1)
 offsets = PackedFloat32Array(0, 0.32142857, 0.6468254, 1)
 colors = PackedColorArray(0.85, 0.85, 0.85, 0.27450982, 0.77, 0.77, 0.77, 0.84705883, 0.74, 0.74, 0.74, 0.85882354, 0.77, 0.77, 0.77, 0.1254902)
 
+[sub_resource type="Animation" id="Animation_vcw72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95, 0.20583336, 0, 0.1254902)]
+}
+
 [sub_resource type="Animation" id="Animation_nacr6"]
 resource_name = "red smoke"
 length = 6.0
@@ -382,45 +421,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.95, 0.20583336, 0, 0.1254902), Color(0.95, 0.20583336, 0, 0.5019608), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.47058824), Color(0.95, 0.20583336, 0, 0.12742865)]
-}
-
-[sub_resource type="Animation" id="Animation_vcw72"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cloud0:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cloud1:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cloud2:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.95, 0.20583336, 0, 0.1254902)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_swvsa"]
@@ -773,6 +773,7 @@ visible = false
 unique_name_in_owner = true
 
 [node name="MenuButton" type="TextureButton" parent="UILayer"]
+visible = false
 offset_right = 129.0
 offset_bottom = 73.0
 size_flags_vertical = 3

@@ -136,8 +136,14 @@ func cutscene_dead():
 	clues_discovered["Destroy0"] = true
 	Global.speed = 400
 	%RedParticles0.emitting = true
-	$RageLayer.visible = true
-	$RageLayer/AnimationPlayer.play("rage")
+	$RageLayer.show()
+	if OS.has_feature("web"):
+		$RageLayer/Workaround.show()
+		$RageLayer/Workaround/AnimationPlayer.play("rage")
+	else:
+		$RageLayer/SmokeParticles.show()
+		$RageLayer/SmokeParticles.emitting = true
+	#$RageLayer/AnimationPlayer.play("rage")
 
 
 func _on_destroy_0_pressed() -> void:
@@ -160,7 +166,10 @@ func _on_destroy(pos, object, particle, line, next_object):
 	if object.get_child(0).emitting:
 		%BentTree.z_index = 4
 		if Global.player_POI_position != pos:
-			Global.visit_clue.emit(Vector2(object.position.x +30, object.position.y + 260))
+			if object == %Destroy0:
+				Global.visit_clue.emit(Vector2(object.position.x +160, object.position.y + 260))
+			else:
+				Global.visit_clue.emit(Vector2(object.position.x +30, object.position.y + 260))
 			await Global.arrived
 			Global.player_POI_position = pos
 		else:
@@ -191,6 +200,7 @@ func _on_destroy(pos, object, particle, line, next_object):
 
 	
 func cutscene_grief():
+	$UILayer/MenuButton.hide()
 	$StillImageLayer.show()
 	%StillAnimationPlayer.play("show_slideshow")
 	next_slide("res://ArtAssets/still1.png", "res://Dialogue/40_ending1.tres")
@@ -205,14 +215,14 @@ func cutscene_grief():
 	await %StillAnimationPlayer.animation_finished
 	next_slide(null, "res://Dialogue/45_ending6.tres")
 	await %StillAnimationPlayer.animation_finished
-	$StillImageLayer/Panel/SmokeParticles.emitting = false
-	$StillImageLayer/Panel/SmokeParticles.visible = false
 	$StillImageLayer/Panel/Credits.show()
 	var A = 0.0
 	for n in 10:
 		A += 0.1
 		$StillImageLayer/Panel/Credits.self_modulate = Color(1.0, 1.0, 1.0, A)
-	
+	$StillImageLayer/Panel/SmokeParticles.emitting = false
+	Global.clues_interacted["Credits"] = true
+	show_menu_button()
 	
 func next_slide(path, line):
 	if path != null:

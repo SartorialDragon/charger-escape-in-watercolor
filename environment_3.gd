@@ -160,6 +160,8 @@ func _on_soft_spot_pressed() -> void:
 		Global.player_POI_position = Global.POIs.SOFTSPOT
 	else:
 		if not clues_interacted["SoftSpot"]:
+			$SFXAudio.stream = load("res://SFX/425828__productionnow__paper-pom-pom-dragged-around.ogg")
+			$SFXAudio.play()
 			Global.clues_interacted["GetUp"] = false
 			$MusicAudio.stream = load("res://Music/Don't Give Up.mp3")
 			$MusicAudio.play()

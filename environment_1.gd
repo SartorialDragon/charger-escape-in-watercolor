@@ -63,12 +63,14 @@ func show_menu_button():
 
 
 func show_menu():
+	await get_tree().create_timer(5).timeout
 	var scene = load("res://main_menu.tscn")
 	var instance = scene.instantiate()
 	$UILayer.add_child(instance)
 	
 
 func start_game():
+	await get_tree().create_timer(1).timeout
 	# fade music audio when sound settings implemented
 	$SwitchScreen.show()
 	# screen darkens
@@ -84,7 +86,12 @@ func start_game():
 		$SwitchScreen/Panel/SmokeParticles.emitting = true
 	dialogue = "res://Dialogue/20_intro.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
-	await DialogueManager.dialogue_ended
+	# camera scrolls in background
+	for n in 110:
+		$Camera2D.position.x += 8
+		await get_tree().create_timer(0.00000001).timeout
+	if DialogueManager.is_active:
+		await DialogueManager.dialogue_ended
 	if OS.has_feature("web"):
 		$SwitchScreen/Panel/Workaround.hide()
 		$SwitchScreen/Panel/Workaround/AnimationPlayer.stop()
@@ -97,10 +104,7 @@ func start_game():
 		A -= 0.1
 		$SwitchScreen/Panel.self_modulate = Color(0.0, 0.0, 0.0, A)
 		await get_tree().create_timer(0.1).timeout
-	# camera scrolls
-	for n in 110:
-		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00000001).timeout
+	
 	#await get_tree().create_timer(5).timeout
 	#if not Global.clues_interacted["Echo"]:
 		#Global.hint_needed.emit("Echo")
@@ -108,6 +112,7 @@ func start_game():
 
 	
 func _on_get_up():
+	$UILayer/MenuButton.show()
 	%RockCluster.add_to_group("see")
 	Global.clues_interacted["GetUp"] = true
 	dialogue = "res://Dialogue/19_tutorial.tres"

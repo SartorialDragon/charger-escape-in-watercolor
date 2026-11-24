@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=38 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
@@ -32,6 +32,45 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="Gradient" id="Gradient_lgckb"]
 offsets = PackedFloat32Array(0, 0.32142857, 0.6468254, 1)
 colors = PackedColorArray(0.85, 0.85, 0.85, 0.27450982, 0.77, 0.77, 0.77, 0.84705883, 0.74, 0.74, 0.74, 0.85882354, 0.77, 0.77, 0.77, 0.1254902)
+
+[sub_resource type="Animation" id="Animation_vcw72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.95, 0.20583336, 0, 0.1254902)]
+}
 
 [sub_resource type="Animation" id="Animation_nacr6"]
 resource_name = "red smoke"
@@ -74,8 +113,10 @@ tracks/2/keys = {
 "values": [Color(0.95, 0.20583336, 0, 0.1254902), Color(0.95, 0.20583336, 0, 0.5019608), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.47058824), Color(0.95, 0.20583336, 0, 0.12742865)]
 }
 
-[sub_resource type="Animation" id="Animation_vcw72"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_mxxf3"]
+resource_name = "rage"
+length = 3.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,10 +124,10 @@ tracks/0/path = NodePath("Cloud0:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.03, 1.98, 2.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)]
+"values": [Color(0.95, 0.20583336, 0, 0.7372549), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.7294118), Color(0.95, 0.20583336, 0, 0.23137255)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -95,10 +136,10 @@ tracks/1/path = NodePath("Cloud1:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.76666665, 1.6666666, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)]
+"values": [Color(0.95, 0.20583336, 0, 0.28627452), Color(0.95, 0.20583336, 0, 0.68235296), Color(0.95, 0.20583336, 0, 0.28235295), Color(0.95, 0.20583336, 0, 0.78431374)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -107,15 +148,16 @@ tracks/2/path = NodePath("Cloud2:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5, 1.22, 2.1, 2.97),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.95, 0.20583336, 0, 0.1254902)]
+"values": [Color(0.95, 0.20583336, 0, 0.12676132), Color(0.95, 0.20583336, 0, 0.7764706), Color(0.95, 0.20583336, 0, 0.12676132), Color(0.95, 0.20583336, 0, 0.81960785)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_swvsa"]
 _data = {
 &"RESET": SubResource("Animation_vcw72"),
+&"rage": SubResource("Animation_mxxf3"),
 &"red smoke": SubResource("Animation_nacr6")
 }
 
@@ -688,7 +730,30 @@ libraries = {
 [node name="RageLayer" type="CanvasLayer" parent="."]
 visible = false
 
+[node name="SmokeParticles" type="CPUParticles2D" parent="RageLayer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3529412)
+position = Vector2(1154, 552)
+amount = 150
+texture = ExtResource("14_8xvv2")
+lifetime = 8.68
+randomness = 0.2
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1700, 600)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 11.9
+initial_velocity_max = 35.71
+angle_min = -8.6
+angle_max = 8.6
+scale_amount_min = 1.5
+scale_amount_max = 3.5
+color = Color(0.99445385, 0.05695004, 7.70092e-07, 0.58431375)
+color_ramp = SubResource("Gradient_lgckb")
+
 [node name="Panel" type="Panel" parent="RageLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -701,6 +766,44 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5jeke")
 libraries = {
 &"": SubResource("AnimationLibrary_mxxf3")
 }
+
+[node name="Workaround" type="Node2D" parent="RageLayer"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RageLayer/Workaround"]
+libraries = {
+&"": SubResource("AnimationLibrary_swvsa")
+}
+
+[node name="Cloud0" type="TextureRect" parent="RageLayer/Workaround"]
+self_modulate = Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255)
+offset_left = -1061.0
+offset_top = -1066.0
+offset_right = -60.994568
+offset_bottom = -65.99988
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("15_lgckb")
+
+[node name="Cloud1" type="TextureRect" parent="RageLayer/Workaround"]
+self_modulate = Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566)
+offset_left = -95.0
+offset_top = -653.0
+offset_right = 905.00543
+offset_bottom = 347.00012
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("15_lgckb")
+
+[node name="Cloud2" type="TextureRect" parent="RageLayer/Workaround"]
+self_modulate = Color(0.95, 0.20583336, 0, 0.1254902)
+offset_left = -1268.0
+offset_top = -437.00006
+offset_right = -267.99457
+offset_bottom = 563.00006
+scale = Vector2(3, 3)
+mouse_filter = 2
+texture = ExtResource("15_lgckb")
 
 [node name="ErrorDialogue" parent="." instance=ExtResource("14_6fwi5")]
 visible = false
