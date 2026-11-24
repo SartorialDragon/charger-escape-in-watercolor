@@ -63,7 +63,6 @@ func show_menu_button():
 
 
 func show_menu():
-	await get_tree().create_timer(5).timeout
 	var scene = load("res://main_menu.tscn")
 	var instance = scene.instantiate()
 	$UILayer.add_child(instance)
