@@ -14,7 +14,7 @@ Credits:
 		Rock Crack: https://pixabay.com/sound-effects/film-special-effects-rock-destroy-6409/
 		Filling Bucket: Water, Pouring, A.wav by InspectorJ (www.jshaw.co.uk) of Freesound.org -- https://freesound.org/s/421184/ -- License: Attribution 4.0
 		Pouring Bucket on Fire: Water steaming on hot surface #1 by Ekrcoaster -- https://freesound.org/s/666290/ -- License: Creative Commons 0
-		
+		Main Menu Stoneslide: SFX_stone_scrap_massive_01.wav by EricsSoundschmiede -- https://freesound.org/s/669449/ -- License: Creative Commons 0
 			
 	Custom Cursors:
 		by Zeno (https://soundcloud.com/z_e_n_o)
@@ -22,3 +22,4 @@ Credits:
 	Fonts:
 		Main Menu: https://www.dafont.com/de/baltime.font
 		Dialogue: https://www.dafont.com/de/imperator.font
+	
