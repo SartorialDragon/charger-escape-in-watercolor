@@ -4,13 +4,13 @@ extends Control
 func _ready() -> void:
 	Global.close_menu.connect(close_menu)
 	if OS.has_feature("web"):
-		$Panel/VBoxContainer/QuitButton.hide()
+		$MainPanel/Panel/VBoxContainer/QuitButton.hide()
 	if Global.clues_interacted["GetUp"]:
-		$Panel/VBoxContainer/StartButton.hide()
-		$Panel/VBoxContainer/ContinueButton.show()
+		$MainPanel/Panel/VBoxContainer/StartButton.hide()
+		$MainPanel/Panel/VBoxContainer/ContinueButton.show()
 	if Global.clues_interacted["Credits"]:
-		$Panel/VBoxContainer/StartButton.hide()
-		$Panel/VBoxContainer/ContinueButton.hide()
+		$MainPanel/Panel/VBoxContainer/StartButton.hide()
+		$MainPanel/Panel/VBoxContainer/ContinueButton.hide()
 	open_menu()
 
 
