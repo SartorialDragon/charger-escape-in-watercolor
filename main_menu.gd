@@ -74,6 +74,14 @@ func _on_settings_button_pressed() -> void:
 	else:
 		close_settings_panel()
 
+func _on_music_volume_set(value: float):
+	Global.music_volume = value
+	
+func _on_voice_volume_set(value: float):
+	Global.voice_volume = value
+
+func _on_sfx_volume_set(value: float):
+	Global.sfx_volume = value
 
 func _on_quit_button_pressed() -> void:
 	$SettingsPanel/QuitPanel.show()

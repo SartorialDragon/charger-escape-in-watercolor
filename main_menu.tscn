@@ -320,6 +320,9 @@ size_flags_vertical = 3
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_qe12f")
 
+[connection signal="value_changed" from="SettingsPanel/SettingsPanel/MusicSlider" to="." method="_on_music_volume_set"]
+[connection signal="value_changed" from="SettingsPanel/SettingsPanel/VoiceSlider" to="." method="_on_voice_volume_set"]
+[connection signal="value_changed" from="SettingsPanel/SettingsPanel/SfxSlider" to="." method="_on_sfx_volume_set"]
 [connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
 [connection signal="pressed" from="MainPanel/Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
