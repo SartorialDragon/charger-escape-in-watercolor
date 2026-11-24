@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=37 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
@@ -19,6 +19,8 @@
 [ext_resource type="AudioStream" uid="uid://bjl8t23ntfkf4" path="res://Music/E4 To Rage.mp3" id="15_5jeke"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="15_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="15_lgckb"]
+[ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="18_mxxf3"]
+[ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="19_jl7um"]
 
 [sub_resource type="Curve" id="Curve_2li0a"]
 _data = [Vector2(0.0050167143, 0.22229773), 0.0, 0.0, 0, 0, Vector2(1, 0.4167233), 0.0, 0.0, 0, 0]
@@ -709,6 +711,27 @@ visible = false
 [node name="UILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
+[node name="MenuButton" type="TextureButton" parent="UILayer"]
+offset_right = 129.0
+offset_bottom = 73.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("18_mxxf3")
+texture_normal = ExtResource("19_jl7um")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UILayer/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -742,3 +765,4 @@ bus = &"VA"
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy3" to="." method="_on_destroy_3_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Destroy4" to="." method="_on_destroy_4_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Spring" to="." method="_on_spring_pressed"]
+[connection signal="pressed" from="UILayer/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ch7dghvwbv0tg"]
+[gd_scene load_steps=42 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
 [ext_resource type="Texture2D" uid="uid://2uyx8lhu2v2p" path="res://ArtAssets/environment 2 sky.png" id="2_826ab"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="21_6krrs"]
 [ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="22_6gw62"]
 [ext_resource type="AudioStream" uid="uid://bi86en1m365j8" path="res://Music/E2 Seeing.mp3" id="26_6krrs"]
+[ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="26_qiedm"]
+[ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="27_n14x3"]
 
 [sub_resource type="Curve" id="Curve_trxam"]
 _data = [Vector2(0, 0.982325), 0.0, 0.0, 0, 0, Vector2(1, 0.18252885), 0.0, 0.0, 0, 0]
@@ -763,6 +765,27 @@ visible = false
 [node name="UILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
+[node name="MenuButton" type="TextureButton" parent="UILayer"]
+offset_right = 129.0
+offset_bottom = 73.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("26_qiedm")
+texture_normal = ExtResource("27_n14x3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UILayer/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -797,3 +820,4 @@ bus = &"VA"
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree1" to="." method="_on_tree_1_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree2" to="." method="_on_tree_2_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Tree3" to="." method="_on_tree_3_pressed"]
+[connection signal="pressed" from="UILayer/MenuButton" to="." method="_on_menu_button_pressed"]

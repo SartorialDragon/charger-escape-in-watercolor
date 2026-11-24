@@ -8,6 +8,15 @@ func _ready() -> void:
 	if Global.clues_interacted["GetUp"]:
 		$Panel/VBoxContainer/StartButton.hide()
 		$Panel/VBoxContainer/ContinueButton.show()
+	open_menu()
+
+
+func _on_menu_button_pressed() -> void:
+	open_menu()
+	
+
+
+func open_menu():
 	for n in 75:
 		position.x += 9
 		await get_tree().create_timer(0.00000001).timeout
@@ -26,7 +35,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	close_menu()
+	Global.close_menu.emit()
 
 
 func _on_settings_button_pressed() -> void:

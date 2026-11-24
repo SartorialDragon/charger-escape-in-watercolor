@@ -42,6 +42,7 @@ func _ready():
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
+	Global.close_menu.connect(show_menu_button)
 	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
@@ -58,11 +59,20 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu") and Global.clues_interacted["GetUp"]:
-		if %UILayer.has_node("MainMenu"):
-			print("true!")
-			Global.close_menu.emit()
-		else:
-			show_menu()
+		_on_menu_button_pressed()
+
+
+func _on_menu_button_pressed() -> void:
+	if %UILayer.has_node("MainMenu"):
+		Global.close_menu.emit()
+		$UILayer/MenuButton.show()
+	else:
+		show_menu()
+		$UILayer/MenuButton.hide()
+
+
+func show_menu_button():
+	$UILayer/MenuButton.show()
 
 
 func show_menu():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=27 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="12_3jdq1"]
 [ext_resource type="AudioStream" uid="uid://dxegg5hhkhmd6" path="res://Music/E3 Seeing - Before Resting.mp3" id="12_y78ea"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="13_6trsd"]
+[ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="14_jiugy"]
+[ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="15_trp7i"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="16_k56vb"]
 
 [sub_resource type="Curve" id="Curve_7xvgo"]
@@ -557,6 +559,27 @@ visible = false
 [node name="UILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
+[node name="MenuButton" type="TextureButton" parent="UILayer"]
+offset_right = 129.0
+offset_bottom = 73.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("14_jiugy")
+texture_normal = ExtResource("15_trp7i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UILayer/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -589,3 +612,4 @@ bus = &"VA"
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/SoftSpot" to="." method="_on_soft_spot_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Sound0" to="." method="_on_sound_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/Hoofprints" to="." method="_on_hoofprints_pressed"]
+[connection signal="pressed" from="UILayer/MenuButton" to="." method="_on_menu_button_pressed"]

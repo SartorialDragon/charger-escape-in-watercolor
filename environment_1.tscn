@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=40 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="18_je0s5"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="18_rdret"]
 [ext_resource type="AudioStream" uid="uid://ddd476yijm7f3" path="res://Music/Main Menu.mp3" id="19_rdret"]
+[ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="21_nacr6"]
+[ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="22_vcw72"]
 
 [sub_resource type="Animation" id="Animation_6j7cg"]
 length = 0.001
@@ -770,6 +772,27 @@ visible = false
 [node name="UILayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
+[node name="MenuButton" type="TextureButton" parent="UILayer"]
+offset_right = 129.0
+offset_bottom = 73.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme = ExtResource("21_nacr6")
+texture_normal = ExtResource("22_vcw72")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UILayer/MenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_rdret")
 autoplay = true
@@ -793,3 +816,4 @@ bus = &"VA"
 [connection signal="input_event" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_input_event"]
 [connection signal="mouse_entered" from="BackgroundLayers/Parallax2D2/PlayerHorse" to="." method="_on_player_horse_mouse_entered"]
 [connection signal="pressed" from="StallionScent" to="." method="_on_scent_pressed"]
+[connection signal="pressed" from="UILayer/MenuButton" to="." method="_on_menu_button_pressed"]

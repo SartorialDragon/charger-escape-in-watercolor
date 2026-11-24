@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cmmr17076fsyd"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cmmr17076fsyd"]
+
+[ext_resource type="FontFile" uid="uid://fva8lnapma4a" path="res://Imperator.ttf" id="1_ub8l1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qa7i3"]
 bg_color = Color(0.06821598, 0.068216, 0.06821595, 1)
@@ -17,3 +19,7 @@ corner_radius_bottom_left = 20
 [resource]
 Button/styles/hover = SubResource("StyleBoxFlat_qa7i3")
 Button/styles/normal = SubResource("StyleBoxFlat_ub8l1")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 10
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_ub8l1")
