@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=38 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="9_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://cronaquuvx4do" path="res://ArtAssets/environment 1 foreground.png" id="10_bs3hf"]
 [ext_resource type="Texture2D" uid="uid://cheivd2j1bd5s" path="res://ArtAssets/rock_broken.png" id="12_hm8ff"]
-[ext_resource type="PackedScene" uid="uid://bgoef03blq4l2" path="res://main_menu.tscn" id="14_2dglh"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="14_bs3hf"]
 [ext_resource type="AudioStream" uid="uid://bbxrycuvo3s2r" path="res://SFX/freesound_community-stones-falling-6375.mp3" id="14_je0s5"]
 [ext_resource type="Texture2D" uid="uid://bc02qu77cmk05" path="res://ArtAssets/smoke cloud_.png" id="17_hm8ff"]
@@ -769,7 +768,7 @@ visible = false
 visible = false
 
 [node name="UILayer" type="CanvasLayer" parent="."]
-visible = false
+unique_name_in_owner = true
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_rdret")
@@ -785,11 +784,6 @@ bus = &"Music"
 unique_name_in_owner = true
 stream = ExtResource("14_bs3hf")
 bus = &"VA"
-
-[node name="MainMenu" parent="." instance=ExtResource("14_2dglh")]
-layout_mode = 1
-offset_left = -600.0
-offset_right = -600.0
 
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster0" to="." method="_on_rock_cluster_0_pressed"]
 [connection signal="pressed" from="BackgroundLayers/Parallax2D2/RockCluster/RockCluster1" to="." method="_on_rock_cluster_1_pressed"]

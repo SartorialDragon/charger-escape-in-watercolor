@@ -8,6 +8,7 @@ var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
+var soundtrack: String = "res://Music/Main Menu.mp3"
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -39,8 +40,23 @@ func _ready():
 	_on_hear_button_pressed()
 	$MusicAudio.stream = load("res://Music/Main Menu.mp3")
 	$MusicAudio.play()
+	show_menu()
 	
 	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("menu") and Global.clues_interacted["GetUp"]:
+		if %UILayer.has_node("MainMenu"):
+			print("true!")
+			Global.close_menu.emit()
+		else:
+			show_menu()
+
+func show_menu():
+	var scene = load("res://main_menu.tscn")
+	var instance = scene.instantiate()
+	$UILayer.add_child(instance)
+	
+
 func start_game():
 	# fade music audio when sound settings implemented
 	$SwitchScreen.show()
@@ -253,9 +269,8 @@ func sense_change():
 
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
-	var from_position = $MusicAudio.get_playback_position()
-	$MusicAudio.stream = load("res://Music/E1 Seeing.mp3")
-	$MusicAudio.play(from_position)
+	soundtrack = "res://Music/E1 Seeing.mp3"
+	play_soundtrack()
 	hide_sounds()
 	hide_scents()
 	lighten_surroundings()
@@ -265,9 +280,8 @@ func _on_see_button_pressed() -> void:
 
 
 func _on_hear_button_pressed() -> void:
-	var from_position = $MusicAudio.get_playback_position()
-	$MusicAudio.stream = load("res://Music/E1 Hearing.mp3")
-	$MusicAudio.play(from_position)
+	soundtrack = "res://Music/E1 Hearing.mp3"
+	play_soundtrack()
 	hide_scents()
 	darken_surroundings()
 	muffle_music()
@@ -282,9 +296,8 @@ func _on_hear_button_pressed() -> void:
 
 
 func _on_smell_button_pressed() -> void:
-	var from_position = $MusicAudio.get_playback_position()
-	$MusicAudio.stream = load("res://Music/E1 Sniffing.mp3")
-	$MusicAudio.play(from_position)
+	soundtrack = "res://Music/E1 Sniffing.mp3"
+	play_soundtrack()
 	hide_sounds()
 	normalize_music()
 	darken_surroundings()
@@ -293,6 +306,17 @@ func _on_smell_button_pressed() -> void:
 	update_sense()
 	if not clues_interacted["StallionScent"]:
 		play_scent()
+	
+	
+func play_soundtrack():
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load(soundtrack)
+	if $MusicAudio.stream.get_length() < from_position:
+		$MusicAudio.play()
+		#print("played from start")
+	else:
+		$MusicAudio.play(from_position)
+		#print("played from current position: ", from_position)
 	
 	
 func darken_surroundings():
