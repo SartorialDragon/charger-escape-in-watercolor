@@ -39,6 +39,7 @@ flip_h = true
 flip_v = true
 
 [node name="SettingsPanel" type="VBoxContainer" parent="SettingsPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,16 +63,13 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="SettingsPanel/SettingsPanel"]
-layout_mode = 2
-
 [node name="SettingsLabel2" type="Label" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 54
 text = "Music Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -85,7 +83,7 @@ size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 54
 text = "Voice Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -99,7 +97,7 @@ size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 54
 text = "Sound Effects Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -108,7 +106,6 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="QuitPanel" type="VBoxContainer" parent="SettingsPanel"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
