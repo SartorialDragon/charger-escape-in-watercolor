@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=9 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://cooii4ytftbn1" path="res://Assets/mainmenu bg.png" id="2_fu7sn"]
 [ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="3_qe12f"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="5_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://rtc4fs286ew3" path="res://Dialogue/VA/I cant reach that.MP3" id="6_qe12f"]
 [ext_resource type="AudioStream" uid="uid://bhld402wka3lb" path="res://SFX/669449__ericssoundschmiede__sfx_stone_scrap_massive_01.ogg" id="7_qe12f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
@@ -21,7 +22,7 @@ grow_vertical = 2
 theme = ExtResource("3_qe12f")
 script = ExtResource("1_06t4h")
 
-[node name="SettingsPanel" type="TextureRect" parent="."]
+[node name="RightPanel" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 2614.0
 offset_right = 3835.0
@@ -32,7 +33,9 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="SettingsPanel" type="VBoxContainer" parent="SettingsPanel"]
+[node name="SettingsPanel" type="VBoxContainer" parent="RightPanel"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="SettingsLabel" type="Label" parent="SettingsPanel/SettingsPanel"]
+[node name="SettingsLabel" type="Label" parent="RightPanel/SettingsPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.6, 0, 0, 1)
@@ -57,14 +60,14 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect5" type="TextureRect" parent="RightPanel/SettingsPanel"]
 self_modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_nlkkf")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/SettingsPanel/TextureRect5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +77,43 @@ offset_right = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsLabel2" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect/VBoxContainer"]
+[node name="SettingsLabel4" type="Label" parent="RightPanel/SettingsPanel/TextureRect5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 54
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="RightPanel/SettingsPanel/TextureRect5/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel/SettingsPanel"]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nlkkf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/SettingsPanel/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel2" type="Label" parent="RightPanel/SettingsPanel/TextureRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -85,20 +124,22 @@ text = "MUSIC VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="RightPanel/SettingsPanel/TextureRect/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 max_value = 2.0
 step = 0.01
-size_flags_vertical = 3
+value = 1.0
 
-[node name="TextureRect2" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect2" type="TextureRect" parent="RightPanel/SettingsPanel"]
 self_modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_nlkkf")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/SettingsPanel/TextureRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,7 +149,7 @@ offset_right = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsLabel3" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect2/VBoxContainer"]
+[node name="SettingsLabel3" type="Label" parent="RightPanel/SettingsPanel/TextureRect2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -119,20 +160,22 @@ text = "VOICE VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VoiceSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect2/VBoxContainer"]
+[node name="VoiceSlider" type="HSlider" parent="RightPanel/SettingsPanel/TextureRect2/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 max_value = 2.0
 step = 0.01
-size_flags_vertical = 3
+value = 1.0
 
-[node name="TextureRect3" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect3" type="TextureRect" parent="RightPanel/SettingsPanel"]
 self_modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_nlkkf")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/SettingsPanel/TextureRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,7 +185,7 @@ offset_right = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect3/VBoxContainer"]
+[node name="SettingsLabel4" type="Label" parent="RightPanel/SettingsPanel/TextureRect3/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -153,20 +196,22 @@ text = "SFX VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SfxSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect3/VBoxContainer"]
+[node name="SfxSlider" type="HSlider" parent="RightPanel/SettingsPanel/TextureRect3/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 max_value = 2.0
 step = 0.01
-size_flags_vertical = 3
+value = 1.0
 
-[node name="TextureRect4" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect4" type="TextureRect" parent="RightPanel/SettingsPanel"]
 self_modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_nlkkf")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/SettingsPanel/TextureRect4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,7 +221,7 @@ offset_right = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+[node name="SettingsLabel4" type="Label" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -187,29 +232,31 @@ text = "FULLSCREEN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FullscreenButton" type="Button" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+[node name="FullscreenButton" type="Button" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
 text = "OFF"
 
-[node name="Control2" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+[node name="Control2" type="Control" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+[node name="Control" type="Control" parent="RightPanel/SettingsPanel/TextureRect4/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="QuitPanel" type="VBoxContainer" parent="SettingsPanel"]
+[node name="QuitPanel" type="VBoxContainer" parent="RightPanel"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -223,7 +270,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="QuitLabel" type="Label" parent="SettingsPanel/QuitPanel"]
+[node name="QuitLabel" type="Label" parent="RightPanel/QuitPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.70980394, 0.09411765, 0, 1)
@@ -235,7 +282,7 @@ text = "Quit Game?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitLabel2" type="Label" parent="SettingsPanel/QuitPanel"]
+[node name="QuitLabel2" type="Label" parent="RightPanel/QuitPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.70980394, 0.09411765, 0, 1)
@@ -247,12 +294,13 @@ text = "All progress will be lost!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/QuitPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/QuitPanel"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="YesButton" type="TextureButton" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+[node name="YesButton" type="TextureButton" parent="RightPanel/QuitPanel/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -261,7 +309,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="SettingsPanel/QuitPanel/HBoxContainer/YesButton"]
+[node name="Label" type="Label" parent="RightPanel/QuitPanel/HBoxContainer/YesButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,11 +320,12 @@ text = "Yes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+[node name="Control" type="Control" parent="RightPanel/QuitPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NoButton" type="TextureButton" parent="SettingsPanel/QuitPanel/HBoxContainer"]
+[node name="NoButton" type="TextureButton" parent="RightPanel/QuitPanel/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -285,7 +334,7 @@ texture_normal = ExtResource("5_nlkkf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="SettingsPanel/QuitPanel/HBoxContainer/NoButton"]
+[node name="Label" type="Label" parent="RightPanel/QuitPanel/HBoxContainer/NoButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -336,6 +385,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="StartButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -355,6 +405,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ContinueButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -375,6 +426,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SettingsButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -394,6 +446,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="MainPanel/Panel/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
@@ -416,14 +469,21 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qe12f")
+bus = &"VA"
+
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_qe12f")
+bus = &"SFX"
 
-[connection signal="value_changed" from="SettingsPanel/SettingsPanel/MusicSlider" to="." method="_on_music_volume_set"]
-[connection signal="value_changed" from="SettingsPanel/SettingsPanel/VoiceSlider" to="." method="_on_voice_volume_set"]
-[connection signal="value_changed" from="SettingsPanel/SettingsPanel/SfxSlider" to="." method="_on_sfx_volume_set"]
-[connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="SettingsPanel/QuitPanel/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="value_changed" from="RightPanel/SettingsPanel/TextureRect5/VBoxContainer/MasterSlider" to="." method="_on_master_volume_set"]
+[connection signal="value_changed" from="RightPanel/SettingsPanel/TextureRect/VBoxContainer/MusicSlider" to="." method="_on_music_volume_set"]
+[connection signal="value_changed" from="RightPanel/SettingsPanel/TextureRect2/VBoxContainer/VoiceSlider" to="." method="_on_voice_volume_set"]
+[connection signal="value_changed" from="RightPanel/SettingsPanel/TextureRect3/VBoxContainer/SfxSlider" to="." method="_on_sfx_volume_set"]
+[connection signal="pressed" from="RightPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="RightPanel/QuitPanel/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="RightPanel/QuitPanel/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
 [connection signal="pressed" from="MainPanel/Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainPanel/Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainPanel/Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

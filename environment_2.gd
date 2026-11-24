@@ -43,7 +43,7 @@ func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.close_menu.connect(show_menu_button)
-	Global.music_volume_changed.connect(on_music_volume_changed)
+	#Global.music_volume_changed.connect(on_music_volume_changed)
 	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
@@ -326,19 +326,26 @@ func lighten_surroundings():
 	%Tree2.modulate = Color(1.0, 1.0, 1.0)
 	%Tree3.modulate = Color(1.0, 1.0, 1.0)
 	
+	
 func on_music_volume_changed():
 	if Global.current_sense == Global.senses.HEAR:
 		muffle_music()
 	else:
 		normalize_music()
 	
+	
 func muffle_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
 	$MusicAudio.pitch_scale = 0.81
 	
 	
 func normalize_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume)
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
+	print(AudioServer.get_bus_channels(bus_index))
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
 	$MusicAudio.pitch_scale = 1.0
 	%Tree0Mane.self_modulate = Color(1.0, 1.0, 1.0)
 

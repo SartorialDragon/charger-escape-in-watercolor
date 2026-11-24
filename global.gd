@@ -10,8 +10,13 @@ signal hint_needed
 signal hint_done
 signal got_up
 
+signal master_volume_changed
 signal voice_volume_changed
 signal music_volume_changed
+signal sfx_volume_changed
+
+
+var master_volume: float = 1.0
 var music_volume: float = 1.0
 var voice_volume: float = 1.0
 var sfx_volume: float = 1.0
@@ -47,3 +52,7 @@ var clues_interacted = {
 	"Scent" : false,
 	"Credits" : false,
 }
+
+
+func _ready() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

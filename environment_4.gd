@@ -21,7 +21,8 @@ var clues_discovered = { # key needs to be identical with node name
 	"Destroy4" : false,
 	"Spring" : false,
 	"Rage" : false,
-}
+	"Grief" : false,
+	}
 
 # this means it has been clicked
 var clues_interacted = {
@@ -32,6 +33,7 @@ var clues_interacted = {
 	"Destroy4" : false,
 	"Spring" : false,
 	"Rage" : false,
+	"Grief" : false,
 }
 
 
@@ -115,7 +117,8 @@ func _on_spring_pressed() -> void:
 			await DialogueManager.dialogue_ended
 			cutscene_dead()
 		else:
-			if clues_interacted["Rage"]:
+			if clues_interacted["Rage"] and not clues_interacted["Grief"]:
+				clues_interacted["Grief"] = true
 				Global.clues_interacted["GetUp"] = false
 				await get_tree().create_timer(2).timeout
 				dialogue = "res://Dialogue/39_i_love_him.tres"
@@ -310,12 +313,16 @@ func on_music_volume_changed():
 		normalize_music()
 
 func muffle_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
 	$MusicAudio.pitch_scale = 0.81
 	
 	
 func normalize_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume)
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
 	$MusicAudio.pitch_scale = 1.0
 
 
