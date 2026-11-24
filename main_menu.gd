@@ -79,6 +79,7 @@ func _on_music_volume_set(value: float):
 	
 func _on_voice_volume_set(value: float):
 	Global.voice_volume = value
+	Global.voice_volume_changed.emit()
 
 func _on_sfx_volume_set(value: float):
 	Global.sfx_volume = value
