@@ -39,6 +39,7 @@ func _ready():
 	Global.got_up.connect(	_on_get_up)
 	Global.close_menu.connect(show_menu_button)
 	Global.music_volume_changed.connect(on_music_volume_changed)
+	
 	_on_hear_button_pressed()
 	$MusicAudio.stream = load("res://Music/Main Menu.mp3")
 	$MusicAudio.play()
@@ -350,19 +351,26 @@ func lighten_surroundings():
 	%RockCluster.self_modulate = Color(1.0, 1.0, 1.0)
 	%RockSlide.self_modulate = Color(1.0, 1.0, 1.0)
 	
+	
 func on_music_volume_changed():
 	if Global.current_sense == Global.senses.HEAR:
 		muffle_music()
 	else:
 		normalize_music()
+		
 
 func muffle_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
 	#$MusicAudio.pitch_scale = 0.81
+	pass
 	
 	
 func normalize_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume)
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
 	$MusicAudio.pitch_scale = 1.0
 
 

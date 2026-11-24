@@ -289,14 +289,19 @@ func on_music_volume_changed():
 		muffle_music()
 	else:
 		normalize_music()
-		
+
+
 func muffle_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
 	$MusicAudio.pitch_scale = 0.81
 	
 	
 func normalize_music():
-	$MusicAudio.volume_db = linear_to_db(Global.music_volume)
+	var bus_index = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
+	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
 	$MusicAudio.pitch_scale = 1.0
 
 
