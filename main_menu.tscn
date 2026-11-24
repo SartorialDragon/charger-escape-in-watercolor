@@ -76,6 +76,8 @@ vertical_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
+max_value = 2.0
+step = 0.01
 
 [node name="SettingsLabel3" type="Label" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
@@ -90,6 +92,8 @@ vertical_alignment = 1
 
 [node name="VoiceSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
+max_value = 2.0
+step = 0.01
 
 [node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
@@ -104,6 +108,8 @@ vertical_alignment = 1
 
 [node name="SfxSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
+max_value = 2.0
+step = 0.01
 
 [node name="QuitPanel" type="VBoxContainer" parent="SettingsPanel"]
 layout_mode = 1

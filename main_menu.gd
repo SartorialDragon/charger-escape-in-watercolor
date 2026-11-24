@@ -11,6 +11,9 @@ func _ready() -> void:
 	if Global.clues_interacted["Credits"]:
 		$MainPanel/Panel/VBoxContainer/StartButton.hide()
 		$MainPanel/Panel/VBoxContainer/ContinueButton.hide()
+	$SettingsPanel/SettingsPanel/MusicSlider.value = Global.music_volume
+	$SettingsPanel/SettingsPanel/VoiceSlider.value = Global.voice_volume
+	$SettingsPanel/SettingsPanel/SfxSlider.value = Global.sfx_volume
 	open_menu()
 
 
