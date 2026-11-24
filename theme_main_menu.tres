@@ -1,8 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cxdodjp7w5l5v"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cxdodjp7w5l5v"]
 
 [ext_resource type="FontFile" uid="uid://b0vo5rmahyiji" path="res://Baltime.ttf" id="1_lh1vt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh1vt"]
+bg_color = Color(0.21538773, 0.21538779, 0.21538764, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v68q3"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qtwp"]
+bg_color = Color(0.6, 0, 0, 1)
+
 [resource]
+Button/font_sizes/font_size = 36
+Button/fonts/font = ExtResource("1_lh1vt")
+Button/styles/normal = SubResource("StyleBoxFlat_lh1vt")
+Button/styles/pressed = SubResource("StyleBoxFlat_v68q3")
+CheckButton/colors/button_checked_color = Color(0.6, 0, 0, 1)
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_8qtwp")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 54
 Label/fonts/font = ExtResource("1_lh1vt")
