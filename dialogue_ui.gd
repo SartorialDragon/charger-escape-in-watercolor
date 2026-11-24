@@ -27,7 +27,6 @@ func _on_line(line: DialogueLine) -> void:
 	speaker_label.text = line.speaker
 	text_label.text = line.text
 	if Global.voice_volume > 0:
-		print("playing voice, volume is ", Global.voice_volume)
 		va_audio.stream = line.vc_file
 		va_audio.play()
    
@@ -48,4 +47,4 @@ func _on_advance_dialogue_button_pressed() -> void:
 		DialogueManager.advance()
 		
 func _on_voice_volume_changed():
-	va_audio.volume_db = 30 * (Global.voice_volume - 1)
+	va_audio.volume_db = linear_to_db(Global.voice_volume)

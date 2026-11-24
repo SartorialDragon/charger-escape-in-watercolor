@@ -36,4 +36,4 @@ func _on_ended(current_data) -> void:
 	error_dialogue.visible = false
 		
 func _on_voice_volume_changed():
-	va_audio.volume_db = 30 * (Global.voice_volume - 1)
+	va_audio.volume_db = linear_to_db(Global.voice_volume)

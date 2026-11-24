@@ -76,6 +76,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_music_volume_set(value: float):
 	Global.music_volume = value
+	Global.music_volume_changed.emit()
 	
 func _on_voice_volume_set(value: float):
 	Global.voice_volume = value
