@@ -15,6 +15,7 @@ z_index = 3
 offset_right = 1921.0
 offset_bottom = 1088.0
 focus_next = NodePath("../AdvanceDialogueButton")
+theme = ExtResource("2_2x5cq")
 theme_override_styles/panel = SubResource("StyleBoxFlat_2x5cq")
 
 [node name="DialoguePanel" type="VBoxContainer" parent="Panel"]
@@ -57,8 +58,6 @@ visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 42
 text = "Echo"
 vertical_alignment = 1
 autowrap_mode = 2
@@ -69,8 +68,6 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.91
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
 text = "lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen lorem ipsum dolor sit amet die katze tritt die treppe krumm alle meine entchen"
 vertical_alignment = 1
 autowrap_mode = 2

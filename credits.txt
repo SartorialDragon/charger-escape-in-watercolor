@@ -15,3 +15,7 @@ Credits:
 			
 	Custom Cursors:
 		by Zeno (https://soundcloud.com/z_e_n_o)
+
+	Fonts:
+		Main Menu: https://www.dafont.com/de/baltime.font
+		Dialogue: https://www.dafont.com/de/imperator.font
