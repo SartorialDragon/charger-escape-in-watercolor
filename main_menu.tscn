@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=8 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://b0vo5rmahyiji" path="res://Baltime.ttf" id="1_glbon"]
 [ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://cooii4ytftbn1" path="res://Assets/mainmenu bg.png" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="5_nlkkf"]
+
+[sub_resource type="Theme" id="Theme_qe12f"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 54
+Label/fonts/font = ExtResource("1_glbon")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
 
@@ -10,9 +18,19 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -680.0
+offset_right = -680.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_qe12f")
 script = ExtResource("1_06t4h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 682.0
+offset_bottom = 1080.0
+texture = ExtResource("2_fu7sn")
+expand_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -46,28 +64,88 @@ texture = ExtResource("2_7vrkn")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="ContinueButton" type="TextureButton" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ContinueButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_nlkkf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Quit Game"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

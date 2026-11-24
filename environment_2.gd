@@ -10,6 +10,7 @@ var clues_on_screen: Array = []
 
 @onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
 
+var soundtrack: String
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -54,7 +55,21 @@ func _physics_process(_delta: float) -> void:
 	if clues_interacted["Bucket"] == true and clues_interacted["Smoldering"] == false:
 		%Bucket.position = Vector2($BackgroundLayers/Parallax2D2/PlayerHorse.position.x -170, $BackgroundLayers/Parallax2D2/PlayerHorse.position.y - 170)
 	
-	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("menu") and Global.clues_interacted["GetUp"]:
+		if %UILayer.has_node("MainMenu"):
+			print("true!")
+			Global.close_menu.emit()
+		else:
+			show_menu()
+
+
+func show_menu():
+	var scene = load("res://main_menu.tscn")
+	var instance = scene.instantiate()
+	$UILayer.add_child(instance)
+
 	
 func _on_tree_0_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.TREE_0:
@@ -258,6 +273,15 @@ func _on_smell_button_pressed() -> void:
 	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
+	
+
+func play_soundtrack():
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load(soundtrack)
+	if $MusicAudio.stream.get_length() < from_position:
+		$MusicAudio.play()
+	else:
+		$MusicAudio.play(from_position)
 	
 	
 func darken_surroundings():

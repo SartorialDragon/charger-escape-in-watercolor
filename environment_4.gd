@@ -10,6 +10,7 @@ var clues_on_screen: Array = []
 
 @onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
 
+var soundtrack: String
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -47,6 +48,21 @@ func _ready():
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
 	move_forward()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("menu") and Global.clues_interacted["GetUp"]:
+		if %UILayer.has_node("MainMenu"):
+			print("true!")
+			Global.close_menu.emit()
+		else:
+			show_menu()
+
+
+func show_menu():
+	var scene = load("res://main_menu.tscn")
+	var instance = scene.instantiate()
+	$UILayer.add_child(instance)
 	
 
 func move_forward():
@@ -244,6 +260,15 @@ func _on_smell_button_pressed() -> void:
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
 	
+	
+func play_soundtrack():
+	var from_position = $MusicAudio.get_playback_position()
+	$MusicAudio.stream = load(soundtrack)
+	if $MusicAudio.stream.get_length() < from_position:
+		$MusicAudio.play()
+	else:
+		$MusicAudio.play(from_position)
+		
 	
 func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.5, 0.5, 0.5)

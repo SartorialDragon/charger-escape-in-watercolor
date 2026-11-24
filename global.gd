@@ -1,6 +1,7 @@
 extends Node
 
 signal game_started
+signal close_menu
 signal visit_clue
 signal arrived
 signal sense_mode_changed

@@ -555,7 +555,7 @@ visible = false
 visible = false
 
 [node name="UILayer" type="CanvasLayer" parent="."]
-visible = false
+unique_name_in_owner = true
 
 [node name="SwitchScreen" type="CanvasLayer" parent="."]
 visible = false
