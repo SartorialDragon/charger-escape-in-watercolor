@@ -1,17 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgoef03blq4l2"]
+[gd_scene load_steps=8 format=3 uid="uid://bgoef03blq4l2"]
 
 [ext_resource type="Script" uid="uid://do3nymdwycve3" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="FontFile" uid="uid://b0vo5rmahyiji" path="res://Baltime.ttf" id="1_glbon"]
 [ext_resource type="Texture2D" uid="uid://cqsrukeurxjlp" path="res://ArtAssets/title logo.png" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://cooii4ytftbn1" path="res://Assets/mainmenu bg.png" id="2_fu7sn"]
-[ext_resource type="Theme" uid="uid://cmmr17076fsyd" path="res://theme_dialogue_ui.tres" id="4_nlkkf"]
+[ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="3_qe12f"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="5_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://bhld402wka3lb" path="res://SFX/669449__ericssoundschmiede__sfx_stone_scrap_massive_01.ogg" id="7_qe12f"]
-
-[sub_resource type="Theme" id="Theme_qe12f"]
-Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 54
-Label/fonts/font = ExtResource("1_glbon")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06t4h"]
 
@@ -24,7 +18,7 @@ offset_left = -680.0
 offset_right = -680.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qe12f")
+theme = ExtResource("3_qe12f")
 script = ExtResource("1_06t4h")
 
 [node name="SettingsPanel" type="TextureRect" parent="."]
@@ -32,14 +26,13 @@ layout_mode = 0
 offset_left = 2614.0
 offset_right = 3835.0
 offset_bottom = 1080.0
-theme = ExtResource("4_nlkkf")
+theme = ExtResource("3_qe12f")
 texture = ExtResource("2_fu7sn")
 expand_mode = 1
 flip_h = true
 flip_v = true
 
 [node name="SettingsPanel" type="VBoxContainer" parent="SettingsPanel"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,62 +43,171 @@ offset_right = -117.0
 offset_bottom = -122.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 
 [node name="SettingsLabel" type="Label" parent="SettingsPanel/SettingsPanel"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.71, 0.09466666, 0, 1)
+theme_override_colors/font_color = Color(0.6, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 64
-text = "Settings"
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsLabel2" type="Label" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nlkkf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel2" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 54
-text = "Music Volume"
+text = "MUSIC VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
 
-[node name="SettingsLabel3" type="Label" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect2" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nlkkf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel3" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 54
-text = "Voice Volume"
+text = "VOICE VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VoiceSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
+[node name="VoiceSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect2/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+value = 50.0
 
-[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel"]
+[node name="TextureRect3" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nlkkf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect3/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 54
-text = "Sound Effects Volume"
+text = "SFX VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SfxSlider" type="HSlider" parent="SettingsPanel/SettingsPanel"]
+[node name="SfxSlider" type="HSlider" parent="SettingsPanel/SettingsPanel/TextureRect3/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+value = 30.0
+
+[node name="TextureRect4" type="TextureRect" parent="SettingsPanel/SettingsPanel"]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_nlkkf")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel4" type="Label" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 54
+text = "FULLSCREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FullscreenButton" type="Button" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "OFF"
+
+[node name="Control2" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="SettingsPanel/SettingsPanel/TextureRect4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="QuitPanel" type="VBoxContainer" parent="SettingsPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,8 +225,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.70980394, 0.09411765, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 64
 text = "Quit Game?"
 horizontal_alignment = 1
@@ -135,8 +237,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.70980394, 0.09411765, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 54
 text = "All progress will be lost!"
 horizontal_alignment = 1
