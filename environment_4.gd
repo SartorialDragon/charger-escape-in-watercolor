@@ -142,6 +142,9 @@ func cutscene_dead():
 	$StillImageLayer.hide()
 	clues_discovered["Destroy0"] = true
 	Global.speed = 400
+	soundtrack = "res://Music/Rage Idea.mp3"
+	$MusicAudio.stream = load(soundtrack)
+	$MusicAudio.play()
 	%RedParticles0.emitting = true
 	$RageLayer.show()
 	if OS.has_feature("web"):

@@ -817,6 +817,7 @@ parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_yjv7e")
+volume_db = -10.455
 bus = &"SFX"
 
 [node name="VAAudio" type="AudioStreamPlayer" parent="."]

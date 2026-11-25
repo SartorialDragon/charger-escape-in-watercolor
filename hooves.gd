@@ -37,7 +37,6 @@ func make_hoofprint():
 	var scene = load("res://hoofprint.tscn")
 	var instance =  scene.instantiate()
 	instance.position = horse_offset
-	instance.modulate = Color()
+	#instance.modulate = Color()
 	instance.look_at(Global.new_poi.position)
 	add_child(instance)
-	print("Print made at ", horse_offset)
