@@ -302,7 +302,8 @@ mouse_default_cursor_shape = 2
 
 [node name="Hoofbeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("40_2hq57")
-volume_db = -8.804
+volume_db = -12.31
+autoplay = true
 max_polyphony = 4
 bus = &"SFX"
 

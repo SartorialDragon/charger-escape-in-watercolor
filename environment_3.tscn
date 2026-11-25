@@ -196,6 +196,12 @@ grow_vertical = 2
 texture = ExtResource("3_y78ea")
 metadata/_edit_use_anchors_ = true
 
+[node name="Hooves" type="Control" parent="BackgroundLayers/Parallax2D2"]
+modulate = Color(0.7019608, 0.7019608, 0.7019608, 1)
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+
 [node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
 unique_name_in_owner = true
 z_index = 1
@@ -354,6 +360,7 @@ scale_amount_curve = SubResource("Curve_7xvgo")
 color = Color(0.6774726, 1, 0.6616442, 1)
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("10_1nc6w")]
+unique_name_in_owner = true
 
 [node name="StallionHallucination" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables"]]
 unique_name_in_owner = true
