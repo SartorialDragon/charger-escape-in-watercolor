@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ch7dghvwbv0tg"]
+[gd_scene load_steps=43 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
 [ext_resource type="Texture2D" uid="uid://2uyx8lhu2v2p" path="res://ArtAssets/environment 2 sky.png" id="2_826ab"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bgutf8xxcp7eo" path="res://ArtAssets/e2 asset4.png" id="7_wja3w"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_3mwvo"]
 [ext_resource type="Texture2D" uid="uid://do74kqxcraq14" path="res://ArtAssets/e2 pond.png" id="8_226vn"]
+[ext_resource type="Script" uid="uid://be5w3xq7r5fwn" path="res://hooves.gd" id="8_n14x3"]
 [ext_resource type="Texture2D" uid="uid://coua5hqwjq550" path="res://ArtAssets/e2 smoldering_on.png" id="9_3mwvo"]
 [ext_resource type="Texture2D" uid="uid://cuivaa7vi174o" path="res://ArtAssets/smoke.png" id="9_bt657"]
 [ext_resource type="Texture2D" uid="uid://udo7h7wxm53v" path="res://ArtAssets/e2 mane.png" id="10_jb611"]
@@ -339,6 +340,7 @@ expand_mode = 1
 z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("8_n14x3")
 
 [node name="Tree0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
 unique_name_in_owner = true

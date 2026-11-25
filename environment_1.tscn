@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=41 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="5_tof0b"]
 [ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="6_rdret"]
 [ext_resource type="Texture2D" uid="uid://bdnfkp41rpbtj" path="res://ArtAssets/scent.png" id="7_bs3hf"]
+[ext_resource type="Script" uid="uid://be5w3xq7r5fwn" path="res://hooves.gd" id="7_vcw72"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="8_6j7cg"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="8_awyal"]
 [ext_resource type="Texture2D" uid="uid://4iwnj8quff6r" path="res://ArtAssets/rock.png" id="9_bs3hf"]
@@ -535,6 +536,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = -656.0
 offset_right = -656.0
+script = ExtResource("7_vcw72")
 
 [node name="RockCluster" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
@@ -810,6 +812,7 @@ parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_bs3hf")
+volume_db = -7.2
 bus = &"SFX"
 
 [node name="VAAudio" type="AudioStreamPlayer" parent="."]
