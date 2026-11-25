@@ -72,47 +72,6 @@ tracks/2/keys = {
 "values": [Color(0.95, 0.20583336, 0, 0.1254902)]
 }
 
-[sub_resource type="Animation" id="Animation_nacr6"]
-resource_name = "red smoke"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cloud0:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4666667, 2.9666667, 4.4, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255), Color(0.95, 0.20583336, 0, 0.32156864), Color(0.95, 0.20583336, 0, 0.69411767), Color(0.9539048, 0.20971644, 7.7250604e-07, 0.47577602), Color(0.95, 0.20583336, 0, 0.6117647)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cloud1:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6333333, 2.0666666, 3.5666666, 4.8, 6.0333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3529412), Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3019608), Color(0.95, 0.20583336, 0, 0.59607846)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cloud2:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.13333334, 1.4666667, 2.9666667, 4.6, 5.93),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.95, 0.20583336, 0, 0.1254902), Color(0.95, 0.20583336, 0, 0.5019608), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.47058824), Color(0.95, 0.20583336, 0, 0.12742865)]
-}
-
 [sub_resource type="Animation" id="Animation_mxxf3"]
 resource_name = "rage"
 length = 3.0
@@ -152,6 +111,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.95, 0.20583336, 0, 0.12676132), Color(0.95, 0.20583336, 0, 0.7764706), Color(0.95, 0.20583336, 0, 0.12676132), Color(0.95, 0.20583336, 0, 0.81960785)]
+}
+
+[sub_resource type="Animation" id="Animation_nacr6"]
+resource_name = "red smoke"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cloud0:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4666667, 2.9666667, 4.4, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95486575, 0.21067205, 9.62615e-07, 0.5137255), Color(0.95, 0.20583336, 0, 0.32156864), Color(0.95, 0.20583336, 0, 0.69411767), Color(0.9539048, 0.20971644, 7.7250604e-07, 0.47577602), Color(0.95, 0.20583336, 0, 0.6117647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cloud1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6333333, 2.0666666, 3.5666666, 4.8, 6.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3529412), Color(0.95170027, 0.2075242, 3.363781e-07, 0.4787566), Color(0.95, 0.20583336, 0, 0.3019608), Color(0.95, 0.20583336, 0, 0.59607846)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cloud2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.13333334, 1.4666667, 2.9666667, 4.6, 5.93),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.95, 0.20583336, 0, 0.1254902), Color(0.95, 0.20583336, 0, 0.5019608), Color(0.95, 0.20583336, 0, 0.24705882), Color(0.95, 0.20583336, 0, 0.47058824), Color(0.95, 0.20583336, 0, 0.12742865)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_swvsa"]

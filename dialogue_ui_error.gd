@@ -11,7 +11,7 @@ func _ready() -> void:
 	DialogueManager.error_dialogue_started.connect(_on_error_started)
 	DialogueManager.dialogue_started.connect(_on_ended)
 	DialogueManager.line_displayed.connect(_on_line)
-	Global.voice_volume_changed.connect(_on_voice_volume_changed)
+	#Global.voice_volume_changed.connect(_on_voice_volume_changed)
 	
 
 func _on_error_started(_data: DialogueData) -> void:
@@ -21,10 +21,13 @@ func _on_error_started(_data: DialogueData) -> void:
 func _on_line(line: DialogueLine) -> void:
 	speaker_label.text = line.speaker
 	text_label.text = line.text
-	if Global.voice_volume <= 0.0:
-		return
-	va_audio.stream = line.vc_file
-	va_audio.play()
+	if Global.voice_volume > 0:
+		var bus_index = AudioServer.get_bus_index("Music")
+		for n in 10:
+			AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - n)
+			await get_tree().create_timer(0.01).timeout
+		va_audio.stream = line.vc_file
+		va_audio.play()
 	if line.vc_file != null:
 		await va_audio.finished
 	else:
@@ -34,6 +37,13 @@ func _on_line(line: DialogueLine) -> void:
 
 func _on_ended(current_data) -> void:
 	error_dialogue.visible = false
+	if va_audio.playing:
+		await va_audio.finished
+	var bus_index = AudioServer.get_bus_index("Music")
+	for n in 10:
+		AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 10 + n)
+		await get_tree().create_timer(0.01).timeout
+	
 		
-func _on_voice_volume_changed():
-	va_audio.volume_db = linear_to_db(Global.voice_volume)
+#func _on_voice_volume_changed():
+	#va_audio.volume_db = linear_to_db(Global.voice_volume)

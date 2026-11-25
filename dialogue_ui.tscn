@@ -85,6 +85,4 @@ theme = ExtResource("2_2x5cq")
 theme_override_font_sizes/font_size = 42
 text = " > "
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [connection signal="pressed" from="AdvanceDialogueButton" to="." method="_on_advance_dialogue_button_pressed"]

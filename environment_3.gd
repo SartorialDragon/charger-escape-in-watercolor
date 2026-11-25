@@ -125,11 +125,11 @@ func _on_sound_0_pressed() -> void:
 			_on_hear_button_pressed()
 			for n in 100:
 				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
+				await get_tree().create_timer(0.00001).timeout
 			Global.visit_clue.emit(Vector2(player_horse.position.x +500, player_horse.position.y + 0))
 			for n in 150:
 				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
+				await get_tree().create_timer(0.00001).timeout
 			#print($Camera2D.position.x, " player: ", player_horse.position.x)
 			dialogue = "res://Dialogue/29_need_a_break.tres"
 			DialogueManager.start_dialogue(dialogue, 0)
@@ -186,12 +186,12 @@ func stallion_hallucination() -> void:
 		$MusicAudio.play()
 		for n in 50:
 			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 		Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
 		$SmokeParticles.emitting = false
 		for n in 300:
 			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 		clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 		for n in clues_on_screen:
 			n.remove_from_group("on_screen")
