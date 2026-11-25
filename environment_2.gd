@@ -83,6 +83,7 @@ func make_hoofprint(poi):
 	var scene = load("res://hoofprint.tscn")
 	var instance =  scene.instantiate()
 	instance.position = horse_offset
+	#instance.get_child(0).flip_v = !instance.get_child(0).flip_v
 	instance.look_at(poi.position)
 	$BackgroundLayers/Parallax2D2/Hooves.add_child(instance)
 
@@ -153,12 +154,12 @@ func _on_mane_hair_pressed() -> void:
 				# camera moves
 				for n in 50:
 					$Camera2D.position.x += 8
-					await get_tree().create_timer(0.00001).timeout
+					await get_tree().create_timer(0.001).timeout
 				new_poi = %Tree2 # approximately
 				Global.visit_clue.emit(Vector2(2600, 750))
 				for n in 250:
 					$Camera2D.position.x += 8
-					await get_tree().create_timer(0.00001).timeout
+					await get_tree().create_timer(0.001).timeout
 				%Bucket.add_to_group("on_screen")
 				clues_interacted["Tree0Mane"] = true
 				if Global.current_state.name == "Trot":
@@ -256,12 +257,12 @@ func move_through_trees():
 	%BucketAnimationPlayer.play("fall")
 	for n in 50:
 		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00001).timeout
+		await get_tree().create_timer(0.001).timeout
 	new_poi = %PlayerHorse
 	Global.visit_clue.emit(Vector2(4500, 800))
 	for n in 260:
 		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00001).timeout
+		await get_tree().create_timer(0.001).timeout
 	$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
 	if Global.current_state.name == "Trot":
 		await Global.arrived

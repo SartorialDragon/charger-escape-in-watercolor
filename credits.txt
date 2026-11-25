@@ -17,6 +17,8 @@ Credits:
 		Main Menu Stoneslide: SFX_stone_scrap_massive_01.wav by EricsSoundschmiede -- https://freesound.org/s/669449/ -- License: Creative Commons 0
 		Trotting: SFX - Horse - Trot.wav by MrFizzywig -- https://freesound.org/s/581834/ -- License: Creative Commons 0
 		
+	Music:
+		Pokemon Insurgence Theme by https://mrsinger186.bandcamp.com/, edited by Nichelbichel. Thank you to Matt for letting us use this!
 			
 	Custom Cursors:
 		by Zeno (https://soundcloud.com/z_e_n_o)
