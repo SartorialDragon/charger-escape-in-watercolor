@@ -13,11 +13,10 @@ var clues_on_screen: Array = []
 
 var soundtrack: String = "res://Music/Main Menu.mp3"
 
-var horse_offset
-var hoofprint_spacing = 85
-var last_print_position = Vector2(0,0)
-var diagonal_hoofset: bool = false
-var new_poi: Node
+#var horse_offset
+#var hoofprint_spacing = 85
+#var last_print_position = Vector2(0,0)
+#var new_poi: Node
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -50,7 +49,7 @@ func _ready():
 	Global.music_volume_changed.connect(on_music_volume_changed)
 	
 	_on_hear_button_pressed()
-	$MusicAudio.stream = load("res://Music/Main Menu.mp3")
+	$MusicAudio.stream = load(soundtrack)
 	$MusicAudio.play()
 	show_menu()
 	
@@ -58,29 +57,6 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu") and Global.clues_interacted["GetUp"]:
 		_on_menu_button_pressed()
-
-
-func _physics_process(_delta: float) -> void:
-	if not new_poi == null:
-		if %PlayerHorse.find_child("AnimatedSprite2D").flip_h:
-		#if player_horse.position.x < new_poi.position.x:
-			horse_offset = Vector2(player_horse.position.x + 550, player_horse.position.y + 50)
-		else:
-			horse_offset = Vector2(player_horse.position.x + 700, player_horse.position.y + 50)
-		var distance = horse_offset.distance_to(last_print_position)
-		if distance > hoofprint_spacing:
-			make_hoofprint(new_poi)
-			last_print_position = horse_offset
-
-
-func make_hoofprint(poi):
-	var scene = load("res://hoofprint.tscn")
-	var instance =  scene.instantiate()
-	instance.position = horse_offset
-	instance.get_child(0).flip_v = !instance.get_child(0).flip_v
-	diagonal_hoofset = !diagonal_hoofset
-	instance.look_at(poi.position)
-	$BackgroundLayers/Parallax2D2/Hooves.add_child(instance)
 	
 
 func _on_menu_button_pressed() -> void:
@@ -164,7 +140,7 @@ func _on_rock_cluster_0_pressed() -> void:
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
-			new_poi = null
+			Global.new_poi = null
 			Global.visit_clue.emit(Vector2(%RockCluster.position.x +380, %RockCluster.position.y + 320))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKCLUSTER_0
@@ -181,7 +157,7 @@ func _on_rock_cluster_1_pressed() -> void:
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
-			new_poi = null
+			Global.new_poi = null
 			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 620, %RockCluster.position.y + 200))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKCLUSTER_1
@@ -198,7 +174,7 @@ func _on_rock_cluster_2_pressed() -> void:
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
-			new_poi = null
+			Global.new_poi = null
 			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 440, %RockCluster.position.y + 120))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKCLUSTER_2
@@ -215,7 +191,7 @@ func _on_rock_cluster_3_pressed() -> void:
 			dialogue = "res://Dialogue/05_need_to_see.tres"
 			DialogueManager.start_dialogue(dialogue, 1)
 		else:
-			new_poi = null
+			Global.new_poi = null
 			Global.visit_clue.emit(Vector2(%RockCluster.position.x + 610, %RockCluster.position.y + 10))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKCLUSTER_3
@@ -252,8 +228,8 @@ func _on_rock_slide_pressed() -> void:
 		DialogueManager.start_dialogue(dialogue, 1)
 	else:
 		if Global.player_POI_position != Global.POIs.ROCKSLIDE:
-			new_poi = %RockSlide
-			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 100, %RockSlide.position.y + 600))
+			Global.new_poi = %RockSlide
+			Global.visit_clue.emit(Vector2(%RockSlide.position.x - 100, %RockSlide.position.y + 550))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.ROCKSLIDE
 		else:
@@ -277,7 +253,7 @@ func play_cutscene_to_stallion():
 	for n in 150:
 			$Camera2D.position.x += 8
 			await get_tree().create_timer(0.001).timeout
-	new_poi = %StallionHallucination0
+	Global.new_poi = %PlayerHorse
 	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
 	for n in 400:
 			$Camera2D.position.x += 8

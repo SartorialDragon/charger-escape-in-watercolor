@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=28 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
 [ext_resource type="Texture2D" uid="uid://drchd8reh28wa" path="res://ArtAssets/e3 middleground.png" id="3_y78ea"]
+[ext_resource type="Script" uid="uid://be5w3xq7r5fwn" path="res://hooves.gd" id="4_trp7i"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="5_kvufe"]
 [ext_resource type="Texture2D" uid="uid://0neaj8a6suo6" path="res://ArtAssets/environment 3 softspot.png" id="5_y78ea"]
 [ext_resource type="Texture2D" uid="uid://beqsu6vemva5k" path="res://ArtAssets/hoofprints.png" id="6_2k1u2"]
@@ -201,6 +202,7 @@ modulate = Color(0.7019608, 0.7019608, 0.7019608, 1)
 z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("4_trp7i")
 
 [node name="Scent0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
 unique_name_in_owner = true

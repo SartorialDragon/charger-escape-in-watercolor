@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=39 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
 [ext_resource type="Texture2D" uid="uid://dnqikesutsf4f" path="res://ArtAssets/e4 middleground.png" id="3_vylta"]
+[ext_resource type="Script" uid="uid://be5w3xq7r5fwn" path="res://hooves.gd" id="4_jl7um"]
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="4_vylta"]
 [ext_resource type="Texture2D" uid="uid://bfum20ia4e2sj" path="res://ArtAssets/e4 tree.png" id="5_5jeke"]
 [ext_resource type="Texture2D" uid="uid://03jwf3ngbsvl" path="res://ArtAssets/rock1_.png" id="6_5jeke"]
@@ -323,6 +324,7 @@ offset_left = -2.0
 offset_top = -3.0
 offset_right = -2.0
 offset_bottom = -3.0
+script = ExtResource("4_jl7um")
 
 [node name="Destroy0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true

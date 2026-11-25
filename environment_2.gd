@@ -12,10 +12,6 @@ var clues_on_screen: Array = []
 
 var soundtrack: String
 
-var horse_offset
-var hoofprint_spacing = 85
-var last_print_position = Vector2(0,0)
-var new_poi: Node
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -48,7 +44,6 @@ func _ready():
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.close_menu.connect(show_menu_button)
-	#Global.music_volume_changed.connect(on_music_volume_changed)
 	Global.clues_interacted["GetUp"] = true
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
@@ -64,29 +59,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not new_poi == null:
-		if %PlayerHorse.find_child("AnimatedSprite2D").flip_h:
-		#if player_horse.position.x < new_poi.position.x:
-			horse_offset = Vector2(player_horse.position.x - 100, player_horse.position.y + 50)
-		else:
-			horse_offset = Vector2(player_horse.position.x + 50, player_horse.position.y + 50)
-		var distance = horse_offset.distance_to(last_print_position)
-		if distance > hoofprint_spacing:
-			make_hoofprint(new_poi)
-			last_print_position = horse_offset
-
 	if clues_interacted["Bucket"] == true and clues_interacted["Smoldering"] == false:
 		%Bucket.position = Vector2($BackgroundLayers/Parallax2D2/PlayerHorse.position.x -170, $BackgroundLayers/Parallax2D2/PlayerHorse.position.y - 170)
-
-
-func make_hoofprint(poi):
-	var scene = load("res://hoofprint.tscn")
-	var instance =  scene.instantiate()
-	instance.position = horse_offset
-	#instance.get_child(0).flip_v = !instance.get_child(0).flip_v
-	instance.look_at(poi.position)
-	$BackgroundLayers/Parallax2D2/Hooves.add_child(instance)
-
 
 
 func _on_menu_button_pressed() -> void:
@@ -111,7 +85,7 @@ func show_menu():
 	
 func _on_tree_0_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.TREE_0:
-		new_poi = %Tree0
+		Global.new_poi = %Tree0
 		Global.visit_clue.emit(Vector2(%Tree0.position.x + 80, %Tree0.position.y + 260))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.TREE_0
@@ -129,7 +103,7 @@ func _on_tree_0_pressed() -> void:
 
 func _on_mane_hair_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.TREE_0:
-		new_poi = %Tree0Mane
+		Global.new_poi = %Tree0Mane
 		Global.visit_clue.emit(Vector2(%Tree0Mane.position.x + 80, %Tree0Mane.position.y + 260))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.TREE_0
@@ -155,7 +129,7 @@ func _on_mane_hair_pressed() -> void:
 				for n in 50:
 					$Camera2D.position.x += 8
 					await get_tree().create_timer(0.001).timeout
-				new_poi = %Tree2 # approximately
+				Global.new_poi = %Tree2 # approximately
 				Global.visit_clue.emit(Vector2(2600, 750))
 				for n in 250:
 					$Camera2D.position.x += 8
@@ -180,7 +154,7 @@ func _on_mane_hair_pressed() -> void:
 func _on_bucket_pressed() -> void:
 	if not clues_interacted["Bucket"]:
 		if Global.player_POI_position != Global.POIs.BUCKET:
-			new_poi = %Bucket
+			Global.new_poi = %Bucket
 			Global.visit_clue.emit(Vector2(%Bucket.position.x + 50, %Bucket.position.y + 100))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.BUCKET
@@ -194,7 +168,7 @@ func _on_bucket_pressed() -> void:
 
 func _on_stream_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.STREAM:
-		new_poi = %Stream
+		Global.new_poi = %Stream
 		Global.visit_clue.emit(Vector2(%Stream.position.x + 600, %Stream.position.y + 100))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.STREAM
@@ -217,7 +191,7 @@ func _on_tree_3_pressed() -> void:
 
 func _on_tree_pressed(tree, particle):
 	if Global.player_POI_position != Global.POIs.TREES:
-		new_poi = tree
+		Global.new_poi = tree
 		Global.visit_clue.emit(Vector2(tree.position.x - 40, tree.position.y + 150))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.TREES
@@ -258,7 +232,7 @@ func move_through_trees():
 	for n in 50:
 		$Camera2D.position.x += 8
 		await get_tree().create_timer(0.001).timeout
-	new_poi = %PlayerHorse
+	Global.new_poi = %PlayerHorse
 	Global.visit_clue.emit(Vector2(4500, 800))
 	for n in 260:
 		$Camera2D.position.x += 8
@@ -271,7 +245,7 @@ func move_through_trees():
 		$BackgroundLayers/Parallax2D2/Workaround/AnimationPlayer.stop()
 	else:
 		$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
-	new_poi = %PlayerHorse
+	Global.new_poi = %PlayerHorse
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 1500, player_horse.position.y + 0))
 	clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 	for n in clues_on_screen:
