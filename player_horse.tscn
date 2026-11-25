@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bx4kno5rtneh6"]
+[gd_scene load_steps=45 format=3 uid="uid://bx4kno5rtneh6"]
 
 [ext_resource type="Script" uid="uid://co71ehpl3q2bq" path="res://player_horse.gd" id="1_0078p"]
 [ext_resource type="Texture2D" uid="uid://7yf7ni8ksp03" path="res://ArtAssets/IMG_1399.png" id="2_bgieg"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bdj4st4gn8t52" path="res://Assets/New Piskel-8.png.png" id="19_udm22"]
 [ext_resource type="Script" uid="uid://cpmp08u8jsy2o" path="res://state_sniff.gd" id="28_kbytc"]
 [ext_resource type="Script" uid="uid://b0ttrbm2kxnw4" path="res://state_hear.gd" id="29_3dvai"]
+[ext_resource type="AudioStream" uid="uid://dvetkamjt16y8" path="res://SFX/581834__mrfizzywig__sfx-horse-trot.ogg" id="40_2hq57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r8bo"]
 size = Vector2(103, 82)
@@ -225,7 +226,8 @@ shape = SubResource("RectangleShape2D_1r8bo")
 position = Vector2(-17, -7)
 scale = Vector2(0.11253854, 0.11253855)
 sprite_frames = SubResource("SpriteFrames_0078p")
-animation = &"hear"
+animation = &"trot"
+frame = 7
 flip_h = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -298,4 +300,11 @@ offset_right = 33.54001
 offset_bottom = 38.70002
 mouse_default_cursor_shape = 2
 
+[node name="Hoofbeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_2hq57")
+volume_db = -8.804
+max_polyphony = 4
+bus = &"SFX"
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_sprite_frame_changed"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

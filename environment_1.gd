@@ -90,7 +90,7 @@ func start_game():
 	# camera scrolls in background
 	for n in 110:
 		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00000001).timeout
+		await get_tree().create_timer(0.00001).timeout
 	if DialogueManager.is_active:
 		await DialogueManager.dialogue_ended
 	if OS.has_feature("web"):
@@ -202,7 +202,7 @@ func _on_scent_pressed() -> void:
 		if not clues_interacted["StallionScent"]:
 			for n in 100:
 				$Camera2D.position.x += 8
-				await get_tree().create_timer(0.00000001).timeout
+				await get_tree().create_timer(0.00001).timeout
 			clues_on_screen = get_tree().get_nodes_in_group("on_screen")
 			%StallionScent.remove_from_group("on_screen")
 			clues_interacted["StallionScent"] = true
@@ -239,11 +239,11 @@ func _on_rock_slide_pressed() -> void:
 func play_cutscene_to_stallion():
 	for n in 150:
 			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 	Global.visit_clue.emit(Vector2(%StallionHallucination0.position.x - 40, %StallionHallucination0.position.y + 100))
 	for n in 400:
 			$Camera2D.position.x += 8
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 	if Global.current_state.name == "Trot":
 		await Global.arrived
 	await get_tree().create_timer(1).timeout

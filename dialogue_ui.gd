@@ -8,6 +8,7 @@ extends CanvasLayer
 
 
 
+
 func _ready() -> void:
 	clue_dialogue.visible = false
 	DialogueManager.dialogue_started.connect(_on_started)
@@ -27,13 +28,22 @@ func _on_line(line: DialogueLine) -> void:
 	speaker_label.text = line.speaker
 	text_label.text = line.text
 	if Global.voice_volume > 0:
+		var bus_index = AudioServer.get_bus_index("Music")
+		for n in 10:
+			AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - n)
+			await get_tree().create_timer(0.01).timeout
 		va_audio.stream = line.vc_file
 		va_audio.play()
    
 
 func _on_ended(current_data) -> void:
 	clue_dialogue.visible = false
-	#va_audio.stop()
+	if va_audio.playing:
+		await va_audio.finished
+	var bus_index = AudioServer.get_bus_index("Music")
+	for n in 10:
+		AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 10 + n)
+		await get_tree().create_timer(0.01).timeout
 
 # not needed because the UI button now grabs the focus anyway and this would double the input
 # might be needed because if the sense buttons grab focus, it's a problem BUG

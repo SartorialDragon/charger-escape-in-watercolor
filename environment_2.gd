@@ -125,11 +125,11 @@ func _on_mane_hair_pressed() -> void:
 				# camera moves
 				for n in 50:
 					$Camera2D.position.x += 8
-					await get_tree().create_timer(0.00000001).timeout
+					await get_tree().create_timer(0.00001).timeout
 				Global.visit_clue.emit(Vector2(2600, 750))
 				for n in 250:
 					$Camera2D.position.x += 8
-					await get_tree().create_timer(0.00000001).timeout
+					await get_tree().create_timer(0.00001).timeout
 				%Bucket.add_to_group("on_screen")
 				clues_interacted["Tree0Mane"] = true
 				if Global.current_state.name == "Trot":
@@ -224,11 +224,11 @@ func move_through_trees():
 	%BucketAnimationPlayer.play("fall")
 	for n in 50:
 		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00000001).timeout
+		await get_tree().create_timer(0.00001).timeout
 	Global.visit_clue.emit(Vector2(4500, 800))
 	for n in 260:
 		$Camera2D.position.x += 8
-		await get_tree().create_timer(0.00000001).timeout
+		await get_tree().create_timer(0.00001).timeout
 	$BackgroundLayers/Parallax2D2/SmokeParticles.emitting = false
 	if Global.current_state.name == "Trot":
 		await Global.arrived
@@ -344,7 +344,6 @@ func muffle_music():
 func normalize_music():
 	var bus_index = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
-	print(AudioServer.get_bus_channels(bus_index))
 	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
 	$MusicAudio.pitch_scale = 1.0
 	%Tree0Mane.self_modulate = Color(1.0, 1.0, 1.0)

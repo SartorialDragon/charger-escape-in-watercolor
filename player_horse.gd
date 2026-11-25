@@ -14,7 +14,8 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:
 	change_position()
-	
+
+		
 	
 #func give_hint(pos):
 	#match pos:
@@ -62,3 +63,31 @@ func _on_texture_button_pressed() -> void:
 		#Global.clues_interacted["Sight"] = true
 	#else:	
 		#Global.hint_done.emit("Echo")
+func _on_sprite_frame_changed():
+	if Global.current_state == $StateMachine/Trot:
+		if Global.current_state.name == "Trot":
+			match $AnimatedSprite2D.frame:
+				0: 
+					play_hoofbeat()
+					play_hoofbeat()
+				1:
+					pass
+				2:
+					play_hoofbeat()
+					play_hoofbeat()
+				3:
+					pass
+				4: 
+					play_hoofbeat()
+					play_hoofbeat()
+				5: 
+					pass
+				6: 
+					play_hoofbeat()
+					play_hoofbeat()
+				7:
+					pass
+			
+
+func play_hoofbeat():
+	$Hoofbeat.play()

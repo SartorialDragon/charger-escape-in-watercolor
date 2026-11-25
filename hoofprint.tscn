@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dggweditambhm"]
+
+[ext_resource type="Texture2D" uid="uid://dmyeyihhbwxjf" path="res://ArtAssets/hoofprint.png" id="1_luqeo"]
+
+[node name="Hoofprint" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("1_luqeo")

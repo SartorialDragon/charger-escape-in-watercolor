@@ -91,7 +91,7 @@ func move_forward():
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 150, player_horse.position.y + 0))
 	for n in 320:
 			$Camera2D.position.x += 2
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 	var A = 1.0
 	for n in 10:
 		A -= 0.1
@@ -120,7 +120,7 @@ func _on_spring_pressed() -> void:
 			if clues_interacted["Rage"] and not clues_interacted["Grief"]:
 				clues_interacted["Grief"] = true
 				Global.clues_interacted["GetUp"] = false
-				await get_tree().create_timer(2).timeout
+				await get_tree().create_timer(1).timeout
 				dialogue = "res://Dialogue/39_i_love_him.tres"
 				DialogueManager.start_dialogue(dialogue, 0)
 				await DialogueManager.dialogue_ended
