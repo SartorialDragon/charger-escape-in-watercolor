@@ -199,8 +199,6 @@ func _on_rock_cluster_3_pressed() -> void:
 
 
 func _on_scent_pressed() -> void:
-	# play the respective clue stuff
-
 # If click scent while on the ground: too high to reach
 	if Global.player_POI_position != Global.POIs.ROCKCLUSTER_3 or %StallionScent.position.x > %RockCluster.position.x + 600 :
 		dialogue = "res://Dialogue/06_can't_reach.tres"
