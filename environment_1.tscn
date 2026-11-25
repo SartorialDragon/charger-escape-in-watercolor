@@ -529,6 +529,13 @@ offset_bottom = 1028.0
 texture = ExtResource("6_rdret")
 flip_h = true
 
+[node name="Hooves" type="Control" parent="BackgroundLayers/Parallax2D2"]
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -656.0
+offset_right = -656.0
+
 [node name="RockCluster" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen"]]
 unique_name_in_owner = true
 visible = false
@@ -608,6 +615,7 @@ libraries = {
 }
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("4_sc4lb")]
+unique_name_in_owner = true
 
 [node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true

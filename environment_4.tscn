@@ -315,6 +315,15 @@ grow_vertical = 2
 texture = ExtResource("3_vylta")
 metadata/_edit_use_anchors_ = true
 
+[node name="Hooves" type="Control" parent="BackgroundLayers/Parallax2D2"]
+modulate = Color(0.6156863, 0.6156863, 0.6156863, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = -3.0
+
 [node name="Destroy0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
 offset_left = 3408.0
@@ -509,6 +518,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("8_mxxf3")]
+unique_name_in_owner = true
 z_index = 2
 
 [node name="Spring" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]

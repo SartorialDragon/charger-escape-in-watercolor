@@ -8,9 +8,14 @@ var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
-@onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
+@onready var player_horse: CharacterBody2D = %PlayerHorse
 
 var soundtrack: String
+
+var horse_offset
+var hoofprint_spacing = 85
+var last_print_position = Vector2(0,0)
+var new_poi: Node
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -59,6 +64,27 @@ func _input(event: InputEvent) -> void:
 		_on_menu_button_pressed()
 
 
+func _physics_process(_delta: float) -> void:
+	if not new_poi == null:
+		if %PlayerHorse.find_child("AnimatedSprite2D").flip_h:
+		#if player_horse.position.x < new_poi.position.x:
+			horse_offset = Vector2(player_horse.position.x - 100, player_horse.position.y + 50)
+		else:
+			horse_offset = Vector2(player_horse.position.x + 50, player_horse.position.y + 50)
+		var distance = horse_offset.distance_to(last_print_position)
+		if distance > hoofprint_spacing:
+			make_hoofprint(new_poi)
+			last_print_position = horse_offset
+			
+			
+func make_hoofprint(poi):
+	var scene = load("res://hoofprint.tscn")
+	var instance =  scene.instantiate()
+	instance.position = horse_offset
+	instance.look_at(poi.position)
+	$BackgroundLayers/Parallax2D2/Hooves.add_child(instance)
+	
+
 func _on_menu_button_pressed() -> void:
 	if %UILayer.has_node("MainMenu"):
 		Global.close_menu.emit()
@@ -79,6 +105,7 @@ func show_menu():
 	
 
 func move_forward():
+	new_poi = %Spring
 	Global.visit_clue.emit(Vector2(player_horse.position.x + 3550, player_horse.position.y + 0))
 	for n in 520:
 		$Camera2D.position.x += 8
@@ -102,6 +129,7 @@ func move_forward():
 func _on_spring_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SPRING:
 		%BentTree.z_index = 0
+		new_poi = %Spring
 		if not clues_interacted["Spring"]:
 			Global.visit_clue.emit(Vector2(%Spring.position.x +100, %Spring.position.y + 10))
 		else:
@@ -170,6 +198,7 @@ func _on_destroy(pos, object, particle, line, next_object):
 	if object.get_child(0).emitting:
 		%BentTree.z_index = 4
 		if Global.player_POI_position != pos:
+			new_poi = object
 			if object == %Destroy0:
 				Global.visit_clue.emit(Vector2(object.position.x +160, object.position.y + 260))
 			else:
@@ -226,7 +255,8 @@ func cutscene_grief():
 		$StillImageLayer/Panel/Credits.self_modulate = Color(1.0, 1.0, 1.0, A)
 	$StillImageLayer/Panel/SmokeParticles.emitting = false
 	Global.clues_interacted["Credits"] = true
-	show_menu_button()
+	if OS.has_feature("web"):
+		show_menu_button()
 	
 func next_slide(path, line):
 	if path != null:
@@ -298,13 +328,14 @@ func darken_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(0.5, 0.5, 0.5)
 	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(0.5, 0.5, 0.5)
 	$Parallax2D3/Foreground.self_modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(0.5, 0.5, 0.5)
 
 
 func lighten_surroundings():
 	$BackgroundLayers/Parallax2D/Sky.self_modulate = Color(1.0, 1.0, 1.0)
 	$BackgroundLayers/Parallax2D2/Middle.self_modulate = Color(1.0, 1.0, 1.0)
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
-
+	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(0.616, 0.616, 0.616)
 	
 func on_music_volume_changed():
 	if Global.current_sense == Global.senses.HEAR:

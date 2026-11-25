@@ -304,6 +304,7 @@ texture = ExtResource("4_voe02")
 expand_mode = 1
 
 [node name="Asset2" type="TextureRect" parent="BackgroundLayers/Parallax2D2/Middle"]
+z_index = 1
 layout_mode = 0
 offset_left = 11.0
 offset_top = 645.0
@@ -333,6 +334,11 @@ offset_bottom = 332.0
 scale = Vector2(6.24, 6.24)
 texture = ExtResource("7_wja3w")
 expand_mode = 1
+
+[node name="Hooves" type="Control" parent="BackgroundLayers/Parallax2D2"]
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Tree0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "on_screen", "smell"]]
 unique_name_in_owner = true
@@ -406,7 +412,7 @@ color = Color(0.6774726, 1, 0.6616442, 1)
 [node name="Bucket" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "see"]]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 2
 offset_left = 2253.0
 offset_top = 297.00006
 offset_right = 2685.835
@@ -529,6 +535,8 @@ scale_amount_min = 0.3
 color = Color(0.53, 0.53, 0.53, 0.5568628)
 
 [node name="PlayerHorse" parent="BackgroundLayers/Parallax2D2" instance=ExtResource("5_826ab")]
+unique_name_in_owner = true
+z_index = 1
 
 [node name="StallionHallucination0" type="TextureButton" parent="BackgroundLayers/Parallax2D2" groups=["interactables", "smell"]]
 unique_name_in_owner = true
@@ -675,6 +683,7 @@ scroll_scale = Vector2(1.1, 1)
 repeat_size = Vector2(5760, 0)
 
 [node name="Foreground" type="TextureRect" parent="Parallax2D3"]
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

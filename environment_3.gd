@@ -8,9 +8,14 @@ var cursor_POI = load("res://ArtAssets/Cursor_Brown.png")
 var visible_clues: Array = []
 var clues_on_screen: Array = []
 
-@onready var player_horse: CharacterBody2D = $BackgroundLayers/Parallax2D2/PlayerHorse
+@onready var player_horse: CharacterBody2D = %PlayerHorse
 
 var soundtrack: String
+
+var horse_offset
+var hoofprint_spacing = 85
+var last_print_position = Vector2(0,0)
+var new_poi: Node
 
 # this means the clue has been discovered in sense mode or through solving other clues!
 var clues_discovered = { # key needs to be identical with node name
@@ -57,6 +62,27 @@ func _input(event: InputEvent) -> void:
 		_on_menu_button_pressed()
 
 
+func _physics_process(_delta: float) -> void:
+	if not new_poi == null:
+		if %PlayerHorse.find_child("AnimatedSprite2D").flip_h:
+		#if player_horse.position.x < new_poi.position.x:
+			horse_offset = Vector2(player_horse.position.x - 100, player_horse.position.y + 50)
+		else:
+			horse_offset = Vector2(player_horse.position.x + 50, player_horse.position.y + 50)
+		var distance = horse_offset.distance_to(last_print_position)
+		if distance > hoofprint_spacing:
+			make_hoofprint(new_poi)
+			last_print_position = horse_offset
+
+
+func make_hoofprint(poi):
+	var scene = load("res://hoofprint.tscn")
+	var instance =  scene.instantiate()
+	instance.position = horse_offset
+	instance.look_at(poi.position)
+	$BackgroundLayers/Parallax2D2/Hooves.add_child(instance)
+	
+
 func _on_menu_button_pressed() -> void:
 	if %UILayer.has_node("MainMenu"):
 		Global.close_menu.emit()
@@ -79,6 +105,7 @@ func show_menu():
 func _on_scent_0_pressed() -> void:
 	if Global.current_sense == Global.senses.SMELL:
 		if Global.player_POI_position != Global.POIs.SCENT_0:
+			new_poi = %Scent0
 			Global.visit_clue.emit(Vector2(%Scent0.position.x - 50, %Scent0.position.y + 0))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_0
@@ -96,6 +123,7 @@ func _on_scent_0_pressed() -> void:
 func _on_scent_1_pressed() -> void:
 	if Global.current_sense == Global.senses.SMELL:
 		if Global.player_POI_position != Global.POIs.SCENT_1:
+			new_poi = %Scent1
 			Global.visit_clue.emit(Vector2(%Scent1.position.x - 50, %Scent1.position.y + 0))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SCENT_1
@@ -113,6 +141,7 @@ func _on_scent_1_pressed() -> void:
 func _on_sound_0_pressed() -> void:
 	if Global.current_sense == Global.senses.HEAR:
 		if Global.player_POI_position != Global.POIs.SOUND_0:
+			new_poi = %Sound0
 			Global.visit_clue.emit(Vector2(%Sound0.position.x - 50, %Sound0.position.y + 0))
 			await Global.arrived
 			Global.player_POI_position = Global.POIs.SOUND_0
@@ -126,6 +155,7 @@ func _on_sound_0_pressed() -> void:
 			for n in 100:
 				$Camera2D.position.x += 8
 				await get_tree().create_timer(0.00001).timeout
+			new_poi = %SoftSpot
 			Global.visit_clue.emit(Vector2(player_horse.position.x +500, player_horse.position.y + 0))
 			for n in 150:
 				$Camera2D.position.x += 8
@@ -156,6 +186,7 @@ func _on_sound_0_pressed() -> void:
 
 func _on_soft_spot_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.SOFTSPOT:
+		new_poi = %SoftSpot
 		Global.visit_clue.emit(Vector2(%SoftSpot.position.x +700, %SoftSpot.position.y + 250))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.SOFTSPOT
@@ -202,6 +233,7 @@ func stallion_hallucination() -> void:
 
 func _on_hoofprints_pressed() -> void:
 	if Global.player_POI_position != Global.POIs.HOOFPRINTS:
+		new_poi = %Hoofprints
 		Global.visit_clue.emit(Vector2(%Hoofprints.position.x + 50, %Hoofprints.position.y + 20))
 		await Global.arrived
 		Global.player_POI_position = Global.POIs.HOOFPRINTS
@@ -273,6 +305,7 @@ func darken_surroundings():
 	$Parallax2D3/Foreground.self_modulate = Color(0.5, 0.5, 0.5)
 	%SoftSpot.modulate = Color(0.5, 0.5, 0.5)
 	%Hoofprints.self_modulate = Color(0.5, 0.5, 0.5)
+	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(0.5, 0.5, 0.5)
 	
 
 func lighten_surroundings():
@@ -281,6 +314,7 @@ func lighten_surroundings():
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
 	%SoftSpot.modulate = Color(1.0, 1.0, 1.0)
 	%Hoofprints.self_modulate = Color(1.0, 1.0, 1.0)
+	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(0.702, 0.702, 0.702)
 	
 
 	
