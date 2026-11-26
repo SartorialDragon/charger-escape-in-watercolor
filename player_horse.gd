@@ -56,13 +56,16 @@ func change_position():
 
 
 func _on_texture_button_pressed() -> void:
-	$Senses.show()
+	if not Global.clues_interacted["E4"]:
+		$Senses.show()
 	#await get_tree().create_timer(2).timeout
 	#if not Global.clues_interacted["Sight"] and $Senses.visible:
 		#give_hint("Sight")
 		#Global.clues_interacted["Sight"] = true
 	#else:	
 		#Global.hint_done.emit("Echo")
+	
+	
 func _on_sprite_frame_changed():
 	if Global.current_state == $StateMachine/Trot:
 		if Global.current_state.name == "Trot":

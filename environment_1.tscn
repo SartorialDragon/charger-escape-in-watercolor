@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dnwrm3qsnnl1y"]
+[gd_scene load_steps=40 format=3 uid="uid://dnwrm3qsnnl1y"]
 
 [ext_resource type="Script" uid="uid://tgmvyrguep6n" path="res://environment_1.gd" id="1_oep84"]
 [ext_resource type="Texture2D" uid="uid://dkqhbjp8pvtj3" path="res://ArtAssets/sky.png" id="2_bs3hf"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="17_rdret"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="18_je0s5"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="18_rdret"]
-[ext_resource type="AudioStream" uid="uid://ddd476yijm7f3" path="res://Music/Main Menu.mp3" id="19_rdret"]
 [ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="21_nacr6"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="22_vcw72"]
 
@@ -803,12 +802,6 @@ grow_vertical = 2
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_rdret")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_bs3hf")

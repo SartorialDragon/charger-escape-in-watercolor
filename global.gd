@@ -41,6 +41,7 @@ var clues_discovered = { # key needs to be identical with node name
 	"Sight" : false,
 	"Hearing" : false,
 	"Scent" : false,
+	"E4" : false,
 	"Credits" : false,
 }
 
@@ -51,6 +52,7 @@ var clues_interacted = {
 	"Sight" : false,
 	"Hearing" : false,
 	"Scent" : false,
+	"E4" : false,
 	"Credits" : false,
 }
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bg2cuplbkr3s8"
+path="res://.godot/imported/E3 Hearing.mp3-874cee2dbd9c97947e712cbaa8d0c1c4.mp3str"
+
+[deps]
+
+source_file="res://Music/MusicFinal/E3 Hearing.mp3"
+dest_files=["res://.godot/imported/E3 Hearing.mp3-874cee2dbd9c97947e712cbaa8d0c1c4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

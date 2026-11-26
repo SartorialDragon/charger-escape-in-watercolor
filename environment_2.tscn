@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ch7dghvwbv0tg"]
+[gd_scene load_steps=42 format=3 uid="uid://ch7dghvwbv0tg"]
 
 [ext_resource type="Script" uid="uid://dqutkp0apf7pd" path="res://environment_2.gd" id="1_3181v"]
 [ext_resource type="Texture2D" uid="uid://2uyx8lhu2v2p" path="res://ArtAssets/environment 2 sky.png" id="2_826ab"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://bh25jd1sf5qpc" path="res://ArtAssets/e2 foreground tree.png" id="20_trxam"]
 [ext_resource type="Texture2D" uid="uid://dfe3imb6bun2k" path="res://ArtAssets/rock2.png" id="21_6krrs"]
 [ext_resource type="Texture2D" uid="uid://uc1o640w6aly" path="res://ArtAssets/rock3.png" id="22_6gw62"]
-[ext_resource type="AudioStream" uid="uid://bi86en1m365j8" path="res://Music/E2 Seeing.mp3" id="26_6krrs"]
 [ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="26_qiedm"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="27_n14x3"]
 
@@ -808,12 +807,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qiedm")
-
-[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_6krrs")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_yjv7e")

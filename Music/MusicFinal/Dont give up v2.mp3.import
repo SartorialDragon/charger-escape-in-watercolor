@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://caahgqkd04ekp"
+path="res://.godot/imported/Dont give up v2.mp3-ea50bd2b6091299f9d112b81e2bbe8d2.mp3str"
+
+[deps]
+
+source_file="res://Music/MusicFinal/Dont give up v2.mp3"
+dest_files=["res://.godot/imported/Dont give up v2.mp3-ea50bd2b6091299f9d112b81e2bbe8d2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

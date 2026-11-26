@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvihfwt66qu8p"]
+[gd_scene load_steps=27 format=3 uid="uid://bvihfwt66qu8p"]
 
 [ext_resource type="Script" uid="uid://bee7ohsmykua4" path="res://environment_3.gd" id="1_6trsd"]
 [ext_resource type="Texture2D" uid="uid://bleyt24gamrml" path="res://ArtAssets/environment 3 sky.png" id="2_3jdq1"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://r7fu37joidpc" path="res://ArtAssets/environment 3 foreground.png" id="11_jiugy"]
 [ext_resource type="Texture2D" uid="uid://bjktmwaflxqki" path="res://Assets/IMG_3663.png" id="11_ykfhg"]
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="12_3jdq1"]
-[ext_resource type="AudioStream" uid="uid://dxegg5hhkhmd6" path="res://Music/E3 Seeing - Before Resting.mp3" id="12_y78ea"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="13_6trsd"]
 [ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="14_jiugy"]
 [ext_resource type="Texture2D" uid="uid://bfia5e7anrf5w" path="res://ArtAssets/text box_button.png" id="15_trp7i"]
@@ -600,12 +599,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gclrd")
-
-[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_y78ea")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_k56vb")
