@@ -10,7 +10,6 @@ var clues_on_screen: Array = []
 
 @onready var player_horse: CharacterBody2D = %PlayerHorse
 
-var soundtrack: String
 
 
 # this means the clue has been discovered in sense mode or through solving other clues!
@@ -39,12 +38,14 @@ var clues_interacted = {
 
 
 func _ready():
+	play_soundtrack("E4 See")
+	Global.clues_interacted["E4"] = true
 	Input.set_custom_mouse_cursor(cursor_default)
 	Input.set_custom_mouse_cursor(cursor_POI, Input.CURSOR_POINTING_HAND)
 	Global.player_start_position = Vector2(400, 750)
 	Global.sense_mode_changed.connect(sense_change)
 	Global.close_menu.connect(show_menu_button)
-	Global.music_volume_changed.connect(on_music_volume_changed)
+	#Global.music_volume_changed.connect(on_music_volume_changed)
 	Global.current_sense = Global.senses.SEE
 	_on_see_button_pressed()
 	Global.clues_interacted["GetUp"] = true
@@ -87,6 +88,7 @@ func move_forward():
 		await get_tree().create_timer(0.001).timeout
 	if Global.current_state.name == "Trot":
 		await Global.arrived
+	AudioManager.fade_out_music()
 	dialogue = "res://Dialogue/33_finding_him.tres"
 	DialogueManager.start_dialogue(dialogue, 0)
 	await DialogueManager.dialogue_ended
@@ -121,6 +123,7 @@ func _on_spring_pressed() -> void:
 			cutscene_dead()
 		else:
 			if clues_interacted["Rage"] and not clues_interacted["Grief"]:
+				play_soundtrack("E4 Ending")
 				clues_interacted["Grief"] = true
 				Global.clues_interacted["GetUp"] = false
 				await get_tree().create_timer(1).timeout
@@ -142,9 +145,7 @@ func cutscene_dead():
 	$StillImageLayer.hide()
 	clues_discovered["Destroy0"] = true
 	Global.speed = 400
-	soundtrack = "res://Music/Rage Idea.mp3"
-	$MusicAudio.stream = load(soundtrack)
-	$MusicAudio.play()
+	play_soundtrack("E4 Rage")
 	%RedParticles0.emitting = true
 	$RageLayer.show()
 	if OS.has_feature("web"):
@@ -233,7 +234,7 @@ func cutscene_grief():
 		$StillImageLayer/Panel/Credits.self_modulate = Color(1.0, 1.0, 1.0, A)
 	$StillImageLayer/Panel/SmokeParticles.emitting = false
 	Global.clues_interacted["Credits"] = true
-	if OS.has_feature("web"):
+	if not OS.has_feature("web"):
 		show_menu_button()
 	
 func next_slide(path, line):
@@ -270,7 +271,7 @@ func _on_see_button_pressed() -> void:
 	hide_sounds()
 	hide_scents()
 	lighten_surroundings()
-	normalize_music()
+	#normalize_music()
 	visible_clues = get_tree().get_nodes_in_group("see")
 	update_sense()
 
@@ -278,7 +279,7 @@ func _on_see_button_pressed() -> void:
 func _on_hear_button_pressed() -> void:
 	hide_scents()
 	darken_surroundings()
-	muffle_music()
+	#muffle_music()
 	show_sounds()
 	visible_clues = get_tree().get_nodes_in_group("hear")
 	update_sense()
@@ -286,20 +287,18 @@ func _on_hear_button_pressed() -> void:
 
 func _on_smell_button_pressed() -> void:
 	hide_sounds()
-	normalize_music()
+	#normalize_music()
 	darken_surroundings()
 	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
 	update_sense()
 	
 	
-func play_soundtrack():
-	var from_position = $MusicAudio.get_playback_position()
-	$MusicAudio.stream = load(soundtrack)
-	if $MusicAudio.stream.get_length() < from_position:
-		$MusicAudio.play()
-	else:
-		$MusicAudio.play(from_position)
+func play_soundtrack(soundtrack):
+	var from_position = 0.0
+	if AudioManager.active_music_stream:
+		from_position = AudioManager.active_music_stream.get_playback_position()
+	AudioManager.play_music(soundtrack, from_position)
 		
 	
 func darken_surroundings():
@@ -315,24 +314,20 @@ func lighten_surroundings():
 	$Parallax2D3/Foreground.self_modulate = Color(1.0, 1.0, 1.0)
 	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(0.616, 0.616, 0.616)
 	
-func on_music_volume_changed():
-	if Global.current_sense == Global.senses.HEAR:
-		muffle_music()
-	else:
-		normalize_music()
+#func on_music_volume_changed():
+	#if Global.current_sense == Global.senses.HEAR:
+		#muffle_music()
+	#else:
+		#normalize_music()
 
-func muffle_music():
-	var bus_index = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
-	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
-	$MusicAudio.pitch_scale = 0.81
+#func muffle_music():
+	#var bus_index = AudioServer.get_bus_index("Music")
+	#AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
 	
 	
-func normalize_music():
-	var bus_index = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
-	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
-	$MusicAudio.pitch_scale = 1.0
+#func normalize_music():
+	#var bus_index = AudioServer.get_bus_index("Music")
+	#AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
 
 
 func show_scents():

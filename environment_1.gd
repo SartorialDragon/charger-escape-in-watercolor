@@ -11,8 +11,6 @@ var clues_on_screen: Array = []
 @onready var player_horse: CharacterBody2D = %PlayerHorse
 
 
-var soundtrack: String = "res://Music/Main Menu.mp3"
-
 #var horse_offset
 #var hoofprint_spacing = 85
 #var last_print_position = Vector2(0,0)
@@ -46,11 +44,8 @@ func _ready():
 	Global.game_started.connect(start_game)
 	Global.got_up.connect(	_on_get_up)
 	Global.close_menu.connect(show_menu_button)
-	Global.music_volume_changed.connect(on_music_volume_changed)
-	
+	#Global.music_volume_changed.connect(on_music_volume_changed)
 	_on_hear_button_pressed()
-	$MusicAudio.stream = load(soundtrack)
-	$MusicAudio.play()
 	show_menu()
 	
 	
@@ -298,22 +293,20 @@ func sense_change():
 
 # ToDo: add hotkeys for the sense modes too!
 func _on_see_button_pressed() -> void:
-	soundtrack = "res://Music/E1 Seeing.mp3"
-	play_soundtrack()
+	play_soundtrack("E1 See")
 	hide_sounds()
 	hide_scents()
 	lighten_surroundings()
-	normalize_music()
+	#normalize_music()
 	visible_clues = get_tree().get_nodes_in_group("see")
 	update_sense()
 
 
 func _on_hear_button_pressed() -> void:
-	soundtrack = "res://Music/E1 Hearing.mp3"
-	play_soundtrack()
+	play_soundtrack("E1 Hear")
 	hide_scents()
 	darken_surroundings()
-	muffle_music()
+	#muffle_music()
 	show_sounds()
 	visible_clues = get_tree().get_nodes_in_group("hear")
 	
@@ -325,10 +318,9 @@ func _on_hear_button_pressed() -> void:
 
 
 func _on_smell_button_pressed() -> void:
-	soundtrack = "res://Music/E1 Sniffing.mp3"
-	play_soundtrack()
+	play_soundtrack("E1 Smell")
 	hide_sounds()
-	normalize_music()
+	#normalize_music()
 	darken_surroundings()
 	show_scents()
 	visible_clues = get_tree().get_nodes_in_group("smell")
@@ -337,15 +329,11 @@ func _on_smell_button_pressed() -> void:
 		play_scent()
 	
 	
-func play_soundtrack():
-	var from_position = $MusicAudio.get_playback_position()
-	$MusicAudio.stream = load(soundtrack)
-	if $MusicAudio.stream.get_length() < from_position:
-		$MusicAudio.play()
-		#print("played from start")
-	else:
-		$MusicAudio.play(from_position)
-		#print("played from current position: ", from_position)
+func play_soundtrack(soundtrack):
+	var from_position = 0.0
+	if AudioManager.active_music_stream:
+		from_position = AudioManager.active_music_stream.get_playback_position()
+	AudioManager.play_music(soundtrack, from_position)
 	
 	
 func darken_surroundings():
@@ -366,26 +354,21 @@ func lighten_surroundings():
 	$BackgroundLayers/Parallax2D2/Hooves.modulate = Color(1.0, 1.0, 1.0)
 	
 	
-func on_music_volume_changed():
-	if Global.current_sense == Global.senses.HEAR:
-		muffle_music()
-	else:
-		normalize_music()
+#func on_music_volume_changed():
+	#if Global.current_sense == Global.senses.HEAR:
+		#muffle_music()
+	#else:
+		#normalize_music()
 		
 
-func muffle_music():
-	var bus_index = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
-	#$MusicAudio.volume_db = linear_to_db(Global.music_volume) - 7.153
-	#$MusicAudio.pitch_scale = 0.81
-	pass
-	
-	
-func normalize_music():
-	var bus_index = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
-	#$MusicAudio.volume_db = linear_to_db(Global.music_volume)
-	$MusicAudio.pitch_scale = 1.0
+#func muffle_music():
+	#var bus_index = AudioServer.get_bus_index("Music")
+	#AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume) - 7.153)
+	#
+	#
+#func normalize_music():
+	#var bus_index = AudioServer.get_bus_index("Music")
+	#AudioServer.set_bus_volume_db(bus_index, linear_to_db(Global.music_volume))
 
 
 func show_scents():

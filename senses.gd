@@ -2,12 +2,13 @@ extends Control
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("sight"):
-		_on_look_pressed()
-	elif event.is_action_pressed("hearing"):
-		_on_hear_pressed()
-	elif event.is_action_pressed("scent"):
-		_on_smell_pressed()
+	if not Global.clues_interacted["E4"]:
+		if event.is_action_pressed("sight"):
+			_on_look_pressed()
+		elif event.is_action_pressed("hearing"):
+			_on_hear_pressed()
+		elif event.is_action_pressed("scent"):
+			_on_smell_pressed()
 
 
 #func _process(delta: float) -> void:

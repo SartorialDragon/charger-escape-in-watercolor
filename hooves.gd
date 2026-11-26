@@ -11,8 +11,6 @@ var last_print_position = Vector2(0,0)
 
 func _ready() -> void:
 	Global.new_poi = null
-	if get_tree().current_scene.name == "Environment1":
-		print(get_tree().current_scene.name)
 
 
 func _physics_process(_delta: float) -> void:

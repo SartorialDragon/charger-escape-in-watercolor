@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://flru17blon8i"]
+
+[ext_resource type="Script" uid="uid://py6pat0dqk20" path="res://audio_manager.gd" id="1_jisk1"]
+[ext_resource type="AudioStream" uid="uid://gkr0wwbgtp7f" path="res://Music/MusicFinal/Main Menu (1).mp3" id="2_fckgx"]
+[ext_resource type="AudioStream" uid="uid://cj2b44vn2ihv7" path="res://Music/MusicFinal/E1 Seeing v2.mp3" id="3_86pii"]
+[ext_resource type="AudioStream" uid="uid://chl5uggfjtr32" path="res://Music/MusicFinal/E2 Seeing v2.mp3" id="4_mfnxe"]
+[ext_resource type="AudioStream" uid="uid://brhxd0a6gjnhk" path="res://Music/MusicFinal/E3 Seeing v2.mp3" id="5_astvc"]
+[ext_resource type="AudioStream" uid="uid://i7w5v5sd255h" path="res://Music/MusicFinal/E4.mp3" id="6_86pii"]
+[ext_resource type="AudioStream" uid="uid://cvj8jnyusw26c" path="res://Music/MusicFinal/E1 Hearing (1).mp3" id="6_ma34g"]
+[ext_resource type="AudioStream" uid="uid://dw4gy03r7sg4e" path="res://Music/MusicFinal/E2 Hearing.mp3" id="7_hokuy"]
+[ext_resource type="AudioStream" uid="uid://bg2cuplbkr3s8" path="res://Music/MusicFinal/E3 Hearing.mp3" id="8_alxyf"]
+[ext_resource type="AudioStream" uid="uid://0811q7ulkktg" path="res://Music/MusicFinal/E1 Sniffing (1).mp3" id="9_n8htm"]
+[ext_resource type="AudioStream" uid="uid://bkul715hghqql" path="res://Music/MusicFinal/E2 Sniffing.mp3" id="10_jkoco"]
+[ext_resource type="AudioStream" uid="uid://3f2i5gniwsh5" path="res://Music/MusicFinal/E3 Sniffing.mp3" id="11_wcghe"]
+[ext_resource type="AudioStream" uid="uid://caahgqkd04ekp" path="res://Music/MusicFinal/Dont give up v2.mp3" id="12_8sgsp"]
+[ext_resource type="AudioStream" uid="uid://cw8wmc08x2wup" path="res://Music/MusicFinal/Rage Idea.mp3" id="13_rfos7"]
+[ext_resource type="AudioStream" uid="uid://ctuytvwif53t8" path="res://Music/MusicFinal/Ending.mp3" id="14_o2ba0"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("music", "sfx", "va")]
+process_mode = 3
+script = ExtResource("1_jisk1")
+music = NodePath("Music")
+sfx = NodePath("SFX")
+va = NodePath("VA")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="E1 MainMenu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_fckgx")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E1 See" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_86pii")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E2 See" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("4_mfnxe")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E3 See" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_astvc")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E4 See" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_86pii")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="E1 Hear" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_ma34g")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E2 Hear" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("7_hokuy")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E3 Hear" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("8_alxyf")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E1 Smell" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("9_n8htm")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E2 Smell" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("10_jkoco")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E3 Smell" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("11_wcghe")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E3 Don\'t Give Up" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("12_8sgsp")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E4 Rage" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("13_rfos7")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="E4 Ending" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("14_o2ba0")
+volume_db = 10.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
+
+[node name="VA" type="Node" parent="."]
+
+[node name="VA" type="AudioStreamPlayer" parent="VA"]
+bus = &"VA"

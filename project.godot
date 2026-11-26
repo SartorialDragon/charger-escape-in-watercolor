@@ -21,6 +21,7 @@ boot_splash/minimum_display_time=2000
 
 Global="*res://global.gd"
 DialogueManager="*res://dialogue_manager.gd"
+AudioManager="*res://audio_manager.tscn"
 
 [display]
 

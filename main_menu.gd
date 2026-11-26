@@ -29,7 +29,7 @@ func open_menu():
 	$SFX.play()
 	for n in 75:
 		$MainPanel.position.x += 9
-		await get_tree().create_timer(0.00000001).timeout
+		await get_tree().create_timer(0.00001).timeout
 
 
 func open_settings_panel():
@@ -38,7 +38,7 @@ func open_settings_panel():
 	for n in 75:
 		if $RightPanel.position.x > 1414:
 			$RightPanel.position.x -= 16
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 
 
 func close_menu():
@@ -46,7 +46,7 @@ func close_menu():
 	for n in 75:
 		$MainPanel.position.x -= 9
 		$RightPanel.position.x += 16
-		await get_tree().create_timer(0.00000001).timeout
+		await get_tree().create_timer(0.00001).timeout
 	queue_free()
 	
 	
@@ -56,7 +56,7 @@ func close_settings_panel():
 	for n in 75:
 		if $RightPanel.position.x < 2614.0:
 			$RightPanel.position.x += 16
-			await get_tree().create_timer(0.00000001).timeout
+			await get_tree().create_timer(0.00001).timeout
 	%SettingsPanel.hide()
 	%QuitPanel.hide()
 	

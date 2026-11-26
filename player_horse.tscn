@@ -226,8 +226,7 @@ shape = SubResource("RectangleShape2D_1r8bo")
 position = Vector2(-17, -7)
 scale = Vector2(0.11253854, 0.11253855)
 sprite_frames = SubResource("SpriteFrames_0078p")
-animation = &"trot"
-frame = 7
+animation = &"idle"
 flip_h = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -294,10 +293,10 @@ scale_amount_curve = SubResource("Curve_gym2r")
 color = Color(0.48000002, 0.5146667, 1, 1)
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = -58.30803
-offset_top = -43.344025
-offset_right = 33.54001
-offset_bottom = 38.70002
+offset_left = -48.50403
+offset_top = -34.572018
+offset_right = 15.480007
+offset_bottom = 3.0959969
 mouse_default_cursor_shape = 2
 
 [node name="Hoofbeat" type="AudioStreamPlayer" parent="."]

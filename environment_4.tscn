@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dqhutmoylg7ve"]
+[gd_scene load_steps=38 format=3 uid="uid://dqhutmoylg7ve"]
 
 [ext_resource type="Script" uid="uid://byddm2qe2y37g" path="res://environment_4.gd" id="1_fjkyu"]
 [ext_resource type="Texture2D" uid="uid://r6x81gaw2h12" path="res://ArtAssets/environment 4 sky.png" id="2_6fwi5"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bgccahtq54157" path="res://dialogue_ui_error.tscn" id="14_6fwi5"]
 [ext_resource type="Texture2D" uid="uid://bc02qu77cmk05" path="res://ArtAssets/smoke cloud_.png" id="14_8xvv2"]
 [ext_resource type="AudioStream" uid="uid://cjwn6xxe34xxq" path="res://SFX/freesound_community-rock-destroy-6409.mp3" id="14_aodgo"]
-[ext_resource type="AudioStream" uid="uid://bjl8t23ntfkf4" path="res://Music/E4 To Rage.mp3" id="15_5jeke"]
 [ext_resource type="PackedScene" uid="uid://cvcicixgaavdy" path="res://dialogue_ui.tscn" id="15_8xvv2"]
 [ext_resource type="Texture2D" uid="uid://ct3jnmhpc2rgh" path="res://ArtAssets/smoke cloud.png" id="15_lgckb"]
 [ext_resource type="Theme" uid="uid://cxdodjp7w5l5v" path="res://theme_main_menu.tres" id="18_mxxf3"]
@@ -858,12 +857,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_76ml2")
-
-[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_5jeke")
-autoplay = true
-bus = &"Music"
-parameters/looping = true
 
 [node name="SFXAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_aodgo")
